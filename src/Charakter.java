@@ -12,11 +12,17 @@ public class Charakter {
     public Coordinates getCoordinates(){
         return coordinates;
     }
-    public void setCoordinates(int direction_given){
+    public void setDirection(int direction_given){
         this.direction = direction_given;
     }
     public int getDirection(){
         return direction;
+    }
+    public void interact(){
+        // do something
+    }
+    public void move(){
+        //do something
     }
 
 
