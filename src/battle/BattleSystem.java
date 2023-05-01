@@ -16,15 +16,20 @@ public class BattleSystem {
         this.battle();
     }
 
+    /**
+    This method is the battle loop. It starts when a new BattleSystem is created and ends if the player flees
+     or one fighter's HP drop to 0.
+    */
     @SuppressWarnings("InfiniteLoopStatement")
     private void battle(){
         String chosenAction;
-        int round = 1;
+        int round = 1;  // just for testing purposes
 
         while(true){
-            System.out.println("Round " + round);
+            System.out.println("Round " + round);  // just for testing purposes
             chosenAction = actionInput();
 
+            // decides whether the player or the opponent is faster with their action
             if(this.player.getInitStat() >= this.opponent.getInitStat()){
                 this.playerAction(chosenAction);
                 this.attacks(this.opponent, this.player);
@@ -33,10 +38,14 @@ public class BattleSystem {
                 this.attacks(this.opponent, this.player);
                 this.playerAction(chosenAction);
             }
-            round++;
+            round++;  // just for testing purposes
         }
     }
 
+    /**
+    This method reads in a user input. As long as there is no gui where the player can simply press a button,
+     the action is read in via the console as a string. Accepted inputs are "attack" and "flee" at the moment.
+    */
     private String actionInput(){
         String input;
         while(true) {
@@ -46,6 +55,9 @@ public class BattleSystem {
         }
     }
 
+    /**
+    This method executes the actionInput that was either "attack" or "flee".
+    */
     private void playerAction(String chosenAction){
         switch (chosenAction){
             case "attack": this.attacks(this.player, this.opponent); break;
@@ -54,17 +66,26 @@ public class BattleSystem {
         }
     }
 
+    /**
+    This method takes in an attacking and a defending fighter.
+     The attacking fighter then uses its attack method to inflict damage to the defender.
+     If the defender is defeated the battle ends.
+    */
     private void attacks(Fighter attacker, Fighter defender) {
         attacker.attack(defender);
-        System.out.println(defender.getHitpoints());
+        System.out.println(defender.getHitpoints());  // just for testing purposes
 
         if(defender.isDefeated()){
-            System.out.printf("%s is defeated! Battle ends now!", defender.getName());
+            System.out.printf("%s is defeated! Battle ends now!", defender.getName());  // just for testing purposes
             this.endBattle();
         }
     }
 
+    /**
+    Ends the battle. The battle is currently ended by ending the program.
+    */
     private void endBattle(){
+        scanner.close();
         System.exit(0);
     }
 
