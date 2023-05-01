@@ -7,22 +7,21 @@ public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
-    private boolean inBattle;
     private Scanner scanner;
 
     public BattleSystem(){
         this.player = new Fighter("Player",10, 6, 2, 5);
         this.opponent = new Fighter("Opponent",12, 5, 2, 7);
-        this.inBattle = true;
         this.scanner = new Scanner(System.in);
         this.battle();
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     private void battle(){
         String chosenAction;
         int round = 1;
 
-        while(this.inBattle){
+        while(true){
             System.out.println("Round " + round);
             chosenAction = actionInput();
 
