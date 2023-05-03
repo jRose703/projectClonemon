@@ -4,7 +4,7 @@ public class Main {
 
         System.out.println("Hello world!");
         System.out.println("Das wird ein Pokemonclone!");
-        Charakter peter = new Charakter();
+        Character peter = new Character();
         peter.setCoordinates(100,5);
         System.out.println(peter.getCoordinates());
     }
