@@ -12,6 +12,11 @@ public class World {
         InteractableEntityArr =  new InteractableEntity[x_size][y_size];
         status = true;
 
+        for (int i = 0; i < tileArr.length; i++) {
+            for (int j = 0; j < tileArr.length; j++) {
+                tileArr[i][j] = new LowGrassTile();
+            }
+        }
 
 
         tileArr[0][0] = new RockTile();
@@ -22,6 +27,16 @@ public class World {
 
     // gegner array hier noch einfügen
 
+    public void printWorld_ids(){
+        for (Tile[] tiles : tileArr) {
+            for (int j = 0; j < tileArr.length; j++) {
+                System.out.print(tiles[j].texture_id + ",");
+            }
+            System.out.print("\n");
+        }
+
+    }
+
     public void disable(){
         this.status = false;
     }
@@ -29,9 +44,11 @@ public class World {
         this.status = true;
     }
 
+    public boolean enemy_check(Coordinates position){
+        // if enemy is at position
+        // return true;
 
-    public static void enemy_check(){
-
+        return false;
 
     }
 
