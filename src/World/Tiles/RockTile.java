@@ -1,4 +1,4 @@
-package World;
+package World.Tiles;
 
 public class RockTile extends Tile{
 

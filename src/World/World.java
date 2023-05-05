@@ -1,5 +1,9 @@
 package World;
 
+import World.Tiles.LowGrassTile;
+import World.Tiles.RockTile;
+import World.Tiles.Tile;
+
 public class World {
 
     public Tile[][] tileArr;
@@ -31,7 +35,7 @@ public class World {
     public void printWorld_ids(){
         for (Tile[] tiles : tileArr) {
             for (int j = 0; j < tileArr.length; j++) {
-                System.out.print(tiles[j].texture_id + ",");
+                System.out.print(tiles[j].getTexture_id() + ",");
             }
             System.out.print("\n");
         }
