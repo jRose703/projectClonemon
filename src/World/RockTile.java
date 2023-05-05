@@ -1,3 +1,5 @@
+package World;
+
 public class RockTile extends Tile{
 
     public RockTile(){

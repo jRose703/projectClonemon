@@ -1,9 +1,10 @@
-import java.util.Arrays;
+package World;
+
 public class World {
 
-    Tile[][] tileArr;
-    InteractableEntity[][] InteractableEntityArr;
-    boolean status;
+    public Tile[][] tileArr;
+    public InteractableEntity[][] InteractableEntityArr;
+    public boolean status;
 
 
 

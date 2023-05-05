@@ -1,6 +1,8 @@
+package World;
+
 public class Tile {
-    boolean accessible;
-    int texture_id;
+    public boolean accessible;
+    public int texture_id;
     public Tile(){
         accessible = false;
         texture_id = -1;
