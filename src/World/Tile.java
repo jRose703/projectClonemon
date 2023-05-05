@@ -1,6 +1,6 @@
 package World;
 
-public class Tile {
+public abstract class Tile {
     public boolean accessible;
     public int texture_id;
     public Tile(){

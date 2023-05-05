@@ -22,7 +22,7 @@ public class World {
 
         tileArr[0][0] = new RockTile();
         tileArr[0][1] = new LowGrassTile();
-        tileArr[0][2] = new Tile();
+        tileArr[0][2] = new RockTile();
     }
 
 
@@ -45,7 +45,8 @@ public class World {
         this.status = true;
     }
 
-    public boolean enemy_check(Coordinates position){
+    public boolean enemy_check(){
+        // coordinates class in argument anpassen
         // if enemy is at position
         // return true;
 
