@@ -1,5 +1,7 @@
 package Frames.textBox;
 
+import battle.BattleSystem;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -7,7 +9,8 @@ import java.awt.event.KeyListener;
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BattleMenuBox extends AbstractTextBox implements KeyListener{
     private final int FONT_SIZE = 30;  // this variable will change relative to frame size
-    
+    private BattleSystem battle;
+
     // for code readability
     private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - FONT_SIZE;
     private final int RIGHT = TEXT_BOX_CENTER_X * 4 / 3 - FONT_SIZE;
@@ -23,15 +26,19 @@ public class BattleMenuBox extends AbstractTextBox implements KeyListener{
         this.addKeyListener(this);
     }
 
+    public void setBattle(BattleSystem newBattle){
+        this.battle = newBattle;
+    }
+
     private void chooseAction(){
         if(cursor_x ==  LEFT && cursor_y == TOP)
-            System.out.println("ATTACK");
+            this.battle.round("fight");
         else if(cursor_x ==  LEFT && cursor_y == BOTTOM)
             System.out.println("ITEMS");
         else if(cursor_x == RIGHT && cursor_y == TOP)
             System.out.println("CLONEMONS");
         else if(cursor_x == RIGHT && cursor_y == BOTTOM)
-            System.out.println("RUN");
+            this.battle.round("run");
         else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
     }
     

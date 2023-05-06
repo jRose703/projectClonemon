@@ -26,5 +26,8 @@ public class BattlePane extends JLayeredPane{
 		this.setVisible(false);
 		this.setLayout(null);
 	}
-	
+
+	public BattleMenuBox getBattleBox() {
+		return this.battleBox;
+	}
 }

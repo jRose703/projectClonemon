@@ -2,6 +2,7 @@ package Frames;
 
 import Frames.battle.BattlePane;
 import Frames.world.WorldPane;
+import battle.BattleSystem;
 
 import java.awt.Dimension;
 
@@ -37,6 +38,7 @@ public class BasicPanel extends JPanel{
 	public void changeToBattleScene(){
 		this.worldPane.setVisible(false);
 		this.battlePane.setVisible(true);
+		this.battlePane.getBattleBox().setBattle(new BattleSystem());
 	}
 
 }
