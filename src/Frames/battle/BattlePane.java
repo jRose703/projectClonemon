@@ -20,7 +20,7 @@ public class BattlePane extends JLayeredPane{
 		this.add(testTwo, Integer.valueOf(1));
 
 		this.textBox = new TextBox();
-		this.textBox.setMessage("Hello World!");
+		this.textBox.setMessage("Sein Panzer ist mit einer explosiven Schicht überzogen. Gegnerische Angriffe quittiert es gewaltig.");
 		this.add(textBox, Integer.valueOf(2));
 
 		this.setVisible(false);
