@@ -2131,7 +2131,7 @@
 											"top": 582,
 											"width": 249.64697265625,
 											"height": 13,
-											"text": "-Fighter player",
+											"text": "-player: Fighter",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2148,7 +2148,7 @@
 											"top": 597,
 											"width": 249.64697265625,
 											"height": 13,
-											"text": "-Fighter opponent",
+											"text": "-opponent: Fighter",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2183,7 +2183,7 @@
 											"top": 612,
 											"width": 249.64697265625,
 											"height": 13,
-											"text": "-Scanner scanner",
+											"text": "-scanner: Scanner",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4826,7 +4826,7 @@
 											"top": 302,
 											"width": 158,
 											"height": 13,
-											"text": "-name",
+											"text": "-name: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4843,7 +4843,7 @@
 											"top": 317,
 											"width": 158,
 											"height": 13,
-											"text": "-hitpoints",
+											"text": "-hitpoints: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4860,7 +4860,7 @@
 											"top": 332,
 											"width": 158,
 											"height": 13,
-											"text": "-attackStat",
+											"text": "-attackStat: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4877,7 +4877,7 @@
 											"top": 347,
 											"width": 158,
 											"height": 13,
-											"text": "-defenseStat",
+											"text": "-defenseStat: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4894,7 +4894,7 @@
 											"top": 362,
 											"width": 158,
 											"height": 13,
-											"text": "-initiativeStat",
+											"text": "-initiativeStat: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4911,7 +4911,7 @@
 											"top": 377,
 											"width": 158,
 											"height": 13,
-											"text": "-defeated",
+											"text": "-defeated: boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4945,7 +4945,7 @@
 											"top": 400,
 											"width": 158,
 											"height": 13,
-											"text": "+attack()",
+											"text": "+attack(Fighter defender)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4979,7 +4979,7 @@
 											"top": 430,
 											"width": 158,
 											"height": 13,
-											"text": "+getName()",
+											"text": "+getName(): String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4996,7 +4996,7 @@
 											"top": 445,
 											"width": 158,
 											"height": 13,
-											"text": "+getHitpoints()",
+											"text": "+getHitpoints(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5013,7 +5013,7 @@
 											"top": 460,
 											"width": 158,
 											"height": 13,
-											"text": "+getInitStat()",
+											"text": "+getInitStat(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5030,7 +5030,7 @@
 											"top": 475,
 											"width": 158,
 											"height": 13,
-											"text": "+isDefeated()",
+											"text": "+isDefeated(): boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5768,8 +5768,11 @@
 							"_parent": {
 								"$ref": "AAAAAAGH01QGCS18bMk="
 							},
-							"name": "Fighter player",
-							"visibility": "private"
+							"name": "player",
+							"visibility": "private",
+							"type": {
+								"$ref": "AAAAAAGH1bA6Xn51BHA="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5777,8 +5780,11 @@
 							"_parent": {
 								"$ref": "AAAAAAGH01QGCS18bMk="
 							},
-							"name": "Fighter opponent",
-							"visibility": "private"
+							"name": "opponent",
+							"visibility": "private",
+							"type": {
+								"$ref": "AAAAAAGH1bA6Xn51BHA="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5786,7 +5792,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH01QGCS18bMk="
 							},
-							"name": "boolean awaitingInput"
+							"name": "boolean awaitingInput",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5794,8 +5801,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGH01QGCS18bMk="
 							},
-							"name": "Scanner scanner",
-							"visibility": "private"
+							"name": "scanner",
+							"visibility": "private",
+							"type": "Scanner"
 						}
 					],
 					"operations": [
@@ -5840,7 +5848,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGH1jMIo+IWEnQ="
 									},
-									"name": "String chosenAction"
+									"name": "String chosenAction",
+									"type": ""
 								}
 							]
 						},
@@ -6100,7 +6109,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "name",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "String"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6109,7 +6119,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "hitpoints",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6118,7 +6129,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "attackStat",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6127,7 +6139,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "defenseStat",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6136,7 +6149,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "initiativeStat",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6145,7 +6159,8 @@
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
 							"name": "defeated",
-							"visibility": "private"
+							"visibility": "private",
+							"type": "boolean"
 						}
 					],
 					"operations": [
@@ -6155,7 +6170,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
-							"name": "attack"
+							"name": "attack",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGH5dUjsI46Kw0=",
+									"_parent": {
+										"$ref": "AAAAAAGH1bLPkYX48YU="
+									},
+									"name": "Fighter defender",
+									"type": ""
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -6171,7 +6197,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
-							"name": "getName"
+							"name": "getName",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGH5dTFzYldr6U=",
+									"_parent": {
+										"$ref": "AAAAAAGH1gpbksmIVWw="
+									},
+									"type": "String",
+									"direction": "return"
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -6179,7 +6216,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
-							"name": "getHitpoints"
+							"name": "getHitpoints",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGH5dS1Xohe8MI=",
+									"_parent": {
+										"$ref": "AAAAAAGH1gqJkcstJfk="
+									},
+									"type": "int",
+									"direction": "return"
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -6187,7 +6235,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
-							"name": "getInitStat"
+							"name": "getInitStat",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGH5dSoZodf+SI=",
+									"_parent": {
+										"$ref": "AAAAAAGH1gz2fM0+/7k="
+									},
+									"type": "int",
+									"direction": "return"
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -6195,7 +6254,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGH1bA6Xn51BHA="
 							},
-							"name": "isDefeated"
+							"name": "isDefeated",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGH5dRYEoYGwn0=",
+									"_parent": {
+										"$ref": "AAAAAAGH1g07o88Hp40="
+									},
+									"type": "boolean",
+									"direction": "return"
+								}
+							]
 						}
 					]
 				}
