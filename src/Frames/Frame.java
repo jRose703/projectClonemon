@@ -1,7 +1,8 @@
-package Frames.basicFrames;
+package Frames;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class Frame extends JFrame{
 
 	private BasicPanel mainPanel;
