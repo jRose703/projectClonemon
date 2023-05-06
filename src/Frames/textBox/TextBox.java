@@ -1,12 +1,10 @@
 package Frames.textBox;
 
-import Frames.textBox.interfaces.DialogBox;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextBox extends AbstractTextBox implements DialogBox {
+public class TextBox extends AbstractTextBox{
 
     private final int FONT_SIZE = 30;  // this variable will change relative to frame size
     private final int MAX_CHAR_SIZE = 39;  // this variable needs to stay a constant
@@ -19,7 +17,6 @@ public class TextBox extends AbstractTextBox implements DialogBox {
         lines = new ArrayList<>();
     }
 
-    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(new Font("Arial", Font.BOLD, this.FONT_SIZE));
@@ -28,7 +25,6 @@ public class TextBox extends AbstractTextBox implements DialogBox {
             g.drawString(lines.get(i), 20, 20 + (20 * 2 * i) + this.FONT_SIZE);
     }
 
-    @Override
     public void setMessage(String message) {
         this.message = message;
         createMessageList();
