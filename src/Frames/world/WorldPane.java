@@ -1,4 +1,4 @@
-package Frames;
+package Frames.world;
 
 import javax.swing.*;
 

@@ -1,5 +1,8 @@
 package Frames;
 
+import Frames.battle.BattlePane;
+import Frames.world.WorldPane;
+
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
@@ -27,6 +30,8 @@ public class BasicPanel extends JPanel{
 		this.setPreferredSize(SCREENSIZE);
 		this.setVisible(true);
 		this.setLayout(null);
+
+		changeToBattleScene();
 	}
 
 	public void changeToBattleScene(){
