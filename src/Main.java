@@ -1,11 +1,12 @@
-import World.World;
+import Worlds.World;
 
 public class Main {
 
     public static void main(String[] args) {
 
         System.out.println("Das wird ein Pokemonclone");
-        World W1 = new World(10,10);
+        World W1 = new World(10, 10);
+
 
         System.out.println("-------------------------------------------");
 
@@ -28,5 +29,7 @@ public class Main {
         System.out.println("-------------------------------------------");
 
         W1.printWorld_ids();
+
+        Worlds.WriteToJsonFile.saveArr(W1);
     }
 }

@@ -1,7 +1,7 @@
-package World.Tiles;
+package Worlds.Tiles;
 
-public class LowGrassTile extends Tile{
-    public LowGrassTile(){
+public class LowGrassTile extends Tile {
+    public LowGrassTile() {
         super(); // needed?
         this.accessible = true;
         this.texture_id = 0;
