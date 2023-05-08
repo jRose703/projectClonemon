@@ -17,4 +17,8 @@ public class Frame extends JFrame{
 		this.setTitle("Clonemon");
 		this.pack();
 	}
+
+	public void tickWorldPanel(){
+
+	}
 }

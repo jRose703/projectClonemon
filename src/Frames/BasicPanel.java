@@ -32,11 +32,17 @@ public class BasicPanel extends JPanel{
 		this.setLayout(null);
 
 		changeToBattleScene();
+		changeToWorldScene();
 	}
 
 	public void changeToBattleScene(){
 		this.worldPane.setVisible(false);
 		this.battlePane.setVisible(true);
+	}
+
+	public void changeToWorldScene(){
+		this.worldPane.setVisible(true);
+		this.battlePane.setVisible(false);
 	}
 
 }
