@@ -11,3 +11,8 @@ https://www.digitalocean.com/community/tutorials/json-simple-example
 
 
 https://cliftonlabs.github.io/json-simple/target/apidocs/index.html
+
+
+
+https://github.com/google/gson
+https://sites.google.com/site/gson/gson-user-guide
