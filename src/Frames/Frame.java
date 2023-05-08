@@ -1,5 +1,7 @@
 package Frames;
 
+import Worlds.World;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
@@ -18,7 +20,7 @@ public class Frame extends JFrame{
 		this.pack();
 	}
 
-	public void tickWorldPanel(){
-
+	public void tickWorldPanel(World world){
+		this.mainPanel.updateWorldScene(world);
 	}
 }

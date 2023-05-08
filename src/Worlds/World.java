@@ -62,4 +62,13 @@ public class World {
 
     }
 
+    public Tile[][] getTileArr() {
+        return this.tileArr;
+    }
+
+    public InteractableEntity[][] getInteractableEntityArr() {
+        return  this.InteractableEntityArr;
+    }
+
+
 }
