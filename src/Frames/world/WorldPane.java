@@ -5,11 +5,10 @@ import Worlds.Tiles.Tile;
 import Worlds.World;
 
 import javax.swing.*;
-
 public class WorldPane extends JLayeredPane{
 
-	private static int TILE_WIDTH = 60;
-	private static int TILE_HEIGHT = 60;
+	private static final int TILE_WIDTH = 60;
+	private static final int TILE_HEIGHT = 60;
 	public WorldPane() {
 
 		this.setVisible(true);
@@ -20,14 +19,23 @@ public class WorldPane extends JLayeredPane{
 		InteractableEntity[][] entities = world.getInteractableEntityArr();
 		for (int i = 0; i < map.length; i++)
 			for (int j = 0; j < map[i].length; j++) {
-				ImageIcon image = new ImageIcon("assets/tiles/low_grass_tile.png");
+
+				ImageIcon image;
+				if (map[i][j].getTexture_id() == 1) {
+					image = new ImageIcon("assets/tiles/rock_tile.png");
+				} else {
+					image = new ImageIcon("assets/tiles/low_grass_tile.png");
+				}
+
 				JLabel label = new JLabel(image);
-
-				int x = 1;
-				int y = 1;
-				label.setBounds(x, y, TILE_WIDTH, TILE_HEIGHT);
-
+				label.setBounds(i * TILE_WIDTH, j * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
 				this.add(label);
+				if (entities[i][j] != null) {
+					ImageIcon entity = new ImageIcon("assets/tiles/rock_tile.png");
+					JLabel entityLabel = new JLabel(entity);
+					entityLabel.setBounds(i * TILE_WIDTH + 10, j * TILE_HEIGHT + 10, TILE_WIDTH - 20, TILE_HEIGHT - 20);
+					this.add(entityLabel);
+				}
 			}
 	}
 	
