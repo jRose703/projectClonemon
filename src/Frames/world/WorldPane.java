@@ -20,9 +20,14 @@ public class WorldPane extends JLayeredPane{
 		InteractableEntity[][] entities = world.getInteractableEntityArr();
 		for (int i = 0; i < map.length; i++)
 			for (int j = 0; j < map[i].length; j++) {
-				ImageIcon image = new ImageIcon();
-				JLabel label = new JLabel();
+				ImageIcon image = new ImageIcon("assets/tiles/low_grass_tile.png");
+				JLabel label = new JLabel(image);
 
+				int x = 1;
+				int y = 1;
+				label.setBounds(x, y, TILE_WIDTH, TILE_HEIGHT);
+
+				this.add(label);
 			}
 	}
 	
