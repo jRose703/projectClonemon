@@ -11,10 +11,10 @@ import javax.swing.JPanel;
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BasicPanel extends JPanel{
 
+	public static final int FONT_SIZE = 30;
 	public static final int SCREENWIDTH = 600;
 	public static final int SCREENHEIGHT = SCREENWIDTH;
-
-	private final Dimension SCREENSIZE = new Dimension (SCREENWIDTH, SCREENHEIGHT);
+	public static final Dimension SCREENSIZE = new Dimension (SCREENWIDTH, SCREENHEIGHT);
 
 	private WorldPane worldPane;
 	private BattlePane battlePane;

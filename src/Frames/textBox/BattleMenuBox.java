@@ -1,5 +1,6 @@
 package Frames.textBox;
 
+import Frames.BasicPanel;
 import battle.BattleSystem;
 
 import java.awt.*;
@@ -7,27 +8,37 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
-public class BattleMenuBox extends AbstractTextBox implements KeyListener{
-    private final int FONT_SIZE = 30;  // this variable will change relative to frame size
+public class BattleMenuBox extends AbstractTextBox{
     private BattleSystem battle;
 
     // for code readability
-    private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - FONT_SIZE;
-    private final int RIGHT = TEXT_BOX_CENTER_X * 4 / 3 - FONT_SIZE;
-    private final int TOP = TEXT_BOX_CENTER_Y * 5 / 6 - FONT_SIZE * 2 / 3;
-    private final int BOTTOM = TEXT_BOX_CENTER_Y * 3 / 2 - FONT_SIZE * 2 / 3;
+    private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - BasicPanel.FONT_SIZE;
+    private final int RIGHT = TEXT_BOX_CENTER_X * 4 / 3 - BasicPanel.FONT_SIZE;
+    private final int TOP = TEXT_BOX_CENTER_Y * 5 / 6 - BasicPanel.FONT_SIZE * 2 / 3;
+    private final int BOTTOM = TEXT_BOX_CENTER_Y * 3 / 2 - BasicPanel.FONT_SIZE * 2 / 3;
 
+    // cursor coordinates
     private int cursor_x = LEFT;
     private int cursor_y = TOP;
     
     public BattleMenuBox(){
         super();
-        this.setFocusable(true);
         this.addKeyListener(this);
     }
+    
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setFont(new Font("Arial", Font.BOLD, BasicPanel.FONT_SIZE));
 
-    public void setBattle(BattleSystem newBattle){
-        this.battle = newBattle;
+        g.drawString("Fight", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 5 / 6);
+        g.drawString("Clmn", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 5 / 6);
+        g.drawString("Items", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 3 / 2);
+        g.drawString("Run", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 3 / 2);
+
+        Polygon triangle = new Polygon(new int[] {this.cursor_x, this.cursor_x + BasicPanel.FONT_SIZE * 2 / 3 , this.cursor_x},
+                new int[] {this.cursor_y, this.cursor_y + BasicPanel.FONT_SIZE / 3, this.cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
+        g.drawPolygon(triangle);
+        g.fillPolygon(triangle);
     }
 
     private void chooseAction(){
@@ -41,20 +52,9 @@ public class BattleMenuBox extends AbstractTextBox implements KeyListener{
             this.battle.round("run");
         else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
     }
-    
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setFont(new Font("Arial", Font.BOLD, this.FONT_SIZE));
 
-        g.drawString("Fight", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 5 / 6);
-        g.drawString("Clmn", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 5 / 6);
-        g.drawString("Items", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 3 / 2);
-        g.drawString("Run", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 3 / 2);
-
-        Polygon triangle = new Polygon(new int[] {this.cursor_x, this.cursor_x + FONT_SIZE * 2 / 3 , this.cursor_x},
-                new int[] {this.cursor_y, this.cursor_y + FONT_SIZE / 3, this.cursor_y + FONT_SIZE * 2 / 3}, 3);
-        g.drawPolygon(triangle);
-        g.fillPolygon(triangle);
+    public void setBattle(BattleSystem newBattle){
+        this.battle = newBattle;
     }
 
     // if the enter button is pressed
@@ -87,7 +87,5 @@ public class BattleMenuBox extends AbstractTextBox implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {}
-
-
 
 }

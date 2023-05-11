@@ -7,13 +7,11 @@ public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
-    private Scanner scanner;
     private int round = 1;  // just for testing purposes
 
     public BattleSystem(){
         this.player = new Fighter("Player",10, 6, 2, 5);
         this.opponent = new Fighter("Opponent",12, 5, 2, 7);
-        this.scanner = new Scanner(System.in);
     }
 
     /**
@@ -65,7 +63,6 @@ public class BattleSystem {
     Ends the battle. The battle is currently ended by ending the program.
     */
     private void endBattle(){
-        scanner.close();
         System.exit(0);
     }
 
