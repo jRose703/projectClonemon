@@ -36,10 +36,10 @@ public class Entity{
         }
         else{
             if (direction == 2){
-                this.coordinates.y -=amount;
-            }
-            else if (direction == 4){
                 this.coordinates.y +=amount;
+            }
+            else if (direction == 0){
+                this.coordinates.y -=amount;
             }
             else{
                 throw new IllegalArgumentException("invalid direction");
