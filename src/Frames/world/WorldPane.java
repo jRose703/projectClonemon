@@ -17,23 +17,23 @@ public class WorldPane extends JLayeredPane{
 	public void update(World world) {
 		Tile[][] map = world.getTileArr();
 		InteractableEntity[][] entities = world.getInteractableEntityArr();
-		for (int i = 0; i < map.length; i++)
-			for (int j = 0; j < map[i].length; j++) {
+		for (int x = 0; x < map.length; x++)
+			for (int y = 0; y < map[x].length; y++) {
 
 				ImageIcon image;
-				if (map[i][j].getTexture_id() == 1) {
+				if (map[x][y].getTexture_id() == 1) {
 					image = new ImageIcon("assets/tiles/rock_tile.png");
 				} else {
 					image = new ImageIcon("assets/tiles/low_grass_tile.png");
 				}
-
+				System.out.println("Drawing " + map[x][y].getTexture_id() + " on coordinate (" + x + " | " + y + ")");
 				JLabel label = new JLabel(image);
-				label.setBounds(i * TILE_WIDTH, j * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+				label.setBounds(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
 				this.add(label);
-				if (entities[i][j] != null) {
+				if (entities[x][y] != null) {
 					ImageIcon entity = new ImageIcon("assets/tiles/rock_tile.png");
 					JLabel entityLabel = new JLabel(entity);
-					entityLabel.setBounds(i * TILE_WIDTH + 10, j * TILE_HEIGHT + 10, TILE_WIDTH - 20, TILE_HEIGHT - 20);
+					entityLabel.setBounds(x * TILE_WIDTH + 10, y * TILE_HEIGHT + 10, TILE_WIDTH - 20, TILE_HEIGHT - 20);
 					this.add(entityLabel);
 				}
 			}
