@@ -22,10 +22,6 @@ public class World {
             }
         }
 
-
-        tileArr[0][0] = new RockTile();
-        tileArr[0][1] = new LowGrassTile();
-        tileArr[0][2] = new RockTile();
     }
 
 
@@ -45,20 +41,31 @@ public class World {
 
     }
 
+    /**
+     * This function enables the World.
+     */
     public void disable() {
         this.status = false;
     }
 
+
+    /**
+     * This function disables the World.
+     */
     public void enable() {
         this.status = true;
     }
 
+    /**
+     * This function checks return a boolean based on if an enemy/entity is on given Coordinates.
+     */
     public boolean enemy_check() {
         // coordinates class in argument anpassen
         // if enemy is at position
         // return true;
 
         return false;
+
 
     }
 
@@ -70,5 +77,7 @@ public class World {
         return  this.InteractableEntityArr;
     }
 
+
+    }
 
 }
