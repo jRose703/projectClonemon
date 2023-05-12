@@ -9,4 +9,8 @@ public class PlayerEntity extends Entity {
         //TODO
     }
 
+    @Override
+    public void interact() {
+        super.interact();
+    }
 }
