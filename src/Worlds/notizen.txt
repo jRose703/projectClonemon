@@ -1,0 +1,25 @@
+https://www.jetbrains.com/help/idea/working-with-module-dependencies.html
+https://crunchify.com/how-to-write-json-object-to-file-in-java/
+
+
+https://cliftonlabs.github.io/json-simple/
+https://mkyong.com/java/jackson-how-to-parse-json/
+https://mkyong.com/java/how-to-parse-json-with-gson/
+
+
+https://www.digitalocean.com/community/tutorials/json-simple-example
+
+
+https://cliftonlabs.github.io/json-simple/target/apidocs/index.html
+
+
+
+https://github.com/google/gson
+https://sites.google.com/site/gson/gson-user-guide
+
+https://medium.com/@iliamsharipov_56660/handling-polymorphism-with-gson-f4a702014ffe
+
+
+Polymorphsm reader
+https://jansipke.nl/serialize-and-deserialize-a-list-of-polymorphic-objects-with-gson/
+https://stackoverflow.com/questions/59756092/use-gson-runtimetypeadapterfactory-with-lenient-true-setting
