@@ -9,7 +9,7 @@ public class Frame extends JFrame{
 
 	public static final String TITLE = "Clonémon";
 	private BasicPanel mainPanel;
-	
+
 	public Frame() {
 		mainPanel = new BasicPanel();
 		this.add(mainPanel);

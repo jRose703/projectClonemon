@@ -3,6 +3,7 @@ package Frames;
 import Frames.battle.BattlePane;
 import Frames.world.WorldPane;
 import Worlds.World;
+import battle.BattleSystem;
 
 import java.awt.*;
 
@@ -50,5 +51,4 @@ public class BasicPanel extends JPanel{
 	public void updateWorldScene(World world){
 		this.worldPane.update(world);
 	}
-
 }

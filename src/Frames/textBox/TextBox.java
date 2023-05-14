@@ -1,5 +1,7 @@
 package Frames.textBox;
 
+import Frames.BasicPanel;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -7,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
-public class TextBox extends AbstractTextBox implements KeyListener{
-
-    private final int FONT_SIZE = 30;  // this variable will change relative to frame size
+public class TextBox extends AbstractTextBox{
+    
     private final int MAX_CHAR_SIZE = 36;  // this variable needs to stay a constant
 
     private int row = 0;
@@ -18,16 +19,15 @@ public class TextBox extends AbstractTextBox implements KeyListener{
 
     public TextBox(){
         super();
-        this.setFocusable(true);
         this.addKeyListener(this);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setFont(new Font("Arial", Font.BOLD, this.FONT_SIZE));
+        g.setFont(new Font("Arial", Font.BOLD, BasicPanel.FONT_SIZE));
 
         for(int i = 0; i < 3 && i < lines.size(); i++)
-            g.drawString(lines.get(i + row), 20, 20 + (20 * 2 * i) + this.FONT_SIZE);
+            g.drawString(lines.get(i + row), 20, 20 + (20 * 2 * i) + BasicPanel.FONT_SIZE);
     }
 
     public void setMessage(String message) {
