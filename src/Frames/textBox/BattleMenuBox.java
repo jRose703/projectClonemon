@@ -54,20 +54,20 @@ public class BattleMenuBox extends AbstractTextBox implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case 10: chooseAction();
-            case 37: {
+            case 10 -> chooseAction();
+            case 37 -> {
                 cursor_x = LEFT;
                 repaint();
             }
-            case 38: {
+            case 38 -> {
                 cursor_y = TOP;
                 repaint();
             }
-            case 39: {
+            case 39 -> {
                 cursor_x = RIGHT;
                 repaint();
             }
-            case 40: {
+            case 40 -> {
                 cursor_y = BOTTOM;
                 repaint();
             }
