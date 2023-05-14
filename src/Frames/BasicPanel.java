@@ -2,9 +2,10 @@ package Frames;
 
 import Frames.battle.BattlePane;
 import Frames.world.WorldPane;
+import Worlds.World;
 import battle.BattleSystem;
 
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
@@ -33,6 +34,7 @@ public class BasicPanel extends JPanel{
 		this.setLayout(null);
 
 		changeToBattleScene();
+		changeToWorldScene();
 	}
 
 	public void changeToBattleScene(){
@@ -41,4 +43,12 @@ public class BasicPanel extends JPanel{
 		this.battlePane.getBattleBox().setBattle(new BattleSystem());
 	}
 
+	public void changeToWorldScene(){
+		this.worldPane.setVisible(true);
+		this.battlePane.setVisible(false);
+	}
+
+	public void updateWorldScene(World world){
+		this.worldPane.update(world);
+	}
 }

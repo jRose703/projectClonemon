@@ -23,6 +23,9 @@ public class World {
         }
 
 
+        tileArr[0][0] = new RockTile();
+        tileArr[0][1] = new LowGrassTile();
+        tileArr[0][2] = new RockTile();
     }
 
 
@@ -65,5 +68,14 @@ public class World {
         // return true;
 
         return false;
+
+    }
+
+    public Tile[][] getTileArr() {
+        return this.tileArr;
+    }
+
+    public InteractableEntity[][] getInteractableEntityArr() {
+        return  this.InteractableEntityArr;
     }
 }

@@ -1,15 +1,12 @@
 package Worlds;
 
 import com.google.gson.*;
-
-
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriteToJsonFile {
     private static FileWriter file;
-
-
+  
     /**
      * This function saves the tileArr[][] to world.json.
      */
@@ -18,11 +15,8 @@ public class WriteToJsonFile {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         System.out.println();
         StringBuilder tileClasses = new StringBuilder();
-
         try {
             file = new FileWriter("src\\Worlds\\world.json");
-
-
             for (int i = 0; i < SWorld.tileArr.length; i++) {
                 for (int j = 0; j < SWorld.tileArr.length; j++) {
                     tileClasses.append(SWorld.tileArr[i][j].getClass());
@@ -37,7 +31,6 @@ public class WriteToJsonFile {
             //file.write("[\n"+gson.toJson(tileNameArr)+ ",\n"+gson.toJson(SWorld.tileArr) +"\n]");
             file.write(gson.toJson(SWorld.tileArr));
 
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -48,12 +41,5 @@ public class WriteToJsonFile {
                 e.printStackTrace();
             }
         }
-
     }
 }
-
-
-
-
-
-

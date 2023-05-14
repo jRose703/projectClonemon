@@ -10,4 +10,3 @@ Zum öffnen des UML Diagramms benötigt man StarUML, welches vom SWT Übungsleit
 
 ## Bild UML --> siehe issue UML
 ![UML-1](https://user-images.githubusercontent.com/117487931/235147050-5fbcfbae-642f-4aba-9b16-1379d6924a8f.png)
-
