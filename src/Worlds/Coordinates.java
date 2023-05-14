@@ -1,4 +1,4 @@
-package World;
+package Worlds;
 
 public class Coordinates {
     public int x;
