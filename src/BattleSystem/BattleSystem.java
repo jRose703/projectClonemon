@@ -1,6 +1,4 @@
-package battle;
-
-import java.util.Scanner;
+package BattleSystem;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class BattleSystem {

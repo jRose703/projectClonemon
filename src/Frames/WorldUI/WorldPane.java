@@ -1,4 +1,4 @@
-package Frames.world;
+package Frames.WorldUI;
 
 import Worlds.InteractableEntity;
 import Worlds.Tiles.Tile;

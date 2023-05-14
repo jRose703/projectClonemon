@@ -1,11 +1,10 @@
-package Frames.textBox;
+package Frames.TextBox;
 
 import Frames.BasicPanel;
-import battle.BattleSystem;
+import BattleSystem.BattleSystem;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BattleMenuBox extends AbstractTextBox{

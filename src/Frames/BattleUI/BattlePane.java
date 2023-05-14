@@ -1,6 +1,6 @@
-package Frames.battle;
+package Frames.BattleUI;
 
-import Frames.textBox.*;
+import Frames.TextBox.*;
 
 import javax.swing.*;
 

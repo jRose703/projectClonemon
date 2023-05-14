@@ -1,4 +1,4 @@
-package battle;
+package BattleSystem;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class Fighter {

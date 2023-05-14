@@ -1,11 +1,11 @@
 package Frames;
 
-import Frames.battle.BattlePane;
-import Frames.world.WorldPane;
+import Frames.BattleUI.BattlePane;
+import Frames.WorldUI.WorldPane;
 import Worlds.World;
-import battle.BattleSystem;
+import BattleSystem.BattleSystem;
 
-import java.awt.*;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 

@@ -1,4 +1,4 @@
-package Frames.textBox;
+package Frames.TextBox;
 
 import Frames.BasicPanel;
 

@@ -1,4 +1,4 @@
-package Frames.battle;
+package Frames.BattleUI;
 
 import javax.swing.*;
 import java.awt.*;
