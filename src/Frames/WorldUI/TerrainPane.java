@@ -6,12 +6,12 @@ import Worlds.World;
 import javax.swing.*;
 import java.awt.*;
 
-public class TerrainPanel extends JLayeredPane {
+public class TerrainPane extends JLayeredPane {
 
     private final int TILE_SIZE;
     private final int X_FIELDS;
     private final int Y_FIELDS;
-    public TerrainPanel(int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
+    public TerrainPane(int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
         this.TILE_SIZE = TILE_SIZE;
         this.X_FIELDS = X_FIELDS;
         this.Y_FIELDS = Y_FIELDS;
@@ -30,7 +30,6 @@ public class TerrainPanel extends JLayeredPane {
                 } else {
                     image = new ImageIcon("assets/tiles/low_grass_tile.png");
                 }
-                System.out.println("Drawing " + map[x][y].getTexture_id() + " on coordinate (" + x + " | " + y + ")");
                 JLabel label = new JLabel(image);
                 label.setBounds(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
                 this.add(label);

@@ -1,7 +1,5 @@
 package Frames.WorldUI;
 
-import Worlds.InteractableEntity;
-import Worlds.Tiles.Tile;
 import Worlds.World;
 
 import javax.swing.*;
@@ -9,12 +7,14 @@ public class WorldPane extends JLayeredPane{
 
 	private static final int TILE_SIZE = 60;
 
-	private final TerrainPanel terrain;
+	private final TerrainPane terrain;
+	private final EntityPane entities;
 	public WorldPane() {
 		this.setVisible(true);
 		this.setLayout(null);
 
-		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
+		terrain = new TerrainPane(TILE_SIZE, 10, 10);
+		entities = new EntityPane(TILE_SIZE, 10, 10);
 		this.add(terrain, 0);
 	}
 	public void reloadWorld(World world) {
