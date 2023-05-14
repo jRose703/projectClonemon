@@ -21,7 +21,13 @@ public class Frame extends JFrame{
 		this.pack();
 	}
 
-	public void tickWorldPanel(World world){
-		this.mainPanel.updateWorldScene(world);
+	public void reloadWorld(World world){
+		mainPanel.reloadWorld(world);
+	}
+	public void changeToBattleScene(){
+		mainPanel.changeToBattleScene();
+	}
+	public void changeToWorldScene() {
+		mainPanel.changeToWorldScene();
 	}
 }

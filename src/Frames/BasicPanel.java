@@ -48,7 +48,7 @@ public class BasicPanel extends JPanel{
 		this.battlePane.setVisible(false);
 	}
 
-	public void updateWorldScene(World world){
-		this.worldPane.update(world);
+	public void reloadWorld(World world){
+		this.worldPane.reloadWorld(world);
 	}
 }
