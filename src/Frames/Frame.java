@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 @SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class Frame extends JFrame{
 
+	public static final String TITLE = "Clonémon";
 	private BasicPanel mainPanel;
 	
 	public Frame() {
@@ -16,7 +17,7 @@ public class Frame extends JFrame{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.setTitle("Clonemon");
+		this.setTitle(TITLE);
 		this.pack();
 	}
 
