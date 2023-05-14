@@ -67,9 +67,9 @@ public class TextBox extends AbstractTextBox implements KeyListener{
             if(row < lines.size() - 3){
                 int difference = lines.size()-3 - row;
                 switch (difference) {
-                    case 1: row++;
-                    case 2: row = row + 2;
-                    default: row = row + 3;
+                    case 1 -> row++;
+                    case 2 -> row = row + 2;
+                    default -> row = row + 3;
                 }
                 repaint();
             }
