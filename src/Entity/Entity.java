@@ -1,6 +1,6 @@
 package Entity;
 
-import World.Coordinates;
+import Worlds.Coordinates;
 public class Entity{
     public Coordinates coordinates;
     public int facing_direction;
