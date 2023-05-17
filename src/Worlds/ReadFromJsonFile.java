@@ -12,6 +12,8 @@ import java.util.Arrays;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
 public class ReadFromJsonFile {
 

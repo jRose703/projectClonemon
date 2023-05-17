@@ -2,43 +2,52 @@
   [
     {
       "accessible": false,
-      "texture_id": 1
+      "texture_id": 1,
+      "tileType": "RockTile"
     },
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     },
     {
       "accessible": false,
-      "texture_id": 1
+      "texture_id": 1,
+      "tileType": "RockTile"
     }
   ],
   [
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     },
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     },
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     }
   ],
   [
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     },
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     },
     {
       "accessible": true,
-      "texture_id": 0
+      "texture_id": 0,
+      "tileType": "LowGrassTile"
     }
   ]
 ]

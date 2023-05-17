@@ -4,6 +4,8 @@ public abstract class Tile {
     boolean accessible;
     int texture_id;
 
+    String tileType;
+
     public boolean getAccessible() {
         return accessible;
     }

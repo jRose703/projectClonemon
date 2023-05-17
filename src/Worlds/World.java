@@ -17,8 +17,8 @@ public class World {
         status = true;
 
         for (int i = 0; i < tileArr.length; i++) {
-            for (int j = 0; j < tileArr.length; j++) {
-                tileArr[i][j] = new LowGrassTile();
+            for (int j = 0; j < tileArr[0].length; j++) {
+                tileArr[j][i] = new LowGrassTile();
             }
         }
 
@@ -36,9 +36,19 @@ public class World {
      * This function prints out the world with every texture_id of the Tiles.
      */
     public void printWorld_ids() {
+        /*
         for (Tile[] tiles : tileArr) {
             for (int j = 0; j < tileArr.length; j++) {
                 System.out.print(tiles[j].getTexture_id() + ",");
+            }
+            System.out.print("\n");
+        }
+        */
+
+
+        for (int i = 0; i < tileArr[0].length; i++) {
+            for (int j = 0; j < tileArr.length; j++) {
+                System.out.print(tileArr[j][i].getTexture_id() + ",");
             }
             System.out.print("\n");
         }

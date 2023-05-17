@@ -17,16 +17,13 @@ public class WriteToJsonFile {
         StringBuilder tileClasses = new StringBuilder();
         try {
             file = new FileWriter("src\\Worlds\\world.json");
+
+            // not used right now
             for (int i = 0; i < SWorld.tileArr.length; i++) {
-                for (int j = 0; j < SWorld.tileArr.length; j++) {
+                for (int j = 0; j < SWorld.tileArr[0].length; j++) {
                     tileClasses.append(SWorld.tileArr[i][j].getClass());
                 }
             }
-
-
-            String tilestring = String.valueOf(tileClasses.delete(0, 6));
-            String[] tileNameArr = tilestring.split(" ");
-
 
             //file.write("[\n"+gson.toJson(tileNameArr)+ ",\n"+gson.toJson(SWorld.tileArr) +"\n]");
             file.write(gson.toJson(SWorld.tileArr));
