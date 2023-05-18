@@ -15,36 +15,17 @@ public class WorldPane extends JLayeredPane{
 
 		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
 		entities = new EntityPanel(TILE_SIZE, 10, 10);
-		this.add(terrain, 0);
+		this.add(terrain, Integer.valueOf(0));
+		this.add(entities, Integer.valueOf(1));
 	}
 	public void reloadWorld(World world) {
 		terrain.reload(world);
-		this.add(terrain, 0);
+		this.remove(terrain);
+		this.add(terrain, Integer.valueOf(0));
 	}
-
-	/*public void update(World world) {
-		Tile[][] map = world.getTileArr();
-		InteractableEntity[][] entities = world.getInteractableEntityArr();
-		for (int x = 0; x < map.length; x++)
-			for (int y = 0; y < map[x].length; y++) {
-
-				ImageIcon image;
-				if (map[x][y].getTexture_id() == 1) {
-					image = new ImageIcon("assets/tiles/rock_tile.png");
-				} else {
-					image = new ImageIcon("assets/tiles/low_grass_tile.png");
-				}
-				System.out.println("Drawing " + map[x][y].getTexture_id() + " on coordinate (" + x + " | " + y + ")");
-				JLabel label = new JLabel(image);
-				label.setBounds(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-				this.add(label);
-				if (entities[x][y] != null) {
-					ImageIcon entity = new ImageIcon("assets/tiles/rock_tile.png");
-					JLabel entityLabel = new JLabel(entity);
-					entityLabel.setBounds(x * TILE_SIZE + 10, y * TILE_SIZE + 10, TILE_SIZE - 20, TILE_SIZE - 20);
-					this.add(entityLabel);
-				}
-			}
-	}*/
-	
+	public void reloadEntities(World world) {
+		entities.reload(world);
+		this.remove(entities);
+		this.add(entities, Integer.valueOf(1));
+	}
 }
