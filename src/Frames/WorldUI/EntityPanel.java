@@ -1,6 +1,6 @@
 package Frames.WorldUI;
 
-import Worlds.Tiles.Tile;
+import Worlds.InteractableEntity;
 import Worlds.World;
 
 import javax.swing.*;
@@ -21,19 +21,26 @@ public class EntityPanel extends JPanel {
         this.setLayout(null);
     }
     public void reload(World world) {
-        Tile[][] map = world.getTileArr();
+        InteractableEntity[][] entities = world.getInteractableEntityArr();
         for (int x = 0; x < X_FIELDS; x++)
             for (int y = 0; y < Y_FIELDS; y++) {
+                ImageIcon icon;
+                if (entities[x][y] == null)
+                    continue;
 
-                ImageIcon image;
-                if (map[x][y].getTexture_id() == 1) {
-                    image = new ImageIcon("assets/tiles/rock_tile.png");
-                } else {
-                    image = new ImageIcon("assets/tiles/low_grass_tile.png");
+                switch (1) { //TODO Replace the switch with some kind of system that tracks the entities in the world
+                    case 1 ->
+                            icon = new ImageIcon("assets/entities/entity_e.png");
+                    case 2 ->
+                            icon = new ImageIcon("assets/entities/entity_s.png");
+                    case 3 ->
+                            icon = new ImageIcon("assets/entities/entity_w.png");
+                    default ->
+                            icon = new ImageIcon("assets/entities/entity_n.png");
                 }
-                JLabel label = new JLabel(image);
-                label.setBounds(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                this.add(label);
+                JLabel entitylabel = new JLabel(icon);
+                entitylabel.setBounds(x * TILE_SIZE + 10, y * TILE_SIZE + 10, TILE_SIZE, TILE_SIZE);
+                this.add(entitylabel);
             }
     }
 }

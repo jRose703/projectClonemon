@@ -24,6 +24,9 @@ public class Frame extends JFrame{
 	public void reloadWorld(World world){
 		mainPanel.reloadWorld(world);
 	}
+	public void reloadEntities(World world){
+		mainPanel.reloadEntities(world);
+	}
 	public void changeToBattleScene(){
 		mainPanel.changeToBattleScene();
 	}

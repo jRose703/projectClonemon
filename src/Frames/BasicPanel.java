@@ -51,4 +51,7 @@ public class BasicPanel extends JPanel{
 	public void reloadWorld(World world){
 		this.worldPane.reloadWorld(world);
 	}
+	public void reloadEntities(World world){
+		this.worldPane.reloadEntities(world);
+	}
 }
