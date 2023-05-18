@@ -7,14 +7,14 @@ public class WorldPane extends JLayeredPane{
 
 	private static final int TILE_SIZE = 60;
 
-	private final TerrainPane terrain;
-	private final EntityPane entities;
+	private final TerrainPanel terrain;
+	private final EntityPanel entities;
 	public WorldPane() {
 		this.setVisible(true);
 		this.setLayout(null);
 
-		terrain = new TerrainPane(TILE_SIZE, 10, 10);
-		entities = new EntityPane(TILE_SIZE, 10, 10);
+		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
+		entities = new EntityPanel(TILE_SIZE, 10, 10);
 		this.add(terrain, 0);
 	}
 	public void reloadWorld(World world) {

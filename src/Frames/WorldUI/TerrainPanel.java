@@ -6,17 +6,18 @@ import Worlds.World;
 import javax.swing.*;
 import java.awt.*;
 
-public class TerrainPane extends JLayeredPane {
+public class TerrainPanel extends JPanel {
 
     private final int TILE_SIZE;
     private final int X_FIELDS;
     private final int Y_FIELDS;
-    public TerrainPane(int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
+    public TerrainPanel(int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
         this.TILE_SIZE = TILE_SIZE;
         this.X_FIELDS = X_FIELDS;
         this.Y_FIELDS = Y_FIELDS;
         this.setBounds(0, 0, TILE_SIZE * X_FIELDS, TILE_SIZE * Y_FIELDS);
         this.setBackground(Color.black);
+        this.setLayout(null);
     }
 
     public void reload(World world) {
