@@ -21,11 +21,6 @@ public class World {
                 tileArr[j][i] = new LowGrassTile();
             }
         }
-
-
-        tileArr[0][0] = new RockTile();
-        tileArr[0][1] = new LowGrassTile();
-        tileArr[0][2] = new RockTile();
     }
 
 
