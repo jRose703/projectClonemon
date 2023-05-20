@@ -1,10 +1,8 @@
-package Worlds;
+package Worlds.ReadAndWrite;
 
 
 import Worlds.Tiles.*;
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
-
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -32,14 +30,15 @@ public class ReadFromJsonFile {
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
 
+
         try {
             StringBuilder json = new StringBuilder();
-            FileReader reader = new FileReader("src\\Worlds\\world.json");
+            FileReader reader = new FileReader("SaveFiles\\world.json");
             int content;
             while ((content = reader.read()) != -1) {
                 json.append((char) content);
             }
-            //
+            // initialising
             Type listType = new TypeToken<List<Tile>>(){}.getType();
 
             List<Tile> fromJson = gson.fromJson(json.toString(), listType);
@@ -47,12 +46,13 @@ public class ReadFromJsonFile {
             List<Tile> tileList = new ArrayList<>();
 
 
+            tileList.addAll(fromJson);
 
-            for (Tile tile : fromJson) {
-                tileList.add(tile);
-            }
+            int x = 3;
+            int y = 3;
 
-            Tile[][] tileArr = new Tile[3][3];
+            Tile[][] tileArr = new Tile[x][y];
+
             int counter = 0;
             for (int i = 0; i < tileArr.length; i++) {
                 for (int j = 0; j < tileArr[0].length; j++) {

@@ -1,3 +1,5 @@
+import Worlds.ReadAndWrite.ReadFromJsonFile;
+import Worlds.ReadAndWrite.WriteToJsonFile;
 import Worlds.Tiles.LowGrassTile;
 import Worlds.Tiles.RockTile;
 import Worlds.World;
@@ -43,8 +45,8 @@ public class Main {
 
         System.out.println("-------------------------------------------");
 
-        Worlds.WriteToJsonFile.saveArr(W1);
-        W2.tileArr = Worlds.ReadFromJsonFile.readTileFile();
+        WriteToJsonFile.saveArr(W1);
+        W2.tileArr = ReadFromJsonFile.readTileFile();
         W2.printWorld_ids();
     }
 }

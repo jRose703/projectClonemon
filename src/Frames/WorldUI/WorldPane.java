@@ -1,6 +1,6 @@
 package Frames.WorldUI;
 
-import Worlds.InteractableEntity;
+import Entity.*;
 import Worlds.Tiles.Tile;
 import Worlds.World;
 
@@ -16,7 +16,7 @@ public class WorldPane extends JLayeredPane{
 	}
 	public void update(World world) {
 		Tile[][] map = world.getTileArr();
-		InteractableEntity[][] entities = world.getInteractableEntityArr();
+		Entity[][] entities = world.getEntityArr();
 		for (int x = 0; x < map.length; x++)
 			for (int y = 0; y < map[x].length; y++) {
 

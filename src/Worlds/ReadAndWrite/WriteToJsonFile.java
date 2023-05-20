@@ -1,5 +1,6 @@
-package Worlds;
+package Worlds.ReadAndWrite;
 
+import Worlds.World;
 import com.google.gson.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class WriteToJsonFile {
 
 
         try {
-            file = new FileWriter("src\\Worlds\\world.json");
+            file = new FileWriter("SaveFiles\\world.json");
 
             // not used right now
             for (int i = 0; i < SWorld.tileArr.length; i++) {
