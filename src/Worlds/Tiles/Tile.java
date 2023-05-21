@@ -9,13 +9,16 @@ public abstract class Tile {
     public boolean getAccessible() {
         return accessible;
     }
+    public String getTileType() {
+        return tileType;
+    }
 
     public int getTexture_id() {
         return texture_id;
     }
 
-    public void setAccessible() {
-        accessible = true;
+    public void setAccessible(boolean accessible) {
+        this.accessible = accessible;
     }
 
 }

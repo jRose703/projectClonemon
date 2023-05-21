@@ -19,8 +19,8 @@ public class World {
         entityArr = new Entity[x_size][y_size];
         status = true;
 
-        for (int i = 0; i < tileArr.length; i++) {
-            for (int j = 0; j < tileArr[0].length; j++) {
+        for (int i = 0; i < tileArr[0].length; i++) {
+            for (int j = 0; j < tileArr.length; j++) {
                 tileArr[j][i] = new LowGrassTile();
             }
         }
@@ -61,6 +61,13 @@ public class World {
     }
 
     /**
+     * This function returns the status of the World.
+     */
+    public boolean getStatus(){
+        return this.status;
+    }
+
+    /**
      * This function checks return a boolean based on if an enemy/entity is on given Coordinates.
      */
     public boolean enemy_check(Coordinates coordinates) {
@@ -80,4 +87,19 @@ public class World {
     public Entity[][] getEntityArr() {
         return  this.entityArr;
     }
+
+    /**
+     * This function can set one Entity in the entityArr at given Coordinates to the given Entity
+     */
+    public void setEntity(Coordinates coordinates,Entity entity) {
+        this.entityArr[coordinates.getX()][coordinates.getY()] = entity;
+    }
+
+    /**
+     * This function can set one Tile in the tileArr at given Coordinates to the given Tile
+     */
+    public void setTile(Coordinates coordinates,Tile tile) {
+        this.tileArr[coordinates.getX()][coordinates.getY()] = tile;
+    }
+
 }
