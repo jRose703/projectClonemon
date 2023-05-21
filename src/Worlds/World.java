@@ -5,9 +5,9 @@ import Worlds.Tiles.*;
 
 public class World {
 
-    public Tile[][] tileArr;
-    public Entity[][] entityArr;
-    public boolean status;
+    private Tile[][] tileArr;
+    private Entity[][] entityArr;
+    private boolean status;
 
 
     public World(int x_size, int y_size) {
@@ -29,35 +29,35 @@ public class World {
     }
 
 
-
-
-
     /**
      * This function prints out the world with every texture_id of the Tiles.
      */
     public void printWorld_ids() {
 
         for (int i = 0; i < tileArr[0].length; i++) {
-            for (int j = 0; j < tileArr.length; j++) {
-                System.out.print(tileArr[j][i].getTexture_id() + ",");
+            for (Tile[] tiles : tileArr) {
+                System.out.print(tiles[i].getTexture_id() + ",");
             }
             System.out.print("\n");
         }
+    }
 
+
+    // get-Methods
+
+
+    /**
+     * This function can get one Tile in the tileArr at given Coordinates to the given Tile
+     */
+    public int getXLength() {
+        return this.tileArr.length;
     }
 
     /**
-     * This function enables the World.
+     * This function can get one Tile in the tileArr at given Coordinates to the given Tile
      */
-    public void disable() {
-        this.status = false;
-    }
-
-    /**
-     * This function disables the World.
-     */
-    public void enable() {
-        this.status = true;
+    public int getYLength() {
+        return this.tileArr[0].length;
     }
 
     /**
@@ -65,13 +65,6 @@ public class World {
      */
     public boolean getStatus(){
         return this.status;
-    }
-
-    /**
-     * This function checks return a boolean based on if an enemy/entity is on given Coordinates.
-     */
-    public boolean enemy_check(Coordinates coordinates) {
-        return entityArr[coordinates.getX()][coordinates.getY()] != null;
     }
 
     /**
@@ -89,6 +82,38 @@ public class World {
     }
 
     /**
+     * This function can get one Tile in the tileArr at given Coordinates to the given Tile
+     */
+    public Tile getTile(Coordinates coordinates) {
+        return this.tileArr[coordinates.getX()][coordinates.getY()];
+    }
+
+
+    // set-Methods
+
+
+    /**
+     * This function enables the World.
+     */
+    public void disable() {
+        this.status = false;
+    }
+
+    /**
+     * This function disables the World.
+     */
+    public void enable() {
+        this.status = true;
+    }
+
+    /**
+     * This function sets tileArr of the world to given arr
+     */
+    public void setTileArr(Tile[][] tileArr) {
+        this.tileArr = tileArr;
+    }
+
+    /**
      * This function can set one Entity in the entityArr at given Coordinates to the given Entity
      */
     public void setEntity(Coordinates coordinates,Entity entity) {
@@ -102,4 +127,10 @@ public class World {
         this.tileArr[coordinates.getX()][coordinates.getY()] = tile;
     }
 
+    /**
+     * This function checks return a boolean based on if an enemy/entity is on given Coordinates.
+     */
+    public boolean enemy_check(Coordinates coordinates) {
+        return entityArr[coordinates.getX()][coordinates.getY()] != null;
+    }
 }

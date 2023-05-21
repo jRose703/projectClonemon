@@ -73,4 +73,32 @@ class WorldTest {
     @Test
     void getEntityArr() {
     }
+    @Disabled
+    @Test
+    void getStatus() {
+    }
+    @Disabled
+    @Test
+    void setEntity() {
+    }
+    @Disabled
+    @Test
+    void getTile() {
+    }
+    @Disabled
+    @Test
+    void setTile() {
+    }
+    @Disabled
+    @Test
+    void getXLength() {
+    }
+    @Disabled
+    @Test
+    void getYLength() {
+    }
+    @Disabled
+    @Test
+    void setTileArr() {
+    }
 }

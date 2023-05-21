@@ -1,5 +1,6 @@
 package Worlds.ReadAndWrite;
 
+import Worlds.Coordinates;
 import Worlds.World;
 import com.google.gson.*;
 import java.io.FileWriter;
@@ -24,12 +25,11 @@ public class WriteToJsonFile {
             file = new FileWriter("SaveFiles\\world.json");
 
             // not used right now
-            for (int i = 0; i < SWorld.tileArr.length; i++) {
-                for (int j = 0; j < SWorld.tileArr[0].length; j++) {
-                    tileList.add(SWorld.tileArr[j][i]);
+            for (int i = 0; i < SWorld.getXLength(); i++) {
+                for (int j = 0; j < SWorld.getYLength(); j++) {
+                    tileList.add(SWorld.getTile(new Coordinates(j,i)));
                 }
             }
-
             String tileJson =  gson.toJson(tileList);
             /*
             List<String> WorldList = new ArrayList<>();
