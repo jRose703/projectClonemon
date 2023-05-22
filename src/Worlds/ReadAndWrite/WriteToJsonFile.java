@@ -30,20 +30,10 @@ public class WriteToJsonFile {
                     tileList.add(SWorld.getTile(new Coordinates(j,i)));
                 }
             }
-            String tileJson =  gson.toJson(tileList);
-            /*
-            List<String> WorldList = new ArrayList<>();
-            Coordinates coordinates = new Coordinates(SWorld.tileArr[0].length,SWorld.tileArr.length);
-            String jsonW =  gson.toJson(coordinates);
-            System.out.println(jsonW);
-            String json = gson.toJson(WorldList);
-            file.write("[\n");
-            file.write(jsonW);
-            file.write(",\n");
-            file.write(tileJson);
-            file.write("\n]");
-             */
-            file.write(tileJson);
+
+            String Json =  gson.toJson(SWorld);
+
+            file.write(Json);
 
         } catch (IOException e) {
             e.printStackTrace();

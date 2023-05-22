@@ -5,6 +5,7 @@ import Worlds.Tiles.*;
 
 public class World {
 
+    private int[] size;
     private Tile[][] tileArr;
     private Entity[][] entityArr;
     private boolean status;
@@ -15,9 +16,10 @@ public class World {
             throw new IllegalStateException("World must be at least 2x2 big");
         }
 
+        size = new int[]{x_size,x_size};
         tileArr = new Tile[x_size][y_size];
         entityArr = new Entity[x_size][y_size];
-        status = true;
+        status = false;
 
         for (int i = 0; i < tileArr[0].length; i++) {
             for (int j = 0; j < tileArr.length; j++) {
@@ -111,6 +113,12 @@ public class World {
      */
     public void setTileArr(Tile[][] tileArr) {
         this.tileArr = tileArr;
+    }
+    /**
+     * This function sets entityArr of the world to given arr
+     */
+    public void setEntityArr(Entity[][] entityArr) {
+        this.entityArr = entityArr;
     }
 
     /**

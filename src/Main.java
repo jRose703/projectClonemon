@@ -5,6 +5,8 @@ import Worlds.Tiles.LowGrassTile;
 import Worlds.Tiles.RockTile;
 import Worlds.World;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,6 +19,7 @@ public class Main {
         W1.setTile(new Coordinates(0,1),new LowGrassTile());
         W1.setTile(new Coordinates(0,2),new RockTile());
 
+        System.out.println(Arrays.deepToString(W1.getTileArr()));
         System.out.println("-------------------------------------------");
 
         System.out.println(W1.getTile(new Coordinates(0,0)).getClass());
@@ -46,7 +49,9 @@ public class Main {
         System.out.println("-------------------------------------------");
 
         WriteToJsonFile.saveArr(W1);
-        W2.setTileArr(ReadFromJsonFile.readTileFile());
+        W2.setTileArr(ReadFromJsonFile.readTilesFromFile());
         W2.printWorld_ids();
+        World W3 = ReadFromJsonFile.readWorldFromFile();
+        W3.printWorld_ids();
     }
 }
