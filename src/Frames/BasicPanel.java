@@ -20,8 +20,8 @@ public class BasicPanel extends JPanel{
 	private WorldPane worldPane;
 	private BattlePane battlePane;
 
-	public BasicPanel() {
-		this.worldPane = new WorldPane();
+	public BasicPanel(World world) {
+		this.worldPane = new WorldPane(world);
 		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(worldPane);
 
@@ -48,10 +48,10 @@ public class BasicPanel extends JPanel{
 		this.battlePane.setVisible(false);
 	}
 
-	public void reloadWorld(World world){
-		this.worldPane.reloadWorld(world);
+	public void reloadWorld(){
+		this.worldPane.reloadWorld();
 	}
-	public void reloadEntities(World world){
-		this.worldPane.reloadEntities(world);
+	public void reloadEntities(){
+		this.worldPane.reloadEntities();
 	}
 }

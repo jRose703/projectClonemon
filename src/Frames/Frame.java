@@ -10,8 +10,8 @@ public class Frame extends JFrame{
 	public static final String TITLE = "Clonémon";
 	private BasicPanel mainPanel;
 
-	public Frame() {
-		mainPanel = new BasicPanel();
+	public Frame(World world) {
+		mainPanel = new BasicPanel(world);
 		this.add(mainPanel);
 
 		this.setVisible(true);
@@ -21,11 +21,11 @@ public class Frame extends JFrame{
 		this.pack();
 	}
 
-	public void reloadWorld(World world){
-		mainPanel.reloadWorld(world);
+	public void reloadWorld(){
+		mainPanel.reloadWorld();
 	}
-	public void reloadEntities(World world){
-		mainPanel.reloadEntities(world);
+	public void reloadEntities(){
+		mainPanel.reloadEntities();
 	}
 	public void changeToBattleScene(){
 		mainPanel.changeToBattleScene();
