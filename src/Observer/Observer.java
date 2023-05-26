@@ -2,6 +2,6 @@ package Observer;
 
 public interface Observer {
 
-    public void update(Object o);
+    public void update(ObserveType t, Object o);
 
 }

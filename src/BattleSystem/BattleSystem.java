@@ -1,6 +1,6 @@
 package BattleSystem;
 
-import Observer.Observer;
+import Observer.*;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class BattleSystem {
@@ -65,6 +65,6 @@ public class BattleSystem {
     Ends the battle. The battle is currently ended by ending the program.
     */
     private void endBattle(){
-        stateMachineObserver.update("battleEnded");
+        stateMachineObserver.update(ObserveType.BATTLE_END, null);
     }
 }

@@ -1,5 +1,5 @@
 import Frames.Frame;
-import Observer.Observer;
+import Observer.*;
 import Worlds.World;
 
 public class StateMachine implements Observer {
@@ -12,7 +12,11 @@ public class StateMachine implements Observer {
     }
 
     @Override
-    public void update(Object o) {
-        System.out.println((String) o);
+    public void update(ObserveType t, Object o) {
+        switch (t){
+            case BATTLE_START -> System.out.println("Battle Start!");
+            case BATTLE_END -> System.out.println("Battle Ended!");
+            case DIALOGUE -> System.out.println("Dialogue Started!");
+        }
     }
 }
