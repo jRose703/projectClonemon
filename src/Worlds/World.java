@@ -13,7 +13,7 @@ public class World {
 
     public World(int x_size, int y_size) {
         if (x_size< 2 || y_size < 2){
-            throw new IllegalStateException("World must be at least 2x2 big");
+            throw new IllegalArgumentException("World must be at least 2x2 big");
         }
 
         size = new int[]{x_size,x_size};

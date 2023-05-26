@@ -2,11 +2,10 @@ package Worlds;
 
 import Entity.Entity;
 import Entity.OpponentEntity;
-import org.junit.Ignore;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +13,7 @@ class WorldTest {
 
 
     private World world;
+    private World world1x1;
     private World world3x3;
     private World world3x4;
     private World world4x3;
@@ -22,8 +22,8 @@ class WorldTest {
     private Coordinates coordinates;
 
 
-
-    WorldTest(){
+    @BeforeEach
+    void setUp(){
         world = new World(10,10);
         world3x3 = new World(3,3);
         world3x4 = new World(3,4);
@@ -32,6 +32,21 @@ class WorldTest {
         coordinates = new Coordinates(0,0);
 
     }
+
+    @Test
+    void smallWorldTest(){
+
+        try {
+            world1x1 = new World(1,1);
+            fail("World must be at least 2x2 big");
+        }
+        catch (IllegalArgumentException ignored){
+
+        }
+        assertNull(world1x1);
+
+    }
+
     @Disabled
     @Test
     void printWorld_ids() {
