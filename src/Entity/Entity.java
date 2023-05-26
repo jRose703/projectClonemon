@@ -17,9 +17,6 @@ public class Entity{
     public int getFacing(){
         return facing_direction;
     }
-    public void interact(){
-        // do something
-    }
     public void move(int direction, int amount){
         if (direction %2 != 0){
             if (direction == 1){

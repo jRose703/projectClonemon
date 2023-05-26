@@ -40,5 +40,4 @@ public class Inventory {
             throw new IllegalArgumentException("Item not in Inventory");
         }
     }
-
 }
