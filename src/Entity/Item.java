@@ -22,12 +22,9 @@ public class Item {
     public void add_Item(int amount){
         this.amount += amount;
     }
-    public void remove_Item(){
+    public void reduceAmount(){
         if (this.amount>1){
             amount--;
-        }
-        else{
-            //TODO: delete item from inventory
         }
     }
 
