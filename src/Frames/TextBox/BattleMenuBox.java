@@ -56,6 +56,7 @@ public class BattleMenuBox extends AbstractTextBox{
         this.battle = newBattle;
     }
 
+
     // if the enter button is pressed
     @Override
     public void keyReleased(KeyEvent e) {

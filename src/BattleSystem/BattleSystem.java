@@ -1,15 +1,19 @@
 package BattleSystem;
 
+import Observer.Observer;
+
 @SuppressWarnings("FieldMayBeFinal")
 public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
     private int round = 1;  // just for testing purposes
+    private Observer stateMachineObserver;
 
-    public BattleSystem(){
+    public BattleSystem(Observer stateMachineObserver){
         this.player = new Fighter("Player",10, 6, 2, 5);
         this.opponent = new Fighter("Opponent",12, 5, 2, 7);
+        this.stateMachineObserver = stateMachineObserver;
     }
 
     /**
@@ -61,7 +65,6 @@ public class BattleSystem {
     Ends the battle. The battle is currently ended by ending the program.
     */
     private void endBattle(){
-        System.exit(0);
+        stateMachineObserver.update("battleEnded");
     }
-
 }

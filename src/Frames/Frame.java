@@ -1,5 +1,6 @@
 package Frames;
 
+import Observer.Observer;
 import Worlds.World;
 
 import javax.swing.JFrame;
@@ -10,8 +11,8 @@ public class Frame extends JFrame{
 	public static final String TITLE = "Clonémon";
 	private BasicPanel mainPanel;
 
-	public Frame(World world) {
-		mainPanel = new BasicPanel(world);
+	public Frame(World world, Observer stateMachineObserver) {
+		mainPanel = new BasicPanel(world, stateMachineObserver);
 		this.add(mainPanel);
 
 		this.setVisible(true);

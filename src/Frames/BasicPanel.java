@@ -2,6 +2,7 @@ package Frames;
 
 import Frames.BattleUI.BattlePane;
 import Frames.WorldUI.WorldPane;
+import Observer.Observer;
 import Worlds.World;
 import BattleSystem.BattleSystem;
 
@@ -19,8 +20,11 @@ public class BasicPanel extends JPanel{
 
 	private WorldPane worldPane;
 	private BattlePane battlePane;
+	private Observer stateMachineObserver;
 
-	public BasicPanel(World world) {
+	public BasicPanel(World world, Observer stateMachineObserver) {
+		this.stateMachineObserver = stateMachineObserver;
+
 		this.worldPane = new WorldPane(world);
 		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(worldPane);
@@ -34,13 +38,13 @@ public class BasicPanel extends JPanel{
 		this.setLayout(null);
 
 		changeToBattleScene();
-		changeToWorldScene();
+//		changeToWorldScene();
 	}
 
 	public void changeToBattleScene(){
 		this.worldPane.setVisible(false);
 		this.battlePane.setVisible(true);
-		this.battlePane.getBattleBox().setBattle(new BattleSystem());
+		this.battlePane.getBattleBox().setBattle(new BattleSystem(stateMachineObserver));
 	}
 
 	public void changeToWorldScene(){
