@@ -38,7 +38,7 @@ public class BasicPanel extends JPanel{
 		this.setLayout(null);
 
 		changeToBattleScene();
-//		changeToWorldScene();
+		changeToWorldScene();
 	}
 
 	public void changeToBattleScene(){

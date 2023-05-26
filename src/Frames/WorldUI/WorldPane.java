@@ -13,25 +13,33 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private final World world;
 	private int moveCooldown;
-	private PlayerEntity player;
-	private JLabel playerLabel;
+	private final PlayerEntity player;
+	private final JLabel playerLabel;
 	private TerrainPanel terrain;
 	private EntityPanel entities;
 	public WorldPane(World world) {
-		this.setVisible(true);
-		this.setLayout(null);
-		this.player = new PlayerEntity();
-		player.setCoordinates(3, 4);
-		this.moveCooldown = 0;
+		//Pane Init
+		setVisible(true);
+		setLayout(null);
+		setFocusable(true);
+		addKeyListener(this);
 
+		//World + World Panel Init
 		this.world = world;
+
 		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
 		entities = new EntityPanel(TILE_SIZE, 10, 10);
+		add(terrain, Integer.valueOf(0));
+		add(entities, Integer.valueOf(1));
+
+		//Player + Player Label Init
+		player = new PlayerEntity();
+		player.setCoordinates(3, 4);
+		moveCooldown = 0;
+
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
 		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-		this.add(terrain, Integer.valueOf(0));
-		this.add(entities, Integer.valueOf(1));
-		this.add(playerLabel, Integer.valueOf(2));
+		add(playerLabel, Integer.valueOf(2));
 	}
 	public void reloadWorld() {
 		this.remove(terrain);
@@ -45,39 +53,41 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		entities.reload(world);
 		this.add(entities, Integer.valueOf(1));
 	}
-	public void wPressed() {
-		if (moveCooldown == 0) {
-			player.move(player.facing_direction, 1);
+	private void moveAction(int direction) {
+		if (moveCooldown == 0 && player.getFacing() == direction) {
+			player.move(player.getFacing(), 1);
 			moveCooldown = 0;
 		}
+		else player.setFacing(direction);
+		updatePlayerLabel();
 	}
-	public void aPressed() {
-		player.facing_direction = (player.facing_direction - 1) % 4;
-	}
-	public void sPressed() {
-		player.facing_direction = (player.facing_direction + 1) % 4;
-	}
-	public void dPressed() {
-		player.facing_direction = (player.facing_direction + 2) % 4;
+	private void updatePlayerLabel() {
+		playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
+		ImageIcon image;
+		switch (player.getFacing()){
+			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
+			case 2 -> image = new ImageIcon("assets/entities/player_s.png");
+			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
+			default -> image = new ImageIcon("assets/entities/player_n.png");
+		}
+		playerLabel.setIcon(image);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		switch (e.getKeyCode()) {
-			case 65 -> aPressed();
-			case 68 -> dPressed();
-			case 83 -> sPressed();
-			case 87 -> wPressed();
+		switch (e.getKeyChar()) {
+			case 'a' -> moveAction(3);
+			case 'd' -> moveAction(1);
+			case 's' -> moveAction(2);
+			case 'w' -> moveAction(0);
 		}
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
 	}
 }
