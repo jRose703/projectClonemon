@@ -1,6 +1,7 @@
 package Frames.WorldUI;
 
 import Entity.PlayerEntity;
+import Observer.*;
 import Worlds.World;
 
 import javax.swing.*;
@@ -17,7 +18,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private final JLabel playerLabel;
 	private TerrainPanel terrain;
 	private EntityPanel entities;
-	public WorldPane(World world) {
+	private final Observer stateMachineObserver;
+	public WorldPane(World world, Observer stateMachineObserver) {
+		//Observer Init
+		this.stateMachineObserver = stateMachineObserver;
+
 		//Pane Init
 		setVisible(true);
 		setLayout(null);
@@ -40,6 +45,9 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
 		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		add(playerLabel, Integer.valueOf(2));
+	}
+	private void startCombat() {
+		stateMachineObserver.update(ObserveType.BATTLE_START, null);
 	}
 	public void reloadWorld() {
 		this.remove(terrain);

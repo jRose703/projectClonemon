@@ -25,7 +25,7 @@ public class BasicPanel extends JPanel{
 	public BasicPanel(World world, Observer stateMachineObserver) {
 		this.stateMachineObserver = stateMachineObserver;
 
-		this.worldPane = new WorldPane(world);
+		this.worldPane = new WorldPane(world, stateMachineObserver);
 		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(worldPane);
 
