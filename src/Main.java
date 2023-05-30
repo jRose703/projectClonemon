@@ -48,10 +48,10 @@ public class Main {
 
         System.out.println("-------------------------------------------");
 
-        WriteToJsonFile.saveArr(W1);
-        W2.setTileArr(ReadFromJsonFile.readTilesFromFile());
+        WriteToJsonFile.saveArr(W1,"testworld");
+        W2.setTileArr(ReadFromJsonFile.readTilesFromFile("testworld"));
         W2.printWorld_ids();
-        World W3 = ReadFromJsonFile.readWorldFromFile();
+        World W3 = ReadFromJsonFile.readWorldFromFile("testworld");
         W3.printWorld_ids();
     }
 }

@@ -15,14 +15,14 @@ public class WriteToJsonFile {
     /**
      * This function saves the tileArr[][] to world.json.
      */
-    public static void saveArr(World SWorld) {
+    public static void saveArr(World SWorld,String filename) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Tile> tileList = new ArrayList<>();
 
 
         try {
-            file = new FileWriter("SaveFiles\\world.json");
+            file = new FileWriter("SaveFiles\\" + filename +".json");
 
             // not used right now
             for (int i = 0; i < SWorld.getXLength(); i++) {

@@ -22,7 +22,7 @@ public class ReadFromJsonFile {
     /**
      * This function reads the world.json and returns a tileArr[][].
      */
-    public  static Tile[][] readTilesFromFile() {
+    public  static Tile[][] readTilesFromFile(String filename) {
 
         RuntimeTypeAdapterFactory<Tile> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Tile.class, "tileType")
@@ -31,7 +31,7 @@ public class ReadFromJsonFile {
                 .registerSubtype(VoidTile.class, "VoidTile");
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
-        JsonObject jsonObject = getJsonObjectFromFile();
+        JsonObject jsonObject = getJsonObjectFromFile(filename);
 
         String tileArrKey = "tileArr";
         JsonObject tileArrObject = new JsonObject();
@@ -59,8 +59,8 @@ public class ReadFromJsonFile {
 
         List<Tile> tileList = new ArrayList<>(fromJson);
 
-        int x = readSizeFromFile()[0];
-        int y = readSizeFromFile()[1];
+        int x = readSizeFromFile(filename)[0];
+        int y = readSizeFromFile(filename)[1];
 
         Tile[][] tileArr = new Tile[x][y];
 
@@ -81,7 +81,7 @@ public class ReadFromJsonFile {
     /**
      * This function reads the world.json and returns a entityArr[][].
      */
-    public static Entity[][] readEntitysFromFile(){
+    public static Entity[][] readEntitysFromFile(String filename){
 
         RuntimeTypeAdapterFactory<Entity> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Entity.class, "entityType")
@@ -89,7 +89,7 @@ public class ReadFromJsonFile {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
-        JsonObject jsonObject = getJsonObjectFromFile();
+        JsonObject jsonObject = getJsonObjectFromFile(filename);
 
         String entityArrKey = "entityArr";
         JsonObject entityArrObject = new JsonObject();
@@ -117,8 +117,8 @@ public class ReadFromJsonFile {
 
         List<Entity> entityList = new ArrayList<>(fromJson);
 
-        int x = readSizeFromFile()[0];
-        int y = readSizeFromFile()[1];
+        int x = readSizeFromFile(filename)[0];
+        int y = readSizeFromFile(filename)[1];
 
         Entity[][] entityArr = new Entity[x][y];
 
@@ -135,9 +135,9 @@ public class ReadFromJsonFile {
     /**
      * This function reads the world.json and returns an int[] with x size and y size.
      */
-    public static int[] readSizeFromFile(){
+    public static int[] readSizeFromFile(String filename){
 
-        JsonObject jsonObject = getJsonObjectFromFile();
+        JsonObject jsonObject = getJsonObjectFromFile(filename);
 
         String sizeKey = "size";
         JsonObject sizeObject = new JsonObject();
@@ -153,11 +153,11 @@ public class ReadFromJsonFile {
     /**
      * This function reads the world.json and returns a complete World.
      */
-    public static World readWorldFromFile(){
-        World world = new World(readSizeFromFile()[0],readSizeFromFile()[1]);
+    public static World readWorldFromFile(String filename){
+        World world = new World(readSizeFromFile(filename)[0],readSizeFromFile(filename)[1]);
 
-        world.setTileArr(readTilesFromFile());
-        world.setEntityArr(readEntitysFromFile());
+        world.setTileArr(readTilesFromFile(filename));
+        world.setEntityArr(readEntitysFromFile(filename));
 
         return world;
     }
@@ -165,10 +165,10 @@ public class ReadFromJsonFile {
     /**
      * This function reads the world.json and returns a JsonObject to use for other methods.
      */
-    private static JsonObject getJsonObjectFromFile(){
+    private static JsonObject getJsonObjectFromFile(String filename){
         try {
             StringBuilder json = new StringBuilder();
-            FileReader reader = new FileReader("SaveFiles\\world.json");
+            FileReader reader = new FileReader("SaveFiles\\" + filename +".json");
 
             int content;
             while ((content = reader.read()) != -1) {
