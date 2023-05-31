@@ -18,6 +18,7 @@ public class TextBox extends AbstractTextBox{
 
     public TextBox(){
         super();
+        this.setVisible(false);
         this.addKeyListener(this);
     }
 
@@ -31,7 +32,8 @@ public class TextBox extends AbstractTextBox{
 
     public void setMessage(String message) {
         this.message = message;
-        createMessageList();
+        this.createMessageList();
+        this.setVisible(true);
     }
 
     private void createMessageList(){

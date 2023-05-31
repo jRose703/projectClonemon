@@ -52,6 +52,9 @@ public class BasicPanel extends JPanel{
 		this.battlePane.setVisible(false);
 	}
 
+	public void startDialogue(String text) {
+		this.worldPane.startDialogue(text);
+	}
 	public void reloadWorld(){
 		this.worldPane.reloadWorld();
 	}

@@ -1,6 +1,7 @@
 package Frames.WorldUI;
 
 import Entity.PlayerEntity;
+import Frames.TextBox.TextBox;
 import Observer.*;
 import Worlds.World;
 
@@ -13,12 +14,15 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private static final int TILE_SIZE = 60;
 
 	private final World world;
-	private int moveCooldown;
 	private final PlayerEntity player;
 	private final JLabel playerLabel;
+	private final Observer stateMachineObserver;
+
+	private int moveCooldown;
 	private TerrainPanel terrain;
 	private EntityPanel entities;
-	private final Observer stateMachineObserver;
+	private TextBox dialogueBox;
+
 	public WorldPane(World world, Observer stateMachineObserver) {
 		//Observer Init
 		this.stateMachineObserver = stateMachineObserver;
@@ -45,10 +49,20 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
 		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		add(playerLabel, Integer.valueOf(2));
+
+		//Textbox Init
+		dialogueBox = new TextBox();
+		add(dialogueBox, Integer.valueOf(3));
 	}
+
+	public void startDialogue(String text) {
+		dialogueBox.setMessage(text);
+	}
+
 	private void startCombat() {
 		stateMachineObserver.update(ObserveType.BATTLE_START, null);
 	}
+
 	public void reloadWorld() {
 		this.remove(terrain);
 		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
@@ -83,6 +97,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		if(dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case 'a' -> moveAction(3);
 			case 'd' -> moveAction(1);
@@ -97,5 +112,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		if(dialogueBox.isVisible()) dialogueBox.keyReleased(e);
 	}
 }

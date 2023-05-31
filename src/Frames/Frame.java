@@ -34,4 +34,9 @@ public class Frame extends JFrame{
 	public void changeToWorldScene() {
 		mainPanel.changeToWorldScene();
 	}
+
+	public void startDialogue(String text) {
+		mainPanel.startDialogue(text);
+	}
+
 }

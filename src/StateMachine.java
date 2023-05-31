@@ -16,7 +16,7 @@ public class StateMachine implements Observer {
         switch (t){
             case BATTLE_START -> startBattle();
             case BATTLE_END -> endBattle();
-            case DIALOGUE -> startDialogue();
+            case DIALOGUE -> startDialogue((String) o);
         }
     }
     private void startBattle() {
@@ -27,7 +27,8 @@ public class StateMachine implements Observer {
         System.out.println("Battle Ended!");
         frame.changeToWorldScene();
     }
-    private void startDialogue() {
+    private void startDialogue(String text) {
         System.out.println("Dialogue Started!");
+        frame.startDialogue(text);
     }
 }
