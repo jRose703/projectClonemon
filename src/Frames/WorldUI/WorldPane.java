@@ -1,8 +1,10 @@
 package Frames.WorldUI;
 
 import Entity.PlayerEntity;
+import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
-import Observer.*;
+import Observer.ObserveType;
+import Observer.Observer;
 import Worlds.World;
 
 import javax.swing.*;
@@ -17,11 +19,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private final PlayerEntity player;
 	private final JLabel playerLabel;
 	private final Observer stateMachineObserver;
+	private final TextBox dialogueBox;
 
 	private int moveCooldown;
 	private TerrainPanel terrain;
 	private EntityPanel entities;
-	private TextBox dialogueBox;
 
 	public WorldPane(World world, Observer stateMachineObserver) {
 		//Observer Init
@@ -30,8 +32,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		//Pane Init
 		setVisible(true);
 		setLayout(null);
-		setFocusable(true);
-		addKeyListener(this);
 
 		//World + World Panel Init
 		this.world = world;
@@ -51,12 +51,12 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		add(playerLabel, Integer.valueOf(2));
 
 		//Textbox Init
-		dialogueBox = new TextBox();
+		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
 	}
 
 	public void startDialogue(String text) {
-		dialogueBox.setMessage(text);
+		dialogueBox.setMessage(text, DialogueType.BATTLE);
 	}
 
 	private void startCombat() {
