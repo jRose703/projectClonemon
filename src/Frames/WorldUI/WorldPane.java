@@ -15,7 +15,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private static final int TILE_SIZE = 60;
 
-	private final World world;
 	private final PlayerEntity player;
 	private final JLabel playerLabel;
 	private final Observer stateMachineObserver;
@@ -25,6 +24,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private TerrainPanel terrain;
 	private EntityPanel entities;
 
+	/**
+	 * Starts the graphical world.
+	 * Terrain displays the world and entities displays all entities except the player.
+	 */
 	public WorldPane(World world, Observer stateMachineObserver) {
 		//Observer Init
 		this.stateMachineObserver = stateMachineObserver;
@@ -32,12 +35,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		//Pane Init
 		setVisible(true);
 		setLayout(null);
+		setFocusable(true);
+		addKeyListener(this);
 
-		//World + World Panel Init
-		this.world = world;
-
-		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
-		entities = new EntityPanel(TILE_SIZE, 10, 10);
+		terrain = new TerrainPanel(world, TILE_SIZE, 10, 10);
+		entities = new EntityPanel(world, TILE_SIZE, 10, 10);
 		add(terrain, Integer.valueOf(0));
 		add(entities, Integer.valueOf(1));
 
@@ -64,29 +66,31 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	public void reloadWorld() {
-		this.remove(terrain);
-		terrain = new TerrainPanel(TILE_SIZE, 10, 10);
-		terrain.reload(world);
-		this.add(terrain, Integer.valueOf(0));
+		terrain.reload();
 	}
+
 	public void reloadEntities() {
-		this.remove(entities);
-		entities = new EntityPanel(TILE_SIZE, 10, 10);
-		entities.reload(world);
-		this.add(entities, Integer.valueOf(1));
+		entities.reload();
 	}
+
+	/**
+	 * Updates the player location if the movement cooldown equals zero.
+	 */
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
 			player.move(player.getFacing(), 1);
 			moveCooldown = 0;
-		}
-		else player.setFacing(direction);
+		} else player.setFacing(direction);
 		updatePlayerLabel();
 	}
+
+	/**
+	 * Updates the graphical player location.
+	 */
 	private void updatePlayerLabel() {
 		playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
 		ImageIcon image;
-		switch (player.getFacing()){
+		switch (player.getFacing()) {
 			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
 			case 2 -> image = new ImageIcon("assets/entities/player_s.png");
 			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
@@ -107,11 +111,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {
+		if (dialogueBox.isVisible()) dialogueBox.keyReleased(e);
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		if(dialogueBox.isVisible()) dialogueBox.keyReleased(e);
-	}
+	public void keyPressed(KeyEvent e) {}
 }

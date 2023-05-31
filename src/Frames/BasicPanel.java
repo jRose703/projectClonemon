@@ -10,21 +10,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
-@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BasicPanel extends JPanel implements KeyListener {
 
+	// Screen setup variables
 	public static final int FONT_SIZE = 30;
 	public static final int SCREENWIDTH = 600;
 	public static final int SCREENHEIGHT = SCREENWIDTH;
 	public static final Dimension SCREENSIZE = new Dimension(SCREENWIDTH, SCREENHEIGHT);
 
-	private WorldPane worldPane;
-	private BattlePane battlePane;
-	private Observer stateMachineObserver;
-	private int battleCooldown = 0;
+	private final WorldPane worldPane;
+	private final BattlePane battlePane;
+	private final Observer stateMachineObserver;
+	private final Timer timer;
+	private int keyListenerCooldown = 0;
 
+	/**
+	 * Container with the scenes: worldPane, battlePane.
+	 * The main KeyListener and the tickable method are called from here.
+	 */
 	public BasicPanel(World world, Observer stateMachineObserver) {
+		timer = new Timer();
+		this.startTickable();
 		this.stateMachineObserver = stateMachineObserver;
 
 		this.worldPane = new WorldPane(world, stateMachineObserver);
@@ -40,13 +49,12 @@ public class BasicPanel extends JPanel implements KeyListener {
 		this.setLayout(null);
 		this.setFocusable(true);
 		this.addKeyListener(this);
-		changeToBattleScene();
-		changeToWorldScene();
+		this.changeToWorldScene();
 	}
 
 	public void changeToBattleScene() {
 		worldPane.setVisible(false);
-		battleCooldown = 0;
+		keyListenerCooldown = 0;
 		battlePane.setVisible(true);
 		battlePane.setBattle(new BattleSystem(stateMachineObserver));
 	}
@@ -58,6 +66,16 @@ public class BasicPanel extends JPanel implements KeyListener {
 
 	public void startDialogue(String text) {
 		worldPane.startDialogue(text);
+	}
+
+	private void startTickable() {
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				if (worldPane != null && worldPane.isVisible())
+					reloadWorld();
+			}
+		}, 0, 50);//wait 0 milliseconds before doing the action and do it every 1000ms (1 second)
 	}
 
 	public void reloadWorld() {
@@ -78,10 +96,10 @@ public class BasicPanel extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if (worldPane.isVisible()) worldPane.keyReleased(e);
 		if (battlePane.isVisible())
-			if (battleCooldown != 0)
+			if (keyListenerCooldown != 0)
 				battlePane.keyReleased(e);
 			else
-				battleCooldown = 1;
+				keyListenerCooldown = 1;
 	}
 
 	@Override
