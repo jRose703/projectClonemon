@@ -1,42 +1,120 @@
 package Frames.WorldUI;
 
-import Worlds.InteractableEntity;
-import Worlds.Tiles.Tile;
+import Entity.PlayerEntity;
+import Frames.TextBox.DialogueType;
+import Frames.TextBox.TextBox;
+import Observer.ObserveType;
+import Observer.Observer;
 import Worlds.World;
 
 import javax.swing.*;
-public class WorldPane extends JLayeredPane{
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-	private static final int TILE_WIDTH = 60;
-	private static final int TILE_HEIGHT = 60;
-	public WorldPane() {
+public class WorldPane extends JLayeredPane implements KeyListener {
 
-		this.setVisible(true);
-		this.setLayout(null);
+	private static final int TILE_SIZE = 60;
+
+	private final PlayerEntity player;
+	private final JLabel playerLabel;
+	private final Observer stateMachineObserver;
+	private final TextBox dialogueBox;
+
+	private int moveCooldown;
+	private TerrainPanel terrain;
+	private EntityPanel entities;
+
+	/**
+	 * Starts the graphical world.
+	 * Terrain displays the world and entities displays all entities except the player.
+	 */
+	public WorldPane(World world, Observer stateMachineObserver) {
+		//Observer Init
+		this.stateMachineObserver = stateMachineObserver;
+
+		//Pane Init
+		setVisible(true);
+		setLayout(null);
+		setFocusable(true);
+		addKeyListener(this);
+
+		terrain = new TerrainPanel(world, TILE_SIZE, 10, 10);
+		entities = new EntityPanel(world, TILE_SIZE, 10, 10);
+		add(terrain, Integer.valueOf(0));
+		add(entities, Integer.valueOf(1));
+
+		//Player + Player Label Init
+		player = new PlayerEntity();
+		player.setCoordinates(3, 4);
+		moveCooldown = 0;
+
+		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
+		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		add(playerLabel, Integer.valueOf(2));
+
+		//Textbox Init
+		dialogueBox = new TextBox(stateMachineObserver);
+		add(dialogueBox, Integer.valueOf(3));
 	}
-	public void update(World world) {
-		Tile[][] map = world.getTileArr();
-		InteractableEntity[][] entities = world.getInteractableEntityArr();
-		for (int x = 0; x < map.length; x++)
-			for (int y = 0; y < map[x].length; y++) {
 
-				ImageIcon image;
-				if (map[x][y].getTexture_id() == 1) {
-					image = new ImageIcon("assets/tiles/rock_tile.png");
-				} else {
-					image = new ImageIcon("assets/tiles/low_grass_tile.png");
-				}
-				System.out.println("Drawing " + map[x][y].getTexture_id() + " on coordinate (" + x + " | " + y + ")");
-				JLabel label = new JLabel(image);
-				label.setBounds(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
-				this.add(label);
-				if (entities[x][y] != null) {
-					ImageIcon entity = new ImageIcon("assets/tiles/rock_tile.png");
-					JLabel entityLabel = new JLabel(entity);
-					entityLabel.setBounds(x * TILE_WIDTH + 10, y * TILE_HEIGHT + 10, TILE_WIDTH - 20, TILE_HEIGHT - 20);
-					this.add(entityLabel);
-				}
-			}
+	public void startDialogue(String text) {
+		dialogueBox.setMessage(text, DialogueType.BATTLE);
 	}
-	
+
+	private void startCombat() {
+		stateMachineObserver.update(ObserveType.BATTLE_START, null);
+	}
+
+	public void reloadWorld() {
+		terrain.reload();
+	}
+
+	public void reloadEntities() {
+		entities.reload();
+	}
+
+	/**
+	 * Updates the player location if the movement cooldown equals zero.
+	 */
+	private void moveAction(int direction) {
+		if (moveCooldown == 0 && player.getFacing() == direction) {
+			player.move(player.getFacing(), 1);
+			moveCooldown = 0;
+		} else player.setFacing(direction);
+		updatePlayerLabel();
+	}
+
+	/**
+	 * Updates the graphical player location.
+	 */
+	private void updatePlayerLabel() {
+		playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
+		ImageIcon image;
+		switch (player.getFacing()) {
+			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
+			case 2 -> image = new ImageIcon("assets/entities/player_s.png");
+			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
+			default -> image = new ImageIcon("assets/entities/player_n.png");
+		}
+		playerLabel.setIcon(image);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if(dialogueBox.isVisible()) return;
+		switch (e.getKeyChar()) {
+			case 'a' -> moveAction(3);
+			case 'd' -> moveAction(1);
+			case 's' -> moveAction(2);
+			case 'w' -> moveAction(0);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (dialogueBox.isVisible()) dialogueBox.keyReleased(e);
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {}
 }

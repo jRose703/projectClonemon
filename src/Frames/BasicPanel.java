@@ -1,27 +1,42 @@
 package Frames;
 
+import BattleSystem.BattleSystem;
 import Frames.BattleUI.BattlePane;
 import Frames.WorldUI.WorldPane;
+import Observer.Observer;
 import Worlds.World;
-import BattleSystem.BattleSystem;
 
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import javax.swing.JPanel;
+public class BasicPanel extends JPanel implements KeyListener {
 
-@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
-public class BasicPanel extends JPanel{
-
+	// Screen setup variables
 	public static final int FONT_SIZE = 30;
 	public static final int SCREENWIDTH = 600;
 	public static final int SCREENHEIGHT = SCREENWIDTH;
-	public static final Dimension SCREENSIZE = new Dimension (SCREENWIDTH, SCREENHEIGHT);
+	public static final Dimension SCREENSIZE = new Dimension(SCREENWIDTH, SCREENHEIGHT);
 
-	private WorldPane worldPane;
-	private BattlePane battlePane;
+	private final WorldPane worldPane;
+	private final BattlePane battlePane;
+	private final Observer stateMachineObserver;
+	private final Timer timer;
+	private int keyListenerCooldown = 0;
 
-	public BasicPanel() {
-		this.worldPane = new WorldPane();
+	/**
+	 * Container with the scenes: worldPane, battlePane.
+	 * The main KeyListener and the tickable method are called from here.
+	 */
+	public BasicPanel(World world, Observer stateMachineObserver) {
+		timer = new Timer();
+		this.startTickable();
+		this.stateMachineObserver = stateMachineObserver;
+
+		this.worldPane = new WorldPane(world, stateMachineObserver);
 		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(worldPane);
 
@@ -32,23 +47,62 @@ public class BasicPanel extends JPanel{
 		this.setPreferredSize(SCREENSIZE);
 		this.setVisible(true);
 		this.setLayout(null);
-
-		changeToBattleScene();
-		changeToWorldScene();
+		this.setFocusable(true);
+		this.addKeyListener(this);
+		this.changeToWorldScene();
 	}
 
-	public void changeToBattleScene(){
-		this.worldPane.setVisible(false);
-		this.battlePane.setVisible(true);
-		this.battlePane.getBattleBox().setBattle(new BattleSystem());
+	public void changeToBattleScene() {
+		worldPane.setVisible(false);
+		keyListenerCooldown = 0;
+		battlePane.setVisible(true);
+		battlePane.setBattle(new BattleSystem(stateMachineObserver));
 	}
 
-	public void changeToWorldScene(){
-		this.worldPane.setVisible(true);
-		this.battlePane.setVisible(false);
+	public void changeToWorldScene() {
+		battlePane.setVisible(false);
+		worldPane.setVisible(true);
 	}
 
-	public void updateWorldScene(World world){
-		this.worldPane.update(world);
+	public void startDialogue(String text) {
+		worldPane.startDialogue(text);
+	}
+
+	private void startTickable() {
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				if (worldPane != null && worldPane.isVisible())
+					reloadWorld();
+			}
+		}, 0, 50);//wait 0 milliseconds before doing the action and do it every 1000ms (1 second)
+	}
+
+	public void reloadWorld() {
+		this.worldPane.reloadWorld();
+	}
+
+	public void reloadEntities() {
+		this.worldPane.reloadEntities();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if (worldPane.isVisible()) worldPane.keyTyped(e);
+		if (battlePane.isVisible()) battlePane.keyTyped(e);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (worldPane.isVisible()) worldPane.keyReleased(e);
+		if (battlePane.isVisible())
+			if (keyListenerCooldown != 0)
+				battlePane.keyReleased(e);
+			else
+				keyListenerCooldown = 1;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
 	}
 }

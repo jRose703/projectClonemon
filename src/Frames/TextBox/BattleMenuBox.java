@@ -1,7 +1,7 @@
 package Frames.TextBox;
 
-import Frames.BasicPanel;
 import BattleSystem.BattleSystem;
+import Frames.BasicPanel;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -22,7 +22,6 @@ public class BattleMenuBox extends AbstractTextBox{
     
     public BattleMenuBox(){
         super();
-        this.addKeyListener(this);
     }
     
     public void paintComponent(Graphics g) {
@@ -56,7 +55,6 @@ public class BattleMenuBox extends AbstractTextBox{
         this.battle = newBattle;
     }
 
-    // if the enter button is pressed
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -79,12 +77,4 @@ public class BattleMenuBox extends AbstractTextBox{
             }
         }
     }
-
-    // These two methods are not needed in this case
-    @Override
-    public void keyPressed(KeyEvent e) {}
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-
 }

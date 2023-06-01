@@ -1,17 +1,20 @@
 package Frames;
 
+import Observer.Observer;
 import Worlds.World;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
-@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class Frame extends JFrame{
 
 	public static final String TITLE = "Clonémon";
-	private BasicPanel mainPanel;
+	private final BasicPanel mainPanel;
 
-	public Frame() {
-		mainPanel = new BasicPanel();
+	/**
+	 * Frame setup
+	 */
+	public Frame(World world, Observer stateMachineObserver) {
+		mainPanel = new BasicPanel(world, stateMachineObserver);
 		this.add(mainPanel);
 
 		this.setVisible(true);
@@ -21,7 +24,25 @@ public class Frame extends JFrame{
 		this.pack();
 	}
 
-	public void tickWorldPanel(World world){
-		this.mainPanel.updateWorldScene(world);
+	public void changeToBattleScene(){
+		mainPanel.changeToBattleScene();
 	}
+
+	public void changeToWorldScene() {
+		mainPanel.changeToWorldScene();
+	}
+
+	public void startDialogue(String text) {
+		mainPanel.startDialogue(text);
+	}
+
+	// Werden diese zwei Methoden überhaupt benötigt
+	public void reloadWorld() {
+		mainPanel.reloadWorld();
+	}
+
+	public void reloadEntities() {
+		mainPanel.reloadEntities();
+	}
+
 }
