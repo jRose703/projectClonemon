@@ -5,6 +5,7 @@ public class LowGrassTile extends Tile {
         super(); // needed?
         this.accessible = true;
         this.texture_id = 0;
+        this.tileType = "LowGrassTile";
     }
 
 }

@@ -22,3 +22,5 @@ https://medium.com/@iliamsharipov_56660/handling-polymorphism-with-gson-f4a70201
 Polymorphsm reader
 https://jansipke.nl/serialize-and-deserialize-a-list-of-polymorphic-objects-with-gson/
 https://stackoverflow.com/questions/59756092/use-gson-runtimetypeadapterfactory-with-lenient-true-setting
+
+https://search.maven.org/artifact/org.danilopianini/gson-extras/1.2.0/jar

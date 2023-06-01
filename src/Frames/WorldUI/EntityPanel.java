@@ -1,6 +1,6 @@
 package Frames.WorldUI;
 
-import Worlds.InteractableEntity;
+import Entity.Entity;
 import Worlds.World;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class EntityPanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        InteractableEntity[][] entities = WORLD.getInteractableEntityArr();
+        Entity[][] entities = WORLD.getEntityArr();
         for (int x = 0; x < X_FIELDS; x++)
             for (int y = 0; y < Y_FIELDS; y++) {
                 ImageIcon icon;

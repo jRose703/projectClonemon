@@ -6,6 +6,7 @@ public class RockTile extends Tile {
         super(); // needed?
         this.accessible = false;
         this.texture_id = 1;
+        this.tileType = "RockTile";
     }
 
 }
