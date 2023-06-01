@@ -1,6 +1,9 @@
 package BattleSystem;
 
-import Observer.*;
+import Frames.BattleUI.BattleObserver;
+import Frames.BattleUI.BattleParticipant;
+import Observer.ObserveType;
+import Observer.Observer;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class BattleSystem {
@@ -8,19 +11,21 @@ public class BattleSystem {
     private Fighter player;
     private Fighter opponent;
     private int round = 1;  // just for testing purposes
-    private Observer stateMachineObserver;
+    private final Observer stateMachineObserver;
+    private final BattleObserver battleObserver;
 
-    public BattleSystem(Observer stateMachineObserver){
-        this.player = new Fighter("Player",10, 6, 2, 5);
-        this.opponent = new Fighter("Opponent",12, 5, 2, 7);
+    public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver) {
+        this.player = new Fighter("Player", BattleParticipant.PLAYER, 10, 5, 2, 5);
+        this.opponent = new Fighter("Opponent", BattleParticipant.OPPONENT, 12, 2, 2, 7);
         this.stateMachineObserver = stateMachineObserver;
+        this.battleObserver = battleObserver;
     }
 
     /**
-    This method is the battle loop. It starts when a new BattleSystem is created and ends if the player flees
-     or one fighter's HP drop to 0.
-    */
-    public void round(String action){
+     * This method is the battle loop. It starts when a new BattleSystem is created and ends if the player flees
+     * or one fighter's HP drop to 0.
+     */
+    public void round(String action) {
         System.out.println("Round " + round);  // just for testing purposes
 
         // decides whether the player or the opponent is faster with their action
@@ -53,7 +58,7 @@ public class BattleSystem {
     */
     private void attacks(Fighter attacker, Fighter defender) {
         attacker.attack(defender);
-        System.out.println(defender.getHitpoints());  // just for testing purposes
+        battleObserver.update(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
 
         if(defender.isDefeated()){
             System.out.printf("%s is defeated! Battle ends now!", defender.getName());  // just for testing purposes

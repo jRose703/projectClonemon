@@ -1,18 +1,24 @@
 package BattleSystem;
 
+import Frames.BattleUI.BattleParticipant;
+
 @SuppressWarnings("FieldMayBeFinal")
 public class Fighter {
 
     private String name;
+    private final BattleParticipant battleParty;
     private int hitpoints;
+    private final int maxHitpoints;
     private int attackStat;
     private int defenseStat;
     private int initStat;
     private boolean defeated;
 
-    public Fighter(String name, int hitpoints, int attackStat, int defenseStat, int initStat){
+    public Fighter(String name, BattleParticipant battleParty, int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
-        this.hitpoints = hitpoints;
+        this.battleParty = battleParty;
+        this.hitpoints = maxHP;
+        this.maxHitpoints = maxHP;
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.initStat = initStat;
@@ -28,24 +34,34 @@ public class Fighter {
         if(defender.hitpoints == 0) defender.defeated = true;
     }
 
-    /** This method lets the fighter flee. Currently, it just ends the program. */
-    public void flee(){
+    /**
+     * This method lets the fighter flee. Currently, it just ends the program.
+     */
+    public void flee() {
         System.exit(0);
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getHitpoints(){
+    public BattleParticipant getBattleParty() {
+        return battleParty;
+    }
+
+    public int getHitpoints() {
         return this.hitpoints;
+    }
+
+    public int getMaxHitpoints() {
+        return this.maxHitpoints;
     }
 
     public int getInitStat() {
         return this.initStat;
     }
 
-    public boolean isDefeated(){
+    public boolean isDefeated() {
         return this.defeated;
     }
 

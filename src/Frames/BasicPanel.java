@@ -56,7 +56,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 		worldPane.setVisible(false);
 		keyListenerCooldown = 0;
 		battlePane.setVisible(true);
-		battlePane.setBattle(new BattleSystem(stateMachineObserver));
+		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane));
 	}
 
 	public void changeToWorldScene() {
