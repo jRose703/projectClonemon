@@ -46,28 +46,4 @@ public class EntityPanel extends JPanel {
     public void reload() {
         repaint();
     }
-
-    /*public void reload(World world) {
-        InteractableEntity[][] entities = world.getInteractableEntityArr();
-        for (int x = 0; x < X_FIELDS; x++)
-            for (int y = 0; y < Y_FIELDS; y++) {
-                ImageIcon icon;
-                if (entities[x][y] == null)
-                    continue;
-
-                switch (1) { //TODO Replace the switch with some kind of system that tracks the entities in the world
-                    case 1 ->
-                            icon = new ImageIcon("assets/entities/entity_e.png");
-                    case 2 ->
-                            icon = new ImageIcon("assets/entities/entity_s.png");
-                    case 3 ->
-                            icon = new ImageIcon("assets/entities/entity_w.png");
-                    default ->
-                            icon = new ImageIcon("assets/entities/entity_n.png");
-                }
-                JLabel entitylabel = new JLabel(icon);
-                entitylabel.setBounds(x * TILE_SIZE + 10, y * TILE_SIZE + 10, TILE_SIZE, TILE_SIZE);
-                this.add(entitylabel);
-            }
-    }*/
 }
