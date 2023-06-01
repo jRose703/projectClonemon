@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -184,6 +185,5 @@ public class ReadFromJsonFile {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

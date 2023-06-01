@@ -1,8 +1,6 @@
 package Worlds;
-
 import Entity.Entity;
-import Worlds.Tiles.LowGrassTile;
-import Worlds.Tiles.Tile;
+import Worlds.Tiles.*;
 
 public class World {
 

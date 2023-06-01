@@ -17,7 +17,7 @@ public class WriteToJsonFile {
     /**
      * This function saves the tileArr[][] to world.json.
      */
-    public static void saveArr(World SWorld, String filename) {
+    public static void saveWorld(World SWorld, String filename) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Tile> tileList = new ArrayList<>();

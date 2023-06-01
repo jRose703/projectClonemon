@@ -2,6 +2,7 @@ import Frames.Frame;
 import Frames.TextBox.DialogueType;
 import Observer.ObserveType;
 import Observer.Observer;
+import Worlds.ReadAndWrite.ReadFromJsonFile;
 import Worlds.World;
 
 /**
@@ -12,8 +13,8 @@ public class StateMachine implements Observer {
     private final Frame frame;
 
     /** Creates the game frame */
-    public StateMachine(int worldSizeX, int worldSizeY){
-        this.frame = new Frame(new World(worldSizeX, worldSizeY), this);
+    public StateMachine(){
+        this.frame = new Frame(ReadFromJsonFile.readWorldFromFile("world"), this);
         startDialogue("Start Battle!");  //TEST
     }
 
