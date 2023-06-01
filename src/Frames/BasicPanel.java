@@ -1,7 +1,10 @@
 package Frames;
 
 import BattleSystem.BattleSystem;
+import BattleSystem.Fighter;
+import Entity.FighterInventory;
 import Frames.BattleUI.BattlePane;
+import Frames.BattleUI.BattleParticipant;
 import Frames.WorldUI.WorldPane;
 import Observer.Observer;
 import Worlds.World;
@@ -56,7 +59,13 @@ public class BasicPanel extends JPanel implements KeyListener {
 		worldPane.setVisible(false);
 		keyListenerCooldown = 0;
 		battlePane.setVisible(true);
-		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane));
+		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane,
+				worldPane.getPlayerFighterInv(), new FighterInventory(
+				new Fighter[]{
+						new Fighter("OpponentOne", BattleParticipant.OPPONENT, 6, 17, 2, 2, 7),
+						new Fighter("OpponentTwo", BattleParticipant.OPPONENT, 7, 12, 2, 2, 7)
+				}
+		)));
 	}
 
 	public void changeToWorldScene() {

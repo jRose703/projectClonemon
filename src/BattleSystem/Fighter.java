@@ -6,7 +6,8 @@ import Frames.BattleUI.BattleParticipant;
 public class Fighter {
 
     private String name;
-    private final BattleParticipant battleParty;
+    private final int ID;
+    private BattleParticipant battleParty;
     private int hitpoints;
     private final int maxHitpoints;
     private int attackStat;
@@ -14,9 +15,10 @@ public class Fighter {
     private int initStat;
     private boolean defeated;
 
-    public Fighter(String name, BattleParticipant battleParty, int maxHP, int attackStat, int defenseStat, int initStat) {
+    public Fighter(String name, BattleParticipant battleParty, int ID, int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
         this.battleParty = battleParty;
+        this.ID = ID;
         this.hitpoints = maxHP;
         this.maxHitpoints = maxHP;
         this.attackStat = attackStat;
@@ -47,6 +49,10 @@ public class Fighter {
 
     public BattleParticipant getBattleParty() {
         return battleParty;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public int getHitpoints() {

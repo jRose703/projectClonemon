@@ -1,6 +1,7 @@
 package Frames.BattleUI;
 
 import BattleSystem.BattleSystem;
+import BattleSystem.Fighter;
 import Frames.BasicPanel;
 import Frames.TextBox.BattleMenuBox;
 
@@ -42,6 +43,22 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	}
 
 	@Override
+	public void updateHitpointBar(BattleParticipant defender, int newHitpoints) {
+		switch (defender) {
+			case PLAYER -> playerUI.updateHitpointbar(newHitpoints);
+			case OPPONENT -> opponentUI.updateHitpointbar(newHitpoints);
+		}
+	}
+
+	@Override
+	public void setFighter(Fighter fighter) {
+		switch (fighter.getBattleParty()) {
+			case PLAYER -> playerUI.updateNewFighter(fighter.getMaxHitpoints(), fighter.getHitpoints());
+			case OPPONENT -> opponentUI.updateNewFighter(fighter.getMaxHitpoints(), fighter.getHitpoints());
+		}
+	}
+
+	@Override
 	public void keyReleased(KeyEvent e) {
 		battleBox.keyReleased(e);
 	}
@@ -52,13 +69,5 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-	}
-
-	@Override
-	public void update(BattleParticipant defender, int newHitpoints) {
-		switch (defender) {
-			case PLAYER -> playerUI.updateHitpointbar(newHitpoints);
-			case OPPONENT -> opponentUI.updateHitpointbar(newHitpoints);
-		}
 	}
 }

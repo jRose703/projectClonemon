@@ -1,6 +1,9 @@
 package Frames.WorldUI;
 
+import BattleSystem.Fighter;
+import Entity.FighterInventory;
 import Entity.PlayerEntity;
+import Frames.BattleUI.BattleParticipant;
 import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
@@ -46,6 +49,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		//Player + Player Label Init
 		player = new PlayerEntity();
 		player.setCoordinates(3, 4);
+		player.getFighterInventory().addToClonemonsInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
+		player.getFighterInventory().addToClonemonsInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 10, 5, 2, 5));
 		moveCooldown = 0;
 
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
@@ -99,9 +104,13 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		playerLabel.setIcon(image);
 	}
 
+	public FighterInventory getPlayerFighterInv() {
+		return player.getFighterInventory();
+	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if(dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case 'a' -> moveAction(3);
 			case 'd' -> moveAction(1);

@@ -1,7 +1,7 @@
 package BattleSystem;
 
+import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
-import Frames.BattleUI.BattleParticipant;
 import Observer.ObserveType;
 import Observer.Observer;
 
@@ -10,15 +10,25 @@ public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
+    private FighterInventory playerFighter;
+    private FighterInventory opponentFighter;
     private int round = 1;  // just for testing purposes
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
 
-    public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver) {
-        this.player = new Fighter("Player", BattleParticipant.PLAYER, 10, 5, 2, 5);
-        this.opponent = new Fighter("Opponent", BattleParticipant.OPPONENT, 12, 2, 2, 7);
+    public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver,
+                        FighterInventory playerFighter, FighterInventory opponentFighter) {
+        this.player = playerFighter.getFighter(0);
+        this.opponent = opponentFighter.getFighter(0);
+
+        this.playerFighter = playerFighter;
+        this.opponentFighter = opponentFighter;
+
         this.stateMachineObserver = stateMachineObserver;
         this.battleObserver = battleObserver;
+
+        battleObserver.setFighter(player);
+        battleObserver.setFighter(opponent);
     }
 
     /**
@@ -58,9 +68,10 @@ public class BattleSystem {
     */
     private void attacks(Fighter attacker, Fighter defender) {
         attacker.attack(defender);
-        battleObserver.update(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
+        System.out.println(defender.getHitpoints());
+        battleObserver.updateHitpointBar(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
 
-        if(defender.isDefeated()){
+        if (defender.isDefeated()) {
             System.out.printf("%s is defeated! Battle ends now!", defender.getName());  // just for testing purposes
             this.endBattle();
         }

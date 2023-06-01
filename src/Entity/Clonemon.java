@@ -1,4 +1,4 @@
-package Entity;
+/*package Entity;
 
 public class Clonemon {
     public String name;
@@ -44,4 +44,4 @@ public class Clonemon {
             throw new IllegalArgumentException("Clonemon already has maximum lvl");
         }
     }
-}
+}*/

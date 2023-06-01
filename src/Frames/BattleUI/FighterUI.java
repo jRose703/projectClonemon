@@ -24,6 +24,11 @@ public class FighterUI extends JPanel {
         this.setLayout(null);
     }
 
+    public void updateNewFighter(int maxHitpoints, int newHitpoints) {
+        hitpointBar.setMaximum(maxHitpoints);
+        updateHitpointbar(newHitpoints);
+    }
+
     public void updateHitpointbar(int newHitpoints) {
         hitpointBar.setValue(newHitpoints);
         if (2 * hitpointBar.getValue() <= MAX_HP && 5 * hitpointBar.getValue() > MAX_HP)
