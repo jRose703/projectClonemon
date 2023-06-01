@@ -10,16 +10,21 @@ public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
+
     private FighterInventory playerFighter;
     private FighterInventory opponentFighter;
+
+    private int playerIndex = 0;
+    private int opponentIndex = 0;
+
     private int round = 1;  // just for testing purposes
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
 
     public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver,
                         FighterInventory playerFighter, FighterInventory opponentFighter) {
-        this.player = playerFighter.getFighter(0);
-        this.opponent = opponentFighter.getFighter(0);
+        this.player = playerFighter.getFighter(playerIndex);
+        this.opponent = opponentFighter.getFighter(opponentIndex);
 
         this.playerFighter = playerFighter;
         this.opponentFighter = opponentFighter;
@@ -72,8 +77,25 @@ public class BattleSystem {
         battleObserver.updateHitpointBar(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
 
         if (defender.isDefeated()) {
+            switch (defender.getBattleParty()) {
+                case PLAYER -> {
+                    playerIndex++;
+                    if (playerFighter.hasNext(playerIndex)) {
+                        player = playerFighter.getFighter(playerIndex);
+                        battleObserver.setFighter(player);
+                    } else
+                        this.endBattle();
+                }
+                case OPPONENT -> {
+                    opponentIndex++;
+                    if (opponentFighter.hasNext(opponentIndex)) {
+                        opponent = opponentFighter.getFighter(opponentIndex);
+                        battleObserver.setFighter(opponent);
+                    } else
+                        this.endBattle();
+                }
+            }
             System.out.printf("%s is defeated! Battle ends now!", defender.getName());  // just for testing purposes
-            this.endBattle();
         }
     }
 

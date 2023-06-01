@@ -33,7 +33,8 @@ public class FighterUI extends JPanel {
         hitpointBar.setValue(newHitpoints);
         if (2 * hitpointBar.getValue() <= MAX_HP && 5 * hitpointBar.getValue() > MAX_HP)
             hitpointBar.setForeground(Color.YELLOW);
-        if (5 * hitpointBar.getValue() <= MAX_HP) hitpointBar.setForeground(Color.RED);
+        else if (5 * hitpointBar.getValue() <= MAX_HP) hitpointBar.setForeground(Color.RED);
+        else hitpointBar.setForeground(Color.GREEN);
     }
 
 }
