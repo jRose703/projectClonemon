@@ -1,5 +1,5 @@
 package Worlds;
-import Entity.Entity;
+import Entity.*;
 import Worlds.Tiles.*;
 
 public class World {

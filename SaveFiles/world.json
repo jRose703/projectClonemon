@@ -635,9 +635,17 @@
       null
     ],
     [
+      {
+        "entityType": "OpponentEntity",
+        "status": false,
+        "facing_direction": 0
+      },
       null,
-      null,
-      null,
+      {
+        "entityType": "OpponentEntity",
+        "status": false,
+        "facing_direction": 0
+      },
       null,
       null,
       null,

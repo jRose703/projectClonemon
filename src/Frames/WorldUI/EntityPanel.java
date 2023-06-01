@@ -39,7 +39,7 @@ public class EntityPanel extends JPanel {
                     case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");
                     default -> icon = new ImageIcon("assets/entities/entity_n.png");
                 }
-                g.drawImage(icon.getImage(), x * TILE_SIZE + 10, y * TILE_SIZE + 10, TILE_SIZE, TILE_SIZE, null);
+                g.drawImage(icon.getImage(), x * TILE_SIZE + 10, y * TILE_SIZE + 10, null);
             }
     }
 
