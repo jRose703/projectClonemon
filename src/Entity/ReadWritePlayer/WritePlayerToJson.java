@@ -1,6 +1,7 @@
-package Worlds.ReadAndWrite;
+package Entity.ReadWritePlayer;
+
+import Entity.PlayerEntity;
 import Worlds.Tiles.Tile;
-import Worlds.World;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -9,13 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WriteToJsonFile {
+public class WritePlayerToJson {
+
     private static FileWriter file;
 
-    /**
-     * This function saves the tileArr[][] to world.json.
-     */
-    public static void saveWorld(World SWorld, String filename) {
+    public static void savePlayer(PlayerEntity player, String filename){
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Tile> tileList = new ArrayList<>();
@@ -23,9 +22,7 @@ public class WriteToJsonFile {
 
         try {
             file = new FileWriter("SaveFiles\\" + filename + ".json");
-
-            String Json = gson.toJson(SWorld);
-            file.write(Json);
+            file.write(gson.toJson(player));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,5 +35,6 @@ public class WriteToJsonFile {
                 e.printStackTrace();
             }
         }
+
     }
 }
