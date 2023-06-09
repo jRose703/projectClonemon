@@ -17,8 +17,6 @@ public class WritePlayerToJson {
     public static void savePlayer(PlayerEntity player, String filename){
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<Tile> tileList = new ArrayList<>();
-
 
         try {
             file = new FileWriter("SaveFiles\\" + filename + ".json");
