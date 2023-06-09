@@ -1,9 +1,9 @@
 package Entity;
 
-public class Item {
-    private String name = "";
-    private int amount = 0;
-    private boolean battle = false;
+public abstract class Item {
+    String name;
+    int amount;
+    boolean battle = false;
 
     public String getName() {
         return name;
