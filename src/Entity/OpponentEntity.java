@@ -2,7 +2,7 @@ package Entity;
 
 public class OpponentEntity extends Entity {
     private String entityType = "OpponentEntity";
-    public boolean status = false;
+    private boolean status = false;
     public OpponentEntity(){}
     public void setStatus(boolean status) {
         this.status = status;

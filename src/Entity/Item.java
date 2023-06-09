@@ -1,20 +1,20 @@
 package Entity;
 
 public class Item {
-    public String Type = "";
-    public int amount = 0;
-    public boolean battle = false;
+    private String name = "";
+    private int amount = 0;
+    private boolean battle = false;
 
-    public String getType() {
-        return Type;
+    public String getName() {
+        return name;
     }
 
     public int getAmount() {
         return amount;
     }
 
-    public Item(String Type, boolean offensive){
-        this.Type = Type;
+    public Item(String name, boolean offensive){
+        this.name = name;
         this.amount=1;
         this.battle = offensive;
     }

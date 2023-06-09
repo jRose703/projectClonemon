@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Vector;
 
 public class Inventory {
-    public Vector<Item> Inventory = new Vector<>();
+    private Vector<Item> Inventory = new Vector<>();
     public Inventory(){}
     public Vector<Item> getInventory(){
         return this.Inventory;
@@ -12,7 +12,7 @@ public class Inventory {
     public void addToInventory(Item item_given){
         boolean done = false;
         for (Item item : this.Inventory) {
-            if (Objects.equals(item.getType(), item_given.getType())) {
+            if (Objects.equals(item.getName(), item_given.getName())) {
                 item.add_Item();
                 done = true;
                 break;
@@ -25,7 +25,7 @@ public class Inventory {
     public void removeFromInventory(Item item_given){
         boolean done = false;
         for (Item item: this.Inventory){
-            if (Objects.equals(item.getType(), item_given.getType())){
+            if (Objects.equals(item.getName(), item_given.getName())){
                 if (item.getAmount() > 1){
                     item.reduceAmount();
                     done = true;

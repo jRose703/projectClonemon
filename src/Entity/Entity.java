@@ -2,8 +2,8 @@ package Entity;
 
 import Worlds.Coordinates;
 public class Entity{
-    public Coordinates coordinates;
-    public int facing_direction;
+    private Coordinates coordinates;
+    private int facing_direction;
     public Entity(){}
     public void setCoordinates(int x_given, int y_given){
         this.coordinates = new Coordinates(x_given, y_given);
