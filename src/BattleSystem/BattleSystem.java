@@ -5,19 +5,19 @@ import Frames.BattleUI.BattleObserver;
 import Observer.ObserveType;
 import Observer.Observer;
 
-@SuppressWarnings("FieldMayBeFinal")
 public class BattleSystem {
 
     private Fighter player;
     private Fighter opponent;
 
-    private FighterInventory playerFighter;
-    private FighterInventory opponentFighter;
+    private final FighterInventory playerFighter;
+    private final FighterInventory opponentFighter;
 
     private int playerIndex = 0;
     private int opponentIndex = 0;
 
     private int round = 1;  // just for testing purposes
+    private boolean isEnded = false;
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
 
@@ -41,15 +41,18 @@ public class BattleSystem {
      * or one fighter's HP drop to 0.
      */
     public void round(String action) {
+        if(isEnded) return;
         System.out.println("Round " + round);  // just for testing purposes
 
         // decides whether the player or the opponent is faster with their action
-        if(this.player.getInitStat() >= this.opponent.getInitStat()){
+        if(player.getInitStat() >= opponent.getInitStat()){
             this.playerAction(action);
+            if(isEnded) return;
             this.attacks(this.opponent, this.player);
 
         }else{
             this.attacks(this.opponent, this.player);
+            if(isEnded) return;
             this.playerAction(action);
         }
         round++;  // just for testing purposes
@@ -61,7 +64,7 @@ public class BattleSystem {
     private void playerAction(String chosenAction){
         switch (chosenAction){
             case "fight": this.attacks(this.player, this.opponent); break;
-            case "run": this.player.flee();
+            case "run": if(player.flee()) endBattle(); break;
             default: throw new IllegalStateException("Chosen action was not attack or flee!");
         }
     }
@@ -74,7 +77,7 @@ public class BattleSystem {
     private void attacks(Fighter attacker, Fighter defender) {
         attacker.attack(defender);
         System.out.println(defender.getHitpoints());
-        battleObserver.updateHitpointBar(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
+        battleObserver.updateHitpoints(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
 
         if (defender.isDefeated()) {
             switch (defender.getBattleParty()) {
@@ -95,7 +98,7 @@ public class BattleSystem {
                         this.endBattle();
                 }
             }
-            System.out.printf("%s is defeated! Battle ends now!", defender.getName());  // just for testing purposes
+            System.out.printf("%s is defeated!\n", defender.getName());  // just for testing purposes
         }
     }
 
@@ -104,5 +107,6 @@ public class BattleSystem {
     */
     private void endBattle(){
         stateMachineObserver.update(ObserveType.BATTLE_END, null);
+        isEnded = true;
     }
 }

@@ -13,10 +13,10 @@ public class FighterInventory {
 
     public FighterInventory(Fighter[] fighters) {
         for (Fighter fighter : fighters)
-            addToClonemonsInventory(fighter);
+            addToFighterInventory(fighter);
     }
 
-    public void addToClonemonsInventory(Fighter fighter) {
+    public void addToFighterInventory(Fighter fighter) {
         if (fighterInventory.size() < 6) {
             fighterInventory.add(fighter);
         } else {
@@ -24,7 +24,7 @@ public class FighterInventory {
         }
     }
 
-    public void removeFromClonemonsInventory(Fighter fighter) {
+    public void removeFromFighterInventory(Fighter fighter) {
         boolean done = false;
         for (Fighter existingFighter : this.fighterInventory) {
             if (Objects.equals(existingFighter.getID(), fighter.getID())) {

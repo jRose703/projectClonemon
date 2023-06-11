@@ -36,13 +36,4 @@ public class Frame extends JFrame{
 		mainPanel.startDialogue(text);
 	}
 
-	// Werden diese zwei Methoden überhaupt benötigt
-	public void reloadWorld() {
-		mainPanel.reloadWorld();
-	}
-
-	public void reloadEntities() {
-		mainPanel.reloadEntities();
-	}
-
 }
