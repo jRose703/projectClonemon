@@ -29,6 +29,18 @@ public class World {
         // +EntityArr initialising
     }
 
+    public boolean accessible (int x, int y) {
+        if (x < 0 || y < 0 || x >= getXLength() || y >= getYLength())
+            return false;
+        if(!getTileArr()[x][y].getAccessible())
+            return false;
+        if(getEntityArr()[x][y] != null) {
+            return false;
+        }
+        return true;
+        //else return getTileArr()[x][y].getAccessible();
+    }
+
 
     /**
      * This function prints out the world with every texture_id of the Tiles.
