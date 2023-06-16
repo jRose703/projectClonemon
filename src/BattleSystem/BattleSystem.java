@@ -85,21 +85,23 @@ public class BattleSystem {
             switch (defender.getBattleParty()) {
                 case PLAYER -> {
                     playerIndex++;
-                    if (playerFighter.hasNext(playerIndex)) {
+                    if (!playerFighter.hasNext())
+                        this.endBattle();
+                    else {
                         player = playerFighter.getFighter(playerIndex);
                         battleObserver.setFighter(player);
                         return true;
-                    } else
-                        this.endBattle();
+                    }
                 }
                 case OPPONENT -> {
                     opponentIndex++;
-                    if (opponentFighter.hasNext(opponentIndex)) {
+                    if (!opponentFighter.hasNext())
+                        this.endBattle();
+                    else {
                         opponent = opponentFighter.getFighter(opponentIndex);
                         battleObserver.setFighter(opponent);
                         return true;
-                    } else
-                        this.endBattle();
+                    }
                 }
             }
             System.out.printf("%s is defeated!\n", defender.getName());  // just for testing purposes
