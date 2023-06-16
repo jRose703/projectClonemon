@@ -1,5 +1,7 @@
 package Entity;
 
+import BattleSystem.Fighter;
+
 public class PlayerEntity extends Entity {
     public PlayerEntity(){
         this.currentWorld = "world";
@@ -8,10 +10,14 @@ public class PlayerEntity extends Entity {
     }
     private int money;
     private String currentWorld;
-    private Inventory inventory = new Inventory();
-    private FighterInventory fighterInventory = new FighterInventory();
+    private Inventory Inventory = new Inventory();
+    private FighterInventory playerFighters = new FighterInventory();
 
-    public FighterInventory getFighterInventory() {
-        return this.fighterInventory;
+    public FighterInventory getPlayerFighters() {
+        return this.playerFighters;
+    }
+
+    public void addToFighterInventory(Fighter fighter){
+        playerFighters.addToFighterInventory(fighter);
     }
 }

@@ -1,9 +1,7 @@
 package Frames.WorldUI;
 
-import BattleSystem.Fighter;
 import Entity.FighterInventory;
 import Entity.PlayerEntity;
-import Frames.BattleUI.BattleParticipant;
 import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
@@ -31,7 +29,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	 * Starts the graphical world.
 	 * Terrain displays the world and entities displays all entities except the player.
 	 */
-	public WorldPane(World world, Observer stateMachineObserver) {
+	public WorldPane(World world, PlayerEntity player, Observer stateMachineObserver) {
 		//Observer Init
 		this.stateMachineObserver = stateMachineObserver;
 
@@ -47,10 +45,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		add(entities, Integer.valueOf(1));
 
 		//Player + Player Label Init
-		player = new PlayerEntity();
-		player.setCoordinates(3, 4);
-		player.getFighterInventory().addToClonemonsInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
-		player.getFighterInventory().addToClonemonsInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 10, 5, 2, 5));
+		this.player = player;
+		this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
 
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
@@ -102,10 +98,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			default -> image = new ImageIcon("assets/entities/player_n.png");
 		}
 		playerLabel.setIcon(image);
-	}
-
-	public FighterInventory getPlayerFighterInv() {
-		return player.getFighterInventory();
 	}
 
 	@Override

@@ -2,12 +2,13 @@ package BattleSystem;
 
 import Frames.BattleUI.BattleParticipant;
 import Entity.Item;
+import java.util.Random;
 @SuppressWarnings("FieldMayBeFinal")
 public class Fighter {
 
     private String name;
     private final int ID;
-    private BattleParticipant battleParty;
+    private BattleParticipant battleParty;  // On which side is the fighter on
     private int hitpoints;
     private final int maxHitpoints;
     private int attackStat;
@@ -16,7 +17,7 @@ public class Fighter {
     private Item item;
     private int lvl;
     private int initStat;
-    private boolean defeated;
+    private boolean isDefeated;
 
     public Fighter(String name, BattleParticipant battleParty, int ID, int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
@@ -27,7 +28,7 @@ public class Fighter {
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.initStat = initStat;
-        this.defeated = false;
+        this.isDefeated = false;
     }
     public Fighter(String name, BattleParticipant battleParty, int ID, int maxHP, int attackStat, int defenseStat, int initStat, String Type, Item item, int lvl) {
         this.name = name;
@@ -38,7 +39,7 @@ public class Fighter {
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.initStat = initStat;
-        this.defeated = false;
+        this.isDefeated = false;
         this.Type = Type;
         if (lvl<=100 && lvl >0){
             this.lvl = lvl;
@@ -55,14 +56,17 @@ public class Fighter {
     public void attack(Fighter defender){
         int damage = Math.max((this.attackStat - defender.defenseStat), 1);
         defender.hitpoints = Math.max(defender.hitpoints - damage, 0);
-        if(defender.hitpoints == 0) defender.defeated = true;
+        if(defender.hitpoints == 0) defender.isDefeated = true;
     }
 
     /**
-     * This method lets the fighter flee. Currently, it just ends the program.
+     * This method lets the fighter flee. It returns whether fleeing was successful or not.
      */
-    public void flee() {
-        System.exit(0);
+    public boolean flee() {
+        Random random = new Random();
+        int chance = random.nextInt(1, 100);
+        System.out.println("The chance to flee was: " + chance + "%");
+        return chance > 10;
     }
 
     public String getName() {
@@ -90,7 +94,7 @@ public class Fighter {
     }
 
     public boolean isDefeated() {
-        return this.defeated;
+        return this.isDefeated;
     }
 
     public String getType() {
