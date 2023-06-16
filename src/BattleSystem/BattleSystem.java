@@ -46,35 +46,37 @@ public class BattleSystem {
 
         // decides whether the player or the opponent is faster with their action
         if(player.getInitStat() >= opponent.getInitStat()){
-            this.playerAction(action);
-            if(isEnded) return;
+            if (this.playerAction(action) || isEnded) return;
             this.attacks(this.opponent, this.player);
 
         }else{
-            this.attacks(this.opponent, this.player);
-            if(isEnded) return;
+            if (this.attacks(this.opponent, this.player) || isEnded) return;
             this.playerAction(action);
         }
         round++;  // just for testing purposes
     }
 
     /**
-    This method executes the actionInput that was either "attack" or "flee".
-    */
-    private void playerAction(String chosenAction){
-        switch (chosenAction){
-            case "fight": this.attacks(this.player, this.opponent); break;
-            case "run": if(player.flee()) endBattle(); break;
-            default: throw new IllegalStateException("Chosen action was not attack or flee!");
+     * This method executes the actionInput that was either "attack" or "flee".
+     */
+    private boolean playerAction(String chosenAction) {
+        switch (chosenAction) {
+            case "fight":
+                return this.attacks(this.player, this.opponent);
+            case "run":
+                if (player.flee()) endBattle();
+                return false;
+            default:
+                throw new IllegalStateException("Chosen action was not attack or flee!");
         }
     }
 
     /**
-    This method takes in an attacking and a defending fighter.
-     The attacking fighter then uses its attack method to inflict damage to the defender.
-     If the defender is defeated the battle ends.
-    */
-    private void attacks(Fighter attacker, Fighter defender) {
+     * This method takes in an attacking and a defending fighter.
+     * The attacking fighter then uses its attack method to inflict damage to the defender.
+     * If the defender is defeated the battle ends.
+     */
+    private boolean attacks(Fighter attacker, Fighter defender) {
         attacker.attack(defender);
         System.out.println(defender.getHitpoints());
         battleObserver.updateHitpoints(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
@@ -86,6 +88,7 @@ public class BattleSystem {
                     if (playerFighter.hasNext(playerIndex)) {
                         player = playerFighter.getFighter(playerIndex);
                         battleObserver.setFighter(player);
+                        return true;
                     } else
                         this.endBattle();
                 }
@@ -94,12 +97,14 @@ public class BattleSystem {
                     if (opponentFighter.hasNext(opponentIndex)) {
                         opponent = opponentFighter.getFighter(opponentIndex);
                         battleObserver.setFighter(opponent);
+                        return true;
                     } else
                         this.endBattle();
                 }
             }
             System.out.printf("%s is defeated!\n", defender.getName());  // just for testing purposes
         }
+        return false;
     }
 
     /**
