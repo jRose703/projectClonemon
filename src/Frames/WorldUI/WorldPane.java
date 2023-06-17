@@ -1,5 +1,6 @@
 package Frames.WorldUI;
 
+import Entity.FighterInventory;
 import Entity.PlayerEntity;
 import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
@@ -28,7 +29,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	 * Starts the graphical world.
 	 * Terrain displays the world and entities displays all entities except the player.
 	 */
-	public WorldPane(World world, Observer stateMachineObserver) {
+	public WorldPane(World world, PlayerEntity player, Observer stateMachineObserver) {
 		//Observer Init
 		this.stateMachineObserver = stateMachineObserver;
 
@@ -44,8 +45,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		add(entities, Integer.valueOf(1));
 
 		//Player + Player Label Init
-		player = new PlayerEntity();
-		player.setCoordinates(3, 4);
+		this.player = player;
+		this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
 
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
@@ -101,7 +102,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if(dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case 'a' -> moveAction(3);
 			case 'd' -> moveAction(1);

@@ -1,8 +1,20 @@
 package Entity;
 
+import BattleSystem.Fighter;
+
 import Worlds.Coordinates;
 
 public class PlayerEntity extends Entity {
+    public Inventory Inventory = new Inventory();
+    private FighterInventory playerFighters = new FighterInventory();
+
+    public FighterInventory getPlayerFighters() {
+        return this.playerFighters;
+    }
+
+    public void addToFighterInventory(Fighter fighter){
+        playerFighters.addToFighterInventory(fighter);
+    }
     public PlayerEntity(){
         setCoordinates(0,0);
         this.currentWorld = "world";
