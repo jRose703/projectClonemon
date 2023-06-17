@@ -1,30 +1,11 @@
 {
+  "playerFighters": {
+    "fighterInventory": []
+  },
   "currentWorld": "world",
   "money": 0,
   "inventory": {
     "Inventory": []
-  },
-  "clonemonsInventory": {
-    "ClonemonsInventory": [
-      {
-        "name": "Snorlax",
-        "ID": 1,
-        "hp": 1,
-        "max_hp": 1,
-        "xp": 0,
-        "Type": "normal",
-        "lvl": 1
-      },
-      {
-        "name": "Dialga",
-        "ID": 2,
-        "hp": 1,
-        "max_hp": 1,
-        "xp": 0,
-        "Type": "dragon",
-        "lvl": 100
-      }
-    ]
   },
   "coordinates": {
     "x": 0,

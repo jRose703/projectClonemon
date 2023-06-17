@@ -14,10 +14,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +22,9 @@ public class ReadFromJsonFile {
 
 
     /**
-     * This function reads the world.json and returns a tileArr[][].
+     * This function reads the jsonObject and returns a tileArr[][].
      */
-    public static Tile[][] readTilesFromFile(String filename) {
+    public static Tile[][] readTilesFromJson(JsonObject jsonObject) {
 
         RuntimeTypeAdapterFactory<Tile> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Tile.class, "tileType")
@@ -36,8 +32,6 @@ public class ReadFromJsonFile {
                 .registerSubtype(RockTile.class, "RockTile")
                 .registerSubtype(VoidTile.class, "VoidTile");
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
-
-        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
 
         String tileArrKey = "tileArr";
         JsonObject tileArrObject = new JsonObject();
@@ -66,8 +60,9 @@ public class ReadFromJsonFile {
 
         List<Tile> tileList = new ArrayList<>(fromJson);
 
-        int x = readSizeFromFile(filename)[0];
-        int y = readSizeFromFile(filename)[1];
+        int[] size = readSizeFromJson(jsonObject);
+        int x = size[0];
+        int y = size[1];
 
         Tile[][] tileArr = new Tile[x][y];
 
@@ -85,9 +80,9 @@ public class ReadFromJsonFile {
 
 
     /**
-     * This function reads the world.json and returns a entityArr[][].
+     * This function reads the jsonObject and returns a entityArr[][].
      */
-    public static Entity[][] readEntitysFromFile(String filename) {
+    public static Entity[][] readEntitysFromJson(JsonObject jsonObject) {
 
         RuntimeTypeAdapterFactory<Entity> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Entity.class, "entityType")
@@ -95,7 +90,6 @@ public class ReadFromJsonFile {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
-        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
 
         String entityArrKey = "entityArr";
         JsonObject entityArrObject = new JsonObject();
@@ -123,9 +117,9 @@ public class ReadFromJsonFile {
         List<Entity> fromJson = gson.fromJson(entityListString.toString(), listType);
 
         List<Entity> entityList = new ArrayList<>(fromJson);
-
-        int x = readSizeFromFile(filename)[0];
-        int y = readSizeFromFile(filename)[1];
+        int[] size = readSizeFromJson(jsonObject);
+        int x = size[0];
+        int y = size[1];
 
         Entity[][] entityArr = new Entity[x][y];
 
@@ -140,15 +134,15 @@ public class ReadFromJsonFile {
     }
 
     /**
-     * This function reads the world.json and returns an int[] with x size and y size.
+     * This function reads the jsonObject and returns an int[] with x size and y size.
      */
-    public static int[] readSizeFromFile(String filename) {
+    public static int[] readSizeFromJson(JsonObject jsonObject) {
 
-        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
+
 
         String sizeKey = "size";
         JsonObject sizeObject = new JsonObject();
-        sizeObject.add(sizeKey, jsonObject.remove(sizeKey));
+        sizeObject.add(sizeKey, jsonObject.get(sizeKey));
         JsonArray sizeArr = sizeObject.get(sizeKey).getAsJsonArray();
 
         int x = Integer.parseInt(String.valueOf(sizeArr.get(0)));
@@ -161,10 +155,12 @@ public class ReadFromJsonFile {
      * This function reads the world.json and returns a complete World.
      */
     public static World readWorldFromFile(String filename) {
-        World world = new World(readSizeFromFile(filename)[0], readSizeFromFile(filename)[1]);
+        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
+        int[] size = readSizeFromJson(jsonObject);
+        World world = new World(size[0], size[1]);
 
-        world.setTileArr(readTilesFromFile(filename));
-        world.setEntityArr(readEntitysFromFile(filename));
+        world.setTileArr(readTilesFromJson(jsonObject));
+        world.setEntityArr(readEntitysFromJson(jsonObject));
 
         return world;
     }
