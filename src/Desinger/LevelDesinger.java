@@ -1,6 +1,6 @@
 package Desinger;
 
-import ReadAndWrite.ReadWriteWorld.ReadFromJsonFile;
+import ReadAndWrite.WorldOperations.ReadWorldFromJson;
 import Worlds.World;
 
 import java.util.Objects;
@@ -16,7 +16,7 @@ public class LevelDesinger {
             editWorld = new World(x,y);
         }
         else {
-            editWorld = ReadFromJsonFile.readWorldFromFile(filename);
+            editWorld = ReadWorldFromJson.readWorldFromFile(filename);
         }
         return editWorld;
     }

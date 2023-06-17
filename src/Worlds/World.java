@@ -122,6 +122,13 @@ public class World {
     }
 
     /**
+     * This function can get one Entity in the entityArr at given Coordinates to the given Entity
+     */
+    public Entity getEntity(Coordinates coordinates) {
+        return this.entityArr[coordinates.getX()][coordinates.getY()];
+    }
+
+    /**
      * This function can set one Entity in the entityArr at given Coordinates to the given Entity
      */
     public void setEntity(Coordinates coordinates, Entity entity) {

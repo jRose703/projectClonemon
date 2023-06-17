@@ -5,13 +5,8 @@ import Worlds.Coordinates;
 
 public class PlayerEntity extends Entity {
     public PlayerEntity(){
-        this.setCoordinates(0,0);
-        this.currentWorld = "world";
-        this.money = 0;
-        this.inventory = new Inventory();
-
     }
-    private FighterInventory playerFighters = new FighterInventory();
+    private FighterInventory playerFighters;
     private String currentWorld;
     private int money;
     private Inventory inventory;

@@ -2,7 +2,7 @@ import Frames.Frame;
 import Frames.TextBox.DialogueType;
 import Observer.ObserveType;
 import Observer.Observer;
-import ReadAndWrite.ReadWriteWorld.ReadFromJsonFile;
+import ReadAndWrite.WorldOperations.ReadWorldFromJson;
 
 /**
  * Observes the state of the game and manipulates the game accordingly
@@ -13,7 +13,7 @@ public class StateMachine implements Observer {
 
     /** Creates the game frame */
     public StateMachine(){
-        this.frame = new Frame(ReadFromJsonFile.readWorldFromFile("world"), this);
+        this.frame = new Frame(ReadWorldFromJson.readWorldFromFile("world"), this);
         startDialogue("Let's Fight!");  //TEST
     }
 

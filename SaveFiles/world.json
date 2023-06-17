@@ -638,12 +638,64 @@
       {
         "entityType": "OpponentEntity",
         "status": false,
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "ID": 4,
+              "battleParty": "OPPONENT",
+              "hitpoints": 25,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "isDefeated": false
+            },
+            {
+              "name": "Bearmon",
+              "ID": 5,
+              "battleParty": "OPPONENT",
+              "hitpoints": 50,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "isDefeated": false
+            }
+          ]
+        },
         "facing_direction": 0
       },
       null,
       {
         "entityType": "OpponentEntity",
         "status": false,
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "ID": 4,
+              "battleParty": "OPPONENT",
+              "hitpoints": 25,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "isDefeated": false
+            },
+            {
+              "name": "Bearmon",
+              "ID": 5,
+              "battleParty": "OPPONENT",
+              "hitpoints": 50,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "isDefeated": false
+            }
+          ]
+        },
         "facing_direction": 0
       },
       null,

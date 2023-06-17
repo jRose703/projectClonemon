@@ -1,4 +1,4 @@
-package ReadAndWrite.ReadWritePlayer;
+package ReadAndWrite.PlayerOperations;
 
 import Entity.PlayerEntity;
 import com.google.gson.Gson;

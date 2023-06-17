@@ -1,4 +1,4 @@
-package ReadAndWrite.ReadWriteWorld;
+package ReadAndWrite.WorldOperations;
 
 import ReadAndWrite.ReadObjectFromFile;
 import Entity.Entity;
@@ -16,9 +16,10 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class ReadFromJsonFile {
+public class ReadWorldFromJson {
 
 
     /**
@@ -111,8 +112,7 @@ public class ReadFromJsonFile {
         entityListString.append("]");
 
         // entityArr stuff
-        Type listType = new TypeToken<List<Entity>>() {
-        }.getType();
+        Type listType = new TypeToken<List<Entity>>() {}.getType();
 
         List<Entity> fromJson = gson.fromJson(entityListString.toString(), listType);
 

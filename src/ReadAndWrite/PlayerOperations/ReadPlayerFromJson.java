@@ -1,7 +1,6 @@
-package ReadAndWrite.ReadWritePlayer;
+package ReadAndWrite.PlayerOperations;
 
 import BattleSystem.Fighter;
-import Entity.Entity;
 import Entity.FighterInventory;
 import Entity.Inventory;
 import Entity.PlayerEntity;
@@ -9,12 +8,6 @@ import Frames.BattleUI.BattleParticipant;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReadPlayerFromJson {
 

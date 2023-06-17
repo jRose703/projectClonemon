@@ -1,4 +1,4 @@
-package ReadAndWrite.ReadWriteWorld;
+package ReadAndWrite.WorldOperations;
 import Worlds.World;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteToJsonFile {
+public class WriteWorldToJson {
     private static FileWriter file;
 
     /**

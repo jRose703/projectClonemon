@@ -8,7 +8,7 @@ import Frames.BattleUI.BattlePane;
 import Frames.BattleUI.BattleParticipant;
 import Frames.WorldUI.WorldPane;
 import Observer.Observer;
-import ReadAndWrite.ReadWritePlayer.ReadPlayerFromJson;
+import ReadAndWrite.PlayerOperations.ReadPlayerFromJson;
 import Worlds.World;
 
 import javax.swing.*;
