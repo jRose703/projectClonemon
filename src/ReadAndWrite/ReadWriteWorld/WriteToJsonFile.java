@@ -1,4 +1,4 @@
-package Worlds.ReadAndWrite;
+package ReadAndWrite.ReadWriteWorld;
 import Worlds.Tiles.Tile;
 import Worlds.World;
 import com.google.gson.Gson;

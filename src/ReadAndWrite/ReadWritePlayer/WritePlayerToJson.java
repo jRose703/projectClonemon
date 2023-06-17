@@ -1,4 +1,4 @@
-package Entity.ReadWritePlayer;
+package ReadAndWrite.ReadWritePlayer;
 
 import Entity.PlayerEntity;
 import Worlds.Tiles.Tile;

@@ -2,7 +2,7 @@ import Frames.Frame;
 import Frames.TextBox.DialogueType;
 import Observer.ObserveType;
 import Observer.Observer;
-import Worlds.ReadAndWrite.ReadFromJsonFile;
+import ReadAndWrite.ReadWriteWorld.ReadFromJsonFile;
 
 /**
  * Observes the state of the game and manipulates the game accordingly

@@ -1,10 +1,8 @@
 package Desinger;
 
-import Worlds.ReadAndWrite.ReadFromJsonFile;
+import ReadAndWrite.ReadWriteWorld.ReadFromJsonFile;
 import Worlds.World;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Objects;
 
 public class LevelDesinger {

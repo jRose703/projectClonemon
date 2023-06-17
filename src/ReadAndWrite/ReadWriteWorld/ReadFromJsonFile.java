@@ -1,6 +1,6 @@
-package Worlds.ReadAndWrite;
+package ReadAndWrite.ReadWriteWorld;
 
-
+import ReadAndWrite.ReadObjectFromFile;
 import Entity.Entity;
 import Entity.OpponentEntity;
 import Worlds.Tiles.LowGrassTile;
@@ -37,7 +37,7 @@ public class ReadFromJsonFile {
                 .registerSubtype(VoidTile.class, "VoidTile");
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
-        JsonObject jsonObject = getJsonObjectFromFile(filename);
+        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
 
         String tileArrKey = "tileArr";
         JsonObject tileArrObject = new JsonObject();
@@ -95,7 +95,7 @@ public class ReadFromJsonFile {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
-        JsonObject jsonObject = getJsonObjectFromFile(filename);
+        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
 
         String entityArrKey = "entityArr";
         JsonObject entityArrObject = new JsonObject();
@@ -144,7 +144,7 @@ public class ReadFromJsonFile {
      */
     public static int[] readSizeFromFile(String filename) {
 
-        JsonObject jsonObject = getJsonObjectFromFile(filename);
+        JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
 
         String sizeKey = "size";
         JsonObject sizeObject = new JsonObject();
@@ -169,21 +169,5 @@ public class ReadFromJsonFile {
         return world;
     }
 
-    /**
-     * This function reads the world.json and returns a JsonObject to use for other methods.
-     */
-    private static JsonObject getJsonObjectFromFile(String filename) {
-        try {
-            StringBuilder json = new StringBuilder();
-            FileReader reader = new FileReader("SaveFiles\\" + filename + ".json");
 
-            int content;
-            while ((content = reader.read()) != -1) {
-                json.append((char) content);
-            }
-            return new Gson().fromJson(json.toString(), JsonObject.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

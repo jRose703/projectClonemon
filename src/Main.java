@@ -1,5 +1,5 @@
 import Entity.PlayerEntity;
-import Entity.ReadWritePlayer.WritePlayerToJson;
+import ReadAndWrite.ReadWritePlayer.WritePlayerToJson;
 
 public class Main {
 
