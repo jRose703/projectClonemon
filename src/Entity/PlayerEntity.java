@@ -9,6 +9,7 @@ public class PlayerEntity extends Entity {
         this.currentWorld = "world";
         this.money = 0;
         this.inventory = new Inventory();
+
     }
     private FighterInventory playerFighters = new FighterInventory();
     private String currentWorld;

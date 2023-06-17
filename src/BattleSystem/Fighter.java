@@ -76,4 +76,7 @@ public class Fighter {
         return this.isDefeated;
     }
 
+    public void setDefeated(boolean defeated) {
+        isDefeated = defeated;
+    }
 }

@@ -8,6 +8,7 @@ import Frames.BattleUI.BattlePane;
 import Frames.BattleUI.BattleParticipant;
 import Frames.WorldUI.WorldPane;
 import Observer.Observer;
+import ReadAndWrite.ReadWritePlayer.ReadPlayerFromJson;
 import Worlds.World;
 
 import javax.swing.*;
@@ -52,10 +53,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 		timer = new Timer();
 		this.startTickable();
 
-		// Creates the player - TODO Remove the playerFighters as soon as they can be read from a file
-		player = new PlayerEntity();
-		player.addToFighterInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 10, 5, 2, 5));
+		player = ReadPlayerFromJson.readPlayerFromFile("player");
 
 		// Creates the graphical world
 		this.worldPane = new WorldPane(world, player, stateMachineObserver);

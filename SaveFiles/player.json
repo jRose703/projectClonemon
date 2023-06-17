@@ -1,6 +1,29 @@
 {
   "playerFighters": {
-    "fighterInventory": []
+    "fighterInventory": [
+      {
+        "name": "Catmon",
+        "ID": 0,
+        "battleParty": "PLAYER",
+        "hitpoints": 100,
+        "maxHitpoints": 100,
+        "attackStat": 10,
+        "defenseStat": 5,
+        "initStat": 0,
+        "isDefeated": false
+      },
+      {
+        "name": "Lionmon",
+        "ID": 0,
+        "battleParty": "PLAYER",
+        "hitpoints": 100,
+        "maxHitpoints": 100,
+        "attackStat": 10,
+        "defenseStat": 5,
+        "initStat": 0,
+        "isDefeated": false
+      }
+    ]
   },
   "currentWorld": "world",
   "money": 0,
