@@ -35,8 +35,11 @@ public class ReadWorldFromJson {
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
         String tileArrKey = "tileArr";
+
+
+        //Todo --> try to simplify and maybe extract into different methode
         JsonObject tileArrObject = new JsonObject();
-        tileArrObject.add(tileArrKey, jsonObject.remove(tileArrKey));
+        tileArrObject.add(tileArrKey, jsonObject.get(tileArrKey));
         JsonArray tileJsonArr = tileArrObject.get(tileArrKey).getAsJsonArray();
         StringBuilder tileListString = new StringBuilder();
         tileListString.append("[");
@@ -93,8 +96,10 @@ public class ReadWorldFromJson {
 
 
         String entityArrKey = "entityArr";
+
+        //Todo --> try to simplify and maybe extract into different methode
         JsonObject entityArrObject = new JsonObject();
-        entityArrObject.add(entityArrKey, jsonObject.remove(entityArrKey));
+        entityArrObject.add(entityArrKey, jsonObject.get(entityArrKey));
         JsonArray entityJsonArr = entityArrObject.get(entityArrKey).getAsJsonArray();
         StringBuilder entityListString = new StringBuilder();
         entityListString.append("[");

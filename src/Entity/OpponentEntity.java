@@ -15,7 +15,6 @@ public class OpponentEntity extends Entity {
     public void setEntityType(String entityType) {
         this.entityType = entityType;
     }
-
     public void setFighterInventory(FighterInventory fighterInventory) {
         this.fighterInventory = fighterInventory;
     }
@@ -23,4 +22,5 @@ public class OpponentEntity extends Entity {
     public FighterInventory getFighterInventory() {
         return fighterInventory;
     }
+
 }
