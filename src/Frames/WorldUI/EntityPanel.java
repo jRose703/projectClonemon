@@ -33,7 +33,7 @@ public class EntityPanel extends JPanel {
                 if (entities[x][y] == null)
                     continue;
 
-                switch (1) { //TODO Replace the switch with some kind of system that tracks the entities in the world
+                switch (entities[x][y].getFacing()) { //TODO Replace the switch with some kind of system that tracks the entities in the world
                     case 1 -> icon = new ImageIcon("assets/entities/entity_e.png");
                     case 2 -> icon = new ImageIcon("assets/entities/entity_s.png");
                     case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");

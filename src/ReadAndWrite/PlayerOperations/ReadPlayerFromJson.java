@@ -24,12 +24,14 @@ public class ReadPlayerFromJson {
         return player;
     }
     private static Coordinates readCoordinates(JsonObject jsonObject){
-        int x = 0;
-        int y = 0;
+        int x = jsonObject.get("coordinates").getAsJsonObject().get("x").getAsInt();
+        int y = jsonObject.get("coordinates").getAsJsonObject().get("y").getAsInt();
+
         return new Coordinates(x,y);
     }
 
     private static int readFacing(JsonObject jsonObject){
+
         int direction = jsonObject.get("facing_direction").getAsInt();
 
         if (direction < 0 || direction > 3){

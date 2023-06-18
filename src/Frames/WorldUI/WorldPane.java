@@ -48,10 +48,17 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		//Player + Player Label Init
 		this.player = player;
-		this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
 
-		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
+		ImageIcon image;
+		switch (player.getFacing()) {
+			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
+			case 2 -> image = new ImageIcon("assets/entities/player_s.png");
+			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
+			default -> image = new ImageIcon("assets/entities/player_n.png");
+		}
+		playerLabel = new JLabel(image);
+
 		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		add(playerLabel, Integer.valueOf(2));
 

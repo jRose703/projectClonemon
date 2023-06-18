@@ -664,7 +664,7 @@
             }
           ]
         },
-        "facing_direction": 0
+        "facing_direction": 3
       },
       null,
       {
@@ -696,7 +696,7 @@
             }
           ]
         },
-        "facing_direction": 0
+        "facing_direction": 2
       },
       null,
       null,
