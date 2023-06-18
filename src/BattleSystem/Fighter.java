@@ -13,9 +13,7 @@ public class Fighter {
     private final int maxHitpoints;
     private int attackStat;
     private int defenseStat;
-    private String Type;
     private Item item;
-    private int lvl;
     private int initStat;
     private boolean isDefeated;
 
@@ -29,25 +27,6 @@ public class Fighter {
         this.defenseStat = defenseStat;
         this.initStat = initStat;
         this.isDefeated = false;
-    }
-    public Fighter(String name, BattleParticipant battleParty, int ID, int maxHP, int attackStat, int defenseStat, int initStat, String Type, Item item, int lvl) {
-        this.name = name;
-        this.battleParty = battleParty;
-        this.ID = ID;
-        this.hitpoints = maxHP;
-        this.maxHitpoints = maxHP;
-        this.attackStat = attackStat;
-        this.defenseStat = defenseStat;
-        this.initStat = initStat;
-        this.isDefeated = false;
-        this.Type = Type;
-        if (lvl<=100 && lvl >0){
-            this.lvl = lvl;
-        }
-        else{
-            this.lvl = 1;
-        }
-        this.item = item;
     }
 
     /** This method lets the fighter attack.
@@ -97,10 +76,6 @@ public class Fighter {
         return this.isDefeated;
     }
 
-    public String getType() {
-        return Type;
-    }
-
     public Entity.Item getItem() {
         return item;
     }
@@ -119,15 +94,6 @@ public class Fighter {
         }
         else{
             this.hitpoints = maxHitpoints;
-        }
-    }
-    public void increaseLvl(){
-        if (this.lvl<100){
-            this.lvl++;
-            //TODO: increase hp, max_hp, attack, defense
-        }
-        else{
-            throw new IllegalArgumentException("Clonemon already has maximum lvl");
         }
     }
 
