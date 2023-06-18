@@ -24,6 +24,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private int moveCooldown;
 	private TerrainPanel terrain;
 	private EntityPanel entities;
+	private World world;
 
 	/**
 	 * Starts the graphical world.
@@ -41,6 +42,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		terrain = new TerrainPanel(world, TILE_SIZE, 10, 10);
 		entities = new EntityPanel(world, TILE_SIZE, 10, 10);
+		this.world = world;
 		add(terrain, Integer.valueOf(0));
 		add(entities, Integer.valueOf(1));
 
@@ -79,7 +81,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	 */
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
-			player.move(player.getFacing(), 1);
+			player.move(player.getFacing(), world);
 			moveCooldown = 0;
 		} else player.setFacing(direction);
 		updatePlayerLabel();

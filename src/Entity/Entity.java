@@ -1,6 +1,8 @@
 package Entity;
 
 import Worlds.Coordinates;
+import Worlds.World;
+
 public class Entity{
     public Coordinates coordinates;
     public int facing_direction;
@@ -17,14 +19,15 @@ public class Entity{
     public int getFacing(){
         return facing_direction;
     }
-    public void move(int direction, int amount){
+    public void move(int direction, World world){
         if (direction %2 != 0){
             if (direction == 1){
-                this.coordinates.x += amount;
-
+                if (world.accessible(this.coordinates.x + 1, this.coordinates.y))
+                    this.coordinates.x += 1;
             }
             else if (direction == 3){
-                this.coordinates.x -=amount;
+                if (world.accessible(this.coordinates.x - 1, this.coordinates.y))
+                    this.coordinates.x -= 1;
             }
             else{
                 throw new IllegalArgumentException("invalid direction");
@@ -33,10 +36,12 @@ public class Entity{
         }
         else{
             if (direction == 2){
-                this.coordinates.y +=amount;
+                if (world.accessible(this.coordinates.x, this.coordinates.y + 1))
+                    this.coordinates.y += 1;
             }
             else if (direction == 0){
-                this.coordinates.y -=amount;
+                if (world.accessible(this.coordinates.x, this.coordinates.y - 1))
+                    this.coordinates.y -= 1;
             }
             else{
                 throw new IllegalArgumentException("invalid direction");
