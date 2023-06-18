@@ -3,10 +3,7 @@ package ReadAndWrite.WorldOperations;
 import ReadAndWrite.ReadObjectFromFile;
 import Entity.Entity;
 import Entity.OpponentEntity;
-import Worlds.Tiles.LowGrassTile;
-import Worlds.Tiles.RockTile;
-import Worlds.Tiles.Tile;
-import Worlds.Tiles.VoidTile;
+import Worlds.Tiles.*;
 import Worlds.World;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,6 +28,8 @@ public class ReadWorldFromJson {
                 .of(Tile.class, "tileType")
                 .registerSubtype(LowGrassTile.class, "LowGrassTile")
                 .registerSubtype(RockTile.class, "RockTile")
+                .registerSubtype(WaterTile.class, "WaterTile")
+                .registerSubtype(DoorTile.class, "DoorTile")
                 .registerSubtype(VoidTile.class, "VoidTile");
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
 
