@@ -124,7 +124,7 @@ public class Fighter {
     public void increaseLvl(){
         if (this.lvl<100){
             this.lvl++;
-            //TODO: increase hp, max_hp, reset xp (or not ( if we check for certain xp borders))
+            //TODO: increase hp, max_hp, attack, defense
         }
         else{
             throw new IllegalArgumentException("Clonemon already has maximum lvl");

@@ -17,14 +17,14 @@ public class Entity{
     public int getFacing(){
         return facing_direction;
     }
-    public void move(int direction, int amount){
+    public void move(int direction){
         if (direction %2 != 0){
             if (direction == 1){
-                this.coordinates.x += amount;
+                this.coordinates.x ++;
 
             }
             else if (direction == 3){
-                this.coordinates.x -=amount;
+                this.coordinates.x --;
             }
             else{
                 throw new IllegalArgumentException("invalid direction");
@@ -33,10 +33,10 @@ public class Entity{
         }
         else{
             if (direction == 2){
-                this.coordinates.y +=amount;
+                this.coordinates.y ++;
             }
             else if (direction == 0){
-                this.coordinates.y -=amount;
+                this.coordinates.y --;
             }
             else{
                 throw new IllegalArgumentException("invalid direction");

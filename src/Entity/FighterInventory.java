@@ -20,7 +20,7 @@ public class FighterInventory {
         if (fighterInventory.size() < 6) {
             fighterInventory.add(fighter);
         } else {
-            throw new IllegalArgumentException("ClonemonsInventory full");
+            throw new IllegalArgumentException("FighterInventory full");
         }
     }
 

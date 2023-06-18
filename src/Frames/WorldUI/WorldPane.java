@@ -79,7 +79,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	 */
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
-			player.move(player.getFacing(), 1);
+			player.move(player.getFacing());
 			moveCooldown = 0;
 		} else player.setFacing(direction);
 		updatePlayerLabel();

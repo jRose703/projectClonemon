@@ -1,18 +1,16 @@
 package Entity;
 
 public abstract class Item {
-    String name;
-    int amount;
-    boolean battle = false;
+    private String name;
+    private int amount;
+    private boolean battle;
 
     public String getName() {
         return name;
     }
-
     public int getAmount() {
         return amount;
     }
-
     public Item(String name, boolean offensive){
         this.name = name;
         this.amount=1;
