@@ -2,6 +2,7 @@ package Frames.BattleUI;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
+import Entity.FighterInventory;
 import Frames.BasicPanel;
 import Frames.TextBox.BattleMenuBox;
 
@@ -14,11 +15,12 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	private final BattleMenuBox battleMenuBox;
 	private final FighterUI playerUI;
 	private final FighterUI opponentUI;
+	private final FighterInventoryUI fighterInventoryUI;
 
 	/**
 	 * Starts the graphical battle.
 	 */
-	public BattlePane() {
+	public BattlePane(FighterInventory playerFighters) {
 		// Adds the battle menu box
 		this.battleMenuBox = new BattleMenuBox();
 		this.add(battleMenuBox, Integer.valueOf(1));
@@ -35,6 +37,10 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 		opponentUI = new FighterUI();
 		opponentUI.setBounds(0, 0, BasicPanel.SCREENWIDTH, fightingPlaceHeight / 2);
 		this.add(opponentUI, Integer.valueOf(0));
+
+		// FighterInventoryUI
+		fighterInventoryUI = new FighterInventoryUI(playerFighters);
+		this.add(fighterInventoryUI, Integer.valueOf(2));
 
 		// Pane setup
 		this.setVisible(false);

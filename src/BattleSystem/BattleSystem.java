@@ -110,8 +110,8 @@ public class BattleSystem {
     }
 
     /**
-    Ends the battle. The battle is currently ended by ending the program.
-    */
+     * Ends the battle. The battle is currently ended by ending the program.
+     */
     private void endBattle(){
         stateMachineObserver.update(ObserveType.BATTLE_END, null);
         isEnded = true;

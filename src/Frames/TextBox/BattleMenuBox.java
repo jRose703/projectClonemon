@@ -33,8 +33,7 @@ public class BattleMenuBox extends AbstractTextBox{
         g.drawString("Items", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 3 / 2);
         g.drawString("Run", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 3 / 2);
 
-        Polygon triangle = new Polygon(new int[] {this.cursor_x, this.cursor_x + BasicPanel.FONT_SIZE * 2 / 3 , this.cursor_x},
-                new int[] {this.cursor_y, this.cursor_y + BasicPanel.FONT_SIZE / 3, this.cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
+        Polygon triangle = BasicPanel.drawCursor(g, this.cursor_x, this.cursor_y);
         g.drawPolygon(triangle);
         g.fillPolygon(triangle);
     }

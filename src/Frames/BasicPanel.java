@@ -56,6 +56,11 @@ public class BasicPanel extends JPanel implements KeyListener {
 		player = new PlayerEntity();
 		player.addToFighterInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
 		player.addToFighterInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 10, 5, 2, 5));
+		player.addToFighterInventory(new Fighter("PlayerThree", BattleParticipant.PLAYER, 2, 10, 5, 2, 5));
+		player.addToFighterInventory(new Fighter("PlayerFour", BattleParticipant.PLAYER, 3, 10, 5, 2, 5));
+		player.addToFighterInventory(new Fighter("PlayerFive", BattleParticipant.PLAYER, 4, 10, 5, 2, 5));
+		player.addToFighterInventory(new Fighter("PlayerSix", BattleParticipant.PLAYER, 5, 10, 5, 2, 5));
+
 
 		// Creates the graphical world
 		this.worldPane = new WorldPane(world, player, stateMachineObserver);
@@ -63,7 +68,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 		this.add(worldPane);
 
 		// Creates the graphical battle
-		this.battlePane = new BattlePane();
+		this.battlePane = new BattlePane(player.getPlayerFighters());
 		this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(battlePane);
 
@@ -76,10 +81,15 @@ public class BasicPanel extends JPanel implements KeyListener {
 		this.changeToWorldScene();
 	}
 
+	public static Polygon drawCursor(Graphics g, int cursor_x, int cursor_y) {
+		return new Polygon(new int[]{cursor_x, cursor_x + BasicPanel.FONT_SIZE * 2 / 3, cursor_x},
+				new int[]{cursor_y, cursor_y + BasicPanel.FONT_SIZE / 3, cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
+	}
+
 	public void changeToBattleScene() {
 		worldPane.setVisible(false);
-			keyListenerCooldown = 0;
-			battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy));
+		keyListenerCooldown = 0;
+		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy));
 		battlePane.setVisible(true);
 	}
 
