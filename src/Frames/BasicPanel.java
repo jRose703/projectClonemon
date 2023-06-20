@@ -59,7 +59,6 @@ public class BasicPanel extends JPanel implements KeyListener {
         player.addToFighterInventory(new Fighter("PlayerThree", BattleParticipant.PLAYER, 2, 14, 5, 2, 5));
         player.addToFighterInventory(new Fighter("PlayerFour", BattleParticipant.PLAYER, 3, 13, 5, 2, 5));
         player.addToFighterInventory(new Fighter("PlayerFive", BattleParticipant.PLAYER, 4, 9, 5, 2, 5));
-        player.addToFighterInventory(new Fighter("PlayerSix", BattleParticipant.PLAYER, 5, 11, 5, 2, 5));
 
 
         // Creates the graphical world

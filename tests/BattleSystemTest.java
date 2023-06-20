@@ -1,7 +1,10 @@
-import BattleSystem.*;
+import BattleSystem.BattleSystem;
+import BattleSystem.Fighter;
 import Entity.FighterInventory;
-import Frames.BattleUI.*;
-import Observer.*;
+import Frames.BattleUI.BattleObserver;
+import Frames.BattleUI.BattleParticipant;
+import Observer.ObserveType;
+import Observer.Observer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +18,16 @@ public class BattleSystemTest {
     private ObserveType observeType;
     public BattleSystemTest(){
         Observer observer = (t, o) -> observeType = t;
-        BattleObserver battleObserver = new BattleObserver() {public void updateHitpoints(BattleParticipant defender, int newHitpoints) {} public void setFighter(Fighter fighter) {}};
+        BattleObserver battleObserver = new BattleObserver() {
+            public void updateHitpoints(BattleParticipant defender, int newHitpoints) {
+            }
+
+            public void setFighter(Fighter fighter) {
+            }
+
+            public void showFighterinventoryUI() {
+            }
+        };
 
         player = new FighterInventory();
         player.addToFighterInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));

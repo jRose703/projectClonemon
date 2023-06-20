@@ -18,6 +18,7 @@ public class BattleSystem {
 
     private int round = 1;  // just for testing purposes
     private boolean isEnded = false;
+    private boolean currentFighterIsDefeated = false;
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
 
@@ -101,8 +102,8 @@ public class BattleSystem {
                     if (!playerFighter.hasNext())
                         this.endBattle();
                     else {
-                        player = playerFighter.getFighter(playerIndex);
-                        battleObserver.setFighter(player);
+                        currentFighterIsDefeated = true;
+                        battleObserver.showFighterinventoryUI();
                         return true;
                     }
                 }
@@ -122,10 +123,18 @@ public class BattleSystem {
         return false;
     }
 
+    public void switchAfterDefeated(int switchIndex) {
+        if (!currentFighterIsDefeated) return;
+        currentFighterIsDefeated = false;
+        player = playerFighter.getFighter(switchIndex);
+        battleObserver.setFighter(player);
+    }
+
+
     /**
      * Ends the battle. The battle is currently ended by ending the program.
      */
-    private void endBattle(){
+    private void endBattle() {
         stateMachineObserver.update(ObserveType.BATTLE_END, null);
         isEnded = true;
     }

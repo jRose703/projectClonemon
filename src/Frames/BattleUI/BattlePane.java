@@ -69,6 +69,11 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	}
 
 	@Override
+	public void showFighterinventoryUI() {
+		fighterInventoryUI.showUI(false);
+	}
+
+	@Override
 	public void keyReleased(KeyEvent e) {
 		if (fighterInventoryUI.isVisible())
 			fighterInventoryUI.keyReleased(e);
@@ -76,7 +81,8 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {}
