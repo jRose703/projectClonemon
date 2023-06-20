@@ -45,52 +45,54 @@ public class BasicPanel extends JPanel implements KeyListener {
 
 		//TODO Test enemy
 		enemy = new FighterInventory();
-		enemy.addToFighterInventory(new Fighter("OpponentOne", BattleParticipant.OPPONENT, 6, 17, 2, 2, 7));
-		enemy.addToFighterInventory(new Fighter("OpponentTwo", BattleParticipant.OPPONENT, 7, 12, 2, 2, 7));
+        enemy.addToFighterInventory(new Fighter("OpponentOne", BattleParticipant.OPPONENT, 6, 17, 2, 2, 7));
+        enemy.addToFighterInventory(new Fighter("OpponentTwo", BattleParticipant.OPPONENT, 7, 12, 2, 2, 7));
 
-		// Creates the tick with 20 ticks per second
-		timer = new Timer();
-		this.startTickable();
+        // Creates the tick with 20 ticks per second
+        timer = new Timer();
+        this.startTickable();
 
-		// Creates the player - TODO Remove the playerFighters as soon as they can be read from a file
-		player = new PlayerEntity();
-		player.addToFighterInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerThree", BattleParticipant.PLAYER, 2, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerFour", BattleParticipant.PLAYER, 3, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerFive", BattleParticipant.PLAYER, 4, 10, 5, 2, 5));
-		player.addToFighterInventory(new Fighter("PlayerSix", BattleParticipant.PLAYER, 5, 10, 5, 2, 5));
+        // Creates the player - TODO Remove the playerFighters as soon as they can be read from a file
+        player = new PlayerEntity();
+        player.addToFighterInventory(new Fighter("PlayerOne", BattleParticipant.PLAYER, 0, 10, 5, 2, 5));
+        player.addToFighterInventory(new Fighter("PlayerTwo", BattleParticipant.PLAYER, 1, 12, 5, 2, 5));
+        player.addToFighterInventory(new Fighter("PlayerThree", BattleParticipant.PLAYER, 2, 14, 5, 2, 5));
+        player.addToFighterInventory(new Fighter("PlayerFour", BattleParticipant.PLAYER, 3, 13, 5, 2, 5));
+        player.addToFighterInventory(new Fighter("PlayerFive", BattleParticipant.PLAYER, 4, 9, 5, 2, 5));
+        player.addToFighterInventory(new Fighter("PlayerSix", BattleParticipant.PLAYER, 5, 11, 5, 2, 5));
 
 
-		// Creates the graphical world
-		this.worldPane = new WorldPane(world, player, stateMachineObserver);
-		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
-		this.add(worldPane);
+        // Creates the graphical world
+        this.worldPane = new WorldPane(world, player, stateMachineObserver);
+        this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        this.add(worldPane);
 
-		// Creates the graphical battle
-		this.battlePane = new BattlePane(player.getPlayerFighters());
-		this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        // Creates the graphical battle
+        this.battlePane = new BattlePane(player.getPlayerFighters());
+        this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(battlePane);
 
-		// Window setup
-		this.setPreferredSize(SCREENSIZE);
-		this.setVisible(true);
-		this.setLayout(null);
-		this.setFocusable(true);
-		this.addKeyListener(this);
-		this.changeToWorldScene();
-	}
+        // Window setup
+        this.setPreferredSize(SCREENSIZE);
+        this.setVisible(true);
+        this.setLayout(null);
+        this.setFocusable(true);
+        this.addKeyListener(this);
+        this.changeToWorldScene();
+    }
 
-	public static Polygon drawCursor(Graphics g, int cursor_x, int cursor_y) {
-		return new Polygon(new int[]{cursor_x, cursor_x + BasicPanel.FONT_SIZE * 2 / 3, cursor_x},
-				new int[]{cursor_y, cursor_y + BasicPanel.FONT_SIZE / 3, cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
-	}
+    public static void drawCursor(Graphics g, int cursor_x, int cursor_y) {
+        Polygon triangle = new Polygon(new int[]{cursor_x, cursor_x + BasicPanel.FONT_SIZE * 2 / 3, cursor_x},
+                new int[]{cursor_y, cursor_y + BasicPanel.FONT_SIZE / 3, cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
+        g.drawPolygon(triangle);
+        g.fillPolygon(triangle);
+    }
 
-	public void changeToBattleScene() {
-		worldPane.setVisible(false);
-		keyListenerCooldown = 0;
-		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy));
-		battlePane.setVisible(true);
+    public void changeToBattleScene() {
+        worldPane.setVisible(false);
+        keyListenerCooldown = 0;
+        battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy));
+        battlePane.setVisible(true);
 	}
 
 	public void changeToWorldScene() {

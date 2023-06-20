@@ -21,8 +21,12 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	 * Starts the graphical battle.
 	 */
 	public BattlePane(FighterInventory playerFighters) {
+		// FighterInventoryUI
+		fighterInventoryUI = new FighterInventoryUI(playerFighters);
+		this.add(fighterInventoryUI, Integer.valueOf(2));
+
 		// Adds the battle menu box
-		this.battleMenuBox = new BattleMenuBox();
+		this.battleMenuBox = new BattleMenuBox(fighterInventoryUI);
 		this.add(battleMenuBox, Integer.valueOf(1));
 
 		// Height of (screen - menu box)
@@ -38,10 +42,6 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 		opponentUI.setBounds(0, 0, BasicPanel.SCREENWIDTH, fightingPlaceHeight / 2);
 		this.add(opponentUI, Integer.valueOf(0));
 
-		// FighterInventoryUI
-		fighterInventoryUI = new FighterInventoryUI(playerFighters);
-		this.add(fighterInventoryUI, Integer.valueOf(2));
-
 		// Pane setup
 		this.setVisible(false);
 		this.setLayout(null);
@@ -49,6 +49,7 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	public void setBattle(BattleSystem battle) {
 		this.battleMenuBox.setBattle(battle);
+		this.fighterInventoryUI.setBattle(battle);
 	}
 
 	@Override
@@ -69,7 +70,9 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		battleMenuBox.keyReleased(e);
+		if (fighterInventoryUI.isVisible())
+			fighterInventoryUI.keyReleased(e);
+		else battleMenuBox.keyReleased(e);
 	}
 
 	@Override

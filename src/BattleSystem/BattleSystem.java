@@ -36,22 +36,30 @@ public class BattleSystem {
         battleObserver.setFighter(opponent);
     }
 
+    public void round(String action) {
+        this.round(action, null);
+    }
+
     /**
      * This method is the battle loop. It starts when a new BattleSystem is created and ends if the player flees
      * or one fighter's HP drop to 0.
      */
-    public void round(String action) {
-        if(isEnded) return;
+    public void round(String action, Integer switchIndex) {
+        if (isEnded) return;
+        if (switchIndex != null && playerFighter.getFighterInventory().indexOf(player) == switchIndex) {
+            System.out.println("You can't switch that fighter in! It's already fighting!");
+            return; // if you try to switch in an already fighting Fighter: do nothing
+        }
         System.out.println("Round " + round);  // just for testing purposes
 
         // decides whether the player or the opponent is faster with their action
-        if(player.getInitStat() >= opponent.getInitStat()){
-            if (this.playerAction(action) || isEnded) return;
+        if (player.getInitStat() >= opponent.getInitStat() || !(action.equals("fight"))) {
+            if (this.playerAction(action, switchIndex) || isEnded) return;
             this.attacks(this.opponent, this.player);
 
-        }else{
+        } else {
             if (this.attacks(this.opponent, this.player) || isEnded) return;
-            this.playerAction(action);
+            this.playerAction(action, switchIndex);
         }
         round++;  // just for testing purposes
     }
@@ -59,10 +67,15 @@ public class BattleSystem {
     /**
      * This method executes the actionInput that was either "attack" or "flee".
      */
-    private boolean playerAction(String chosenAction) {
+    private boolean playerAction(String chosenAction, Integer switchIndex) {
         switch (chosenAction) {
             case "fight":
                 return this.attacks(this.player, this.opponent);
+            case "switch":
+                player = playerFighter.getFighter(switchIndex);
+                battleObserver.setFighter(player);
+                System.out.println(player.getName());
+                return false;
             case "run":
                 if (player.flee()) endBattle();
                 return false;
