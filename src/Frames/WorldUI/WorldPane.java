@@ -41,8 +41,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 
-		terrain = new TerrainPanel(world, player, TILE_SIZE, 10, 10);
-		entities = new EntityPanel(world, player, TILE_SIZE, 10, 10);
+		terrain = new TerrainPanel(world, player, TILE_SIZE, world.getXLength(), world.getYLength());
+		entities = new EntityPanel(world, player, TILE_SIZE, world.getXLength(), world.getYLength());
 		this.world = world;
 		add(terrain, Integer.valueOf(0));
 		add(entities, Integer.valueOf(1));

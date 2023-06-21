@@ -32,9 +32,6 @@ public class TerrainPanel extends JPanel {
         int screenX = 0;
         int screenY = 0;
 
-        int playerOffsetX = 0;
-        int playerOffsetY = 0;
-
         int centreX = PLAYER.getCoordinates().getX();
         int centreY = PLAYER.getCoordinates().getY();
 
