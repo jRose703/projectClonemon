@@ -1,5 +1,6 @@
 package Frames.WorldUI;
 
+import Entity.Entity;
 import Entity.FighterInventory;
 import Entity.PlayerEntity;
 import Frames.TextBox.DialogueType;
@@ -64,8 +65,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		dialogueBox.setMessage(text, DialogueType.BATTLE);
 	}
 
-	private void startCombat() {
-		stateMachineObserver.update(ObserveType.BATTLE_START, null);
+	private void startCombat(Entity entity) {
+		stateMachineObserver.update(ObserveType.BATTLE_START, entity);
 	}
 
 	public void reloadWorld() {
@@ -101,16 +102,30 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		}
 		playerLabel.setIcon(image);
 	}
+	private void doCombat() {
+		int x = player.getCoordinates().getX();
+		int y = player.getCoordinates().getY();
+		switch (player.getFacing()) {
+			case 0 -> y += 1;
+			case 1 -> x += 1;
+			case 2 -> y -= 1;
+			case 3 -> x -= 1;
+		}
+		if(world.getEntityArr()[x][y] != null)
+			startCombat(world.getEntityArr()[x][y]);
+	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(KeyEvent e) {;
 		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case 'a' -> moveAction(3);
 			case 'd' -> moveAction(1);
 			case 's' -> moveAction(2);
 			case 'w' -> moveAction(0);
+			case '\n' -> doCombat();
 		}
+
 	}
 
 	@Override
