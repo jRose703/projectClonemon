@@ -18,7 +18,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private static final int TILE_SIZE = 60;
 
 	private final PlayerEntity player;
-	private final JLabel playerLabel;
 	private final Observer stateMachineObserver;
 	private final TextBox dialogueBox;
 
@@ -53,10 +52,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
 
-		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
 		//playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-		playerLabel.setBounds(4 * TILE_SIZE, 4 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-		add(playerLabel, Integer.valueOf(2));
 
 		//Textbox Init
 		dialogueBox = new TextBox(stateMachineObserver);
@@ -89,7 +85,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			player.move(player.getFacing(), world);
 			moveCooldown = 0;
 		} else player.setFacing(direction);
-		updatePlayerLabel();
+		//updatePlayerLabel();
 	}
 
 	/**
@@ -104,7 +100,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
 			default -> image = new ImageIcon("assets/entities/player_n.png");
 		}
-		playerLabel.setIcon(image);
 	}
 	private void doCombat() {
 		int x = player.getCoordinates().getX();

@@ -63,6 +63,14 @@ public class EntityPanel extends JPanel {
             screenX++;
             screenY = 0;
         }
+        ImageIcon image;
+        switch (PLAYER.getFacing()) {
+            case 1 -> image = new ImageIcon("assets/entities/player_e.png");
+            case 2 -> image = new ImageIcon("assets/entities/player_s.png");
+            case 3 -> image = new ImageIcon("assets/entities/player_w.png");
+            default -> image = new ImageIcon("assets/entities/player_n.png");
+        }
+        g.drawImage(image.getImage(), 4 * TILE_SIZE + 10, 4 * TILE_SIZE + 10, null);
     }
 
     public void reload() {
