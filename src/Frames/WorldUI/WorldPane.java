@@ -26,6 +26,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private TerrainPanel terrain;
 	private EntityPanel entities;
 	private World world;
+	private final boolean FIXED_SIZE;
 
 	/**
 	 * Starts the graphical world.
@@ -41,8 +42,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 
-		terrain = new TerrainPanel(world, TILE_SIZE, 10, 10);
-		entities = new EntityPanel(world, TILE_SIZE, 10, 10);
+		terrain = new TerrainPanel(world, player, TILE_SIZE, 10, 10);
+		entities = new EntityPanel(world, player, TILE_SIZE, 10, 10);
 		this.world = world;
 		add(terrain, Integer.valueOf(0));
 		add(entities, Integer.valueOf(1));
@@ -53,12 +54,15 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		moveCooldown = 0;
 
 		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
-		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		//playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+		playerLabel.setBounds(4 * TILE_SIZE, 4 * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		add(playerLabel, Integer.valueOf(2));
 
 		//Textbox Init
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
+
+		this.FIXED_SIZE = true;
 	}
 
 	public void startDialogue(String text) {
@@ -92,7 +96,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	 * Updates the graphical player location.
 	 */
 	private void updatePlayerLabel() {
-		playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
+		//playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
 		ImageIcon image;
 		switch (player.getFacing()) {
 			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
