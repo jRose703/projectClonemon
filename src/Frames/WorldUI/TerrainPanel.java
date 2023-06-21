@@ -29,21 +29,26 @@ public class TerrainPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         Tile[][] map = WORLD.getTileArr();
-        /*for (int x = 0; x < X_FIELDS; x++)
-            for (int y = 0; y < Y_FIELDS; y++) {
-
-                ImageIcon image;
-                if (map[x][y].getTexture_id() == 1) {
-                    image = new ImageIcon("assets/tiles/rock_tile.png");
-                } else {
-                    image = new ImageIcon("assets/tiles/low_grass_tile.png");
-                }
-                g.drawImage(image.getImage(), x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
-            }*/
         int screenX = 0;
         int screenY = 0;
-        for (int x = PLAYER.getCoordinates().getX() - 4; x <= PLAYER.getCoordinates().getX() + 5; x++) {
-            for (int y = PLAYER.getCoordinates().getY() - 4; y <= PLAYER.getCoordinates().getY() + 5; y++) {
+
+        int playerOffsetX = 0;
+        int playerOffsetY = 0;
+
+        int centreX = PLAYER.getCoordinates().getX();
+        int centreY = PLAYER.getCoordinates().getY();
+
+        if(centreX < 4)
+            centreX = 4;
+        if(centreX > X_FIELDS - 5)
+            centreX = X_FIELDS - 5;
+        if(centreY < 4)
+            centreY = 4;
+        if(centreY > Y_FIELDS - 5)
+            centreY = Y_FIELDS - 5;
+
+        for (int x = centreX - 4; x <= centreX + 4; x++) {
+            for (int y = centreY - 4; y <= centreY + 4; y++) {
                 ImageIcon image;
                 try {
                     switch (map[x][y].getTexture_id()) {

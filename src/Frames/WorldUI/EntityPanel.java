@@ -29,24 +29,35 @@ public class EntityPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         Entity[][] entities = WORLD.getEntityArr();
-        /*for (int x = 0; x < X_FIELDS; x++)
-            for (int y = 0; y < Y_FIELDS; y++) {
-                ImageIcon icon;
-                if (entities[x][y] == null)
-                    continue;
-
-                switch (1) { //TODO Replace the switch with some kind of system that tracks the entities in the world
-                    case 1 -> icon = new ImageIcon("assets/entities/entity_e.png");
-                    case 2 -> icon = new ImageIcon("assets/entities/entity_s.png");
-                    case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");
-                    default -> icon = new ImageIcon("assets/entities/entity_n.png");
-                }
-                g.drawImage(icon.getImage(), x * TILE_SIZE + 10, y * TILE_SIZE + 10, null);
-            }*/
         int screenX = 0;
         int screenY = 0;
-        for (int x = PLAYER.getCoordinates().getX() - 4; x <= PLAYER.getCoordinates().getX() + 5; x++) {
-            for (int y = PLAYER.getCoordinates().getY() - 4; y <= PLAYER.getCoordinates().getY() + 5; y++) {
+
+        int playerOffsetX = 0;
+        int playerOffsetY = 0;
+
+        int centreX = PLAYER.getCoordinates().getX();
+        int centreY = PLAYER.getCoordinates().getY();
+
+        if(centreX < 4) {
+            playerOffsetX = 4 - centreX;
+            centreX = 4;
+        }
+        if(centreX > X_FIELDS - 5) {
+            playerOffsetX = (X_FIELDS - 5) - centreX;
+            centreX = X_FIELDS - 5;
+        }
+
+        if(centreY < 4) {
+            playerOffsetY = 4 - centreY;
+            centreY = 4;
+        }
+        if(centreY > Y_FIELDS - 5) {
+            playerOffsetY = (Y_FIELDS - 5) - centreY;
+            centreY = Y_FIELDS - 5;
+        }
+
+        for (int x = centreX - 4; x <= centreX + 4; x++) {
+            for (int y = centreY - 4; y <= centreY + 4; y++) {
                 ImageIcon icon;
                 try {
                     if(entities[x][y] != null)
@@ -70,7 +81,8 @@ public class EntityPanel extends JPanel {
             case 3 -> image = new ImageIcon("assets/entities/player_w.png");
             default -> image = new ImageIcon("assets/entities/player_n.png");
         }
-        g.drawImage(image.getImage(), 4 * TILE_SIZE + 10, 4 * TILE_SIZE + 10, null);
+        g.drawImage(image.getImage(), (4 - playerOffsetX) * TILE_SIZE + 10, (4 - playerOffsetY) * TILE_SIZE + 10, null);
+        System.out.println("offset X: " + playerOffsetX + ", offset Y: " + playerOffsetY);
     }
 
     public void reload() {

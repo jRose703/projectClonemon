@@ -21,7 +21,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 
 	// Screen variables setup
 	public static final int FONT_SIZE = 30;
-	public static final int SCREENWIDTH = 600;
+	public static final int SCREENWIDTH = 540;
 	public static final int SCREENHEIGHT = SCREENWIDTH;
 	public static final Dimension SCREENSIZE = new Dimension(SCREENWIDTH, SCREENHEIGHT);
 
