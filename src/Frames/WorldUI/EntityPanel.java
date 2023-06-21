@@ -82,7 +82,6 @@ public class EntityPanel extends JPanel {
             default -> image = new ImageIcon("assets/entities/player_n.png");
         }
         g.drawImage(image.getImage(), (4 - playerOffsetX) * TILE_SIZE + 10, (4 - playerOffsetY) * TILE_SIZE + 10, null);
-        System.out.println("offset X: " + playerOffsetX + ", offset Y: " + playerOffsetY);
     }
 
     public void reload() {
