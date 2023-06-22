@@ -96,10 +96,9 @@ public class BasicPanel extends JPanel implements KeyListener {
 		worldPane.setVisible(false);
 		keyListenerCooldown = 0;
 		if (opponent == null)
-			enemy = new FighterInventory(new Fighter[]{wildFighter});
+			battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), new FighterInventory(new Fighter[]{wildFighter}), isTrainerBattle));
 		else
-			System.out.println("FEHLT"); //TODO
-		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy, isTrainerBattle));
+			battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy, isTrainerBattle));
 		battlePane.setVisible(true);
 	}
 
