@@ -2,6 +2,7 @@ package BattleSystem;
 
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
+import Frames.BattleUI.BattleParticipant;
 import Observer.ObserveType;
 import Observer.Observer;
 
@@ -13,22 +14,34 @@ public class BattleSystem {
     private final FighterInventory playerFighter;
     private final FighterInventory opponentFighter;
 
-    private int playerIndex = 0;
+    private int playerIndex;
     private int opponentIndex = 0;
 
     private int round = 1;  // just for testing purposes
+    private boolean isCurrentFighterDefeated = false;
+    private boolean isTrainerBattle;
     private boolean isEnded = false;
-    private boolean currentFighterIsDefeated = false;
+    private BattleParticipant winner;
+
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
 
     public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver,
-                        FighterInventory playerFighter, FighterInventory opponentFighter) {
+                        FighterInventory playerFighter, FighterInventory opponentFighter, boolean isTrainerBattle) {
+
+        for (Fighter fighter : playerFighter.getFighterInventory())
+            if (!fighter.isDefeated()) {
+                playerIndex = playerFighter.getFighterIndex(fighter);
+                break;
+            }
+
         this.player = playerFighter.getFighter(playerIndex);
         this.opponent = opponentFighter.getFighter(opponentIndex);
 
         this.playerFighter = playerFighter;
         this.opponentFighter = opponentFighter;
+
+        this.isTrainerBattle = isTrainerBattle;
 
         this.stateMachineObserver = stateMachineObserver;
         this.battleObserver = battleObserver;
@@ -47,6 +60,10 @@ public class BattleSystem {
      */
     public void round(String action, Integer switchIndex) {
         if (isEnded) return;
+        if (action.equals("run") && isTrainerBattle) {
+            System.out.println("You can't run away from a trainer battle!");
+            return;
+        }
         if (switchIndex != null && playerFighter.getFighterInventory().indexOf(player) == switchIndex) {
             System.out.println("You can't switch that fighter in! It's already fighting!");
             return; // if you try to switch in an already fighting Fighter: do nothing
@@ -100,19 +117,21 @@ public class BattleSystem {
             switch (defender.getBattleParty()) {
                 case PLAYER -> {
                     playerIndex++;
-                    if (!playerFighter.hasNext())
+                    if (!playerFighter.hasNext()) {
+                        winner = BattleParticipant.OPPONENT;
                         this.endBattle();
-                    else {
-                        currentFighterIsDefeated = true;
+                    } else {
+                        isCurrentFighterDefeated = true;
                         battleObserver.showFighterinventoryUI();
                         return true;
                     }
                 }
                 case OPPONENT -> {
                     opponentIndex++;
-                    if (!opponentFighter.hasNext())
+                    if (!opponentFighter.hasNext()) {
+                        winner = BattleParticipant.PLAYER;
                         this.endBattle();
-                    else {
+                    } else {
                         opponent = opponentFighter.getFighter(opponentIndex);
                         battleObserver.setFighter(opponent);
                         return true;
@@ -125,8 +144,8 @@ public class BattleSystem {
     }
 
     public void switchAfterDefeated(int switchIndex) {
-        if (!currentFighterIsDefeated) return;
-        currentFighterIsDefeated = false;
+        if (!isCurrentFighterDefeated) return;
+        isCurrentFighterDefeated = false;
         player = playerFighter.getFighter(switchIndex);
         battleObserver.setFighter(player);
     }
@@ -136,7 +155,7 @@ public class BattleSystem {
      * Ends the battle. The battle is currently ended by ending the program.
      */
     private void endBattle() {
-        stateMachineObserver.update(ObserveType.BATTLE_END, null);
+        stateMachineObserver.update(ObserveType.BATTLE_END, new Object[]{isTrainerBattle, winner});
         isEnded = true;
     }
 }

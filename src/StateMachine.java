@@ -1,5 +1,7 @@
+import BattleSystem.Fighter;
+import Entity.OpponentEntity;
+import Frames.BattleUI.BattleParticipant;
 import Frames.Frame;
-import Frames.TextBox.DialogueType;
 import Observer.ObserveType;
 import Observer.Observer;
 import Worlds.ReadAndWrite.ReadFromJsonFile;
@@ -17,35 +19,35 @@ public class StateMachine implements Observer {
         //startDialogue("Let's Fight!");  //TEST
     }
 
-    /** Listens for game state updates */
+    /**
+     * Listens for game state updates
+     */
     @Override
     public void update(ObserveType t, Object o) {
         switch (t) {
-            case BATTLE_START -> startBattle();
-            case BATTLE_END -> endBattle();
-            case DIALOGUE_START ->
-                    startDialogue((String) o, DialogueType.TEXT);  //Würde ich später direkt von den Entities auslösen lassen, da es ja worldPane intern ist
-            case DIALOGUE_END -> endDialogue((DialogueType) o);
+            case BATTLE_START -> startBattle(null, (Fighter) o, false); //TODO
+            case BATTLE_END -> endBattle((Object[]) o);
+            case DIALOGUE_END -> endDialogue((OpponentEntity) o);
         }
     }
 
-    private void startBattle() {
-        frame.changeToBattleScene();
+    private void startBattle(OpponentEntity opponent, Fighter wildFighter, boolean isTrainerBattle) {
+        frame.changeToBattleScene(opponent, wildFighter, isTrainerBattle);
     }
 
-    private void endBattle() {
+    private void endBattle(Object[] o) {
+        if ((boolean) o[0] && o[1] != null && o[1].equals(BattleParticipant.PLAYER))
+            frame.setOpponentDefeated();
         frame.changeToWorldScene();
     }
 
-    private void startDialogue(String text, DialogueType type) {
-        frame.startDialogue(text, type);
-    }
-
-    /** Starts the event a dialogue causes */
-    private void endDialogue(DialogueType type) {
-        switch (type) {
+    /**
+     * Starts the event a dialogue causes
+     */
+    private void endDialogue(OpponentEntity opponent) {
+        switch (opponent.getDialogueType()) {
             case BATTLE:
-                startBattle();
+                startBattle(opponent, null, true);
                 break;
             case TEXT:
                 break;

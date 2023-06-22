@@ -1,15 +1,16 @@
 package Frames;
 
 import BattleSystem.BattleSystem;
+import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
 import BattleSystem.FightingType;
 import Entity.FighterInventory;
+import Entity.OpponentEntity;
 import Entity.PlayerEntity;
 import Frames.BattleUI.BattlePane;
 import Frames.BattleUI.BattleParticipant;
-import Frames.TextBox.DialogueType;
 import Frames.WorldUI.WorldPane;
 import Observer.Observer;
 import Worlds.World;
@@ -24,9 +25,9 @@ import java.util.TimerTask;
 public class BasicPanel extends JPanel implements KeyListener {
 
 	// Screen variables setup
-	public static final int FONT_SIZE = 30;
-	public static final int SCREENWIDTH = 540;
-	public static final int SCREENHEIGHT = SCREENWIDTH;
+	public static final int SCREENHEIGHT = 540;
+	public static final int SCREENWIDTH = SCREENHEIGHT;
+	public static final int FONT_SIZE = SCREENWIDTH / 18;
 	public static final Dimension SCREENSIZE = new Dimension(SCREENWIDTH, SCREENHEIGHT);
 
 	private final WorldPane worldPane;
@@ -37,7 +38,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 	private int keyListenerCooldown = 0;
 
 	// TODO TEST ENEMY
-	private final FighterInventory enemy;
+	private FighterInventory enemy;
 
 	/**
 	 * Container with the scenes: worldPane, battlePane.
@@ -91,20 +92,20 @@ public class BasicPanel extends JPanel implements KeyListener {
         g.fillPolygon(triangle);
     }
 
-    public void changeToBattleScene() {
-        worldPane.setVisible(false);
-        keyListenerCooldown = 0;
-        battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy));
-        battlePane.setVisible(true);
+	public void changeToBattleScene(OpponentEntity opponent, Fighter wildFighter, boolean isTrainerBattle) {
+		worldPane.setVisible(false);
+		keyListenerCooldown = 0;
+		if (opponent == null)
+			enemy = new FighterInventory(new Fighter[]{wildFighter});
+		else
+			System.out.println("FEHLT"); //TODO
+		battlePane.setBattle(new BattleSystem(stateMachineObserver, battlePane, player.getPlayerFighters(), enemy, isTrainerBattle));
+		battlePane.setVisible(true);
 	}
 
 	public void changeToWorldScene() {
 		battlePane.setVisible(false);
 		worldPane.setVisible(true);
-	}
-
-	public void startDialogue(String text, DialogueType type) {
-		worldPane.startDialogue(text, type);
 	}
 
 	private void startTickable() {
@@ -144,5 +145,11 @@ public class BasicPanel extends JPanel implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {}
+	public void keyPressed(KeyEvent e) {
+		if (worldPane.isVisible()) worldPane.keyPressed(e);
+	}
+
+	public void setOpponentDefeated() {
+		worldPane.setOpponentDefeated();
+	}
 }

@@ -2,6 +2,7 @@ package Worlds;
 
 import Entity.Entity;
 import Entity.OpponentEntity;
+import Frames.TextBox.DialogueType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -66,7 +67,7 @@ class WorldTest {
     @Test
     void enemy_check() {
         // add an enemy to the entity array here at 0 0
-        Entity opponent = new OpponentEntity();
+        Entity opponent = new OpponentEntity(DialogueType.TEXT, "Hello World!");
         world.setEntity(coordinates, opponent);
 
         assertTrue(world.enemy_check(coordinates));

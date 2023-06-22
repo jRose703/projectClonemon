@@ -55,9 +55,9 @@ public class FighterUI extends JPanel {
         g.setFont(new Font("Arial", Font.BOLD, BasicPanel.FONT_SIZE / 2));
 
         if (frontSprite != null)
-            g.drawImage(frontSprite.getImage(), frontSprite_x, BasicPanel.SCREENHEIGHT * 7 / 60, null);
+            g.drawImage(frontSprite.getImage(), frontSprite_x, BasicPanel.SCREENHEIGHT * 7 / 60, BasicPanel.SCREENWIDTH / 4, BasicPanel.SCREENHEIGHT / 4, null);
         if (backSprite != null)
-            g.drawImage(backSprite.getImage(), backSprite_x, BasicPanel.SCREENHEIGHT * 7 / 60, null);
+            g.drawImage(backSprite.getImage(), backSprite_x, BasicPanel.SCREENHEIGHT * 7 / 60, BasicPanel.SCREENWIDTH / 4, BasicPanel.SCREENHEIGHT / 4, null);
 
         int hp_x_coordinate = (frontSprite != null) ? backSprite_x : frontSprite_x;
         g.drawString(name, hp_x_coordinate, BasicPanel.SCREENHEIGHT * 18 / 100);
