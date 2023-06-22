@@ -42,8 +42,11 @@ public class FighterInventory {
         return fighterInventory.get(index);
     }
 
-    public boolean hasNext(int index) {
-        return fighterInventory.size() > index;
+    public boolean hasNext() {
+        for (Fighter fighter : fighterInventory) {
+            if (!fighter.isDefeated()) return true;
+        }
+        return false;
     }
 
     public Vector<Fighter> getFighterInventory() {
