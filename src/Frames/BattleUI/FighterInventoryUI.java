@@ -109,6 +109,12 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
                     BasicPanel.SCREENWIDTH / 10 + x * BasicPanel.SCREENWIDTH / 2, // starts at 1/10 screenwidth
                     BasicPanel.SCREENHEIGHT * 185 / 1000 + y * BasicPanel.SCREENHEIGHT / 4); // starts at 185/1000 screenheight
 
+            // Draws the type of the fighter
+            g.drawString("TYPE: " + fighter.getType(),
+                    BasicPanel.SCREENWIDTH / 10 + x * BasicPanel.SCREENWIDTH / 2, // starts at 1/10 screenwidth
+                    BasicPanel.SCREENHEIGHT * 22 / 100 + y * BasicPanel.SCREENHEIGHT / 4); // starts at 22/100 screenheight
+
+
             if (x != 1)
                 x++;
             else {

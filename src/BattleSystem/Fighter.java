@@ -2,31 +2,40 @@ package BattleSystem;
 
 import Frames.BattleUI.BattleParticipant;
 
+import javax.swing.*;
 import java.util.Random;
 
 @SuppressWarnings("FieldMayBeFinal")
-public class Fighter {
+public abstract class Fighter {
 
     private String name;
-    private final int ID;
+    // Sprites
+    protected ImageIcon backSprite;
+    private FightingType type;
     private BattleParticipant battleParty;  // On which side is the fighter on
-    private int hitpoints;
+    private int ID;
+    private boolean isDefeated;
     private final int maxHitpoints;
     private int attackStat;
     private int defenseStat;
     private int initStat;
-    private boolean isDefeated;
+    // Stats
+    private int hitpoints;
+    private ImageIcon frontSprite;
 
-    public Fighter(String name, BattleParticipant battleParty, int ID, int maxHP, int attackStat, int defenseStat, int initStat) {
+    public Fighter(String name, FightingType type, int ID, BattleParticipant battleParty,
+                   int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
-        this.battleParty = battleParty;
+        this.type = type;
         this.ID = ID;
+        this.battleParty = battleParty;
+        this.isDefeated = false;
+
         this.hitpoints = maxHP;
         this.maxHitpoints = maxHP;
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.initStat = initStat;
-        this.isDefeated = false;
     }
 
     /** This method lets the fighter attack.
@@ -48,16 +57,33 @@ public class Fighter {
         return chance > 10;
     }
 
+    protected void setSprites(ImageIcon backSprite, ImageIcon frontSprite) {
+        this.backSprite = backSprite;
+        this.frontSprite = frontSprite;
+    }
+
+    public ImageIcon getBackSprite() {
+        return backSprite;
+    }
+
+    public ImageIcon getFrontSprite() {
+        return frontSprite;
+    }
+
     public String getName() {
         return this.name;
     }
 
-    public BattleParticipant getBattleParty() {
-        return battleParty;
+    public FightingType getType() {
+        return type;
     }
 
     public int getID() {
-        return ID;
+        return this.ID;
+    }
+
+    public BattleParticipant getBattleParty() {
+        return battleParty;
     }
 
     public int getHitpoints() {
