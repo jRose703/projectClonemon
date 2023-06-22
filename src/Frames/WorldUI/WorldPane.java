@@ -1,7 +1,6 @@
 package Frames.WorldUI;
 
 import Entity.Entity;
-import Entity.FighterInventory;
 import Entity.PlayerEntity;
 import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
@@ -61,6 +60,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		this.FIXED_SIZE = true;
 	}
 
+	// an dieser Stelle sollte der Dialogtyp mit übergeben werden können
 	public void startDialogue(String text) {
 		dialogueBox.setMessage(text, DialogueType.BATTLE);
 	}
@@ -111,7 +111,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			case 3 -> x -= 1;
 		}
 		if(world.getEntityArr()[x][y] != null)
-			startCombat(world.getEntityArr()[x][y]);
+			startCombat(world.getEntityArr()[x][y]); // an dieser Stelle sollte startDialogue gestartet werden
 	}
 
 	@Override
