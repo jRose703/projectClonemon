@@ -101,6 +101,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			default -> image = new ImageIcon("assets/entities/player_n.png");
 		}
 	}
+
+	// man sollte die Gegner von allen Seiten ansprechen können
 	private void doCombat() {
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
@@ -110,7 +112,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			case 2 -> y -= 1;
 			case 3 -> x -= 1;
 		}
-		if(world.getEntityArr()[x][y] != null)
+		if (world.getEntityArr()[x][y] != null)
 			startCombat(world.getEntityArr()[x][y]); // an dieser Stelle sollte startDialogue gestartet werden
 	}
 
