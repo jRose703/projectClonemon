@@ -24,7 +24,7 @@ public class StateMachine implements Observer {
             case BATTLE_START -> startBattle();
             case BATTLE_END -> endBattle();
             case DIALOGUE_START ->
-                    startDialogue((String) o);  //Würde ich später direkt von den Entities auslösen lassen, da es ja worldPane intern ist
+                    startDialogue((String) o, DialogueType.TEXT);  //Würde ich später direkt von den Entities auslösen lassen, da es ja worldPane intern ist
             case DIALOGUE_END -> endDialogue((DialogueType) o);
         }
     }
@@ -37,8 +37,8 @@ public class StateMachine implements Observer {
         frame.changeToWorldScene();
     }
 
-    private void startDialogue(String text) {
-        frame.startDialogue(text);
+    private void startDialogue(String text, DialogueType type) {
+        frame.startDialogue(text, type);
     }
 
     /** Starts the event a dialogue causes */

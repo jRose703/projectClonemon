@@ -1,5 +1,6 @@
 package Frames;
 
+import Frames.TextBox.DialogueType;
 import Observer.Observer;
 import Worlds.World;
 
@@ -32,8 +33,8 @@ public class Frame extends JFrame{
 		mainPanel.changeToWorldScene();
 	}
 
-	public void startDialogue(String text) {
-		mainPanel.startDialogue(text);
+	public void startDialogue(String text, DialogueType type) {
+		mainPanel.startDialogue(text, type);
 	}
 
 }

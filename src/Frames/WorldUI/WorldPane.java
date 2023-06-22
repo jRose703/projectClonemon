@@ -61,8 +61,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	// an dieser Stelle sollte der Dialogtyp mit übergeben werden können
-	public void startDialogue(String text) {
-		dialogueBox.setMessage(text, DialogueType.BATTLE);
+	public void startDialogue(String text, DialogueType type) {
+		dialogueBox.setMessage(text, type);
 	}
 
 	private void startCombat(Entity entity) {
@@ -107,13 +107,15 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
 		switch (player.getFacing()) {
-			case 0 -> y += 1;
+			case 0 -> y -= 1;
 			case 1 -> x += 1;
-			case 2 -> y -= 1;
+			case 2 -> y += 1;
 			case 3 -> x -= 1;
 		}
+		if(x < 0 || x > world.getXLength() - 1 || y < 0 || y > world.getYLength() - 1)
+			return;
 		if (world.getEntityArr()[x][y] != null)
-			startCombat(world.getEntityArr()[x][y]); // an dieser Stelle sollte startDialogue gestartet werden
+			stateMachineObserver.update(ObserveType.BATTLE_START, null);
 	}
 
 	@Override

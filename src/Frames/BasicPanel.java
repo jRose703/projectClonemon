@@ -9,6 +9,7 @@ import Entity.FighterInventory;
 import Entity.PlayerEntity;
 import Frames.BattleUI.BattlePane;
 import Frames.BattleUI.BattleParticipant;
+import Frames.TextBox.DialogueType;
 import Frames.WorldUI.WorldPane;
 import Observer.Observer;
 import Worlds.World;
@@ -102,8 +103,8 @@ public class BasicPanel extends JPanel implements KeyListener {
 		worldPane.setVisible(true);
 	}
 
-	public void startDialogue(String text) {
-		worldPane.startDialogue(text);
+	public void startDialogue(String text, DialogueType type) {
+		worldPane.startDialogue(text, type);
 	}
 
 	private void startTickable() {
