@@ -92,8 +92,8 @@ public class BattleSystem {
      */
     private boolean attacks(Fighter attacker, Fighter defender) {
         DamageCalculation.calculateDamage(attacker, defender);
-        attacker.attack(defender);
-        System.out.println(defender.getHitpoints());
+        System.out.println("Defender HP: " + defender.getHitpoints());
+        System.out.println();
         battleObserver.updateHitpoints(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
 
         if (defender.isDefeated()) {

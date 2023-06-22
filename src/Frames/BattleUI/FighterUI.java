@@ -35,7 +35,6 @@ public class FighterUI extends JPanel {
         this.frontSprite = frontSprite;
         if (this.frontSprite != null)
             hitpointBar.setBounds(backSprite_x, BasicPanel.SCREENHEIGHT * 2 / 10, BasicPanel.SCREENWIDTH / 4, BasicPanel.SCREENHEIGHT / 80);
-        repaint();
 
         maxHP = maxHitpoints;
         hitpointBar.setMaximum(maxHitpoints);
@@ -44,6 +43,7 @@ public class FighterUI extends JPanel {
 
     public void updateHitpointbar(int newHitpoints) {
         hitpointBar.setValue(newHitpoints);
+        repaint();
         if (5 * hitpointBar.getValue() <= maxHP) hitpointBar.setForeground(Color.RED);
         else if (2 * hitpointBar.getValue() <= maxHP) hitpointBar.setForeground(Color.YELLOW);
         else hitpointBar.setForeground(Color.GREEN);
