@@ -162,14 +162,16 @@
     ],
     [
       {
-        "connectedTo": "world",
-        "newCoordinates": {
-          "x": 0,
-          "y": 0
-        },
         "accessible": true,
         "texture_id": 3,
-        "tileType": "DoorTile"
+        "tileType": "DoorTile",
+        "connectedTo": "world",
+        "newCoordinates": {
+          "coordinates": {
+            "x": 5,
+            "y": 5
+          }
+        }
       },
       {
         "accessible": true,
@@ -641,9 +643,8 @@
     ],
     [
       {
-        "message": "Die!",
         "entityType": "OpponentEntity",
-        "dialogueType": "BATTLE",
+        "status": false,
         "fighterInventory": {
           "fighterInventory": [
             {
@@ -674,9 +675,8 @@
       },
       null,
       {
-        "message": "Die!*2",
         "entityType": "OpponentEntity",
-        "dialogueType": "BATTLE",
+        "status": false,
         "fighterInventory": {
           "fighterInventory": [
             {

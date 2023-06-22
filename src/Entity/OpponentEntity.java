@@ -1,15 +1,18 @@
 package Entity;
 
+import Frames.TextBox.DialogueType;
+
 public class OpponentEntity extends Entity {
+    private String message = "Die!";
     private String entityType = "OpponentEntity";
-    private boolean status = false;
+    private DialogueType dialogueType = DialogueType.BATTLE;
     private FighterInventory fighterInventory;
     public OpponentEntity(){}
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setDialogueType(DialogueType dialogueType) {
+        this.dialogueType = dialogueType;
     }
-    public boolean getStatus(){
-        return this.status;
+    public DialogueType getDialogueType(){
+        return this.dialogueType;
     }
 
     public void setEntityType(String entityType) {
@@ -21,6 +24,14 @@ public class OpponentEntity extends Entity {
 
     public FighterInventory getFighterInventory() {
         return fighterInventory;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 }
