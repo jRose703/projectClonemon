@@ -91,6 +91,7 @@ public class BattleSystem {
      * If the defender is defeated the battle ends.
      */
     private boolean attacks(Fighter attacker, Fighter defender) {
+        DamageCalculation.calculateDamage(attacker, defender);
         attacker.attack(defender);
         System.out.println(defender.getHitpoints());
         battleObserver.updateHitpoints(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
