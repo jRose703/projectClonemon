@@ -114,6 +114,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 				if (worldPane != null && worldPane.isVisible()){
 					reloadWorld();
 					reloadEntities();
+					worldPane.tickMoveCooldown();
 				}
 			}
 		}, 0, 50);//wait 0 milliseconds before doing the action and do it every 50ms (0.05 seconds)

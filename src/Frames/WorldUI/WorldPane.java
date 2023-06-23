@@ -70,6 +70,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		this.FIXED_SIZE = true;
 	}
 
+	public void tickMoveCooldown(){
+		if (moveCooldown > 0)
+			moveCooldown--;
+	}
+
 	// an dieser Stelle sollte der Dialogtyp mit übergeben werden können
 	public void startDialogue(String text, OpponentEntity entity) {
 		keyListenerCooldown = 0;
@@ -94,7 +99,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
 			player.move(player.getFacing(), world);
-			moveCooldown = 0;
+			moveCooldown = 10;
 		} else player.setFacing(direction);
 		randomChanceEncounter();
 		//updatePlayerLabel();
