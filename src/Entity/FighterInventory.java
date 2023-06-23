@@ -42,6 +42,11 @@ public class FighterInventory {
         return fighterInventory.get(index);
     }
 
+    public int getFighterIndex(Fighter fighter) {
+        if (fighter == null) throw new IllegalArgumentException();
+        return fighterInventory.indexOf(fighter);
+    }
+
     public boolean hasNext() {
         for (Fighter fighter : fighterInventory) {
             if (!fighter.isDefeated()) return true;

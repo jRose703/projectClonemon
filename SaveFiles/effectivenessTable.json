@@ -1,0 +1,26 @@
+{
+  "UNDEAD": [
+    [
+      "CITIZEN"
+    ],
+    [
+      "EXORCIST"
+    ]
+  ],
+  "EXORCIST": [
+    [
+      "UNDEAD"
+    ],
+    [
+      "CITIZEN"
+    ]
+  ],
+  "CITIZEN": [
+    [
+      "EXORCIST"
+    ],
+    [
+      "UNDEAD"
+    ]
+  ]
+}
