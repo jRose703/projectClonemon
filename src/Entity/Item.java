@@ -3,18 +3,15 @@ package Entity;
 public abstract class Item {
     private String name;
     private int amount;
-    private boolean battle;
-
     public String getName() {
         return name;
     }
     public int getAmount() {
         return amount;
     }
-    public Item(String name, boolean offensive){
+    public Item(String name){
         this.name = name;
         this.amount=1;
-        this.battle = offensive;
     }
     public void add_Item(){
         this.amount ++;
@@ -27,9 +24,4 @@ public abstract class Item {
             amount--;
         }
     }
-
-    public boolean getBattle(){
-        return this.battle;
-    }
-
 }

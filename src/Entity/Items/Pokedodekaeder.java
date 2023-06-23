@@ -1,8 +1,9 @@
 package Entity.Items;
-import Entity.Item;
 
-public class Pokedodekaeder extends Item{
+public class Pokedodekaeder extends ThrowableItem{
+    private String Type = "Catch";
+    private int value = 1;
     public Pokedodekaeder(String name) {
-        super(name, true);
+        super(name);
     }
 }
