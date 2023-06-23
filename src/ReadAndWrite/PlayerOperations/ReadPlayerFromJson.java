@@ -7,7 +7,9 @@ import Entity.PlayerEntity;
 import Frames.BattleUI.BattleParticipant;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
+import Worlds.Tiles.*;
 import com.google.gson.*;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
 public class ReadPlayerFromJson {
 
@@ -56,6 +58,22 @@ public class ReadPlayerFromJson {
     }
 
     private static FighterInventory readFighterInventory(JsonObject jsonObject){
+        /*
+
+        RuntimeTypeAdapterFactory<Tile> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+                .of(Fighter.class, "type")
+                .registerSubtype(Citizen.class, FightingType.CITIZEN)
+                .registerSubtype(Exorcist.class, FightingType.EXORCIST)
+                .registerSubtype(Undead.class, FightingType.UNDEAD);
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
+
+
+        //  hier auf fighter ändern
+        Type listType = new TypeToken<List<Tile>>() {
+        }.getType();
+        List<Tile> fromJson = gson.fromJson(tileListString.toString(), listType);
+        */
+
 
         FighterInventory fighterInventory = new FighterInventory();
         JsonArray jsonArray = jsonObject.get("playerFighters").getAsJsonObject().get("fighterInventory").getAsJsonArray();
