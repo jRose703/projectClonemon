@@ -12,6 +12,7 @@ import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
+import Worlds.Tiles.HighGrassTile;
 import Worlds.World;
 
 import javax.swing.*;
@@ -101,21 +102,22 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			player.move(player.getFacing(), world);
 			moveCooldown = 10;
 		} else player.setFacing(direction);
-		randomChanceEncounter();
+		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
+			randomChanceEncounter();
 		//updatePlayerLabel();
 	}
 
 	private void randomChanceEncounter() {
 		Random random = new Random();
-		if (random.nextInt(1, 100) > 95) {
+		if (random.nextInt(1, 100) > 90) {
 			int fighterChoice = random.nextInt(1, 3);
 			switch (fighterChoice) {
 				case 1 ->
-						startCombat(new Undead("OpponentOne", FightingType.UNDEAD, 9000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Undead("Wild Undead", FightingType.UNDEAD, 9000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 				case 2 ->
-						startCombat(new Citizen("OpponentOne", FightingType.CITIZEN, 8000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Citizen("Wild Citizen", FightingType.CITIZEN, 8000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 				case 3 ->
-						startCombat(new Exorcist("OpponentOne", FightingType.EXORCIST, 7000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Exorcist("Wild Exorcist", FightingType.EXORCIST, 7000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 			}
 		}
 	}

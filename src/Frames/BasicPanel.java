@@ -2,9 +2,7 @@ package Frames;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
-import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
-import BattleSystem.Fighters.Undead;
 import BattleSystem.FightingType;
 import Entity.FighterInventory;
 import Entity.OpponentEntity;
@@ -38,41 +36,31 @@ public class BasicPanel extends JPanel implements KeyListener {
 	private final PlayerEntity player;
 	private int keyListenerCooldown = 0;
 
-	// TODO TEST ENEMY
-	private FighterInventory enemy;
-
 	/**
 	 * Container with the scenes: worldPane, battlePane.
 	 * The main KeyListener and the tickable method are called from here.
 	 * Creates and holds the player.
 	 */
 	public BasicPanel(World world, Observer stateMachineObserver) {
-        this.stateMachineObserver = stateMachineObserver;
+		this.stateMachineObserver = stateMachineObserver;
 
-        // Creates the tick with 20 ticks per second
-        timer = new Timer();
-        this.startTickable();
+		// Creates the tick with 20 ticks per second
+		timer = new Timer();
+		this.startTickable();
 
-
+		// Creates the player
 		player = ReadPlayerFromJson.readPlayerFromFile("player");
-        /*
-		// Creates the player - TODO Remove the playerFighters as soon as they can be read from a file
-        //player = new PlayerEntity();
-        player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
-        player.addToFighterInventory(new Citizen("PlayerTwo", FightingType.CITIZEN, 1, BattleParticipant.PLAYER, 12, 5, 2, 5));
-        player.addToFighterInventory(new Undead("PlayerThree", FightingType.UNDEAD, 2, BattleParticipant.PLAYER, 14, 5, 2, 5));
-        player.addToFighterInventory(new Exorcist("PlayerFour", FightingType.EXORCIST, 3, BattleParticipant.PLAYER, 13, 5, 2, 5));
-        player.addToFighterInventory(new Undead("PlayerFive", FightingType.UNDEAD, 4, BattleParticipant.PLAYER, 9, 5, 2, 5));
-		*/
+		if (player.getPlayerFighters().size() < 1)
+			player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
 
-        // Creates the graphical world
-        this.worldPane = new WorldPane(world, player, stateMachineObserver);
-        this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
-        this.add(worldPane);
+		// Creates the graphical world
+		this.worldPane = new WorldPane(world, player, stateMachineObserver);
+		this.worldPane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
+		this.add(worldPane);
 
-        // Creates the graphical battle
-        this.battlePane = new BattlePane(player.getPlayerFighters());
-        this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
+		// Creates the graphical battle
+		this.battlePane = new BattlePane(player.getPlayerFighters());
+		this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(battlePane);
 
         // Window setup
