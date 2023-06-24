@@ -17,6 +17,7 @@ public class DamageCalculation {
      * and the defenders defense, but at least 1.
      */
     public static void calculateDamage(Fighter attacker, Fighter defender) {
+        System.out.println(defender.getType());
         double effectiveness = checkEffectiveness(attacker.getType(), defender.getType());
         Random random = new Random();
         int critMultiplier = (random.nextInt(1, 100) >= 98) ? 2 : 1;

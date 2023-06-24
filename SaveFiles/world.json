@@ -648,17 +648,21 @@
           "fighterInventory": [
             {
               "name": "Dogmon",
-              "ID": 4,
+              "type":"CITIZEN",
               "battleParty": "OPPONENT",
+              "ID": 4,
               "hitpoints": 25,
               "maxHitpoints": 25,
               "attackStat": 5,
               "defenseStat": 5,
               "initStat": 0,
-              "isDefeated": false
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
             },
             {
               "name": "Bearmon",
+              "type":"CITIZEN",
               "ID": 5,
               "battleParty": "OPPONENT",
               "hitpoints": 50,
@@ -666,7 +670,9 @@
               "attackStat": 7,
               "defenseStat": 7,
               "initStat": 0,
-              "isDefeated": false
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
             }
           ]
         },
@@ -681,6 +687,7 @@
           "fighterInventory": [
             {
               "name": "Dogmon",
+              "type":"UNDEAD",
               "ID": 4,
               "battleParty": "OPPONENT",
               "hitpoints": 25,
@@ -688,10 +695,13 @@
               "attackStat": 5,
               "defenseStat": 5,
               "initStat": 0,
-              "isDefeated": false
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
             },
             {
               "name": "Bearmon",
+              "type":"UNDEAD",
               "ID": 5,
               "battleParty": "OPPONENT",
               "hitpoints": 50,
@@ -699,7 +709,9 @@
               "attackStat": 7,
               "defenseStat": 7,
               "initStat": 0,
-              "isDefeated": false
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
             }
           ]
         },

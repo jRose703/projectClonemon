@@ -152,7 +152,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			{
 				if (battleEntity.getDialogueType() == null)
 					battleEntity.setDialogueType(DialogueType.BATTLE);
-				battleEntity.setMessage("I wanted to battle people since I got my first fighter!");
+				//battleEntity.setMessage("I wanted to battle people since I got my first fighter!");
 			} // TODO: This should be read out instead of changed here
 			startDialogue(battleEntity.getMessage(), battleEntity);
 		}

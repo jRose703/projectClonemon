@@ -60,10 +60,19 @@ public class EntityPanel extends JPanel {
             for (int y = centreY - 4; y <= centreY + 4; y++) {
                 ImageIcon icon;
                 try {
-                    if(entities[x][y] != null)
-                        icon = new ImageIcon("assets/entities/entity_n.png");
-                    else
-                        icon = new ImageIcon();
+                    if(entities[x][y] != null) {
+                        if (entities[x][y] instanceof OpponentEntity) {
+                            switch (((OpponentEntity) entities[x][y]).getFacing()) {
+                                case 1 -> icon = new ImageIcon("assets/entities/entity_e.png");
+                                case 2 -> icon = new ImageIcon("assets/entities/entity_s.png");
+                                case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");
+                                default -> icon = new ImageIcon("assets/entities/entity_n.png");
+                            }
+                        }
+                        else {icon = new ImageIcon();}
+                    }
+                    else{
+                        icon = new ImageIcon();}
                 } catch (Exception ex) {
                     icon = new ImageIcon();
                 }

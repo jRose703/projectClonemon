@@ -3,14 +3,11 @@ package Entity;
 import Frames.TextBox.DialogueType;
 
 public class OpponentEntity extends Entity {
-    private String message;
+    private String message = "Hello World!";
     private String entityType = "OpponentEntity";
     private DialogueType dialogueType = DialogueType.BATTLE;
     private FighterInventory fighterInventory;
-    public OpponentEntity(DialogueType dialogueType, String message) {
-        this.dialogueType = dialogueType;
-        this.message = message;
-    }
+    public OpponentEntity() {}
     public void setDialogueType(DialogueType dialogueType) {
         this.dialogueType = dialogueType;
     }

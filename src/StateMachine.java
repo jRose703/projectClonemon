@@ -16,7 +16,7 @@ public class StateMachine implements Observer {
     /** Creates the game frame */
     public StateMachine(){
         this.frame = new Frame(ReadWorldFromJson.readWorldFromFile("world"), this);
-        startDialogue("Let's Fight!");  //TEST
+        //startDialogue("Let's Fight!");  //TEST
     }
 
     /**

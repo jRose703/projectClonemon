@@ -11,7 +11,7 @@ public abstract class Fighter {
     private String name;
 
     // Sprites
-    protected ImageIcon backSprite;
+    protected String backSprite;
     private FightingType type;
     private BattleParticipant battleParty;  // On which side is the fighter on
     private final int ID;
@@ -23,7 +23,7 @@ public abstract class Fighter {
 
     // Stats
     private int hitpoints;
-    private ImageIcon frontSprite;
+    private String frontSprite;
 
     public Fighter(String name, FightingType type, int ID, BattleParticipant battleParty,
                    int maxHP, int attackStat, int defenseStat, int initStat) {
@@ -60,17 +60,17 @@ public abstract class Fighter {
         return chance > 10;
     }
 
-    protected void setSprites(ImageIcon backSprite, ImageIcon frontSprite) {
+    protected void setSprites(String backSprite, String frontSprite) {
         this.backSprite = backSprite;
         this.frontSprite = frontSprite;
     }
 
     public ImageIcon getBackSprite() {
-        return backSprite;
+        return new ImageIcon(backSprite);
     }
 
     public ImageIcon getFrontSprite() {
-        return frontSprite;
+        return new ImageIcon(frontSprite);
     }
 
     public String getName() {
@@ -115,5 +115,9 @@ public abstract class Fighter {
 
     public void setDefeated(boolean defeated) {
         isDefeated = defeated;
+    }
+
+    public void setType(FightingType type) {
+        this.type = type;
     }
 }

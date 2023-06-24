@@ -1,6 +1,11 @@
 package ReadAndWrite.PlayerOperations;
 
 import BattleSystem.Fighter;
+import BattleSystem.Fighters.Citizen;
+import BattleSystem.Fighters.Exorcist;
+import BattleSystem.Fighters.Undead;
+import BattleSystem.FightingType;
+import Entity.Entity;
 import Entity.FighterInventory;
 import Entity.Inventory;
 import Entity.PlayerEntity;
@@ -9,7 +14,11 @@ import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
 import Worlds.Tiles.*;
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class ReadPlayerFromJson {
 
@@ -58,33 +67,36 @@ public class ReadPlayerFromJson {
     }
 
     private static FighterInventory readFighterInventory(JsonObject jsonObject){
-        /*
 
-        RuntimeTypeAdapterFactory<Tile> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+        RuntimeTypeAdapterFactory<Fighter> runtimeTypeAdapterFactory2 = RuntimeTypeAdapterFactory
                 .of(Fighter.class, "type")
-                .registerSubtype(Citizen.class, FightingType.CITIZEN)
-                .registerSubtype(Exorcist.class, FightingType.EXORCIST)
-                .registerSubtype(Undead.class, FightingType.UNDEAD);
-        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
+                .registerSubtype(Citizen.class, "CITIZEN")
+                .registerSubtype(Undead.class, "UNDEAD")
+                .registerSubtype(Exorcist.class, "Exorcist");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory2).create();
 
 
-        //  hier auf fighter ändern
-        Type listType = new TypeToken<List<Tile>>() {
-        }.getType();
-        List<Tile> fromJson = gson.fromJson(tileListString.toString(), listType);
-        */
-
-
-        FighterInventory fighterInventory = new FighterInventory();
+        Type listType = new TypeToken<List<Fighter>>() {}.getType();
         JsonArray jsonArray = jsonObject.get("playerFighters").getAsJsonObject().get("fighterInventory").getAsJsonArray();
 
+        List<Fighter> fromJson = gson.fromJson(jsonArray, listType);
+        System.out.println(fromJson);
+
+        FighterInventory fighterInventory = new FighterInventory();
+
+        for (Fighter fighter:fromJson) {
+            fighterInventory.addToFighterInventory(fighter);
+        }
+        /*
         for (JsonElement element:jsonArray) {
 
 
             JsonObject object = element.getAsJsonObject();
-            Fighter fighter = new Fighter(object.get("name").getAsString(),
-                    BattleParticipant.PLAYER,
+            Fighter fighter = new Citizen(object.get("name").getAsString(),
+                    ReadObjectFromFile.toFightingType(object.get("type").getAsString()),
                     object.get("ID").getAsInt(),
+                    BattleParticipant.PLAYER,
                     object.get("maxHitpoints").getAsInt(),
                     object.get("attackStat").getAsInt(),
                     object.get("defenseStat").getAsInt(),
@@ -92,8 +104,12 @@ public class ReadPlayerFromJson {
             fighter.setDefeated(object.get("isDefeated").getAsBoolean());
             fighterInventory.addToFighterInventory(fighter);
         }
+        */
+        ReadObjectFromFile.addBackBattleType(fighterInventory);
+
         return fighterInventory;
     }
+
 
 
 

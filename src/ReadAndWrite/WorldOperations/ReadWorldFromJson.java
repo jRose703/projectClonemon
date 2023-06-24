@@ -1,20 +1,23 @@
 package ReadAndWrite.WorldOperations;
 
+import BattleSystem.Fighter;
+import BattleSystem.Fighters.Citizen;
+import BattleSystem.Fighters.Exorcist;
+import BattleSystem.Fighters.Undead;
+import BattleSystem.FightingType;
 import ReadAndWrite.ReadObjectFromFile;
 import Entity.Entity;
 import Entity.OpponentEntity;
 import Worlds.Tiles.*;
 import Worlds.World;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import Entity.FighterInventory;
 
 public class ReadWorldFromJson {
 
@@ -37,29 +40,13 @@ public class ReadWorldFromJson {
 
 
         //Todo --> try to simplify and maybe extract into different methode
-        JsonObject tileArrObject = new JsonObject();
-        tileArrObject.add(tileArrKey, jsonObject.get(tileArrKey));
-        JsonArray tileJsonArr = tileArrObject.get(tileArrKey).getAsJsonArray();
-        StringBuilder tileListString = new StringBuilder();
-        tileListString.append("[");
-        for (int i = 0; i < tileJsonArr.size(); i++) {
-            String z = tileJsonArr.get(i).toString();
-            StringBuilder sb = new StringBuilder(z);
-            sb.deleteCharAt(0);
-            sb.deleteCharAt(sb.length() - 1);
-
-            tileListString.append(sb);
-            if (i != tileJsonArr.size() - 1) {
-                tileListString.append(",");
-            }
-        }
-        tileListString.append("]");
+        String tileListString =  ReadObjectFromFile.Arr2Dto1D(jsonObject, tileArrKey);
 
         // tileArr stuff
         Type listType = new TypeToken<List<Tile>>() {
         }.getType();
 
-        List<Tile> fromJson = gson.fromJson(tileListString.toString(), listType);
+        List<Tile> fromJson = gson.fromJson(tileListString, listType);
 
         List<Tile> tileList = new ArrayList<>(fromJson);
 
@@ -90,35 +77,34 @@ public class ReadWorldFromJson {
         RuntimeTypeAdapterFactory<Entity> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Entity.class, "entityType")
                 .registerSubtype(OpponentEntity.class, "OpponentEntity");
+        RuntimeTypeAdapterFactory<Fighter> runtimeTypeAdapterFactory2 = RuntimeTypeAdapterFactory
+                .of(Fighter.class, "type")
+                .registerSubtype(Citizen.class, "CITIZEN")
+                .registerSubtype(Undead.class, "UNDEAD")
+                .registerSubtype(Exorcist.class, "Exorcist");
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).registerTypeAdapterFactory(runtimeTypeAdapterFactory2).create();
 
 
         String entityArrKey = "entityArr";
 
-        //Todo --> try to simplify and maybe extract into different methode
-        JsonObject entityArrObject = new JsonObject();
-        entityArrObject.add(entityArrKey, jsonObject.get(entityArrKey));
-        JsonArray entityJsonArr = entityArrObject.get(entityArrKey).getAsJsonArray();
-        StringBuilder entityListString = new StringBuilder();
-        entityListString.append("[");
-        for (int i = 0; i < entityJsonArr.size(); i++) {
-            String z = entityJsonArr.get(i).toString();
-            StringBuilder sb = new StringBuilder(z);
-            sb.deleteCharAt(0);
-            sb.deleteCharAt(sb.length() - 1);
 
-            entityListString.append(sb);
-            if (i != entityJsonArr.size() - 1) {
-                entityListString.append(",");
-            }
-        }
-        entityListString.append("]");
+        String entityListString = ReadObjectFromFile.Arr2Dto1D(jsonObject, entityArrKey);
+
+        System.out.println(entityListString);
 
         // entityArr stuff
         Type listType = new TypeToken<List<Entity>>() {}.getType();
 
-        List<Entity> fromJson = gson.fromJson(entityListString.toString(), listType);
+        List<Entity> fromJson = gson.fromJson(entityListString, listType);
+
+        for (Entity e: fromJson) {
+            if (e instanceof OpponentEntity) {
+
+                ReadObjectFromFile.addBackBattleType(((OpponentEntity) e).getFighterInventory());
+
+            }
+        }
 
         List<Entity> entityList = new ArrayList<>(fromJson);
         int[] size = readSizeFromJson(jsonObject);
@@ -135,7 +121,13 @@ public class ReadWorldFromJson {
             }
         }
         return entityArr;
+
+
+
+
     }
+
+
 
     /**
      * This function reads the jsonObject and returns an int[] with x size and y size.

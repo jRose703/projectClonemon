@@ -67,7 +67,7 @@ class WorldTest {
     @Test
     void enemy_check() {
         // add an enemy to the entity array here at 0 0
-        Entity opponent = new OpponentEntity(DialogueType.TEXT, "Hello World!");
+        Entity opponent = new OpponentEntity();
         world.setEntity(coordinates, opponent);
 
         assertTrue(world.enemy_check(coordinates));

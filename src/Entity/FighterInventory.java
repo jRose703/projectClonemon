@@ -58,4 +58,8 @@ public class FighterInventory {
         return this.fighterInventory;
     }
 
+    public int size(){
+        return fighterInventory.size();
+    }
+
 }
