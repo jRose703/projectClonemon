@@ -16,10 +16,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class BattleSystemTest {
 
     private final BattleSystem battle;
-    private FighterInventory player;
-    private FighterInventory enemy;
+    private final FighterInventory player;
+    private final FighterInventory enemy;
     private ObserveType observeType;
-    public BattleSystemTest(){
+
+    public BattleSystemTest() {
         Observer observer = (t, o) -> observeType = t;
         BattleObserver battleObserver = new BattleObserver() {
             public void updateHitpoints(BattleParticipant defender, int newHitpoints) {
@@ -33,12 +34,14 @@ public class BattleSystemTest {
         };
 
         player = new FighterInventory();
-        player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
+        player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER,
+                10, 5, 2, 5));
 
         enemy = new FighterInventory();
-        enemy.addToFighterInventory(new Undead("OpponentOne", FightingType.UNDEAD, 6, BattleParticipant.OPPONENT, 17, 2, 2, 7));
+        enemy.addToFighterInventory(new Undead("OpponentOne", FightingType.UNDEAD, 6, BattleParticipant.OPPONENT,
+                20, 2, 2, 7));
 
-        battle = new BattleSystem(observer, battleObserver, player, enemy);
+        battle = new BattleSystem(observer, battleObserver, player, enemy, false);
     }
 
     // TODO: This Test can legally fail if the flee action was not successful
@@ -53,10 +56,13 @@ public class BattleSystemTest {
     }
 
     @Test
-    public void damageCalculationIsCorrect(){
+    public void damageCalculationIsCorrect() {
         battle.round("fight");
         assertEquals(9, player.getFighter(0).getHitpoints());
-        assertEquals(14, enemy.getFighter(0).getHitpoints());
+        if (enemy.getFighter(0).getHitpoints() < 10)
+            assertEquals(2, enemy.getFighter(0).getHitpoints());
+        else
+            assertEquals(12, enemy.getFighter(0).getHitpoints());
     }
 
     @Test
