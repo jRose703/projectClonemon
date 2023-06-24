@@ -1,22 +1,17 @@
 package Entity;
 
-public class Item {
-    public String Type = "";
-    public int amount = 0;
-    public boolean battle = false;
-
-    public String getType() {
-        return Type;
+public abstract class Item {
+    private String name;
+    private int amount;
+    public String getName() {
+        return name;
     }
-
     public int getAmount() {
         return amount;
     }
-
-    public Item(String Type, boolean offensive){
-        this.Type = Type;
+    public Item(String name){
+        this.name = name;
         this.amount=1;
-        this.battle = offensive;
     }
     public void add_Item(){
         this.amount ++;
@@ -29,9 +24,4 @@ public class Item {
             amount--;
         }
     }
-
-    public boolean getBattle(){
-        return this.battle;
-    }
-
 }

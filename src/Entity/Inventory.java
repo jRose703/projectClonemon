@@ -4,39 +4,45 @@ import java.util.Objects;
 import java.util.Vector;
 
 public class Inventory {
-    public Vector<Item> Inventory = new Vector<>();
-    public Inventory(){}
-    public Vector<Item> getInventory(){
-        return this.Inventory;
+    private Vector<Item> inventory = new Vector<>();
+
+    public Inventory() {}
+
+    public void setInventory(Vector<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public Vector<Item> getInventory() {
+        return this.inventory;
     }
     public void addToInventory(Item item_given){
         boolean done = false;
-        for (Item item : this.Inventory) {
-            if (Objects.equals(item.getType(), item_given.getType())) {
+        for (Item item : this.inventory) {
+            if (Objects.equals(item.getName(), item_given.getName())) {
                 item.add_Item();
                 done = true;
                 break;
             }
         }
-        if (!done){
-            this.Inventory.add(item_given);
+        if (!done) {
+            this.inventory.add(item_given);
         }
     }
-    public void removeFromInventory(Item item_given){
+
+    public void removeFromInventory(Item item_given) {
         boolean done = false;
-        for (Item item: this.Inventory){
-            if (Objects.equals(item.getType(), item_given.getType())){
-                if (item.getAmount() > 1){
+        for (Item item : this.inventory) {
+            if (Objects.equals(item.getName(), item_given.getName())) {
+                if (item.getAmount() > 1) {
                     item.reduceAmount();
                     done = true;
-                }
-                else if (item.getAmount() == 1){
-                    this.Inventory.remove(item);
+                } else if (item.getAmount() == 1) {
+                    this.inventory.remove(item);
                     done = true;
                 }
             }
         }
-        if (!done){
+        if (!done) {
             throw new IllegalArgumentException("Item not in Inventory");
         }
     }

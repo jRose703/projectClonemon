@@ -3,8 +3,8 @@ package BattleSystem;
 import Frames.BattleUI.BattleParticipant;
 
 import javax.swing.*;
+import Entity.Item;
 import java.util.Random;
-
 @SuppressWarnings("FieldMayBeFinal")
 public abstract class Fighter {
 
@@ -19,6 +19,7 @@ public abstract class Fighter {
     private final int maxHitpoints;
     private int attackStat;
     private int defenseStat;
+    private Item item;
     private int initStat;
 
     // Stats
@@ -115,4 +116,25 @@ public abstract class Fighter {
     public void setType(FightingType type) {
         this.type = type;
     }
+    public Entity.Item getItem() {
+        return item;
+    }
+    public void setItem(Item item) {
+        this.item = item;
+    }
+    public void heal(){
+        this.hitpoints = maxHitpoints;
+    }
+    public void heal(int amount){
+        if (amount<0){
+            throw new IllegalArgumentException("Cannot heal negative amount");
+        }
+        if (this.hitpoints + amount<=maxHitpoints){
+            this.hitpoints += amount;
+        }
+        else{
+            this.hitpoints = maxHitpoints;
+        }
+    }
+
 }
