@@ -30,6 +30,7 @@ public class ReadWorldFromJson {
         RuntimeTypeAdapterFactory<Tile> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Tile.class, "tileType")
                 .registerSubtype(LowGrassTile.class, "LowGrassTile")
+                .registerSubtype(HighGrassTile.class, "HighGrassTile")
                 .registerSubtype(RockTile.class, "RockTile")
                 .registerSubtype(WaterTile.class, "WaterTile")
                 .registerSubtype(DoorTile.class, "DoorTile")
@@ -39,7 +40,7 @@ public class ReadWorldFromJson {
         String tileArrKey = "tileArr";
 
 
-        //Todo --> try to simplify and maybe extract into different methode
+
         String tileListString =  ReadObjectFromFile.Arr2Dto1D(jsonObject, tileArrKey);
 
         // tileArr stuff
@@ -64,7 +65,6 @@ public class ReadWorldFromJson {
             }
         }
         return tileArr;
-
 
     }
 
@@ -91,7 +91,7 @@ public class ReadWorldFromJson {
 
         String entityListString = ReadObjectFromFile.Arr2Dto1D(jsonObject, entityArrKey);
 
-        System.out.println(entityListString);
+
 
         // entityArr stuff
         Type listType = new TypeToken<List<Entity>>() {}.getType();

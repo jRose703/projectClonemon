@@ -49,11 +49,6 @@ public class BasicPanel extends JPanel implements KeyListener {
 	public BasicPanel(World world, Observer stateMachineObserver) {
         this.stateMachineObserver = stateMachineObserver;
 
-        //TODO Test enemy
-        enemy = new FighterInventory();
-        enemy.addToFighterInventory(new Undead("OpponentOne", FightingType.UNDEAD, 6, BattleParticipant.OPPONENT, 17, 2, 2, 7));
-        enemy.addToFighterInventory(new Undead("OpponentTwo", FightingType.UNDEAD, 7, BattleParticipant.OPPONENT, 12, 2, 2, 7));
-
         // Creates the tick with 20 ticks per second
         timer = new Timer();
         this.startTickable();

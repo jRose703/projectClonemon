@@ -51,12 +51,13 @@ public class TerrainPanel extends JPanel {
                     switch (map[x][y].getTexture_id()) {
                         case 0 -> image = new ImageIcon("assets/tiles/low_grass_tile.png");
                         case 1 -> image = new ImageIcon("assets/tiles/rock_tile.png");
-                        case 2 -> image = new ImageIcon("assets/tiles/water_tile.png");
-                        case 3 -> image = new ImageIcon("assets/tiles/door_tile.png");
+                        case 2 -> image = new ImageIcon("assets/tiles/high_grass_tile.png");
+                        case 3 -> image = new ImageIcon("assets/tiles/water_tile.png");
+                        case 4 -> image = new ImageIcon("assets/tiles/door_tile.png");
                         default -> image = new ImageIcon("assets/tiles/void_tile.png");
                     }
                 } catch (Exception ex) {
-                    image = new ImageIcon("assets/tiles/rock_tile.png");
+                    image = new ImageIcon("assets/tiles/void_tile.png");
                 }
                 g.drawImage(image.getImage(), screenX * TILE_SIZE, screenY * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                 screenY++;

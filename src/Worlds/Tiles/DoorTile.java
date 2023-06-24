@@ -8,7 +8,7 @@ public class DoorTile extends Tile{
 
     DoorTile(){
         this.accessible = true;
-        this.texture_id = 0;
+        this.texture_id = 4;
         this.tileType = "DoorTile";
         this.connectedTo = "world";
         this.newCoordinates = new Coordinates(9,9);
