@@ -49,7 +49,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 
 		// Creates the player
 		player = ReadPlayerFromJson.readPlayerFromFile("player");
-		if (player.getPlayerFighters().size() < 1)
+		if (player.getPlayerFighters().getSize() < 1)
 			player.addToFighterInventory(new Exorcist("PlayerOne", 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
 
 		// Creates the graphical world
@@ -93,25 +93,16 @@ public class BasicPanel extends JPanel implements KeyListener {
 		worldPane.setVisible(true);
 	}
 
-	private void startTickable() {
-		timer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				if (worldPane != null && worldPane.isVisible()){
-					reloadWorld();
-					reloadEntities();
-					worldPane.tickMoveCooldown();
-				}
-			}
-		}, 0, 50);//wait 0 milliseconds before doing the action and do it every 50ms (0.05 seconds)
-	}
-
 	public void reloadWorld() {
 		this.worldPane.reloadWorld();
 	}
 
 	public void reloadEntities() {
 		this.worldPane.reloadEntities();
+	}
+
+	public void setOpponentDefeated() {
+		worldPane.setOpponentDefeated();
 	}
 
 	@Override
@@ -135,7 +126,16 @@ public class BasicPanel extends JPanel implements KeyListener {
 		if (worldPane.isVisible()) worldPane.keyPressed(e);
 	}
 
-	public void setOpponentDefeated() {
-		worldPane.setOpponentDefeated();
+	private void startTickable() {
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				if (worldPane != null && worldPane.isVisible()) {
+					reloadWorld();
+					reloadEntities();
+					worldPane.tickMoveCooldown();
+				}
+			}
+		}, 0, 50);//wait 0 milliseconds before doing the action and do it every 50ms (0.05 seconds)
 	}
 }

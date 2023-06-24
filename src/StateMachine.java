@@ -42,10 +42,10 @@ public class StateMachine implements Observer {
     }
 
     /**
-     * Starts the event a dialogue causes
+     * Starts an event based on the dialogueType.
      */
     private void endDialogue(OpponentEntity opponent) {
-        switch (opponent.getDialogueType()) {
+        switch (opponent.getInteractionType()) {
             case BATTLE:
                 startBattle(opponent, null, true);
                 break;

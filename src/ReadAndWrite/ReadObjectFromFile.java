@@ -1,16 +1,14 @@
 package ReadAndWrite;
 
 import BattleSystem.FightingType;
-import Entity.Entity;
+import Entity.FighterInventory;
 import Frames.BattleUI.BattleParticipant;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import Entity.*;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 public class ReadObjectFromFile {
 
@@ -62,15 +60,24 @@ public class ReadObjectFromFile {
     public static FighterInventory addBackBattleType(FighterInventory fighterInventory){
 
 
-                for (int i = 0; i < fighterInventory.size(); i++) {
+        for (int i = 0; i < fighterInventory.getSize(); i++) {
 
-                    switch (fighterInventory.getFighter(i).getClass().toString()){
-                        case "class BattleSystem.Fighters.Citizen" ->{fighterInventory.getFighter(i).setType(FightingType.CITIZEN); break;}
-                        case "class BattleSystem.Fighters.Undead" ->{fighterInventory.getFighter(i).setType(FightingType.UNDEAD); break;}
-                        case "class BattleSystem.Fighters.Exorcist" ->{fighterInventory.getFighter(i).setType(FightingType.EXORCIST); break;}
-                        default -> throw new IllegalStateException();
-                    }
+            switch (fighterInventory.getFighter(i).getClass().toString()) {
+                case "class BattleSystem.Fighters.Citizen" -> {
+                    fighterInventory.getFighter(i).setType(FightingType.CITIZEN);
+                    break;
                 }
+                case "class BattleSystem.Fighters.Undead" -> {
+                    fighterInventory.getFighter(i).setType(FightingType.UNDEAD);
+                    break;
+                }
+                case "class BattleSystem.Fighters.Exorcist" -> {
+                    fighterInventory.getFighter(i).setType(FightingType.EXORCIST);
+                    break;
+                }
+                default -> throw new IllegalStateException();
+            }
+        }
 
     return fighterInventory;
     }

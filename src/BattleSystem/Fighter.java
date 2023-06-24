@@ -3,28 +3,27 @@ package BattleSystem;
 import Frames.BattleUI.BattleParticipant;
 
 import javax.swing.*;
-import Entity.Item;
 import java.util.Random;
+
 @SuppressWarnings("FieldMayBeFinal")
 public abstract class Fighter {
 
     private String name;
+    private final int ID;
+    private final int maxHitpoints;
+    private FightingType type;
+    private BattleParticipant battleParty;  // On which side is the fighter on
 
     // Sprites
     private String backSprite;
-    private FightingType type;
-    private BattleParticipant battleParty;  // On which side is the fighter on
-    private final int ID;
     private boolean isDefeated;
-    private final int maxHitpoints;
-    private int attackStat;
-    private int defenseStat;
-    private Item item;
-    private int initStat;
 
     // Stats
     private int hitpoints;
     private String frontSprite;
+    private int attackStat;
+    private int defenseStat;
+    private int initStat;
 
     public Fighter(String name, int ID, BattleParticipant battleParty,
                    int maxHP, int attackStat, int defenseStat, int initStat) {
@@ -38,6 +37,16 @@ public abstract class Fighter {
         this.attackStat = attackStat;
         this.defenseStat = defenseStat;
         this.initStat = initStat;
+    }
+
+    public void heal(int amount) {
+        if (amount < 0) throw new IllegalArgumentException("Cannot heal negative amount");
+
+        this.hitpoints = Math.min(this.hitpoints + amount, maxHitpoints);
+    }
+
+    public void revive() {
+        this.hitpoints = maxHitpoints;
     }
 
     /**
@@ -60,9 +69,8 @@ public abstract class Fighter {
         return chance > 10;
     }
 
-    protected void setSprites(String backSprite, String frontSprite) {
-        this.backSprite = backSprite;
-        this.frontSprite = frontSprite;
+    public boolean isDefeated() {
+        return this.isDefeated;
     }
 
     public ImageIcon getBackSprite() {
@@ -109,32 +117,13 @@ public abstract class Fighter {
         return this.initStat;
     }
 
-    public boolean isDefeated() {
-        return this.isDefeated;
+    public void setSprites(String backSprite, String frontSprite) {
+        this.backSprite = backSprite;
+        this.frontSprite = frontSprite;
     }
 
     public void setType(FightingType type) {
         this.type = type;
-    }
-    public Entity.Item getItem() {
-        return item;
-    }
-    public void setItem(Item item) {
-        this.item = item;
-    }
-    public void heal(){
-        this.hitpoints = maxHitpoints;
-    }
-    public void heal(int amount){
-        if (amount<0){
-            throw new IllegalArgumentException("Cannot heal negative amount");
-        }
-        if (this.hitpoints + amount<=maxHitpoints){
-            this.hitpoints += amount;
-        }
-        else{
-            this.hitpoints = maxHitpoints;
-        }
     }
 
 }

@@ -1,25 +1,16 @@
 package Entity;
 
-import Frames.TextBox.DialogueType;
-
 public class OpponentEntity extends Entity {
+    private InteractionType interactionType = InteractionType.BATTLE;
+    private FighterInventory fighterInventory;
     private String message = "Hello World!";
     private String entityType = "OpponentEntity";
-    private DialogueType dialogueType = DialogueType.BATTLE;
-    private FighterInventory fighterInventory;
-    public OpponentEntity() {}
-    public void setDialogueType(DialogueType dialogueType) {
-        this.dialogueType = dialogueType;
-    }
-    public DialogueType getDialogueType(){
-        return this.dialogueType;
+
+    public OpponentEntity() {
     }
 
-    public void setEntityType(String entityType) {
-        this.entityType = entityType;
-    }
-    public void setFighterInventory(FighterInventory fighterInventory) {
-        this.fighterInventory = fighterInventory;
+    public InteractionType getInteractionType() {
+        return this.interactionType;
     }
 
     public FighterInventory getFighterInventory() {
@@ -30,8 +21,20 @@ public class OpponentEntity extends Entity {
         return message;
     }
 
+    public void setInteractionType(InteractionType interactionType) {
+        this.interactionType = interactionType;
+    }
+
+    public void setFighterInventory(FighterInventory fighterInventory) {
+        this.fighterInventory = fighterInventory;
+    }
+
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
     }
 
 }

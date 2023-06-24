@@ -4,10 +4,10 @@ import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
+import Entity.InteractionType;
 import Entity.OpponentEntity;
 import Entity.PlayerEntity;
 import Frames.BattleUI.BattleParticipant;
-import Frames.TextBox.DialogueType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
@@ -150,11 +150,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		if (world.getEntityArr()[x][y] != null) {
 			battleEntity = (OpponentEntity) world.getEntityArr()[x][y];
-			{
-				if (battleEntity.getDialogueType() == null)
-					battleEntity.setDialogueType(DialogueType.BATTLE);
-				//battleEntity.setMessage("I wanted to battle people since I got my first fighter!");
-			} // TODO: This should be read out instead of changed here
 			startDialogue(battleEntity.getMessage(), battleEntity);
 		}
 	}
@@ -193,7 +188,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	public void setOpponentDefeated() {
-		battleEntity.setDialogueType(DialogueType.TEXT);
+		battleEntity.setInteractionType(InteractionType.TEXT);
 		battleEntity = null;
 	}
 }

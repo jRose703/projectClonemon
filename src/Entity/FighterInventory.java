@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Vector;
 
 public class FighterInventory {
-    private Vector<Fighter> fighterInventory = new Vector<>();
+    private final Vector<Fighter> fighterInventory = new Vector<>();
 
     public FighterInventory() {
     }
@@ -38,6 +38,13 @@ public class FighterInventory {
         }
     }
 
+    public boolean hasNext() {
+        for (Fighter fighter : fighterInventory) {
+            if (!fighter.isDefeated()) return true;
+        }
+        return false;
+    }
+
     public Fighter getFighter(int index) {
         return fighterInventory.get(index);
     }
@@ -47,18 +54,11 @@ public class FighterInventory {
         return fighterInventory.indexOf(fighter);
     }
 
-    public boolean hasNext() {
-        for (Fighter fighter : fighterInventory) {
-            if (!fighter.isDefeated()) return true;
-        }
-        return false;
-    }
-
     public Vector<Fighter> getFighterInventory() {
         return this.fighterInventory;
     }
 
-    public int size(){
+    public int getSize() {
         return fighterInventory.size();
     }
 

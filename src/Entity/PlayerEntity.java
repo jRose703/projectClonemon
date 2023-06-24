@@ -4,23 +4,37 @@ import BattleSystem.Fighter;
 import Worlds.Coordinates;
 
 public class PlayerEntity extends Entity {
-    public PlayerEntity(){
-    }
+
     private FighterInventory playerFighters;
+    private Inventory inventory;
     private String currentWorld;
     private int money;
-    private Inventory inventory;
+
+    public PlayerEntity() {
+    }
+
+    public void addToInventory(Item item) {
+        inventory.addToInventory(item);
+    }
+
+    public void addToFighterInventory(Fighter fighter) {
+        playerFighters.addToFighterInventory(fighter);
+    }
 
     public FighterInventory getPlayerFighters() {
         return this.playerFighters;
     }
 
-    public void addToFighterInventory(Fighter fighter){
-        playerFighters.addToFighterInventory(fighter);
-    }
-
     public String getCurrentWorld() {
         return currentWorld;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
     @Override
@@ -31,14 +45,6 @@ public class PlayerEntity extends Entity {
     @Override
     public int getFacing() {
         return super.getFacing();
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
     }
 
     public void setCurrentWorld(String currentWorld) {
