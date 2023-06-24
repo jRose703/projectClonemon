@@ -16,7 +16,8 @@ import Worlds.Tiles.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
+import Entity.Item;
+import Entity.Items.*;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -59,10 +60,9 @@ public class ReadPlayerFromJson {
         return jsonObject.get("money").getAsInt();
     }
 
-    //#Todo
+    //#Todo read Inventory
     private static Inventory readInventory(JsonObject jsonObject){
-        JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
-        System.out.println(jsonArray);
+        //JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
         return new Inventory();
     }
 
@@ -81,30 +81,12 @@ public class ReadPlayerFromJson {
         JsonArray jsonArray = jsonObject.get("playerFighters").getAsJsonObject().get("fighterInventory").getAsJsonArray();
 
         List<Fighter> fromJson = gson.fromJson(jsonArray, listType);
-        System.out.println(fromJson);
 
         FighterInventory fighterInventory = new FighterInventory();
 
         for (Fighter fighter:fromJson) {
             fighterInventory.addToFighterInventory(fighter);
         }
-        /*
-        for (JsonElement element:jsonArray) {
-
-
-            JsonObject object = element.getAsJsonObject();
-            Fighter fighter = new Citizen(object.get("name").getAsString(),
-                    ReadObjectFromFile.toFightingType(object.get("type").getAsString()),
-                    object.get("ID").getAsInt(),
-                    BattleParticipant.PLAYER,
-                    object.get("maxHitpoints").getAsInt(),
-                    object.get("attackStat").getAsInt(),
-                    object.get("defenseStat").getAsInt(),
-                    object.get("initStat").getAsInt());
-            fighter.setDefeated(object.get("isDefeated").getAsBoolean());
-            fighterInventory.addToFighterInventory(fighter);
-        }
-        */
         ReadObjectFromFile.addBackBattleType(fighterInventory);
 
         return fighterInventory;

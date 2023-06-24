@@ -648,30 +648,30 @@
           "fighterInventory": [
             {
               "name": "Dogmon",
-              "type":"CITIZEN",
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "type": "CITIZEN",
               "battleParty": "OPPONENT",
               "ID": 4,
-              "hitpoints": 25,
+              "isDefeated": false,
               "maxHitpoints": 25,
               "attackStat": 5,
               "defenseStat": 5,
               "initStat": 0,
-              "isDefeated": false,
-              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "hitpoints": 25,
               "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
             },
             {
               "name": "Bearmon",
-              "type":"CITIZEN",
-              "ID": 5,
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "type": "CITIZEN",
               "battleParty": "OPPONENT",
-              "hitpoints": 50,
+              "ID": 5,
+              "isDefeated": false,
               "maxHitpoints": 50,
               "attackStat": 7,
               "defenseStat": 7,
               "initStat": 0,
-              "isDefeated": false,
-              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "hitpoints": 50,
               "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
             }
           ]
@@ -687,30 +687,30 @@
           "fighterInventory": [
             {
               "name": "Dogmon",
-              "type":"UNDEAD",
-              "ID": 4,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "type": "UNDEAD",
               "battleParty": "OPPONENT",
-              "hitpoints": 25,
+              "ID": 4,
+              "isDefeated": false,
               "maxHitpoints": 25,
               "attackStat": 5,
               "defenseStat": 5,
               "initStat": 0,
-              "isDefeated": false,
-              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "hitpoints": 25,
               "frontSprite": "assets/fighters/frontsprites/undead_front.png"
             },
             {
               "name": "Bearmon",
-              "type":"UNDEAD",
-              "ID": 5,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "type": "UNDEAD",
               "battleParty": "OPPONENT",
-              "hitpoints": 50,
+              "ID": 5,
+              "isDefeated": false,
               "maxHitpoints": 50,
               "attackStat": 7,
               "defenseStat": 7,
               "initStat": 0,
-              "isDefeated": false,
-              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "hitpoints": 50,
               "frontSprite": "assets/fighters/frontsprites/undead_front.png"
             }
           ]
