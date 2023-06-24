@@ -4,7 +4,6 @@ import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingType;
 import Entity.OpponentEntity;
 import Entity.PlayerEntity;
 import Frames.BattleUI.BattleParticipant;
@@ -113,11 +112,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			int fighterChoice = random.nextInt(1, 3);
 			switch (fighterChoice) {
 				case 1 ->
-						startCombat(new Undead("Wild Undead", FightingType.UNDEAD, 9000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Undead("Wild Undead", 9000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 				case 2 ->
-						startCombat(new Citizen("Wild Citizen", FightingType.CITIZEN, 8000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Citizen("Wild Citizen", 8000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 				case 3 ->
-						startCombat(new Exorcist("Wild Exorcist", FightingType.EXORCIST, 7000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+						startCombat(new Exorcist("Wild Exorcist", 7000, BattleParticipant.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
 			}
 		}
 	}

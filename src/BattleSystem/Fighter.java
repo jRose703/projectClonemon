@@ -11,7 +11,7 @@ public abstract class Fighter {
     private String name;
 
     // Sprites
-    protected String backSprite;
+    private String backSprite;
     private FightingType type;
     private BattleParticipant battleParty;  // On which side is the fighter on
     private final int ID;
@@ -25,10 +25,9 @@ public abstract class Fighter {
     private int hitpoints;
     private String frontSprite;
 
-    public Fighter(String name, FightingType type, int ID, BattleParticipant battleParty,
+    public Fighter(String name, int ID, BattleParticipant battleParty,
                    int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
-        this.type = type;
         this.ID = ID;
         this.battleParty = battleParty;
         this.isDefeated = false;
@@ -111,10 +110,6 @@ public abstract class Fighter {
 
     public boolean isDefeated() {
         return this.isDefeated;
-    }
-
-    public void setDefeated(boolean defeated) {
-        isDefeated = defeated;
     }
 
     public void setType(FightingType type) {

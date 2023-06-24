@@ -2,7 +2,6 @@ import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingType;
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
 import Frames.BattleUI.BattleParticipant;
@@ -34,11 +33,11 @@ public class BattleSystemTest {
         };
 
         player = new FighterInventory();
-        player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER,
+        player.addToFighterInventory(new Exorcist("PlayerOne", 0, BattleParticipant.PLAYER,
                 10, 5, 2, 5));
 
         enemy = new FighterInventory();
-        enemy.addToFighterInventory(new Undead("OpponentOne", FightingType.UNDEAD, 6, BattleParticipant.OPPONENT,
+        enemy.addToFighterInventory(new Undead("OpponentOne", 6, BattleParticipant.OPPONENT,
                 20, 2, 2, 7));
 
         battle = new BattleSystem(observer, battleObserver, player, enemy, false);

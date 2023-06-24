@@ -3,7 +3,6 @@ package Frames;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
-import BattleSystem.FightingType;
 import Entity.FighterInventory;
 import Entity.OpponentEntity;
 import Entity.PlayerEntity;
@@ -51,7 +50,7 @@ public class BasicPanel extends JPanel implements KeyListener {
 		// Creates the player
 		player = ReadPlayerFromJson.readPlayerFromFile("player");
 		if (player.getPlayerFighters().size() < 1)
-			player.addToFighterInventory(new Exorcist("PlayerOne", FightingType.EXORCIST, 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
+			player.addToFighterInventory(new Exorcist("PlayerOne", 0, BattleParticipant.PLAYER, 10, 5, 2, 5));
 
 		// Creates the graphical world
 		this.worldPane = new WorldPane(world, player, stateMachineObserver);
