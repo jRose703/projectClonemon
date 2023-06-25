@@ -1,5 +1,6 @@
 package Frames.BattleUI;
 
+import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import Entity.FighterInventory;
@@ -208,7 +209,7 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
 
         if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
 
-        if (isNewRound) battle.round("switch", fighterIndex);
+        if (isNewRound) battle.round(BattleAction.SWITCH, fighterIndex);
         else battle.switchAfterDefeated(fighterIndex);
         setVisible(false);
     }

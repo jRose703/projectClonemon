@@ -1,3 +1,4 @@
+import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
@@ -10,7 +11,6 @@ import Observer.Observer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class BattleSystemTest {
 
@@ -45,34 +45,23 @@ public class BattleSystemTest {
 
     // TODO: This Test can legally fail if the flee action was not successful
     @Test
-    public void updatesCorrectObserveType(){
-        battle.round("run");
-        battle.round("run");
-        battle.round("run");
-        battle.round("run");
-        battle.round("run");
+    public void updatesCorrectObserveType() {
+        battle.round(BattleAction.RUN);
+        battle.round(BattleAction.RUN);
+        battle.round(BattleAction.RUN);
+        battle.round(BattleAction.RUN);
+        battle.round(BattleAction.RUN);
         assertEquals(ObserveType.BATTLE_END, observeType);
     }
 
     @Test
     public void damageCalculationIsCorrect() {
-        battle.round("fight");
+        battle.round(BattleAction.FIGHT);
         assertEquals(9, player.getFighter(0).getHitpoints());
         if (enemy.getFighter(0).getHitpoints() < 10)
             assertEquals(2, enemy.getFighter(0).getHitpoints());
         else
             assertEquals(12, enemy.getFighter(0).getHitpoints());
-    }
-
-    @Test
-    public void throwsCorrectErrorInvalidAction(){
-        try{
-            battle.round("tomato");
-        }catch (IllegalStateException e){
-            System.out.println(e + "\nCorrect exception was caught!");
-        }catch (Exception e){
-            fail();
-        }
     }
 
 }

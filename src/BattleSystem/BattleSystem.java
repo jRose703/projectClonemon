@@ -48,7 +48,7 @@ public class BattleSystem {
         battleObserver.setFighter(opponent);
     }
 
-    public void round(String action) {
+    public void round(BattleAction action) {
         this.round(action, null);
     }
 
@@ -56,9 +56,9 @@ public class BattleSystem {
      * This method is the battle loop. It starts when a new BattleSystem is created and ends if the player flees
      * or one fighter's HP drop to 0.
      */
-    public void round(String action, Integer switchIndex) {
+    public void round(BattleAction action, Integer switchIndex) {
         if (isEnded) return;
-        if (action.equals("run") && isTrainerBattle) {
+        if (action.equals(BattleAction.RUN) && isTrainerBattle) {
             System.out.println("You can't run away from a trainer battle!");
             return;
         }
@@ -69,7 +69,7 @@ public class BattleSystem {
         System.out.println("Round " + round);  // just for testing purposes
 
         // decides whether the player or the opponent is faster with their action
-        if (player.getInitStat() >= opponent.getInitStat() || !(action.equals("fight"))) {
+        if (player.getInitStat() >= opponent.getInitStat() || !(action.equals(BattleAction.FIGHT))) {
             if (this.playerAction(action, switchIndex) || isEnded) return;
             this.attacks(this.opponent, this.player);
 
@@ -83,22 +83,22 @@ public class BattleSystem {
     /**
      * This method executes the actionInput that was either "attack" or "flee".
      */
-    private boolean playerAction(String chosenAction, Integer switchIndex) {
+    private boolean playerAction(BattleAction chosenAction, Integer switchIndex) {
         switch (chosenAction) {
-            case "fight" -> {
+            case FIGHT -> {
                 return this.attacks(this.player, this.opponent);
             }
-            case "switch" -> {
+            case SWITCH -> {
                 player = playerFighters.getFighter(switchIndex);
                 battleObserver.setFighter(player);
                 System.out.println(player.getName());
                 return false;
             }
-            case "run" -> {
+            case RUN -> {
                 if (player.flee()) endBattle();
                 return false;
             }
-            default -> throw new IllegalStateException("Chosen action was not attack or flee!");
+            default -> throw new IllegalStateException("Chosen action was not attack, switch or flee!");
         }
     }
 

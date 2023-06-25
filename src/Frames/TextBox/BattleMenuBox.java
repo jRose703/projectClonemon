@@ -1,5 +1,6 @@
 package Frames.TextBox;
 
+import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import Frames.BasicPanel;
 import Frames.BattleUI.FighterInventoryUI;
@@ -68,13 +69,13 @@ public class BattleMenuBox extends AbstractTextBox{
 
     private void chooseAction() {
         if (cursor_x == LEFT && cursor_y == TOP)
-            this.battle.round("fight");
+            this.battle.round(BattleAction.FIGHT);
         else if (cursor_x == LEFT && cursor_y == BOTTOM)
-            System.out.println("ITEMS");
+            System.out.println(BattleAction.ITEMS);
         else if (cursor_x == RIGHT && cursor_y == TOP)
             fighterInventoryUI.showUI(true);
         else if (cursor_x == RIGHT && cursor_y == BOTTOM)
-            this.battle.round("run");
+            this.battle.round(BattleAction.RUN);
         else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
     }
 }
