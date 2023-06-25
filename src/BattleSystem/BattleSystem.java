@@ -81,7 +81,7 @@ public class BattleSystem {
     }
 
     /**
-     * This method executes the actionInput that was either "attack" or "flee".
+     * This method executes the actionInput that given by the user input over the gui.
      */
     private boolean playerAction(BattleAction chosenAction, Integer switchIndex) {
         switch (chosenAction) {

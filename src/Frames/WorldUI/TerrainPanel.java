@@ -15,10 +15,10 @@ public class TerrainPanel extends JPanel {
     private final World WORLD;
     private final PlayerEntity PLAYER;
 
-    public TerrainPanel(World world, PlayerEntity player, int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
+    public TerrainPanel(World world, PlayerEntity player, int TILE_SIZE) {
         this.TILE_SIZE = TILE_SIZE;
-        this.X_FIELDS = X_FIELDS;
-        this.Y_FIELDS = Y_FIELDS;
+        this.X_FIELDS = world.getXLength();
+        this.Y_FIELDS = world.getYLength();
         this.WORLD = world;
         this.PLAYER = player;
         this.setBounds(0, 0, TILE_SIZE * X_FIELDS, TILE_SIZE * Y_FIELDS);
@@ -48,7 +48,7 @@ public class TerrainPanel extends JPanel {
             for (int y = centreY - 4; y <= centreY + 4; y++) {
                 ImageIcon image;
                 try {
-                    switch (map[x][y].getTexture_id()) {
+                    switch (map[x][y].getTextureID()) {
                         case 0 -> image = new ImageIcon("assets/tiles/low_grass_tile.png");
                         case 1 -> image = new ImageIcon("assets/tiles/rock_tile.png");
                         case 2 -> image = new ImageIcon("assets/tiles/high_grass_tile.png");

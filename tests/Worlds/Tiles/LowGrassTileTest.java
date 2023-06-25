@@ -19,7 +19,7 @@ class LowGrassTileTest {
 
     @Test
     void getTexture_id() {
-        assertEquals(tile.getTexture_id(), 0);
+        assertEquals(tile.getTextureID(), 0);
     }
 
     @Test

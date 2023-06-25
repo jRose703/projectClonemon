@@ -29,20 +29,20 @@ public class FighterUI extends JPanel {
         this.setLayout(null);
     }
 
-    public void updateNewFighter(String name, int maxHitpoints, int newHitpoints, ImageIcon backSprite, ImageIcon frontSprite) {
+    public void updateNewFighter(String name, int maxHP, int newHP, ImageIcon backSprite, ImageIcon frontSprite) {
         this.name = name;
         this.backSprite = backSprite;
         this.frontSprite = frontSprite;
         if (this.frontSprite != null)
             hitpointBar.setBounds(backSprite_x, BasicPanel.SCREENHEIGHT * 2 / 10, BasicPanel.SCREENWIDTH / 4, BasicPanel.SCREENHEIGHT / 80);
 
-        maxHP = maxHitpoints;
-        hitpointBar.setMaximum(maxHitpoints);
-        updateHitpointbar(newHitpoints);
+        this.maxHP = maxHP;
+        hitpointBar.setMaximum(maxHP);
+        updateHitpointbar(newHP);
     }
 
-    public void updateHitpointbar(int newHitpoints) {
-        hitpointBar.setValue(newHitpoints);
+    public void updateHitpointbar(int newHP) {
+        hitpointBar.setValue(newHP);
         repaint();
         if (5 * hitpointBar.getValue() <= maxHP) hitpointBar.setForeground(Color.RED);
         else if (2 * hitpointBar.getValue() <= maxHP) hitpointBar.setForeground(Color.YELLOW);

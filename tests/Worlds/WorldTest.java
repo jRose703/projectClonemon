@@ -69,9 +69,9 @@ class WorldTest {
         Entity opponent = new OpponentEntity();
         world.setEntity(coordinates, opponent);
 
-        assertTrue(world.enemy_check(coordinates));
+        assertTrue(world.tileContainsEnemy(coordinates));
         coordinates.setX(1);
-        assertFalse(world.enemy_check(coordinates));
+        assertFalse(world.tileContainsEnemy(coordinates));
 
     }
 

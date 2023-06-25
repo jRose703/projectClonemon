@@ -13,10 +13,10 @@ public abstract class Entity {
     public void move(int direction, World world) {
         if (direction % 2 != 0) {
             if (direction == 1) {
-                if (world.accessible(this.coordinates.getX() + 1, this.coordinates.getY()))
+                if (world.isAccessible(this.coordinates.getX() + 1, this.coordinates.getY()))
                     this.coordinates.setX(this.coordinates.getX() + 1);
             } else if (direction == 3) {
-                if (world.accessible(this.coordinates.getX() - 1, this.coordinates.getY()))
+                if (world.isAccessible(this.coordinates.getX() - 1, this.coordinates.getY()))
                     this.coordinates.setX(this.coordinates.getX() - 1);
             } else {
                 throw new IllegalArgumentException("invalid direction");
@@ -24,10 +24,10 @@ public abstract class Entity {
 
         } else {
             if (direction == 2) {
-                if (world.accessible(this.coordinates.getX(), this.coordinates.getY() + 1))
+                if (world.isAccessible(this.coordinates.getX(), this.coordinates.getY() + 1))
                     this.coordinates.setY(this.coordinates.getY() + 1);
             } else if (direction == 0) {
-                if (world.accessible(this.coordinates.getX(), this.coordinates.getY() - 1))
+                if (world.isAccessible(this.coordinates.getX(), this.coordinates.getY() - 1))
                     this.coordinates.setY(this.coordinates.getY() - 1);
             } else {
                 throw new IllegalArgumentException("invalid direction");
