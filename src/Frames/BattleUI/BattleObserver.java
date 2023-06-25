@@ -9,6 +9,6 @@ public interface BattleObserver {
 
     public void setFighter(Fighter fighter);
 
-    public void showFighterinventoryUI();
+    public void showFighterInventoryUI();
 
 }

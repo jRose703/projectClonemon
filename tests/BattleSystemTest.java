@@ -28,7 +28,7 @@ public class BattleSystemTest {
             public void setFighter(Fighter fighter) {
             }
 
-            public void showFighterinventoryUI() {
+            public void showFighterInventoryUI() {
             }
         };
 

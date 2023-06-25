@@ -72,7 +72,7 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	}
 
 	@Override
-	public void showFighterinventoryUI() {
+	public void showFighterInventoryUI() {
 		fighterInventoryUI.showUI(false);
 	}
 

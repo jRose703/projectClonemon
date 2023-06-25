@@ -51,33 +51,6 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
         this.setLayout(null);
     }
 
-    private void mapSetup() {
-        for (int y = 0; y < 3; y++)
-            for (int x = 0; x < 2; x++) {
-                List<Integer> cursor_cords = new ArrayList<>();
-                cursor_cords.add(leftEdge + x * BasicPanel.SCREENWIDTH / 2);
-                cursor_cords.add(upperEdge + y * BasicPanel.SCREENWIDTH / 4);
-                lookupIndex.put(cursor_cords, x + 2 * y);
-            }
-    }
-
-    private void switchFighter() {
-        List<Integer> cursor_coords = new ArrayList<>();
-        cursor_coords.add(cursor_x);
-        cursor_coords.add(cursor_y);
-
-        int fighterIndex = lookupIndex.getOrDefault(cursor_coords, -1);
-        cursor_coords.clear();
-
-        if (fighterIndex == -1) throw new IllegalStateException("Cursor can't be here!");
-
-        if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
-
-        if (isNewRound) battle.round("switch", fighterIndex);
-        else battle.switchAfterDefeated(fighterIndex);
-        setVisible(false);
-    }
-
     public void setBattle(BattleSystem battle) {
         this.battle = battle;
     }
@@ -129,6 +102,40 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
             g.drawString("BACK", 8 * BasicPanel.SCREENWIDTH / 10, 95 * BasicPanel.SCREENHEIGHT / 100); // draws in the lower right corner
         }
         BasicPanel.drawCursor(g, this.cursor_x, this.cursor_y);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case 10 -> { // If enter is pressed:
+                if (cursor_x == cursor_back_button)
+                    setVisible(false);
+                else
+                    switchFighter();
+            }
+            case 37 -> moveCursor(Direction.LEFT);
+            case 38 -> moveCursor(Direction.UP);
+            case 39 -> moveCursor(Direction.RIGHT);
+            case 40 -> moveCursor(Direction.DOWN);
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    private void mapSetup() {
+        for (int y = 0; y < 3; y++)
+            for (int x = 0; x < 2; x++) {
+                List<Integer> cursor_cords = new ArrayList<>();
+                cursor_cords.add(leftEdge + x * BasicPanel.SCREENWIDTH / 2);
+                cursor_cords.add(upperEdge + y * BasicPanel.SCREENWIDTH / 4);
+                lookupIndex.put(cursor_cords, x + 2 * y);
+            }
     }
 
     /**
@@ -189,28 +196,22 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
         repaint();
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case 10 -> { // If enter is pressed:
-                if (cursor_x == cursor_back_button)
-                    setVisible(false);
-                else
-                    switchFighter();
-            }
-            case 37 -> moveCursor(Direction.LEFT);
-            case 38 -> moveCursor(Direction.UP);
-            case 39 -> moveCursor(Direction.RIGHT);
-            case 40 -> moveCursor(Direction.DOWN);
-        }
-    }
+    private void switchFighter() {
+        List<Integer> cursor_coords = new ArrayList<>();
+        cursor_coords.add(cursor_x);
+        cursor_coords.add(cursor_y);
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
+        int fighterIndex = lookupIndex.getOrDefault(cursor_coords, -1);
+        cursor_coords.clear();
 
-    @Override
-    public void keyPressed(KeyEvent e) {}
+        if (fighterIndex == -1) throw new IllegalStateException("Cursor can't be here!");
+
+        if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
+
+        if (isNewRound) battle.round("switch", fighterIndex);
+        else battle.switchAfterDefeated(fighterIndex);
+        setVisible(false);
+    }
 
     /**
      * Directions that the cursor can move

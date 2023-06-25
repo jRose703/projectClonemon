@@ -10,15 +10,14 @@ public class BattleSystem {
     private Fighter player;
     private Fighter opponent;
 
-    private final FighterInventory playerFighter;
-    private final FighterInventory opponentFighter;
+    private final FighterInventory playerFighters;
+    private final FighterInventory opponentFighters;
 
     private int playerIndex;
     private int opponentIndex = 0;
-
-    private int round = 1;  // just for testing purposes
+    private final boolean isTrainerBattle;
     private boolean isCurrentFighterDefeated = false;
-    private boolean isTrainerBattle;
+    private int round = 1;
     private boolean isEnded = false;
     private FightingSide winner;
 
@@ -26,19 +25,19 @@ public class BattleSystem {
     private final BattleObserver battleObserver;
 
     public BattleSystem(Observer stateMachineObserver, BattleObserver battleObserver,
-                        FighterInventory playerFighter, FighterInventory opponentFighter, boolean isTrainerBattle) {
+                        FighterInventory playerFighters, FighterInventory opponentFighters, boolean isTrainerBattle) {
 
-        for (Fighter fighter : playerFighter.getFighterInventory())
+        for (Fighter fighter : playerFighters.getFighterInventory())
             if (!fighter.isDefeated()) {
-                playerIndex = playerFighter.getFighterIndex(fighter);
+                playerIndex = playerFighters.getFighterIndex(fighter);
                 break;
             }
 
-        this.player = playerFighter.getFighter(playerIndex);
-        this.opponent = opponentFighter.getFighter(opponentIndex);
+        this.player = playerFighters.getFighter(playerIndex);
+        this.opponent = opponentFighters.getFighter(opponentIndex);
 
-        this.playerFighter = playerFighter;
-        this.opponentFighter = opponentFighter;
+        this.playerFighters = playerFighters;
+        this.opponentFighters = opponentFighters;
 
         this.isTrainerBattle = isTrainerBattle;
 
@@ -63,7 +62,7 @@ public class BattleSystem {
             System.out.println("You can't run away from a trainer battle!");
             return;
         }
-        if (switchIndex != null && playerFighter.getFighterInventory().indexOf(player) == switchIndex) {
+        if (switchIndex != null && playerFighters.getFighterInventory().indexOf(player) == switchIndex) {
             System.out.println("You can't switch that fighter in! It's already fighting!");
             return; // if you try to switch in an already fighting Fighter: do nothing
         }
@@ -86,18 +85,20 @@ public class BattleSystem {
      */
     private boolean playerAction(String chosenAction, Integer switchIndex) {
         switch (chosenAction) {
-            case "fight":
+            case "fight" -> {
                 return this.attacks(this.player, this.opponent);
-            case "switch":
-                player = playerFighter.getFighter(switchIndex);
+            }
+            case "switch" -> {
+                player = playerFighters.getFighter(switchIndex);
                 battleObserver.setFighter(player);
                 System.out.println(player.getName());
                 return false;
-            case "run":
+            }
+            case "run" -> {
                 if (player.flee()) endBattle();
                 return false;
-            default:
-                throw new IllegalStateException("Chosen action was not attack or flee!");
+            }
+            default -> throw new IllegalStateException("Chosen action was not attack or flee!");
         }
     }
 
@@ -116,22 +117,22 @@ public class BattleSystem {
             switch (defender.getFightingSide()) {
                 case PLAYER -> {
                     playerIndex++;
-                    if (!playerFighter.hasNext()) {
+                    if (!playerFighters.hasNext()) {
                         winner = FightingSide.OPPONENT;
                         this.endBattle();
                     } else {
                         isCurrentFighterDefeated = true;
-                        battleObserver.showFighterinventoryUI();
+                        battleObserver.showFighterInventoryUI();
                         return true;
                     }
                 }
                 case OPPONENT -> {
                     opponentIndex++;
-                    if (!opponentFighter.hasNext()) {
+                    if (!opponentFighters.hasNext()) {
                         winner = FightingSide.PLAYER;
                         this.endBattle();
                     } else {
-                        opponent = opponentFighter.getFighter(opponentIndex);
+                        opponent = opponentFighters.getFighter(opponentIndex);
                         battleObserver.setFighter(opponent);
                         return true;
                     }
@@ -145,14 +146,12 @@ public class BattleSystem {
     public void switchAfterDefeated(int switchIndex) {
         if (!isCurrentFighterDefeated) return;
         isCurrentFighterDefeated = false;
-        player = playerFighter.getFighter(switchIndex);
+        player = playerFighters.getFighter(switchIndex);
         battleObserver.setFighter(player);
     }
 
 
-    /**
-     * Ends the battle. The battle is currently ended by ending the program.
-     */
+    /** Ends the battle. It tells the stateMachineObserver that it has to switch scenes. */
     private void endBattle() {
         stateMachineObserver.update(ObserveType.BATTLE_END, new Object[]{isTrainerBattle, winner});
         isEnded = true;

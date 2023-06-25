@@ -7,10 +7,9 @@ import Frames.BattleUI.FighterInventoryUI;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BattleMenuBox extends AbstractTextBox{
     private BattleSystem battle;
-    private FighterInventoryUI fighterInventoryUI;
+    private final FighterInventoryUI fighterInventoryUI;
 
     // for code readability
     private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - BasicPanel.FONT_SIZE;
@@ -26,7 +25,8 @@ public class BattleMenuBox extends AbstractTextBox{
         super();
         this.fighterInventoryUI = fighterInventoryUI;
     }
-    
+
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(new Font("Arial", Font.BOLD, BasicPanel.FONT_SIZE));
@@ -37,22 +37,6 @@ public class BattleMenuBox extends AbstractTextBox{
         g.drawString("Run", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 3 / 2);
 
         BasicPanel.drawCursor(g, this.cursor_x, this.cursor_y);
-    }
-
-    private void chooseAction(){
-        if(cursor_x ==  LEFT && cursor_y == TOP)
-            this.battle.round("fight");
-        else if(cursor_x ==  LEFT && cursor_y == BOTTOM)
-            System.out.println("ITEMS");
-        else if(cursor_x == RIGHT && cursor_y == TOP)
-            fighterInventoryUI.showUI(true);
-        else if(cursor_x == RIGHT && cursor_y == BOTTOM)
-            this.battle.round("run");
-        else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
-    }
-
-    public void setBattle(BattleSystem newBattle){
-        this.battle = newBattle;
     }
 
     @Override
@@ -76,5 +60,21 @@ public class BattleMenuBox extends AbstractTextBox{
                 repaint();
             }
         }
+    }
+
+    public void setBattle(BattleSystem newBattle) {
+        this.battle = newBattle;
+    }
+
+    private void chooseAction() {
+        if (cursor_x == LEFT && cursor_y == TOP)
+            this.battle.round("fight");
+        else if (cursor_x == LEFT && cursor_y == BOTTOM)
+            System.out.println("ITEMS");
+        else if (cursor_x == RIGHT && cursor_y == TOP)
+            fighterInventoryUI.showUI(true);
+        else if (cursor_x == RIGHT && cursor_y == BOTTOM)
+            this.battle.round("run");
+        else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
     }
 }
