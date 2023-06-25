@@ -1,6 +1,6 @@
 import BattleSystem.Fighter;
 import BattleSystem.FightingSide;
-import Entity.OpponentEntity;
+import Entity.Entities.OpponentEntity;
 import Frames.Frame;
 import Observer.ObserveType;
 import Observer.Observer;

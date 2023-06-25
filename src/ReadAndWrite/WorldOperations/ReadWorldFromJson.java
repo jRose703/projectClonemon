@@ -4,20 +4,21 @@ import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingType;
+import Entity.Entities.Entity;
+import Entity.Entities.OpponentEntity;
 import ReadAndWrite.ReadObjectFromFile;
-import Entity.Entity;
-import Entity.OpponentEntity;
 import Worlds.Tiles.*;
 import Worlds.World;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import Entity.FighterInventory;
 
 public class ReadWorldFromJson {
 

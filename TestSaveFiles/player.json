@@ -4,7 +4,7 @@
       {
         "name": "Catmon",
         "ID": 0,
-        "battleParty": "PLAYER",
+        "fightingSide": "PLAYER",
         "hitpoints": 100,
         "maxHitpoints": 100,
         "attackStat": 10,
@@ -15,7 +15,7 @@
       {
         "name": "Lionmon",
         "ID": 0,
-        "battleParty": "PLAYER",
+        "fightingSide": "PLAYER",
         "hitpoints": 100,
         "maxHitpoints": 100,
         "attackStat": 10,

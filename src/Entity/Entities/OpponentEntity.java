@@ -1,4 +1,6 @@
-package Entity;
+package Entity.Entities;
+
+import Entity.FighterInventory;
 
 public class OpponentEntity extends Entity {
     private InteractionType interactionType = InteractionType.BATTLE;

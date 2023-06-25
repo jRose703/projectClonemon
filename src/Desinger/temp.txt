@@ -33,7 +33,7 @@
         World world = ReadWorldFromJson.readWorldFromFile("world");
         Entity entity = world.getEntity(new Coordinates(9,2));
         if (entity != null) {
-            System.out.println(entity.getClass()); // class Entity.OpponentEntity
+            System.out.println(entity.getClass()); // class Entity.Entities.OpponentEntity
         }
         if(entity instanceof OpponentEntity){
             System.out.println(((OpponentEntity)entity).getFighterInventory().getFighter(0).getName());
@@ -41,5 +41,5 @@
 
 
         OpponentEntity opponentEntity = new OpponentEntity();
-        System.out.println(opponentEntity.getClass()); // class Entity.OpponentEntity
+        System.out.println(opponentEntity.getClass()); // class Entity.Entities.OpponentEntity
         System.out.println(opponentEntity.getFighterInventory());

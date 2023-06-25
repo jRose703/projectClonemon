@@ -1,6 +1,6 @@
 package Frames.WorldUI;
 
-import Entity.PlayerEntity;
+import Entity.Entities.PlayerEntity;
 import Worlds.Tiles.Tile;
 import Worlds.World;
 

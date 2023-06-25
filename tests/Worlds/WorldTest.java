@@ -1,7 +1,7 @@
 package Worlds;
 
-import Entity.Entity;
-import Entity.OpponentEntity;
+import Entity.Entities.Entity;
+import Entity.Entities.OpponentEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

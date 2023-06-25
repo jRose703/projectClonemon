@@ -1,6 +1,8 @@
 package Frames.WorldUI;
 
-import Entity.*;
+import Entity.Entities.Entity;
+import Entity.Entities.OpponentEntity;
+import Entity.Entities.PlayerEntity;
 import Worlds.World;
 
 import javax.swing.*;

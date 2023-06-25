@@ -1,6 +1,6 @@
 package Frames.TextBox;
 
-import Entity.OpponentEntity;
+import Entity.Entities.OpponentEntity;
 import Frames.BasicPanel;
 import Observer.ObserveType;
 import Observer.Observer;

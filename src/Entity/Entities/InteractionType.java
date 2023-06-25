@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Entities;
 
 public enum InteractionType {
     TEXT,

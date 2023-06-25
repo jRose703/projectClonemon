@@ -2,6 +2,7 @@ package Frames.BattleUI;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
+import BattleSystem.FightingSide;
 import Entity.FighterInventory;
 import Frames.BasicPanel;
 import Frames.TextBox.BattleMenuBox;
@@ -53,7 +54,7 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	}
 
 	@Override
-	public void updateHitpoints(BattleParticipant defender, int newHitpoints) {
+	public void updateHitpoints(FightingSide defender, int newHitpoints) {
 		switch (defender) {
 			case PLAYER -> playerUI.updateHitpointbar(newHitpoints);
 			case OPPONENT -> opponentUI.updateHitpointbar(newHitpoints);

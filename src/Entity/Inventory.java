@@ -1,5 +1,7 @@
 package Entity;
 
+import Entity.Items.Item;
+
 import java.util.Objects;
 import java.util.Vector;
 

@@ -1,7 +1,7 @@
 package Frames;
 
 import BattleSystem.Fighter;
-import Entity.OpponentEntity;
+import Entity.Entities.OpponentEntity;
 import Observer.Observer;
 import Worlds.World;
 

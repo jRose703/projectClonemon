@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Entities;
 
 import Worlds.Coordinates;
 import Worlds.World;
