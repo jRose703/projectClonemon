@@ -1,22 +1,21 @@
 package BattleSystem;
 
-import Frames.BattleUI.BattleParticipant;
-
 import javax.swing.*;
 import java.util.Random;
 
 @SuppressWarnings("FieldMayBeFinal")
 public abstract class Fighter {
 
-    private String name;
-    private final int ID;
     private final int maxHitpoints;
+    private final int ID;
+    // Basic Info
+    private String name;
     private FightingType type;
-    private BattleParticipant battleParty;  // On which side is the fighter on
+    private boolean isDefeated;
 
     // Sprites
     private String backSprite;
-    private boolean isDefeated;
+    private FightingSide fightingSide;  // On which side is the fighter on
 
     // Stats
     private int hitpoints;
@@ -25,11 +24,11 @@ public abstract class Fighter {
     private int defenseStat;
     private int initStat;
 
-    public Fighter(String name, int ID, BattleParticipant battleParty,
+    public Fighter(String name, int ID, FightingSide fightingSide,
                    int maxHP, int attackStat, int defenseStat, int initStat) {
         this.name = name;
         this.ID = ID;
-        this.battleParty = battleParty;
+        this.fightingSide = fightingSide;
         this.isDefeated = false;
 
         this.hitpoints = maxHP;
@@ -93,8 +92,8 @@ public abstract class Fighter {
         return this.ID;
     }
 
-    public BattleParticipant getBattleParty() {
-        return battleParty;
+    public FightingSide getFightingSide() {
+        return fightingSide;
     }
 
     public int getHitpoints() {

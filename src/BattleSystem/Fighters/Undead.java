@@ -1,12 +1,12 @@
 package BattleSystem.Fighters;
 
 import BattleSystem.Fighter;
+import BattleSystem.FightingSide;
 import BattleSystem.FightingType;
-import Frames.BattleUI.BattleParticipant;
 
 public class Undead extends Fighter {
-    public Undead(String name, int ID, BattleParticipant battleParty, int maxHP, int attackStat, int defenseStat, int initStat) {
-        super(name, ID, battleParty, maxHP, attackStat, defenseStat, initStat);
+    public Undead(String name, int ID, FightingSide fightingSide, int maxHP, int attackStat, int defenseStat, int initStat) {
+        super(name, ID, fightingSide, maxHP, attackStat, defenseStat, initStat);
 
         FightingType firstType = FightingType.UNDEAD;
         super.setType(firstType);

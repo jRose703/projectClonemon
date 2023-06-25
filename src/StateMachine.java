@@ -1,6 +1,6 @@
 import BattleSystem.Fighter;
+import BattleSystem.FightingSide;
 import Entity.OpponentEntity;
-import Frames.BattleUI.BattleParticipant;
 import Frames.Frame;
 import Observer.ObserveType;
 import Observer.Observer;
@@ -36,7 +36,7 @@ public class StateMachine implements Observer {
     }
 
     private void endBattle(Object[] o) {
-        if ((boolean) o[0] && o[1] != null && o[1].equals(BattleParticipant.PLAYER))
+        if ((boolean) o[0] && o[1] != null && o[1].equals(FightingSide.PLAYER))
             frame.setOpponentDefeated();
         frame.changeToWorldScene();
     }

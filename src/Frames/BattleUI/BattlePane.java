@@ -62,12 +62,12 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	@Override
 	public void setFighter(Fighter fighter) {
-		switch (fighter.getBattleParty()) {
-			case PLAYER ->
-					playerUI.updateNewFighter(fighter.getName(), fighter.getMaxHitpoints(), fighter.getHitpoints(), fighter.getBackSprite(), null);
-			case OPPONENT ->
-					opponentUI.updateNewFighter(fighter.getName(), fighter.getMaxHitpoints(), fighter.getHitpoints(), null, fighter.getFrontSprite());
-		}
+		switch (fighter.getFightingSide()) {
+            case PLAYER ->
+                    playerUI.updateNewFighter(fighter.getName(), fighter.getMaxHitpoints(), fighter.getHitpoints(), fighter.getBackSprite(), null);
+            case OPPONENT ->
+                    opponentUI.updateNewFighter(fighter.getName(), fighter.getMaxHitpoints(), fighter.getHitpoints(), null, fighter.getFrontSprite());
+        }
 	}
 
 	@Override

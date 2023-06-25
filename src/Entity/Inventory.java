@@ -8,18 +8,11 @@ public class Inventory {
 
     public Inventory() {}
 
-    public void setInventory(Vector<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public Vector<Item> getInventory() {
-        return this.inventory;
-    }
     public void addToInventory(Item item_given){
         boolean done = false;
         for (Item item : this.inventory) {
             if (Objects.equals(item.getName(), item_given.getName())) {
-                item.add_Item();
+                item.addItem();
                 done = true;
                 break;
             }
@@ -34,7 +27,7 @@ public class Inventory {
         for (Item item : this.inventory) {
             if (Objects.equals(item.getName(), item_given.getName())) {
                 if (item.getAmount() > 1) {
-                    item.reduceAmount();
+                    item.reduceItem();
                     done = true;
                 } else if (item.getAmount() == 1) {
                     this.inventory.remove(item);
@@ -46,4 +39,13 @@ public class Inventory {
             throw new IllegalArgumentException("Item not in Inventory");
         }
     }
+
+    public Vector<Item> getInventory() {
+        return this.inventory;
+    }
+
+    public void setInventory(Vector<Item> inventory) {
+        this.inventory = inventory;
+    }
+
 }

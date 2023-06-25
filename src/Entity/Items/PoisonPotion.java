@@ -1,9 +1,10 @@
 package Entity.Items;
 
-public class PoisonPotion extends ThrowableItem{
-    private String Type = "Damage";
-    private int value = 5;
-    public PoisonPotion(String name){
+public class PoisonPotion extends ThrowableItem {
+    private final ItemType type = ItemType.DAMAGE;
+    private final int VALUE = 5;
+
+    public PoisonPotion(String name) {
         super(name);
     }
 

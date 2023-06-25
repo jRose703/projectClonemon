@@ -2,9 +2,9 @@ import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
+import BattleSystem.FightingSide;
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
-import Frames.BattleUI.BattleParticipant;
 import Observer.ObserveType;
 import Observer.Observer;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class BattleSystemTest {
     public BattleSystemTest() {
         Observer observer = (t, o) -> observeType = t;
         BattleObserver battleObserver = new BattleObserver() {
-            public void updateHitpoints(BattleParticipant defender, int newHitpoints) {
+            public void updateHitpoints(FightingSide defender, int newHitpoints) {
             }
 
             public void setFighter(Fighter fighter) {
@@ -33,11 +33,11 @@ public class BattleSystemTest {
         };
 
         player = new FighterInventory();
-        player.addToFighterInventory(new Exorcist("PlayerOne", 0, BattleParticipant.PLAYER,
+        player.addToFighterInventory(new Exorcist("PlayerOne", 0, FightingSide.PLAYER,
                 10, 5, 2, 5));
 
         enemy = new FighterInventory();
-        enemy.addToFighterInventory(new Undead("OpponentOne", 6, BattleParticipant.OPPONENT,
+        enemy.addToFighterInventory(new Undead("OpponentOne", 6, FightingSide.OPPONENT,
                 20, 2, 2, 7));
 
         battle = new BattleSystem(observer, battleObserver, player, enemy, false);

@@ -1,8 +1,8 @@
 package ReadAndWrite;
 
+import BattleSystem.FightingSide;
 import BattleSystem.FightingType;
 import Entity.FighterInventory;
-import Frames.BattleUI.BattleParticipant;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -45,17 +45,17 @@ public class ReadObjectFromFile {
         }
     }
 
-    public static BattleParticipant toBattleParticipant(String string){
-        switch (string){
+    public static FightingSide toBattleParticipant(String string) {
+        switch (string) {
             case "PLAYER" -> {
-                return BattleParticipant.PLAYER;
+                return FightingSide.PLAYER;
             }
             case "OPPONENT" -> {
-                return BattleParticipant.OPPONENT;
+                return FightingSide.OPPONENT;
             }
             default -> throw new IllegalStateException();
-            }
         }
+    }
 
     public static FighterInventory addBackBattleType(FighterInventory fighterInventory){
 

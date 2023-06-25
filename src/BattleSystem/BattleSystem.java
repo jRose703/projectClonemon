@@ -2,7 +2,6 @@ package BattleSystem;
 
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
-import Frames.BattleUI.BattleParticipant;
 import Observer.ObserveType;
 import Observer.Observer;
 
@@ -21,7 +20,7 @@ public class BattleSystem {
     private boolean isCurrentFighterDefeated = false;
     private boolean isTrainerBattle;
     private boolean isEnded = false;
-    private BattleParticipant winner;
+    private FightingSide winner;
 
     private final Observer stateMachineObserver;
     private final BattleObserver battleObserver;
@@ -111,14 +110,14 @@ public class BattleSystem {
         DamageCalculation.calculateDamage(attacker, defender);
         System.out.println("Defender HP: " + defender.getHitpoints());
         System.out.println();
-        battleObserver.updateHitpoints(defender.getBattleParty(), defender.getHitpoints());  // just for testing purposes
+        battleObserver.updateHitpoints(defender.getFightingSide(), defender.getHitpoints());  // just for testing purposes
 
         if (defender.isDefeated()) {
-            switch (defender.getBattleParty()) {
+            switch (defender.getFightingSide()) {
                 case PLAYER -> {
                     playerIndex++;
                     if (!playerFighter.hasNext()) {
-                        winner = BattleParticipant.OPPONENT;
+                        winner = FightingSide.OPPONENT;
                         this.endBattle();
                     } else {
                         isCurrentFighterDefeated = true;
@@ -129,7 +128,7 @@ public class BattleSystem {
                 case OPPONENT -> {
                     opponentIndex++;
                     if (!opponentFighter.hasNext()) {
-                        winner = BattleParticipant.PLAYER;
+                        winner = FightingSide.PLAYER;
                         this.endBattle();
                     } else {
                         opponent = opponentFighter.getFighter(opponentIndex);

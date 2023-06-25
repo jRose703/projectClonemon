@@ -1,8 +1,9 @@
 package Entity.Items;
 public class Potion extends SupportItem {
-    private String Type = "Heal";
-    private int value = 20;
-    public Potion(String name){
+    private final ItemType type = ItemType.HEAL;
+    private final int VALUE = 20;
+
+    public Potion(String name) {
         super(name);
     }
 }
