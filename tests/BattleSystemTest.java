@@ -43,7 +43,6 @@ public class BattleSystemTest {
         battle = new BattleSystem(observer, battleObserver, player, enemy, false);
     }
 
-    // TODO: This Test can legally fail if the flee action was not successful
     @Test
     public void updatesCorrectObserveType() {
         battle.round(BattleAction.RUN);

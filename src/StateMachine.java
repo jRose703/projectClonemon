@@ -25,7 +25,7 @@ public class StateMachine implements Observer {
     @Override
     public void update(ObserveType t, Object o) {
         switch (t) {
-            case BATTLE_START -> startBattle(null, (Fighter) o, false); //TODO
+            case BATTLE_START -> startBattle(null, (Fighter) o, false);
             case BATTLE_END -> endBattle((Object[]) o);
             case DIALOGUE_END -> endDialogue((OpponentEntity) o);
         }
