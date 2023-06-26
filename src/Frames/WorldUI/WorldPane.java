@@ -11,7 +11,7 @@ import Entity.Entities.PlayerEntity;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
-import Worlds.Tiles.HighGrassTile;
+import Worlds.Tiles.*;
 import Worlds.World;
 
 import javax.swing.*;
@@ -67,7 +67,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
 
-		editMode = false;
+		editMode = true;
 		world.setEditMode(editMode);
 	}
 
@@ -160,8 +160,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	private void doCombat() {
-		if(editMode)
+		if(editMode) {
+			switchTile();
 			return;
+		}
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
 		switch (player.getFacing()) {
@@ -178,6 +180,19 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			battleEntity = (OpponentEntity) world.getEntityArr()[x][y];
 			startDialogue(battleEntity.getMessage(), battleEntity);
 		}
+	}
+	private void switchTile() {
+		Tile tile;
+		switch(world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()].getTileType()) {
+			case "HighGrassTile" -> tile = new LowGrassTile();
+			case "LowGrassTile" -> tile = new RockTile();
+			case "RockTile" -> tile = new VoidTile();
+			case "VoidTile" -> tile = new WaterTile();
+			case "WaterTile" -> tile = new HighGrassTile();
+			default -> tile = null;
+		}
+		if(tile != null)
+			world.setTile(player.getCoordinates(), tile);
 	}
 
 }
