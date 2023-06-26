@@ -22,7 +22,6 @@ import java.util.Random;
 public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private static final int TILE_SIZE = 60;
-
 	private final Observer stateMachineObserver;
 	private final TextBox dialogueBox;
 	private final World world;
@@ -33,6 +32,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private OpponentEntity battleEntity;
 	private int moveCooldown;
 	private int keyListenerCooldown;
+
+	private boolean editMode;
 
 	/**
 	 * Starts the graphical world.
@@ -65,6 +66,9 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		keyListenerCooldown = 0;
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
+
+		editMode = false;
+		world.setEditMode(editMode);
 	}
 
 	public void reloadWorld() {
@@ -87,7 +91,6 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		;
 		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case '\n' -> doCombat();
@@ -134,11 +137,11 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
 			player.move(player.getFacing(), world);
-			moveCooldown = 10;
+			if(!editMode)
+				moveCooldown = 10;
 		} else player.setFacing(direction);
-		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
+		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile && !editMode)
 			randomChanceEncounter();
-		//updatePlayerLabel();
 	}
 
 	private void randomChanceEncounter() {
@@ -157,6 +160,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	private void doCombat() {
+		if(editMode)
+			return;
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
 		switch (player.getFacing()) {
