@@ -162,7 +162,7 @@
     ],
     [
       {
-        "connectedTo": "world",
+        "connectedTo": "world2",
         "newCoordinates": {
           "x": 0,
           "y": 0
