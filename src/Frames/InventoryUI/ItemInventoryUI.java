@@ -198,6 +198,8 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             inventory.removeFromInventory(lookup.get(index));
         }
         cursor_y = upperEdge;
+        currentRow = 0;
+
         if (menuType.equals(MenuType.BATTLE))
             setVisible(false);
     }
