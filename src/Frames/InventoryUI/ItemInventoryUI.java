@@ -1,7 +1,6 @@
 package Frames.InventoryUI;
 
 import Entity.ItemInventory;
-import Entity.Items.Heal.*;
 import Entity.Items.HealItem;
 import Entity.Items.Item;
 import Entity.Items.ItemType;
@@ -40,12 +39,6 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         this.fighterInventoryUI = fighterInventoryUI;
         this.menuType = menuType;
         this.inventory = inventory;
-
-        inventory.addToInventory(new Potion());
-        inventory.addToInventory(new SuperPotion());
-        inventory.addToInventory(new HyperPotion());
-        inventory.addToInventory(new Revive());
-        inventory.addToInventory(new TopRevive());
 
         // Cursor setup
         cursor_x = leftEdge;
