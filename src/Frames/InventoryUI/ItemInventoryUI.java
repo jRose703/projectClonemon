@@ -1,9 +1,7 @@
 package Frames.InventoryUI;
 
 import Entity.ItemInventory;
-import Entity.Items.Catch.Pokedodekaeder;
-import Entity.Items.Damage.PoisonPotion;
-import Entity.Items.Heal.Potion;
+import Entity.Items.Heal.*;
 import Entity.Items.HealItem;
 import Entity.Items.Item;
 import Entity.Items.ItemType;
@@ -43,21 +41,11 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         this.menuType = menuType;
         this.inventory = inventory;
 
-        inventory.addToInventory(new Potion("Potion"));
-        inventory.addToInventory(new Potion("FUCK"));
-        inventory.addToInventory(new Potion("Potion1"));
-        inventory.addToInventory(new Potion("FUCK3"));
-        inventory.addToInventory(new Potion("Potio2n"));
-        inventory.addToInventory(new Potion("FU5CK"));
-        inventory.addToInventory(new Potion("Poti0on"));
-        inventory.addToInventory(new Potion("FU4CK"));
-        inventory.addToInventory(new Potion("Pot3ion"));
-        inventory.addToInventory(new Potion("F3UCK"));
-        inventory.addToInventory(new Potion("Poti3on1"));
-
-        inventory.addToInventory(new PoisonPotion("Poison"));
-        inventory.addToInventory(new Pokedodekaeder("Pokeball"));
-        inventory.addToInventory(new Pokedodekaeder("FOOOD"));
+        inventory.addToInventory(new Potion());
+        inventory.addToInventory(new SuperPotion());
+        inventory.addToInventory(new HyperPotion());
+        inventory.addToInventory(new Revive());
+        inventory.addToInventory(new TopRevive());
 
         // Cursor setup
         cursor_x = leftEdge;
@@ -205,8 +193,11 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
 
         if (cursor_pressed == leftEdge) {
             int heal = ((HealItem) lookup.get(index)).getHealValue();
-            fighterInventoryUI.showUI(true, true, heal);
+            fighterInventoryUI.showUI(false, true, heal);  //false to block the back button for now
+//TODO: stop concurrentModificationException and if possible, wait with the removal until the use is confirmed
+            inventory.removeFromInventory(lookup.get(index));
         }
+        cursor_y = upperEdge;
         if (menuType.equals(MenuType.BATTLE))
             setVisible(false);
     }

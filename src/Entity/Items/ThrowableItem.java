@@ -6,4 +6,6 @@ public abstract class ThrowableItem extends Item {
     public ThrowableItem(String name, ItemType itemType) {
         super(name, itemType);
     }
+
+    public abstract int getThrowableValue();
 }
