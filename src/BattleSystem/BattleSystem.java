@@ -1,5 +1,7 @@
 package BattleSystem;
 
+import BattleSystem.enums.BattleAction;
+import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
 import Observer.ObserveType;

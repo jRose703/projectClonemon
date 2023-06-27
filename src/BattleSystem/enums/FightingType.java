@@ -1,4 +1,4 @@
-package BattleSystem;
+package BattleSystem.enums;
 
 public enum FightingType {
     CITIZEN,

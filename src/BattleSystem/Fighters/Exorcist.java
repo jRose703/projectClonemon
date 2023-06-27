@@ -1,8 +1,8 @@
 package BattleSystem.Fighters;
 
 import BattleSystem.Fighter;
-import BattleSystem.FightingSide;
-import BattleSystem.FightingType;
+import BattleSystem.enums.FightingSide;
+import BattleSystem.enums.FightingType;
 
 public class Exorcist extends Fighter {
     public Exorcist(String name, int ID, FightingSide fightingSide, int maxHP, int attackStat, int defenseStat, int initStat) {

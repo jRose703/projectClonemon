@@ -1,7 +1,7 @@
 package ReadAndWrite;
 
-import BattleSystem.FightingSide;
-import BattleSystem.FightingType;
+import BattleSystem.enums.FightingSide;
+import BattleSystem.enums.FightingType;
 import Entity.FighterInventory;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

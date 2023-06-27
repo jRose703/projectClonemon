@@ -4,10 +4,13 @@ import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.Entities.InteractionType;
 import Entity.Entities.OpponentEntity;
 import Entity.Entities.PlayerEntity;
+import Frames.InventoryUI.FighterInventoryUI;
+import Frames.TextBox.MenuBox;
+import Frames.TextBox.MenuType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
@@ -23,11 +26,14 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private static final int TILE_SIZE = 60;
 
-	private final Observer stateMachineObserver;
+	private final FighterInventoryUI fighterInventoryUI;
+	private final MenuBox menuBox;
 	private final TextBox dialogueBox;
-	private final World world;
 	private final TerrainPanel terrain;
 	private final EntityPanel entities;
+
+	private final Observer stateMachineObserver;
+	private final World world;
 	private final PlayerEntity player;
 
 	private OpponentEntity battleEntity;
@@ -48,6 +54,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 
+		//Physical world init
 		terrain = new TerrainPanel(world, player, TILE_SIZE);
 		entities = new EntityPanel(world, player, TILE_SIZE);
 		this.world = world;
@@ -56,15 +63,19 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		//Player + Player Label Init
 		this.player = player;
-		//this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
-
-		//playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 
 		//Textbox Init
 		keyListenerCooldown = 0;
 		dialogueBox = new TextBox(stateMachineObserver);
-		add(dialogueBox, Integer.valueOf(3));
+		add(dialogueBox, Integer.valueOf(2));
+
+		fighterInventoryUI = new FighterInventoryUI(player.getPlayerFighters(), MenuType.WORLD);
+		add(fighterInventoryUI, Integer.valueOf(4));
+
+		menuBox = new MenuBox(fighterInventoryUI, MenuType.WORLD);
+		//menuBox.setVisible(false);
+		add(menuBox, Integer.valueOf(3));
 	}
 
 	public void reloadWorld() {
@@ -87,8 +98,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		;
-		if (dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible() || menuBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case '\n' -> doCombat();
 			case 'a' -> moveAction(3);
@@ -100,16 +110,25 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (dialogueBox.isVisible())
+		if (fighterInventoryUI.isVisible())
+			fighterInventoryUI.keyReleased(e);
+		else if (menuBox.isVisible())
+			menuBox.keyReleased(e);
+
+		else if (dialogueBox.isVisible())
 			if (keyListenerCooldown != 0)
 				dialogueBox.keyReleased(e);
 			else
 				keyListenerCooldown = 1;
+
+		else if (e.getKeyCode() == 27)
+			menuBox.setVisible(true);
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible() || menuBox.isVisible()) return;
 		switch (e.getKeyCode()) {
 			case 10 -> doCombat();
 			case 37 -> moveAction(3);

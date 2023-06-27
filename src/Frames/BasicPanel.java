@@ -3,7 +3,7 @@ package Frames;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.Entities.OpponentEntity;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;

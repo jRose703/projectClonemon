@@ -1,5 +1,8 @@
 package BattleSystem;
 
+import BattleSystem.enums.FightingSide;
+import BattleSystem.enums.FightingType;
+
 import javax.swing.*;
 import java.util.Random;
 

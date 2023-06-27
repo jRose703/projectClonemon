@@ -1,10 +1,11 @@
-package Frames.BattleUI;
+package Frames.InventoryUI;
 
-import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
+import BattleSystem.enums.BattleAction;
 import Entity.FighterInventory;
 import Frames.BasicPanel;
+import Frames.TextBox.MenuType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,16 +28,18 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     private final Map<List<Integer>, Integer> lookupIndex = new HashMap<>();
 
     private BattleSystem battle;
+    private MenuType menuType;
     private boolean isNewRound = true;
 
     // cursor coordinates
     private int cursor_x;
     private int cursor_y;
 
-    public FighterInventoryUI(FighterInventory playerFighters) {
+    public FighterInventoryUI(FighterInventory playerFighters, MenuType menuType) {
         this.playerFighters = playerFighters;
-        numberOfFighters = playerFighters.getFighterInventory().size();
-        numberOfColumns = (int) (numberOfFighters * 0.5) + numberOfFighters % 2;
+        this.numberOfFighters = playerFighters.getFighterInventory().size();
+        this.numberOfColumns = (int) (numberOfFighters * 0.5) + numberOfFighters % 2;
+        this.menuType = menuType;
 
         // Cursor start coordinates setup in the upper left corner
         cursor_x = leftEdge;
@@ -53,6 +56,7 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     }
 
     public void setBattle(BattleSystem battle) {
+        if (menuType.equals(MenuType.WORLD)) return;
         this.battle = battle;
     }
 
@@ -111,7 +115,7 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
             case 10 -> { // If enter is pressed:
                 if (cursor_x == cursor_back_button)
                     setVisible(false);
-                else
+                else if (menuType.equals(MenuType.BATTLE))
                     switchFighter();
             }
             case 37 -> moveCursor(Direction.LEFT);

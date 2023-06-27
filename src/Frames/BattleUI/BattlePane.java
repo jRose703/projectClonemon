@@ -2,10 +2,12 @@ package Frames.BattleUI;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
 import Frames.BasicPanel;
-import Frames.TextBox.BattleMenuBox;
+import Frames.InventoryUI.FighterInventoryUI;
+import Frames.TextBox.MenuBox;
+import Frames.TextBox.MenuType;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -13,7 +15,7 @@ import java.awt.event.KeyListener;
 
 public class BattlePane extends JLayeredPane implements KeyListener, BattleObserver {
 
-	private final BattleMenuBox battleMenuBox;
+	private final MenuBox battleMenuBox;
 	private final FighterUI playerUI;
 	private final FighterUI opponentUI;
 	private final FighterInventoryUI fighterInventoryUI;
@@ -23,11 +25,11 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	 */
 	public BattlePane(FighterInventory playerFighters) {
 		// FighterInventoryUI
-		fighterInventoryUI = new FighterInventoryUI(playerFighters);
+		fighterInventoryUI = new FighterInventoryUI(playerFighters, MenuType.BATTLE);
 		this.add(fighterInventoryUI, Integer.valueOf(2));
 
 		// Adds the battle menu box
-		this.battleMenuBox = new BattleMenuBox(fighterInventoryUI);
+		this.battleMenuBox = new MenuBox(fighterInventoryUI, MenuType.BATTLE);
 		this.add(battleMenuBox, Integer.valueOf(1));
 
 		// Height of (screen - menu box)
