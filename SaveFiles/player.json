@@ -1,0 +1,66 @@
+{
+  "playerFighters": {
+    "fighterInventory": [
+      {
+        "name": "Catmon",
+        "backSprite": "assets/fighters/backsprites/citizen_back.png",
+        "type": "CITIZEN",
+        "fightingSide": "PLAYER",
+        "ID": 0,
+        "isDefeated": false,
+        "maxHitpoints": 100,
+        "attackStat": 10,
+        "defenseStat": 5,
+        "initStat": 0,
+        "hitpoints": 100,
+        "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+      },
+      {
+        "name": "Lionmon",
+        "backSprite": "assets/fighters/backsprites/undead_back.png",
+        "type": "UNDEAD",
+        "fightingSide": "PLAYER",
+        "ID": 0,
+        "isDefeated": false,
+        "maxHitpoints": 100,
+        "attackStat": 10,
+        "defenseStat": 5,
+        "initStat": 0,
+        "hitpoints": 100,
+        "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+      }
+    ]
+  },
+  "currentWorld": "world",
+  "money": 0,
+  "inventory": {
+    "inventory": [
+      {
+        "Type": "Catch",
+        "value": 1,
+        "offensive": true,
+        "name": "x",
+        "amount": 1
+      },
+      {
+        "Type": "Heal",
+        "value": 20,
+        "offensive": false,
+        "name": "p",
+        "amount": 1
+      },
+      {
+        "Type": "Damage",
+        "value": 5,
+        "offensive": true,
+        "name": "pp",
+        "amount": 1
+      }
+    ]
+  },
+  "coordinates": {
+    "x": 5,
+    "y": 5
+  },
+  "facing_direction": 1
+}

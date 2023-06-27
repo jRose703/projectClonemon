@@ -1,0 +1,45 @@
+        /*
+        PlayerEntity player = new PlayerEntity();
+        Fighter f1 = new Fighter("Catmon", BattleParticipant.PLAYER, 0, 100, 10,5,0);
+        Fighter f2 = new Fighter("Lionmon", BattleParticipant.PLAYER, 0, 100, 10,5,0);
+        FighterInventory fighterInventory = new FighterInventory();
+        fighterInventory.addToFighterInventory(f1);
+        fighterInventory.addToFighterInventory(f2);
+        player.setPlayerFighters(fighterInventory);
+        WritePlayerToJson.savePlayer(player,"player");
+        PlayerEntity savedPlayer = ReadPlayerFromJson.readPlayerFromFile("player");
+
+        Fighter f1 = new Fighter("Dogmon", BattleParticipant.OPPONENT, 4, 25, 5,5,0);
+        Fighter f2 = new Fighter("Bearmon", BattleParticipant.OPPONENT, 5, 50, 7,7,0);
+        FighterInventory fighterInventory = new FighterInventory();
+        fighterInventory.addToFighterInventory(f1);
+        fighterInventory.addToFighterInventory(f2);
+
+        World w1 = ReadWorldFromJson.readWorldFromFile("world");
+        OpponentEntity o1 = new OpponentEntity();
+        o1.setFighterInventory(fighterInventory);
+
+        OpponentEntity o2 = new OpponentEntity();
+        o2.setFighterInventory(fighterInventory);
+
+
+        w1.setEntity(new Coordinates(9,0),o1);
+        w1.setEntity(new Coordinates(9,2),o2);
+        WriteWorldToJson.saveWorld(w1,"world");
+        */
+
+
+
+        World world = ReadWorldFromJson.readWorldFromFile("world");
+        Entity entity = world.getEntity(new Coordinates(9,2));
+        if (entity != null) {
+            System.out.println(entity.getClass()); // class Entity.Entities.OpponentEntity
+        }
+        if(entity instanceof OpponentEntity){
+            System.out.println(((OpponentEntity)entity).getFighterInventory().getFighter(0).getName());
+        }
+
+
+        OpponentEntity opponentEntity = new OpponentEntity();
+        System.out.println(opponentEntity.getClass()); // class Entity.Entities.OpponentEntity
+        System.out.println(opponentEntity.getFighterInventory());

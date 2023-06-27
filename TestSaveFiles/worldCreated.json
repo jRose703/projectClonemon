@@ -1,0 +1,718 @@
+{
+  "size": [
+    10,
+    10
+  ],
+  "tileArr": [
+    [
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 2,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 3,
+        "tileType": "DoorTile",
+        "connectedTo": "world",
+        "newCoordinates": {
+          "coordinates": {
+            "x": 5,
+            "y": 5
+          }
+        }
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
+      }
+    ],
+    [
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      }
+    ]
+  ],
+  "entityArr": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "entityType": "OpponentEntity",
+        "status": false,
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "ID": 4,
+              "battleParty": "OPPONENT",
+              "hitpoints": 25,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "isDefeated": false
+            },
+            {
+              "name": "Bearmon",
+              "ID": 5,
+              "battleParty": "OPPONENT",
+              "hitpoints": 50,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "isDefeated": false
+            }
+          ]
+        },
+        "facing_direction": 3
+      },
+      null,
+      {
+        "entityType": "OpponentEntity",
+        "status": false,
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "ID": 4,
+              "battleParty": "OPPONENT",
+              "hitpoints": 25,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "isDefeated": false
+            },
+            {
+              "name": "Bearmon",
+              "ID": 5,
+              "battleParty": "OPPONENT",
+              "hitpoints": 50,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "isDefeated": false
+            }
+          ]
+        },
+        "facing_direction": 2
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "status": false
+}

@@ -21,6 +21,167 @@
         "tileType": "RockTile"
       },
       {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 3,
+        "tileType": "WaterTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 2,
+        "tileType": "HighGrassTile"
+      }
+    ],
+    [
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      }
+    ],
+    [
+      {
+        "connectedTo": "world2",
+        "newCoordinates": {
+          "x": 0,
+          "y": 0
+        },
+        "accessible": true,
+        "texture_id": 4,
+        "tileType": "DoorTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
+        "accessible": true,
+        "texture_id": 0,
+        "tileType": "LowGrassTile"
+      },
+      {
         "accessible": true,
         "texture_id": 0,
         "tileType": "LowGrassTile"
@@ -306,14 +467,14 @@
         "tileType": "LowGrassTile"
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
       }
     ],
     [
@@ -358,170 +519,14 @@
         "tileType": "LowGrassTile"
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "accessible": false,
+        "texture_id": -1,
+        "tileType": "VoidTile"
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      }
-    ],
-    [
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      }
-    ],
-    [
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      }
-    ],
-    [
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
-      },
-      {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "accessible": false,
+        "texture_id": 1,
+        "tileType": "RockTile"
       }
     ]
   ],
@@ -636,15 +641,81 @@
     ],
     [
       {
+        "message": "Die!",
         "entityType": "OpponentEntity",
-        "status": false,
-        "facing_direction": 0
+        "dialogueType": "BATTLE",
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "type": "CITIZEN",
+              "fightingSide": "OPPONENT",
+              "ID": 4,
+              "isDefeated": false,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "hitpoints": 25,
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+            },
+            {
+              "name": "Bearmon",
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "type": "CITIZEN",
+              "fightingSide": "OPPONENT",
+              "ID": 5,
+              "isDefeated": false,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "hitpoints": 50,
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+            }
+          ]
+        },
+        "facing_direction": 3
       },
       null,
       {
+        "message": "Die!*2",
         "entityType": "OpponentEntity",
-        "status": false,
-        "facing_direction": 0
+        "dialogueType": "BATTLE",
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "name": "Dogmon",
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "type": "UNDEAD",
+              "fightingSide": "OPPONENT",
+              "ID": 4,
+              "isDefeated": false,
+              "maxHitpoints": 25,
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0,
+              "hitpoints": 25,
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+            },
+            {
+              "name": "Bearmon",
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "type": "UNDEAD",
+              "fightingSide": "OPPONENT",
+              "ID": 5,
+              "isDefeated": false,
+              "maxHitpoints": 50,
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0,
+              "hitpoints": 50,
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+            }
+          ]
+        },
+        "facing_direction": 2
       },
       null,
       null,

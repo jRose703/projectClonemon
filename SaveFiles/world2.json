@@ -1,0 +1,2496 @@
+{
+  "size": [
+    20,
+    20
+  ],
+  "tileArr": [
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "connectedTo": "world",
+        "newCoordinates": {
+          "x": 3,
+          "y": 3
+        },
+        "accessible": true,
+        "texture_id": 4,
+        "tileType": "DoorTile"
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ],
+    [
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      }
+    ]
+  ],
+  "entityArr": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "status": false
+}

@@ -1,34 +1,44 @@
 package Frames.WorldUI;
 
-import Entity.PlayerEntity;
-import Frames.TextBox.DialogueType;
+import BattleSystem.Fighter;
+import BattleSystem.Fighters.Citizen;
+import BattleSystem.Fighters.Exorcist;
+import BattleSystem.Fighters.Undead;
+import BattleSystem.FightingSide;
+import Entity.Entities.InteractionType;
+import Entity.Entities.OpponentEntity;
+import Entity.Entities.PlayerEntity;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
+import Worlds.Tiles.HighGrassTile;
 import Worlds.World;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private static final int TILE_SIZE = 60;
 
-	private final PlayerEntity player;
-	private final JLabel playerLabel;
 	private final Observer stateMachineObserver;
 	private final TextBox dialogueBox;
+	private final World world;
+	private final TerrainPanel terrain;
+	private final EntityPanel entities;
+	private final PlayerEntity player;
 
+	private OpponentEntity battleEntity;
 	private int moveCooldown;
-	private TerrainPanel terrain;
-	private EntityPanel entities;
+	private int keyListenerCooldown;
 
 	/**
 	 * Starts the graphical world.
 	 * Terrain displays the world and entities displays all entities except the player.
 	 */
-	public WorldPane(World world, Observer stateMachineObserver) {
+	public WorldPane(World world, PlayerEntity player, Observer stateMachineObserver) {
 		//Observer Init
 		this.stateMachineObserver = stateMachineObserver;
 
@@ -38,31 +48,23 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 
-		terrain = new TerrainPanel(world, TILE_SIZE, 10, 10);
-		entities = new EntityPanel(world, TILE_SIZE, 10, 10);
+		terrain = new TerrainPanel(world, player, TILE_SIZE);
+		entities = new EntityPanel(world, player, TILE_SIZE);
+		this.world = world;
 		add(terrain, Integer.valueOf(0));
 		add(entities, Integer.valueOf(1));
 
 		//Player + Player Label Init
-		player = new PlayerEntity();
-		player.setCoordinates(3, 4);
+		this.player = player;
+		//this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
 
-		playerLabel = new JLabel(new ImageIcon("assets/entities/player_n.png"));
-		playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-		add(playerLabel, Integer.valueOf(2));
+		//playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 
 		//Textbox Init
+		keyListenerCooldown = 0;
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
-	}
-
-	public void startDialogue(String text) {
-		dialogueBox.setMessage(text, DialogueType.BATTLE);
-	}
-
-	private void startCombat() {
-		stateMachineObserver.update(ObserveType.BATTLE_START, null);
 	}
 
 	public void reloadWorld() {
@@ -73,48 +75,104 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		entities.reload();
 	}
 
-	/**
-	 * Updates the player location if the movement cooldown equals zero.
-	 */
-	private void moveAction(int direction) {
-		if (moveCooldown == 0 && player.getFacing() == direction) {
-			player.move(player.getFacing(), 1);
-			moveCooldown = 0;
-		} else player.setFacing(direction);
-		updatePlayerLabel();
+	public void tickMoveCooldown() {
+		if (moveCooldown > 0)
+			moveCooldown--;
 	}
 
-	/**
-	 * Updates the graphical player location.
-	 */
-	private void updatePlayerLabel() {
-		playerLabel.setLocation(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE);
-		ImageIcon image;
-		switch (player.getFacing()) {
-			case 1 -> image = new ImageIcon("assets/entities/player_e.png");
-			case 2 -> image = new ImageIcon("assets/entities/player_s.png");
-			case 3 -> image = new ImageIcon("assets/entities/player_w.png");
-			default -> image = new ImageIcon("assets/entities/player_n.png");
-		}
-		playerLabel.setIcon(image);
+	public void setOpponentDefeated() {
+		battleEntity.setInteractionType(InteractionType.TEXT);
+		battleEntity = null;
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if(dialogueBox.isVisible()) return;
+		;
+		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
+			case '\n' -> doCombat();
 			case 'a' -> moveAction(3);
+			case 'w' -> moveAction(0);
 			case 'd' -> moveAction(1);
 			case 's' -> moveAction(2);
-			case 'w' -> moveAction(0);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (dialogueBox.isVisible()) dialogueBox.keyReleased(e);
+		if (dialogueBox.isVisible())
+			if (keyListenerCooldown != 0)
+				dialogueBox.keyReleased(e);
+			else
+				keyListenerCooldown = 1;
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {}
+	public void keyPressed(KeyEvent e) {
+		if (dialogueBox.isVisible()) return;
+		switch (e.getKeyCode()) {
+			case 10 -> doCombat();
+			case 37 -> moveAction(3);
+			case 38 -> moveAction(0);
+			case 39 -> moveAction(1);
+			case 40 -> moveAction(2);
+		}
+	}
+
+	private void startCombat(Fighter enemy) {
+		stateMachineObserver.update(ObserveType.BATTLE_START, enemy);
+	}
+
+	private void startDialogue(String message, OpponentEntity entity) {
+		keyListenerCooldown = 0;
+		dialogueBox.setMessage(message, entity);
+	}
+
+	/**
+	 * Updates the player location if the movement cooldown equals zero.
+	 */
+	private void moveAction(int direction) {
+		if (moveCooldown == 0 && player.getFacing() == direction) {
+			player.move(player.getFacing(), world);
+			moveCooldown = 10;
+		} else player.setFacing(direction);
+		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
+			randomChanceEncounter();
+		//updatePlayerLabel();
+	}
+
+	private void randomChanceEncounter() {
+		Random random = new Random();
+		if (random.nextInt(1, 100) > 90) {
+			int fighterChoice = random.nextInt(1, 3);
+			switch (fighterChoice) {
+				case 1 ->
+						startCombat(new Undead("Wild Undead", 9000, FightingSide.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+				case 2 ->
+						startCombat(new Citizen("Wild Citizen", 8000, FightingSide.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+				case 3 ->
+						startCombat(new Exorcist("Wild Exorcist", 7000, FightingSide.OPPONENT, random.nextInt(16, 20), random.nextInt(2, 5), random.nextInt(2, 5), random.nextInt(5, 10)));
+			}
+		}
+	}
+
+	private void doCombat() {
+		int x = player.getCoordinates().getX();
+		int y = player.getCoordinates().getY();
+		switch (player.getFacing()) {
+			case 0 -> y -= 1;
+			case 1 -> x += 1;
+			case 2 -> y += 1;
+			case 3 -> x -= 1;
+		}
+
+		if (x < 0 || x > world.getXLength() - 1 || y < 0 || y > world.getYLength() - 1)
+			return;
+
+		if (world.getEntityArr()[x][y] != null) {
+			battleEntity = (OpponentEntity) world.getEntityArr()[x][y];
+			startDialogue(battleEntity.getMessage(), battleEntity);
+		}
+	}
+
 }

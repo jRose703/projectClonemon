@@ -1,5 +1,6 @@
 package Frames.TextBox;
 
+import Entity.Entities.OpponentEntity;
 import Frames.BasicPanel;
 import Observer.ObserveType;
 import Observer.Observer;
@@ -17,7 +18,7 @@ public class TextBox extends AbstractTextBox {
     private int row = 0;
     private String message = "";
     private List<String> lines = new ArrayList<>();
-    private DialogueType dialogueType;
+    private OpponentEntity entity;
     private Observer stateMachineObserver;
 
     public TextBox(Observer stateMachineObserver) {
@@ -34,16 +35,9 @@ public class TextBox extends AbstractTextBox {
             g.drawString(lines.get(i + row), 20, 20 + (20 * 2 * i) + BasicPanel.FONT_SIZE);
     }
 
-    public void setMessage(String message) {
+    public void setMessage(String message, OpponentEntity entity) {
         this.message = message;
-        dialogueType = DialogueType.TEXT;
-        this.createMessageList();
-        this.setVisible(true);
-    }
-
-    public void setMessage(String message, DialogueType type) {
-        this.message = message;
-        dialogueType = type;
+        this.entity = entity;
         this.createMessageList();
         this.setVisible(true);
     }
@@ -73,7 +67,7 @@ public class TextBox extends AbstractTextBox {
     }
 
     private void endDialogue() {
-        stateMachineObserver.update(ObserveType.DIALOGUE_END, dialogueType);
+        stateMachineObserver.update(ObserveType.DIALOGUE_END, entity);
     }
 
     // if the enter button is pressed

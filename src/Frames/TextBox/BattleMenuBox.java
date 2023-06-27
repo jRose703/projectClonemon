@@ -1,14 +1,16 @@
 package Frames.TextBox;
 
+import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import Frames.BasicPanel;
+import Frames.BattleUI.FighterInventoryUI;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-@SuppressWarnings({"FieldMayBeFinal", "FieldCanBeLocal"})
 public class BattleMenuBox extends AbstractTextBox{
     private BattleSystem battle;
+    private final FighterInventoryUI fighterInventoryUI;
 
     // for code readability
     private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - BasicPanel.FONT_SIZE;
@@ -19,11 +21,13 @@ public class BattleMenuBox extends AbstractTextBox{
     // cursor coordinates
     private int cursor_x = LEFT;
     private int cursor_y = TOP;
-    
-    public BattleMenuBox(){
+
+    public BattleMenuBox(FighterInventoryUI fighterInventoryUI) {
         super();
+        this.fighterInventoryUI = fighterInventoryUI;
     }
-    
+
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setFont(new Font("Arial", Font.BOLD, BasicPanel.FONT_SIZE));
@@ -33,26 +37,7 @@ public class BattleMenuBox extends AbstractTextBox{
         g.drawString("Items", TEXT_BOX_CENTER_X * 2 / 5, TEXT_BOX_CENTER_Y * 3 / 2);
         g.drawString("Run", TEXT_BOX_CENTER_X * 4 / 3, TEXT_BOX_CENTER_Y * 3 / 2);
 
-        Polygon triangle = new Polygon(new int[] {this.cursor_x, this.cursor_x + BasicPanel.FONT_SIZE * 2 / 3 , this.cursor_x},
-                new int[] {this.cursor_y, this.cursor_y + BasicPanel.FONT_SIZE / 3, this.cursor_y + BasicPanel.FONT_SIZE * 2 / 3}, 3);
-        g.drawPolygon(triangle);
-        g.fillPolygon(triangle);
-    }
-
-    private void chooseAction(){
-        if(cursor_x ==  LEFT && cursor_y == TOP)
-            this.battle.round("fight");
-        else if(cursor_x ==  LEFT && cursor_y == BOTTOM)
-            System.out.println("ITEMS");
-        else if(cursor_x == RIGHT && cursor_y == TOP)
-            System.out.println("CLONEMONS");
-        else if(cursor_x == RIGHT && cursor_y == BOTTOM)
-            this.battle.round("run");
-        else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
-    }
-
-    public void setBattle(BattleSystem newBattle){
-        this.battle = newBattle;
+        BasicPanel.drawCursor(g, this.cursor_x, this.cursor_y);
     }
 
     @Override
@@ -76,5 +61,21 @@ public class BattleMenuBox extends AbstractTextBox{
                 repaint();
             }
         }
+    }
+
+    public void setBattle(BattleSystem newBattle) {
+        this.battle = newBattle;
+    }
+
+    private void chooseAction() {
+        if (cursor_x == LEFT && cursor_y == TOP)
+            this.battle.round(BattleAction.FIGHT);
+        else if (cursor_x == LEFT && cursor_y == BOTTOM)
+            System.out.println(BattleAction.ITEMS);
+        else if (cursor_x == RIGHT && cursor_y == TOP)
+            fighterInventoryUI.showUI(true);
+        else if (cursor_x == RIGHT && cursor_y == BOTTOM)
+            this.battle.round(BattleAction.RUN);
+        else throw new IllegalArgumentException("Cursor coorinates are out of bound!");
     }
 }

@@ -1,6 +1,8 @@
 package Frames.WorldUI;
 
-import Entity.Entity;
+import Entity.Entities.Entity;
+import Entity.Entities.OpponentEntity;
+import Entity.Entities.PlayerEntity;
 import Worlds.World;
 
 import javax.swing.*;
@@ -12,12 +14,14 @@ public class EntityPanel extends JPanel {
     private final int X_FIELDS;
     private final int Y_FIELDS;
     private final World WORLD;
+    private final PlayerEntity PLAYER;
 
-    public EntityPanel(World world, int TILE_SIZE, int X_FIELDS, int Y_FIELDS) {
+    public EntityPanel(World world, PlayerEntity player, int TILE_SIZE) {
         this.TILE_SIZE = TILE_SIZE;
-        this.X_FIELDS = X_FIELDS;
-        this.Y_FIELDS = Y_FIELDS;
+        this.X_FIELDS = world.getXLength();
+        this.Y_FIELDS = world.getYLength();
         this.WORLD = world;
+        this.PLAYER = player;
         this.setBounds(0, 0, TILE_SIZE * X_FIELDS, TILE_SIZE * Y_FIELDS);
         this.setVisible(true);
         this.setOpaque(false);
@@ -27,20 +31,68 @@ public class EntityPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         Entity[][] entities = WORLD.getEntityArr();
-        for (int x = 0; x < X_FIELDS; x++)
-            for (int y = 0; y < Y_FIELDS; y++) {
-                ImageIcon icon;
-                if (entities[x][y] == null)
-                    continue;
+        int screenX = 0;
+        int screenY = 0;
 
-                switch (1) { //TODO Replace the switch with some kind of system that tracks the entities in the world
-                    case 1 -> icon = new ImageIcon("assets/entities/entity_e.png");
-                    case 2 -> icon = new ImageIcon("assets/entities/entity_s.png");
-                    case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");
-                    default -> icon = new ImageIcon("assets/entities/entity_n.png");
+        int playerOffsetX = 0;
+        int playerOffsetY = 0;
+
+        int centreX = PLAYER.getCoordinates().getX();
+        int centreY = PLAYER.getCoordinates().getY();
+
+        if(centreX < 4) {
+            playerOffsetX = 4 - centreX;
+            centreX = 4;
+        }
+        if(centreX > X_FIELDS - 5) {
+            playerOffsetX = (X_FIELDS - 5) - centreX;
+            centreX = X_FIELDS - 5;
+        }
+
+        if(centreY < 4) {
+            playerOffsetY = 4 - centreY;
+            centreY = 4;
+        }
+        if(centreY > Y_FIELDS - 5) {
+            playerOffsetY = (Y_FIELDS - 5) - centreY;
+            centreY = Y_FIELDS - 5;
+        }
+
+        for (int x = centreX - 4; x <= centreX + 4; x++) {
+            for (int y = centreY - 4; y <= centreY + 4; y++) {
+                ImageIcon icon;
+                try {
+                    if(entities[x][y] != null) {
+                        if (entities[x][y] instanceof OpponentEntity) {
+                            switch (((OpponentEntity) entities[x][y]).getFacing()) {
+                                case 1 -> icon = new ImageIcon("assets/entities/entity_e.png");
+                                case 2 -> icon = new ImageIcon("assets/entities/entity_s.png");
+                                case 3 -> icon = new ImageIcon("assets/entities/entity_w.png");
+                                default -> icon = new ImageIcon("assets/entities/entity_n.png");
+                            }
+                        }
+                        else {icon = new ImageIcon();}
+                    }
+                    else{
+                        icon = new ImageIcon();}
+                } catch (Exception ex) {
+                    icon = new ImageIcon();
                 }
-                g.drawImage(icon.getImage(), x * TILE_SIZE + 10, y * TILE_SIZE + 10, null);
+                g.drawImage(icon.getImage(), screenX * TILE_SIZE + 10, screenY * TILE_SIZE + 10, null);
+
+                screenY++;
             }
+            screenX++;
+            screenY = 0;
+        }
+        ImageIcon image;
+        switch (PLAYER.getFacing()) {
+            case 1 -> image = new ImageIcon("assets/entities/player_e.png");
+            case 2 -> image = new ImageIcon("assets/entities/player_s.png");
+            case 3 -> image = new ImageIcon("assets/entities/player_w.png");
+            default -> image = new ImageIcon("assets/entities/player_n.png");
+        }
+        g.drawImage(image.getImage(), (4 - playerOffsetX) * TILE_SIZE + 10, (4 - playerOffsetY) * TILE_SIZE + 10, null);
     }
 
     public void reload() {

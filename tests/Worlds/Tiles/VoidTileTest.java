@@ -20,7 +20,7 @@ class VoidTileTest {
 
     @Test
     void getTexture_id() {
-        assertEquals(tile.getTexture_id(), -1);
+        assertEquals(tile.getTextureID(), -1);
     }
 
     @Test

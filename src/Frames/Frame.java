@@ -1,5 +1,7 @@
 package Frames;
 
+import BattleSystem.Fighter;
+import Entity.Entities.OpponentEntity;
 import Observer.Observer;
 import Worlds.World;
 
@@ -24,25 +26,15 @@ public class Frame extends JFrame{
 		this.pack();
 	}
 
-	public void changeToBattleScene(){
-		mainPanel.changeToBattleScene();
+	public void changeToBattleScene(OpponentEntity opponent, Fighter wildFighter, boolean isTrainerBattle) {
+		mainPanel.changeToBattleScene(opponent, wildFighter, isTrainerBattle);
 	}
 
 	public void changeToWorldScene() {
 		mainPanel.changeToWorldScene();
 	}
 
-	public void startDialogue(String text) {
-		mainPanel.startDialogue(text);
+	public void setOpponentDefeated() {
+		mainPanel.setOpponentDefeated();
 	}
-
-	// Werden diese zwei Methoden überhaupt benötigt
-	public void reloadWorld() {
-		mainPanel.reloadWorld();
-	}
-
-	public void reloadEntities() {
-		mainPanel.reloadEntities();
-	}
-
 }

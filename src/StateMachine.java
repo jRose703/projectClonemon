@@ -1,8 +1,10 @@
+import BattleSystem.Fighter;
+import BattleSystem.FightingSide;
+import Entity.Entities.OpponentEntity;
 import Frames.Frame;
-import Frames.TextBox.DialogueType;
 import Observer.ObserveType;
 import Observer.Observer;
-import Worlds.ReadAndWrite.ReadFromJsonFile;
+import ReadAndWrite.WorldOperations.ReadWorldFromJson;
 
 /**
  * Observes the state of the game and manipulates the game accordingly
@@ -13,39 +15,39 @@ public class StateMachine implements Observer {
 
     /** Creates the game frame */
     public StateMachine(){
-        this.frame = new Frame(ReadFromJsonFile.readWorldFromFile("world"), this);
-        startDialogue("Let's Fight!");  //TEST
+        this.frame = new Frame(ReadWorldFromJson.readWorldFromFile("world"), this);
+        //startDialogue("Let's Fight!");  //TEST
     }
 
-    /** Listens for game state updates */
+    /**
+     * Listens for game state updates
+     */
     @Override
     public void update(ObserveType t, Object o) {
         switch (t) {
-            case BATTLE_START -> startBattle();
-            case BATTLE_END -> endBattle();
-            case DIALOGUE_START ->
-                    startDialogue((String) o);  //Würde ich später direkt von den Entities auslösen lassen, da es ja worldPane intern ist
-            case DIALOGUE_END -> endDialogue((DialogueType) o);
+            case BATTLE_START -> startBattle(null, (Fighter) o, false);
+            case BATTLE_END -> endBattle((Object[]) o);
+            case DIALOGUE_END -> endDialogue((OpponentEntity) o);
         }
     }
 
-    private void startBattle() {
-        frame.changeToBattleScene();
+    private void startBattle(OpponentEntity opponent, Fighter wildFighter, boolean isTrainerBattle) {
+        frame.changeToBattleScene(opponent, wildFighter, isTrainerBattle);
     }
 
-    private void endBattle() {
+    private void endBattle(Object[] o) {
+        if ((boolean) o[0] && o[1] != null && o[1].equals(FightingSide.PLAYER))
+            frame.setOpponentDefeated();
         frame.changeToWorldScene();
     }
 
-    private void startDialogue(String text) {
-        frame.startDialogue(text);
-    }
-
-    /** Starts the event a dialogue causes */
-    private void endDialogue(DialogueType type) {
-        switch (type) {
+    /**
+     * Starts an event based on the dialogueType.
+     */
+    private void endDialogue(OpponentEntity opponent) {
+        switch (opponent.getInteractionType()) {
             case BATTLE:
-                startBattle();
+                startBattle(opponent, null, true);
                 break;
             case TEXT:
                 break;
