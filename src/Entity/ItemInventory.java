@@ -26,21 +26,10 @@ public class ItemInventory {
     }
 
     public void removeFromInventory(Item item_given) {
-        boolean done = false;
-        for (Item item : this.inventory) {
-            if (Objects.equals(item.getName(), item_given.getName())) {
-                if (item.getAmount() > 1) {
-                    item.reduceItem();
-                    done = true;
-                } else if (item.getAmount() == 1) {
-                    this.inventory.remove(item);
-                    done = true;
-                }
-            }
-        }
-        if (!done) {
-            throw new IllegalArgumentException("Item not in Inventory");
-        }
+        if (!inventory.contains(item_given)) throw new IllegalArgumentException("This Item is not in the inventory");
+        inventory.get(inventory.indexOf(item_given)).reduceItem();
+        if (inventory.get(inventory.indexOf(item_given)).getAmount() < 1)
+            inventory.remove(item_given);
     }
 
     public Vector<Item> getInventory() {

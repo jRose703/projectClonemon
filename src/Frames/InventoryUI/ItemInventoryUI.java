@@ -194,7 +194,6 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         if (cursor_pressed == leftEdge) {
             int heal = ((HealItem) lookup.get(index)).getHealValue();
             fighterInventoryUI.showUI(false, true, heal);  //false to block the back button for now
-//TODO: stop concurrentModificationException and if possible, wait with the removal until the use is confirmed
             inventory.removeFromInventory(lookup.get(index));
         }
         cursor_y = upperEdge;
