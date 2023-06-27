@@ -21,8 +21,12 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
 
     private final int leftEdge = BasicPanel.SCREENWIDTH * 6 / 100;
     private final int rightEdge = BasicPanel.SCREENWIDTH * 6 / 100 + BasicPanel.SCREENWIDTH * 2 / 3;
-    private final int upperEdge = BasicPanel.SCREENWIDTH * 12 / 100;
+    private final int upperEdge = BasicPanel.SCREENHEIGHT * 12 / 100;
+    private final int cursor_back_button = BasicPanel.SCREENWIDTH * 75 / 100;
+
     private int cursor_pressed = leftEdge;
+    private int numberOfItems = 0;
+    private int currentRow = 0;
 
     // cursor coordinates
     private int cursor_x;
@@ -33,6 +37,7 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         this.inventory = inventory;
 
         inventory.addToInventory(new Potion("Potion"));
+        inventory.addToInventory(new Potion("PotionTwo"));
         inventory.addToInventory(new PoisonPotion("Poison"));
         inventory.addToInventory(new Pokedodekaeder("Pokeball"));
 
@@ -69,26 +74,30 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         g2D.drawLine(cursor_pressed, BasicPanel.SCREENHEIGHT * 18 / 100, cursor_pressed + BasicPanel.SCREENWIDTH / 4, BasicPanel.SCREENHEIGHT * 18 / 100);
 
         int y = 0;
+        numberOfItems = 0;
 
         if (cursor_pressed == leftEdge)
             for (Item healItem : inventory.getInventory())
                 if (healItem.getItemType() == ItemType.HEAL) {
-                    g.drawString(healItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 4);
+                    g.drawString(healItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
                     y++;
+                    numberOfItems++;
                 }
 
         if (cursor_pressed == rightEdge)
             for (Item catchItem : inventory.getInventory())
                 if (catchItem.getItemType() == ItemType.CATCH) {
-                    g.drawString(catchItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 4);
+                    g.drawString(catchItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
                     y++;
+                    numberOfItems++;
                 }
 
         if (cursor_pressed != rightEdge && cursor_pressed != leftEdge)
             for (Item damageItem : inventory.getInventory())
                 if (damageItem.getItemType() == ItemType.DAMAGE) {
-                    g.drawString(damageItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 4);
+                    g.drawString(damageItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
                     y++;
+                    numberOfItems++;
                 }
 
         g.drawString("BACK", 8 * BasicPanel.SCREENWIDTH / 10, 95 * BasicPanel.SCREENHEIGHT / 100);
@@ -133,9 +142,25 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             }
             case UP -> {
                 if (cursor_y == upperEdge) return;
+                if (cursor_x == cursor_back_button) {
+                    cursor_x = leftEdge;
+                    cursor_y = upperEdge + Math.min(1, numberOfItems) * BasicPanel.SCREENHEIGHT / 10
+                            + Math.max(0, numberOfItems - 1) * BasicPanel.SCREENHEIGHT / 16;
+                } else {
+                    cursor_y = (cursor_y == upperEdge + BasicPanel.SCREENHEIGHT / 10) ? upperEdge : cursor_y - BasicPanel.SCREENHEIGHT / 16;
+                    currentRow--;
+                }
             }
             case DOWN -> {
-
+                if (cursor_x == cursor_back_button) return;
+                if (currentRow == numberOfItems) {
+                    cursor_x = cursor_back_button;
+                    cursor_y = upperEdge + BasicPanel.SCREENHEIGHT * 3 / 4 + BasicPanel.SCREENHEIGHT * 5 / 100;
+                } else {
+                    cursor_x = leftEdge;
+                    cursor_y = (cursor_y == upperEdge) ? upperEdge + BasicPanel.SCREENHEIGHT / 10 : cursor_y + BasicPanel.SCREENHEIGHT / 16;
+                    currentRow++;
+                }
             }
         }
         repaint();
