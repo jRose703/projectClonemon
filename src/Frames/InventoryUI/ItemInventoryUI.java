@@ -1,6 +1,7 @@
 package Frames.InventoryUI;
 
 import Entity.ItemInventory;
+import Entity.Items.DamageItem;
 import Entity.Items.HealItem;
 import Entity.Items.Item;
 import Entity.Items.ItemType;
@@ -207,6 +208,13 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             fighterInventoryUI.showUI(false, true, heal);  //false to block the back button for now
             inventory.removeFromInventory(lookup.get(index));
         }
+
+        if (cursor_pressed != leftEdge && cursor_pressed != rightEdge) {
+            int damage = ((DamageItem) lookup.get(index)).getDamageValue();
+            // here would be some connection to the battle to start a new round and
+            // the round would get a new enum value for item_damage
+        }
+
         cursor_y = upperEdge;
         currentRow = 0;
 
