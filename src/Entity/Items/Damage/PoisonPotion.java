@@ -1,9 +1,9 @@
 package Entity.Items.Damage;
 
+import Entity.Items.DamageItem;
 import Entity.Items.ItemType;
-import Entity.Items.ThrowableItem;
 
-public class PoisonPotion extends ThrowableItem {
+public class PoisonPotion extends DamageItem {
     private final ItemType type = ItemType.DAMAGE;
     private final int VALUE = 5;
 
@@ -11,4 +11,8 @@ public class PoisonPotion extends ThrowableItem {
         super(name, ItemType.DAMAGE);
     }
 
+    @Override
+    public int getDamageValue() {
+        return VALUE;
+    }
 }

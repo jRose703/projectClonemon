@@ -4,6 +4,7 @@ import Entity.ItemInventory;
 import Entity.Items.Catch.Pokedodekaeder;
 import Entity.Items.Damage.PoisonPotion;
 import Entity.Items.Heal.Potion;
+import Entity.Items.HealItem;
 import Entity.Items.Item;
 import Entity.Items.ItemType;
 import Frames.BasicPanel;
@@ -13,11 +14,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemInventoryUI extends JPanel implements KeyListener {
 
     private final MenuType menuType;
     private final ItemInventory inventory;
+    private final FighterInventoryUI fighterInventoryUI;
+    private final List<Item> lookup = new ArrayList<>();
 
     private final int leftEdge = BasicPanel.SCREENWIDTH * 6 / 100;
     private final int rightEdge = BasicPanel.SCREENWIDTH * 6 / 100 + BasicPanel.SCREENWIDTH * 2 / 3;
@@ -27,19 +32,32 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
     private int cursor_pressed = leftEdge;
     private int numberOfItems = 0;
     private int currentRow = 0;
+    private int rowEndCoords;
 
     // cursor coordinates
     private int cursor_x;
     private int cursor_y;
 
-    public ItemInventoryUI(ItemInventory inventory, MenuType menuType) {
+    public ItemInventoryUI(FighterInventoryUI fighterInventoryUI, ItemInventory inventory, MenuType menuType) {
+        this.fighterInventoryUI = fighterInventoryUI;
         this.menuType = menuType;
         this.inventory = inventory;
 
         inventory.addToInventory(new Potion("Potion"));
-        inventory.addToInventory(new Potion("PotionTwo"));
+        inventory.addToInventory(new Potion("FUCK"));
+        inventory.addToInventory(new Potion("Potion1"));
+        inventory.addToInventory(new Potion("FUCK3"));
+        inventory.addToInventory(new Potion("Potio2n"));
+        inventory.addToInventory(new Potion("FU5CK"));
+        inventory.addToInventory(new Potion("Poti0on"));
+        inventory.addToInventory(new Potion("FU4CK"));
+        inventory.addToInventory(new Potion("Pot3ion"));
+        inventory.addToInventory(new Potion("F3UCK"));
+        inventory.addToInventory(new Potion("Poti3on1"));
+
         inventory.addToInventory(new PoisonPotion("Poison"));
         inventory.addToInventory(new Pokedodekaeder("Pokeball"));
+        inventory.addToInventory(new Pokedodekaeder("FOOOD"));
 
         // Cursor setup
         cursor_x = leftEdge;
@@ -50,11 +68,13 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         this.setBackground(Color.lightGray);
         this.setVisible(false);
         this.setLayout(null);
-
-        showUI();
     }
 
     public void showUI() {
+        cursor_x = leftEdge;
+        cursor_y = upperEdge;
+        cursor_pressed = leftEdge;
+        currentRow = 0;
         repaint();
         setVisible(true);
     }
@@ -75,19 +95,22 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
 
         int y = 0;
         numberOfItems = 0;
+        boolean redoList = lookup.isEmpty();
 
         if (cursor_pressed == leftEdge)
             for (Item healItem : inventory.getInventory())
                 if (healItem.getItemType() == ItemType.HEAL) {
-                    g.drawString(healItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
-                    y++;
+                    if (redoList) lookup.add(healItem);
+                    drawItems(g, healItem, y);
                     numberOfItems++;
+                    y++;
                 }
 
         if (cursor_pressed == rightEdge)
             for (Item catchItem : inventory.getInventory())
                 if (catchItem.getItemType() == ItemType.CATCH) {
-                    g.drawString(catchItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
+                    if (redoList) lookup.add(catchItem);
+                    drawItems(g, catchItem, y);
                     y++;
                     numberOfItems++;
                 }
@@ -95,12 +118,18 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         if (cursor_pressed != rightEdge && cursor_pressed != leftEdge)
             for (Item damageItem : inventory.getInventory())
                 if (damageItem.getItemType() == ItemType.DAMAGE) {
-                    g.drawString(damageItem.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
+                    if (redoList) lookup.add(damageItem);
+                    drawItems(g, damageItem, y);
                     y++;
                     numberOfItems++;
                 }
 
         g.drawString("BACK", 8 * BasicPanel.SCREENWIDTH / 10, 95 * BasicPanel.SCREENHEIGHT / 100);
+    }
+
+    private void drawItems(Graphics g, Item item, int y) {
+        g.drawString(item.getName(), BasicPanel.SCREENWIDTH / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
+        g.drawString("" + item.getAmount(), BasicPanel.SCREENWIDTH * 8 / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
     }
 
     @Override
@@ -109,8 +138,12 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             case 10 -> { // If enter is pressed:
                 if (cursor_y == upperEdge) {
                     cursor_pressed = cursor_x;
+                    lookup.clear();
                     repaint();
-                }
+                } else if (cursor_x == cursor_back_button)
+                    setVisible(false);
+                else
+                    chooseItem();
             }
             case 37 -> moveCursor(FighterInventoryUI.Direction.LEFT);
             case 38 -> moveCursor(FighterInventoryUI.Direction.UP);
@@ -144,8 +177,7 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
                 if (cursor_y == upperEdge) return;
                 if (cursor_x == cursor_back_button) {
                     cursor_x = leftEdge;
-                    cursor_y = upperEdge + Math.min(1, numberOfItems) * BasicPanel.SCREENHEIGHT / 10
-                            + Math.max(0, numberOfItems - 1) * BasicPanel.SCREENHEIGHT / 16;
+                    cursor_y = rowEndCoords;
                 } else {
                     cursor_y = (cursor_y == upperEdge + BasicPanel.SCREENHEIGHT / 10) ? upperEdge : cursor_y - BasicPanel.SCREENHEIGHT / 16;
                     currentRow--;
@@ -154,6 +186,7 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             case DOWN -> {
                 if (cursor_x == cursor_back_button) return;
                 if (currentRow == numberOfItems) {
+                    rowEndCoords = cursor_y;
                     cursor_x = cursor_back_button;
                     cursor_y = upperEdge + BasicPanel.SCREENHEIGHT * 3 / 4 + BasicPanel.SCREENHEIGHT * 5 / 100;
                 } else {
@@ -164,6 +197,18 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
             }
         }
         repaint();
+    }
+
+    private void chooseItem() {
+        if (menuType.equals(MenuType.WORLD) && cursor_pressed != leftEdge) return;
+        int index = (cursor_y - upperEdge - BasicPanel.SCREENWIDTH / 10) / (BasicPanel.SCREENHEIGHT / 16);
+
+        if (cursor_pressed == leftEdge) {
+            int heal = ((HealItem) lookup.get(index)).getHealValue();
+            fighterInventoryUI.showUI(true, true, heal);
+        }
+        if (menuType.equals(MenuType.BATTLE))
+            setVisible(false);
     }
 
 }

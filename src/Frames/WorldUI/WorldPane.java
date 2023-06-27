@@ -74,13 +74,13 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		//Inventories Init
 		fighterInventoryUI = new FighterInventoryUI(player.getPlayerFighters(), MenuType.WORLD);
-		add(fighterInventoryUI, Integer.valueOf(4));
+		add(fighterInventoryUI, Integer.valueOf(5));
 
-		itemInventoryUI = new ItemInventoryUI(player.getInventory(), MenuType.WORLD);
+		itemInventoryUI = new ItemInventoryUI(fighterInventoryUI, player.getInventory(), MenuType.WORLD);
 		add(itemInventoryUI, Integer.valueOf(4));
 
 		//Menu Init
-		menuBox = new MenuBox(fighterInventoryUI, MenuType.WORLD);
+		menuBox = new MenuBox(fighterInventoryUI, itemInventoryUI, MenuType.WORLD);
 		menuBox.setVisible(false);
 		add(menuBox, Integer.valueOf(3));
 	}

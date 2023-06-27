@@ -4,6 +4,7 @@ import BattleSystem.BattleSystem;
 import BattleSystem.enums.BattleAction;
 import Frames.BasicPanel;
 import Frames.InventoryUI.FighterInventoryUI;
+import Frames.InventoryUI.ItemInventoryUI;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 public class MenuBox extends AbstractTextBox {
     private BattleSystem battle;
     private final FighterInventoryUI fighterInventoryUI;
+    private final ItemInventoryUI itemInventoryUI;
     private final MenuType menuType;
 
     // for code readability
@@ -23,9 +25,10 @@ public class MenuBox extends AbstractTextBox {
     private int cursor_x = LEFT;
     private int cursor_y = TOP;
 
-    public MenuBox(FighterInventoryUI fighterInventoryUI, MenuType menuType) {
+    public MenuBox(FighterInventoryUI fighterInventoryUI, ItemInventoryUI itemInventoryUI, MenuType menuType) {
         super();
         this.fighterInventoryUI = fighterInventoryUI;
+        this.itemInventoryUI = itemInventoryUI;
         this.menuType = menuType;
     }
 
@@ -53,7 +56,8 @@ public class MenuBox extends AbstractTextBox {
         switch (e.getKeyCode()) {
             case 10 -> chooseAction();
             case 27 -> {
-                if (menuType.equals(MenuType.WORLD)) setVisible(false);
+                if (menuType.equals(MenuType.WORLD))
+                    closeMenu();
             }
             case 37 -> {
                 cursor_x = LEFT;
@@ -82,15 +86,22 @@ public class MenuBox extends AbstractTextBox {
     private void chooseAction() {
         if (cursor_x == LEFT && cursor_y == TOP) {
             if (menuType.equals(MenuType.BATTLE)) this.battle.round(BattleAction.FIGHT);
-            else System.out.println("BAG");
+            else itemInventoryUI.showUI();
         } else if (cursor_x == LEFT && cursor_y == BOTTOM) {
-            if (menuType.equals(MenuType.BATTLE)) System.out.println(BattleAction.ITEMS);
+            if (menuType.equals(MenuType.BATTLE)) itemInventoryUI.showUI();
             else System.out.println("SAVE");
         } else if (cursor_x == RIGHT && cursor_y == TOP) {
-            fighterInventoryUI.showUI(true);
+            fighterInventoryUI.showUI(true, false, 0);
         } else if (cursor_x == RIGHT && cursor_y == BOTTOM) {
             if (menuType.equals(MenuType.BATTLE)) this.battle.round(BattleAction.RUN);
-            else this.setVisible(false);
+            else closeMenu();
         } else throw new IllegalArgumentException("Cursor coordinates are out of bound!");
     }
+
+    private void closeMenu() {
+        cursor_x = LEFT;
+        cursor_y = TOP;
+        setVisible(false);
+    }
+
 }

@@ -31,6 +31,9 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     private final MenuType menuType;
     private boolean isNewRound = true;
 
+    private boolean isItemUse = false;
+    private int healAmount;
+
     // cursor coordinates
     private int cursor_x;
     private int cursor_y;
@@ -60,8 +63,11 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
         this.battle = battle;
     }
 
-    public void showUI(boolean isNewRound) {
+    public void showUI(boolean isNewRound, boolean isItemUse, int healAmount) {
         this.isNewRound = isNewRound;
+        this.isItemUse = isItemUse;
+        this.healAmount = healAmount;
+
         this.cursor_x = leftEdge;
         this.cursor_y = upperEdge;
         repaint();
@@ -115,8 +121,8 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
             case 10 -> { // If enter is pressed:
                 if (cursor_x == cursor_back_button)
                     setVisible(false);
-                else if (menuType.equals(MenuType.BATTLE))
-                    switchFighter();
+                else
+                    chooseFighter();
             }
             case 37 -> moveCursor(Direction.LEFT);
             case 38 -> moveCursor(Direction.UP);
@@ -201,7 +207,9 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
         repaint();
     }
 
-    private void switchFighter() {
+    private void chooseFighter() {
+        if (!isItemUse && menuType.equals(MenuType.WORLD)) return;
+
         List<Integer> cursor_coords = new ArrayList<>();
         cursor_coords.add(cursor_x);
         cursor_coords.add(cursor_y);
@@ -211,11 +219,17 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
 
         if (fighterIndex == -1) throw new IllegalStateException("Cursor can't be here!");
 
-        if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
+        if (!isItemUse) {
+            if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
 
-        if (isNewRound) battle.round(BattleAction.SWITCH, fighterIndex);
-        else battle.switchAfterDefeated(fighterIndex);
-        setVisible(false);
+            if (isNewRound) battle.round(BattleAction.SWITCH, fighterIndex);
+            else battle.switchAfterDefeated(fighterIndex);
+            setVisible(false);
+        } else {
+            playerFighters.getFighter(fighterIndex).heal(healAmount);
+            if (menuType.equals(MenuType.BATTLE)) battle.round(BattleAction.ITEMS);
+            setVisible(false);
+        }
     }
 
     /**

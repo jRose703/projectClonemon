@@ -4,8 +4,10 @@ import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
+import Entity.ItemInventory;
 import Frames.BasicPanel;
 import Frames.InventoryUI.FighterInventoryUI;
+import Frames.InventoryUI.ItemInventoryUI;
 import Frames.TextBox.MenuBox;
 import Frames.TextBox.MenuType;
 
@@ -19,17 +21,21 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 	private final FighterUI playerUI;
 	private final FighterUI opponentUI;
 	private final FighterInventoryUI fighterInventoryUI;
+	private final ItemInventoryUI itemInventoryUI;
 
 	/**
 	 * Starts the graphical battle.
 	 */
-	public BattlePane(FighterInventory playerFighters) {
-		// FighterInventoryUI
+	public BattlePane(FighterInventory playerFighters, ItemInventory inventory) {
+		// InventoryUI setup
 		fighterInventoryUI = new FighterInventoryUI(playerFighters, MenuType.BATTLE);
-		this.add(fighterInventoryUI, Integer.valueOf(2));
+		this.add(fighterInventoryUI, Integer.valueOf(3));
+
+		itemInventoryUI = new ItemInventoryUI(fighterInventoryUI, inventory, MenuType.BATTLE);
+		add(itemInventoryUI, Integer.valueOf(2));
 
 		// Adds the battle menu box
-		this.battleMenuBox = new MenuBox(fighterInventoryUI, MenuType.BATTLE);
+		this.battleMenuBox = new MenuBox(fighterInventoryUI, itemInventoryUI, MenuType.BATTLE);
 		this.add(battleMenuBox, Integer.valueOf(1));
 
 		// Height of (screen - menu box)
@@ -75,13 +81,15 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	@Override
 	public void showFighterInventoryUI() {
-		fighterInventoryUI.showUI(false);
+		fighterInventoryUI.showUI(false, false, 0);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (fighterInventoryUI.isVisible())
 			fighterInventoryUI.keyReleased(e);
+		else if (itemInventoryUI.isVisible())
+			itemInventoryUI.keyReleased(e);
 		else battleMenuBox.keyReleased(e);
 	}
 

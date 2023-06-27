@@ -100,6 +100,10 @@ public class BattleSystem {
                 if (player.flee()) endBattle();
                 return false;
             }
+            case ITEMS -> {
+                System.out.println("Player used Item!");
+                return false;
+            }
             default -> throw new IllegalStateException("Chosen action was not attack, switch or flee!");
         }
     }
