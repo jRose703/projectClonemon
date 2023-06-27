@@ -63,7 +63,7 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         cursor_y = upperEdge;
         cursor_pressed = leftEdge;
         currentRow = 0;
-        repaint();
+        redoList();
         setVisible(true);
     }
 
@@ -83,12 +83,10 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
 
         int y = 0;
         numberOfItems = 0;
-        boolean redoList = lookup.isEmpty();
 
         if (cursor_pressed == leftEdge)
             for (Item healItem : inventory.getInventory())
                 if (healItem.getItemType() == ItemType.HEAL) {
-                    if (redoList) lookup.add(healItem);
                     drawItems(g, healItem, y);
                     numberOfItems++;
                     y++;
@@ -97,7 +95,6 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         if (cursor_pressed == rightEdge)
             for (Item catchItem : inventory.getInventory())
                 if (catchItem.getItemType() == ItemType.CATCH) {
-                    if (redoList) lookup.add(catchItem);
                     drawItems(g, catchItem, y);
                     y++;
                     numberOfItems++;
@@ -106,7 +103,6 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         if (cursor_pressed != rightEdge && cursor_pressed != leftEdge)
             for (Item damageItem : inventory.getInventory())
                 if (damageItem.getItemType() == ItemType.DAMAGE) {
-                    if (redoList) lookup.add(damageItem);
                     drawItems(g, damageItem, y);
                     y++;
                     numberOfItems++;
@@ -120,18 +116,40 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         g.drawString("" + item.getAmount(), BasicPanel.SCREENWIDTH * 8 / 10, BasicPanel.SCREENHEIGHT / 4 + y * BasicPanel.SCREENHEIGHT / 16);
     }
 
+    private void redoList() {
+        lookup.clear();
+
+        if (cursor_pressed == leftEdge)
+            for (Item healItem : inventory.getInventory())
+                if (healItem.getItemType() == ItemType.HEAL)
+                    lookup.add(healItem);
+
+        if (cursor_pressed == rightEdge)
+            for (Item catchItem : inventory.getInventory())
+                if (catchItem.getItemType() == ItemType.CATCH)
+                    lookup.add(catchItem);
+
+        if (cursor_pressed != rightEdge && cursor_pressed != leftEdge)
+            for (Item damageItem : inventory.getInventory())
+                if (damageItem.getItemType() == ItemType.DAMAGE)
+                    lookup.add(damageItem);
+
+        repaint();
+    }
+
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 10 -> { // If enter is pressed:
                 if (cursor_y == upperEdge) {
                     cursor_pressed = cursor_x;
-                    lookup.clear();
-                    repaint();
+                    redoList();
                 } else if (cursor_x == cursor_back_button)
                     setVisible(false);
-                else
+                else {
                     chooseItem();
+                    redoList();
+                }
             }
             case 37 -> moveCursor(FighterInventoryUI.Direction.LEFT);
             case 38 -> moveCursor(FighterInventoryUI.Direction.UP);
