@@ -2,10 +2,12 @@ package Entity.Items;
 
 public abstract class Item {
     private final String name;
+    private final ItemType itemType;
     private int amount;
 
-    public Item(String name) {
+    public Item(String name, ItemType itemType) {
         this.name = name;
+        this.itemType = itemType;
         this.amount = 1;
     }
 
@@ -33,4 +35,7 @@ public abstract class Item {
         return amount;
     }
 
+    public ItemType getItemType() {
+        return itemType;
+    }
 }

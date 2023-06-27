@@ -6,7 +6,7 @@ import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;
-import Entity.Inventory;
+import Entity.ItemInventory;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
 import com.google.gson.Gson;
@@ -59,9 +59,9 @@ public class ReadPlayerFromJson {
     }
 
     //#Todo read Inventory
-    private static Inventory readInventory(JsonObject jsonObject){
+    private static ItemInventory readInventory(JsonObject jsonObject) {
         //JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
-        return new Inventory();
+        return new ItemInventory();
     }
 
     private static FighterInventory readFighterInventory(JsonObject jsonObject){

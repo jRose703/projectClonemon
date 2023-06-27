@@ -9,6 +9,7 @@ import Entity.Entities.InteractionType;
 import Entity.Entities.OpponentEntity;
 import Entity.Entities.PlayerEntity;
 import Frames.InventoryUI.FighterInventoryUI;
+import Frames.InventoryUI.ItemInventoryUI;
 import Frames.TextBox.MenuBox;
 import Frames.TextBox.MenuType;
 import Frames.TextBox.TextBox;
@@ -26,6 +27,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	private static final int TILE_SIZE = 60;
 
+	private final ItemInventoryUI itemInventoryUI;
 	private final FighterInventoryUI fighterInventoryUI;
 	private final MenuBox menuBox;
 	private final TextBox dialogueBox;
@@ -70,11 +72,16 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(2));
 
+		//Inventories Init
 		fighterInventoryUI = new FighterInventoryUI(player.getPlayerFighters(), MenuType.WORLD);
 		add(fighterInventoryUI, Integer.valueOf(4));
 
+		itemInventoryUI = new ItemInventoryUI(player.getInventory(), MenuType.WORLD);
+		add(itemInventoryUI, Integer.valueOf(4));
+
+		//Menu Init
 		menuBox = new MenuBox(fighterInventoryUI, MenuType.WORLD);
-		//menuBox.setVisible(false);
+		menuBox.setVisible(false);
 		add(menuBox, Integer.valueOf(3));
 	}
 
@@ -112,6 +119,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if (fighterInventoryUI.isVisible())
 			fighterInventoryUI.keyReleased(e);
+		else if (itemInventoryUI.isVisible())
+			itemInventoryUI.keyReleased(e);
 		else if (menuBox.isVisible())
 			menuBox.keyReleased(e);
 

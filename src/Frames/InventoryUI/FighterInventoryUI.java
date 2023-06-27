@@ -22,13 +22,13 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     private final int numberOfFighters;
     private final int numberOfColumns;
 
-    private final int leftEdge = 6 * BasicPanel.SCREENWIDTH / 100;
-    private final int upperEdge = 12 * BasicPanel.SCREENWIDTH / 100;
-    private final int cursor_back_button = 75 * BasicPanel.SCREENWIDTH / 100;
+    private final int leftEdge = BasicPanel.SCREENWIDTH * 6 / 100;
+    private final int upperEdge = BasicPanel.SCREENWIDTH * 12 / 100;
+    private final int cursor_back_button = BasicPanel.SCREENWIDTH * 75 / 100;
     private final Map<List<Integer>, Integer> lookupIndex = new HashMap<>();
 
     private BattleSystem battle;
-    private MenuType menuType;
+    private final MenuType menuType;
     private boolean isNewRound = true;
 
     // cursor coordinates

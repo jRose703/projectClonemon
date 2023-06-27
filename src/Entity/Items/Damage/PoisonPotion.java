@@ -1,11 +1,14 @@
-package Entity.Items;
+package Entity.Items.Damage;
+
+import Entity.Items.ItemType;
+import Entity.Items.ThrowableItem;
 
 public class PoisonPotion extends ThrowableItem {
     private final ItemType type = ItemType.DAMAGE;
     private final int VALUE = 5;
 
     public PoisonPotion(String name) {
-        super(name);
+        super(name, ItemType.DAMAGE);
     }
 
 }
