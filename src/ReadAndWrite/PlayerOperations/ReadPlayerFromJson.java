@@ -80,7 +80,6 @@ public class ReadPlayerFromJson {
     /**
      * Reads player-inventory
      */
-    //#Todo read Inventory
     private static Inventory readInventory(JsonObject jsonObject){
 
         RuntimeTypeAdapterFactory<Item> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
@@ -90,16 +89,13 @@ public class ReadPlayerFromJson {
                 .registerSubtype(PoisonPotion.class, "PoisonPotion");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
-
         Inventory inventory =  new Inventory();
-        Type listType = new TypeToken<List<Item>>() {}.getType();
 
+
+        Type listType = new TypeToken<List<Item>>() {}.getType();
         JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("inventory").getAsJsonArray();
         List<Item> fromJson = gson.fromJson(jsonArray, listType);
-
-        System.out.println(fromJson);
-
-         fromJson = ReadObjectFromFile.addBackItemName(fromJson);
+        ReadObjectFromFile.addBackItemName(fromJson);
 
         for (Item item : fromJson) {
             inventory.addToInventory(item);
@@ -120,15 +116,13 @@ public class ReadPlayerFromJson {
                 .registerSubtype(Exorcist.class, "Exorcist");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory2).create();
+        FighterInventory fighterInventory = new FighterInventory();
 
 
         Type listType = new TypeToken<List<Fighter>>() {}.getType();
         JsonArray jsonArray = jsonObject.get("playerFighters").getAsJsonObject().get("fighterInventory").getAsJsonArray();
 
         List<Fighter> fromJson = gson.fromJson(jsonArray, listType);
-
-        FighterInventory fighterInventory = new FighterInventory();
-
         for (Fighter fighter:fromJson) {
             fighterInventory.addToFighterInventory(fighter);
         }

@@ -1,6 +1,4 @@
 package ReadAndWrite;
-
-import BattleSystem.FightingSide;
 import BattleSystem.FightingType;
 import Entity.FighterInventory;
 import Entity.Items.Item;
@@ -39,37 +37,30 @@ public class ReadObjectFromFile {
     /**
      * This function adds back the BattleType to the given FighterInventory, because it's set to null by gson reading
      */
-    public static FighterInventory addBackBattleType(FighterInventory fighterInventory){
+    public static void addBackBattleType(FighterInventory fighterInventory){
         // ! it says return value is never used but game crashes if the function is not being used
 
 
         for (int i = 0; i < fighterInventory.getSize(); i++) {
 
             switch (fighterInventory.getFighter(i).getClass().toString()) {
-                case "class BattleSystem.Fighters.Citizen" -> {
+                case "class BattleSystem.Fighters.Citizen" ->
                     fighterInventory.getFighter(i).setType(FightingType.CITIZEN);
-                    break;
-                }
-                case "class BattleSystem.Fighters.Undead" -> {
+                case "class BattleSystem.Fighters.Undead" ->
                     fighterInventory.getFighter(i).setType(FightingType.UNDEAD);
-                    break;
-                }
-                case "class BattleSystem.Fighters.Exorcist" -> {
+                case "class BattleSystem.Fighters.Exorcist" ->
                     fighterInventory.getFighter(i).setType(FightingType.EXORCIST);
-                    break;
-                }
                 default -> throw new IllegalStateException();
             }
         }
 
-    return fighterInventory;
     }
 
 
     /**
      * This funktion adds back the ItemName after it's removed in the reading process
      */
-    public static List<Item> addBackItemName(List<Item> itemList){
+    public static void addBackItemName(List<Item> itemList){
 
         for (Item item:itemList) {
             if(item.getClass().equals(Potion.class)){
@@ -82,7 +73,6 @@ public class ReadObjectFromFile {
                 item.setName("Pokedodekaeder");
             }
         }
-        return itemList;
     }
 
     /**
