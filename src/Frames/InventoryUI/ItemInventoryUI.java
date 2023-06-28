@@ -31,6 +31,7 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
     private int numberOfItems = 0;
     private int currentRow = 0;
     private int rowEndCoords;
+    private int tempIndex = -1;
 
     // cursor coordinates
     private int cursor_x;
@@ -131,6 +132,11 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
         repaint();
     }
 
+    public void successfulItemUse(boolean isSuccessful) {
+        if (isSuccessful) inventory.removeFromInventory(lookup.get(tempIndex));
+        tempIndex = -1;
+    }
+
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -201,16 +207,15 @@ public class ItemInventoryUI extends JPanel implements KeyListener {
 
     private void chooseItem() {
         if (menuType.equals(MenuType.WORLD) && cursor_pressed != leftEdge) return;
-        int index = (cursor_y - upperEdge - BasicPanel.SCREENWIDTH / 10) / (BasicPanel.SCREENHEIGHT / 16);
+        tempIndex = (cursor_y - upperEdge - BasicPanel.SCREENWIDTH / 10) / (BasicPanel.SCREENHEIGHT / 16);
 
         if (cursor_pressed == leftEdge) {
-            int heal = ((HealItem) lookup.get(index)).getHealValue();
-            fighterInventoryUI.showUI(false, true, heal);  //false to block the back button for now
-            inventory.removeFromInventory(lookup.get(index));
+            int heal = ((HealItem) lookup.get(tempIndex)).getHealValue();
+            fighterInventoryUI.showUI(true, true, heal);  //false to block the back button for now
         }
 
         if (cursor_pressed != leftEdge && cursor_pressed != rightEdge) {
-            int damage = ((DamageItem) lookup.get(index)).getDamageValue();
+            int damage = ((DamageItem) lookup.get(tempIndex)).getDamageValue();
             // here would be some connection to the battle to start a new round and
             // the round would get a new enum value for item_damage
         }

@@ -21,6 +21,7 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     private final FighterInventory playerFighters;
     private final int numberOfFighters;
     private final int numberOfColumns;
+    private ItemInventoryUI inventoryUI;
 
     private final int leftEdge = BasicPanel.SCREENWIDTH * 6 / 100;
     private final int upperEdge = BasicPanel.SCREENWIDTH * 12 / 100;
@@ -61,6 +62,10 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     public void setBattle(BattleSystem battle) {
         if (menuType.equals(MenuType.WORLD)) return;
         this.battle = battle;
+    }
+
+    public void setItemInventoryUI(ItemInventoryUI inventoryUI) {
+        this.inventoryUI = inventoryUI;
     }
 
     public void showUI(boolean isNewRound, boolean isItemUse, int healAmount) {
@@ -119,9 +124,10 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 10 -> { // If enter is pressed:
-                if (cursor_x == cursor_back_button)
+                if (cursor_x == cursor_back_button) {
+                    if (isItemUse) inventoryUI.successfulItemUse(false);
                     setVisible(false);
-                else
+                } else
                     chooseFighter();
             }
             case 37 -> moveCursor(Direction.LEFT);
@@ -226,9 +232,25 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
             else battle.switchAfterDefeated(fighterIndex);
             setVisible(false);
         } else {
-            playerFighters.getFighter(fighterIndex).heal(healAmount);
+            itemUse(fighterIndex);
             if (menuType.equals(MenuType.BATTLE)) battle.round(BattleAction.ITEMS);
             setVisible(false);
+        }
+    }
+
+    private void itemUse(int fighterIndex) {
+        if (healAmount >= 1000000) {
+            if (playerFighters.getFighter(fighterIndex).isDefeated()) {
+                playerFighters.getFighter(fighterIndex).heal(healAmount);
+                inventoryUI.successfulItemUse(true);
+            } else
+                inventoryUI.successfulItemUse(false);
+        } else {
+            if (playerFighters.getFighter(fighterIndex).getHitpoints() != playerFighters.getFighter(fighterIndex).getMaxHitpoints()) {
+                playerFighters.getFighter(fighterIndex).heal(healAmount);
+                inventoryUI.successfulItemUse(true);
+            } else
+                inventoryUI.successfulItemUse(false);
         }
     }
 

@@ -2,9 +2,13 @@ package Frames.TextBox;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.enums.BattleAction;
+import Entity.Entities.PlayerEntity;
 import Frames.BasicPanel;
 import Frames.InventoryUI.FighterInventoryUI;
 import Frames.InventoryUI.ItemInventoryUI;
+import ReadAndWrite.PlayerOperations.WritePlayerToJson;
+import ReadAndWrite.WorldOperations.WriteWorldToJson;
+import Worlds.World;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -14,6 +18,9 @@ public class MenuBox extends AbstractTextBox {
     private final FighterInventoryUI fighterInventoryUI;
     private final ItemInventoryUI itemInventoryUI;
     private final MenuType menuType;
+
+    private PlayerEntity player;
+    private World world;
 
     // for code readability
     private final int LEFT = TEXT_BOX_CENTER_X * 2 / 5 - BasicPanel.FONT_SIZE;
@@ -30,6 +37,11 @@ public class MenuBox extends AbstractTextBox {
         this.fighterInventoryUI = fighterInventoryUI;
         this.itemInventoryUI = itemInventoryUI;
         this.menuType = menuType;
+    }
+
+    public void setSaveRequirements(PlayerEntity player, World world) {
+        this.player = player;
+        this.world = world;
     }
 
     @Override
@@ -87,14 +99,21 @@ public class MenuBox extends AbstractTextBox {
         if (cursor_x == LEFT && cursor_y == TOP) {
             if (menuType.equals(MenuType.BATTLE)) this.battle.round(BattleAction.FIGHT);
             else itemInventoryUI.showUI();
+
         } else if (cursor_x == LEFT && cursor_y == BOTTOM) {
             if (menuType.equals(MenuType.BATTLE)) itemInventoryUI.showUI();
-            else System.out.println("SAVE");
+            else {
+                WriteWorldToJson.saveWorld(world, player.getCurrentWorld());
+                WritePlayerToJson.savePlayer(player, player.getCurrentWorld());
+            }
+
         } else if (cursor_x == RIGHT && cursor_y == TOP) {
             fighterInventoryUI.showUI(true, false, 0);
+
         } else if (cursor_x == RIGHT && cursor_y == BOTTOM) {
             if (menuType.equals(MenuType.BATTLE)) this.battle.round(BattleAction.RUN);
             else closeMenu();
+
         } else throw new IllegalArgumentException("Cursor coordinates are out of bound!");
     }
 

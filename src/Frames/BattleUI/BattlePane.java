@@ -34,6 +34,8 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 		itemInventoryUI = new ItemInventoryUI(fighterInventoryUI, inventory, MenuType.BATTLE);
 		add(itemInventoryUI, Integer.valueOf(2));
 
+		fighterInventoryUI.setItemInventoryUI(itemInventoryUI);
+
 		// Adds the battle menu box
 		this.battleMenuBox = new MenuBox(fighterInventoryUI, itemInventoryUI, MenuType.BATTLE);
 		this.add(battleMenuBox, Integer.valueOf(1));
