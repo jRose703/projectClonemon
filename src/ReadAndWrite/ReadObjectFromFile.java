@@ -30,34 +30,12 @@ public class ReadObjectFromFile {
             throw new RuntimeException(e);
         }
     }
-    public static FightingType toFightingType(String string){
-        switch (string){
-            case "CITIZEN" -> {
-                return FightingType.CITIZEN;
-            }
-            case "UNDEAD" -> {
-                return FightingType.UNDEAD;
-            }
-            case "EXORCIST" -> {
-                return FightingType.EXORCIST;
-            }
-            default -> throw new IllegalStateException();
-        }
-    }
 
-    public static FightingSide toBattleParticipant(String string) {
-        switch (string) {
-            case "PLAYER" -> {
-                return FightingSide.PLAYER;
-            }
-            case "OPPONENT" -> {
-                return FightingSide.OPPONENT;
-            }
-            default -> throw new IllegalStateException();
-        }
-    }
-
+    /**
+     * This function adds back the BattleType to the given FighterInventory, because it's set to null by gson reading
+     */
     public static FighterInventory addBackBattleType(FighterInventory fighterInventory){
+        // ! it says return value is never used but game crashes if the function is not being used
 
 
         for (int i = 0; i < fighterInventory.getSize(); i++) {
@@ -82,6 +60,10 @@ public class ReadObjectFromFile {
     return fighterInventory;
     }
 
+
+    /**
+     * This function takes the 2D-Array read by gson and converts it to a 1D-Array to convert all objects back to the right type
+     */
     public static String Arr2Dto1D(JsonObject jsonObject, String entityArrKey) {
         JsonObject entityArrObject = new JsonObject();
         entityArrObject.add(entityArrKey, jsonObject.get(entityArrKey));

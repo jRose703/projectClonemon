@@ -5,28 +5,27 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VoidTileTest {
-
+class HighGrassTileTest {
     private Tile tile;
 
     @BeforeEach
     void setUp() {
-        tile = new VoidTile();
+        tile = new HighGrassTile();
     }
 
     @Test
     void getAccessible() {
-        assertFalse(tile.getAccessible());
+        assertTrue(tile.getAccessible());
     }
 
     @Test
     void getTexture_id() {
-        assertEquals(tile.getTextureID(), -1);
+        assertEquals(tile.getTextureID(), 2);
     }
 
     @Test
     void getTileType() {
-        assertEquals(tile.getTileType(), "VoidTile");
+        assertEquals(tile.getTileType(), "HighGrassTile");
     }
 
 

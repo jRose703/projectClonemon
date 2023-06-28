@@ -21,6 +21,10 @@ import java.util.List;
 
 public class ReadPlayerFromJson {
 
+
+    /**
+     * Reads the filename.json and recreates the player entity
+     */
     public static PlayerEntity readPlayerFromFile(String filename) {
         JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
         PlayerEntity player = new PlayerEntity();
@@ -33,6 +37,10 @@ public class ReadPlayerFromJson {
         player.setPlayerFighters(readFighterInventory(jsonObject));
         return player;
     }
+
+    /**
+     * Reads player-coordinates and returns them
+     */
     private static Coordinates readCoordinates(JsonObject jsonObject){
         int x = jsonObject.get("coordinates").getAsJsonObject().get("x").getAsInt();
         int y = jsonObject.get("coordinates").getAsJsonObject().get("y").getAsInt();
@@ -40,6 +48,10 @@ public class ReadPlayerFromJson {
         return new Coordinates(x,y);
     }
 
+
+    /**
+     * Reads player-facing-direction
+     */
     private static int readFacing(JsonObject jsonObject){
 
         int direction = jsonObject.get("facing_direction").getAsInt();
@@ -50,20 +62,32 @@ public class ReadPlayerFromJson {
         return direction;
     }
 
+    /**
+     * Reads players-currentWorld
+     */
     private static String readCurrentWorld(JsonObject jsonObject){
         return jsonObject.get("currentWorld").getAsString();
     }
 
+    /**
+     * Reads player-money
+     */
     private static int readMoney(JsonObject jsonObject){
         return jsonObject.get("money").getAsInt();
     }
 
+    /**
+     * Reads player-inventory
+     */
     //#Todo read Inventory
     private static Inventory readInventory(JsonObject jsonObject){
         //JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
         return new Inventory();
     }
 
+    /**
+     * Reads player-FighterInventory
+     */
     private static FighterInventory readFighterInventory(JsonObject jsonObject){
 
         RuntimeTypeAdapterFactory<Fighter> runtimeTypeAdapterFactory2 = RuntimeTypeAdapterFactory
