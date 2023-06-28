@@ -1,5 +1,6 @@
 package Worlds.Tiles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +9,10 @@ class LowGrassTileTest {
 
     private Tile tile;
 
-    LowGrassTileTest() {
+
+
+    @BeforeEach
+    void setUp() {
         tile = new LowGrassTile();
     }
 

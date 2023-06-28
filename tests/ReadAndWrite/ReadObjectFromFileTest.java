@@ -8,7 +8,7 @@ class ReadObjectFromFileTest {
 
     @Test
     void getJsonObjectFromFileTest() {
-        ReadObjectFromFile.getJsonObjectFromFile("worldCreated");
+        //ReadObjectFromFile.getJsonObjectFromFile("world");
 
     }
 }

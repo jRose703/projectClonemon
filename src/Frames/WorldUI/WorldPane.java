@@ -15,6 +15,7 @@ import Frames.TextBox.MenuType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
+import Worlds.Tiles.DoorTile;
 import Worlds.Tiles.HighGrassTile;
 import Worlds.World;
 
@@ -169,6 +170,9 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		} else player.setFacing(direction);
 		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
 			randomChanceEncounter();
+		else if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof DoorTile)
+				;
+		//TODO please tell the statemachine to change world to wolrd saved in Doortile
 		//updatePlayerLabel();
 	}
 

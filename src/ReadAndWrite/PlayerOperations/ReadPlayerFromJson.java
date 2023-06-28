@@ -7,6 +7,7 @@ import BattleSystem.Fighters.Undead;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;
 import Entity.ItemInventory;
+import Entity.Items.*;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
 import com.google.gson.Gson;
@@ -21,6 +22,10 @@ import java.util.List;
 
 public class ReadPlayerFromJson {
 
+
+    /**
+     * Reads the filename.json and recreates the player entity
+     */
     public static PlayerEntity readPlayerFromFile(String filename) {
         JsonObject jsonObject = ReadObjectFromFile.getJsonObjectFromFile(filename);
         PlayerEntity player = new PlayerEntity();
@@ -33,6 +38,10 @@ public class ReadPlayerFromJson {
         player.setPlayerFighters(readFighterInventory(jsonObject));
         return player;
     }
+
+    /**
+     * Reads player-coordinates and returns them
+     */
     private static Coordinates readCoordinates(JsonObject jsonObject){
         int x = jsonObject.get("coordinates").getAsJsonObject().get("x").getAsInt();
         int y = jsonObject.get("coordinates").getAsJsonObject().get("y").getAsInt();
@@ -40,6 +49,10 @@ public class ReadPlayerFromJson {
         return new Coordinates(x,y);
     }
 
+
+    /**
+     * Reads player-facing-direction
+     */
     private static int readFacing(JsonObject jsonObject){
 
         int direction = jsonObject.get("facing_direction").getAsInt();
@@ -50,20 +63,50 @@ public class ReadPlayerFromJson {
         return direction;
     }
 
+    /**
+     * Reads players-currentWorld
+     */
     private static String readCurrentWorld(JsonObject jsonObject){
         return jsonObject.get("currentWorld").getAsString();
     }
 
+    /**
+     * Reads player-money
+     */
     private static int readMoney(JsonObject jsonObject){
         return jsonObject.get("money").getAsInt();
     }
 
-    //#Todo read Inventory
-    private static ItemInventory readInventory(JsonObject jsonObject) {
-        //JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
-        return new ItemInventory();
+    /**
+     * Reads player-inventory
+     */
+    private static ItemInventory readInventory(JsonObject jsonObject){
+
+        RuntimeTypeAdapterFactory<Item> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+                .of(Item.class, "name")
+                .registerSubtype(Potion.class, "Potion")
+                .registerSubtype(Pokedodekaeder.class, "Pokedodekaeder")
+                .registerSubtype(PoisonPotion.class, "PoisonPotion");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
+        ItemInventory inventory =  new ItemInventory();
+
+
+        Type listType = new TypeToken<List<Item>>() {}.getType();
+        JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("inventory").getAsJsonArray();
+        List<Item> fromJson = gson.fromJson(jsonArray, listType);
+        ReadObjectFromFile.addBackItemName(fromJson);
+
+        for (Item item : fromJson) {
+            inventory.addToInventory(item);
+        }
+
+        return inventory;
     }
 
+    /**
+     * Reads player-FighterInventory
+     */
     private static FighterInventory readFighterInventory(JsonObject jsonObject){
 
         RuntimeTypeAdapterFactory<Fighter> runtimeTypeAdapterFactory2 = RuntimeTypeAdapterFactory
@@ -73,15 +116,13 @@ public class ReadPlayerFromJson {
                 .registerSubtype(Exorcist.class, "Exorcist");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory2).create();
+        FighterInventory fighterInventory = new FighterInventory();
 
 
         Type listType = new TypeToken<List<Fighter>>() {}.getType();
         JsonArray jsonArray = jsonObject.get("playerFighters").getAsJsonObject().get("fighterInventory").getAsJsonArray();
 
         List<Fighter> fromJson = gson.fromJson(jsonArray, listType);
-
-        FighterInventory fighterInventory = new FighterInventory();
-
         for (Fighter fighter:fromJson) {
             fighterInventory.addToFighterInventory(fighter);
         }

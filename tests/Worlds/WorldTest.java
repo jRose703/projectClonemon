@@ -2,9 +2,14 @@ package Worlds;
 
 import Entity.Entities.Entity;
 import Entity.Entities.OpponentEntity;
+import Worlds.Tiles.LowGrassTile;
+import Worlds.Tiles.RockTile;
+import Worlds.Tiles.Tile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +24,7 @@ class WorldTest {
     private World world100x100;
 
     private Coordinates coordinates;
+    private Tile[][] tileArr;
 
 
     @BeforeEach
@@ -45,80 +51,84 @@ class WorldTest {
 
     }
 
-    @Disabled
     @Test
-    void printWorld_ids() {
-        // need idea for pretty console output of the ids
-    }
-
-    @Test
-    void disable() {
+    void disableTest() {
         world.disable();
         assertFalse(world.getStatus());
     }
 
     @Test
-    void enable() {
+    void enableTest() {
         world.enable();
         assertTrue(world.getStatus());
     }
 
     @Test
-    void enemy_check() {
-        // add an enemy to the entity array here at 0 0
+    void enemy_checkTest() {
         Entity opponent = new OpponentEntity();
         world.setEntity(coordinates, opponent);
-
         assertTrue(world.tileContainsEnemy(coordinates));
         coordinates.setX(1);
         assertFalse(world.tileContainsEnemy(coordinates));
+    }
+
+    @Disabled
+    @Test
+    void getTileArrTest() {
+
 
     }
 
     @Disabled
     @Test
-    void getTileArr() {
+    void getEntityArrTest() {
+    }
 
+    @Test
+    void getStatusTest() {
+        world.enable();
+        assertTrue(world.getStatus());
+        world.disable();
+        assertFalse(world.getStatus());
+    }
 
+    @Test
+    void setEntityTest() {
+        Entity entity =  new OpponentEntity();
+        world.setEntity(coordinates, entity);
+        assertEquals(world.getEntity(coordinates),entity);
     }
 
     @Disabled
     @Test
-    void getEntityArr() {
+    void getTileTest() {
     }
 
-    @Disabled
     @Test
-    void getStatus() {
+    void setTileTest() {
+        Tile tile =  new RockTile();
+        world.setTile(coordinates, tile);
+        assertEquals(world.getTile(coordinates),tile);
+
     }
 
-    @Disabled
     @Test
-    void setEntity() {
+    void getXLengthTest() {
+        assertEquals(world3x3.getXLength(),3);
+        assertEquals(world3x4.getXLength(),3);
+        assertEquals(world4x3.getXLength(),4);
+        assertEquals(world.getXLength(),10);
+        assertEquals(world100x100.getXLength(),100);
     }
 
-    @Disabled
+
     @Test
-    void getTile() {
+    void getYLengthTest() {
+        assertEquals(world3x3.getYLength(),3);
+        assertEquals(world3x4.getYLength(),4);
+        assertEquals(world4x3.getYLength(),3);
+        assertEquals(world.getYLength(),10);
+        assertEquals(world100x100.getYLength(),100);
     }
 
-    @Disabled
-    @Test
-    void setTile() {
-    }
-
-    @Disabled
-    @Test
-    void getXLength() {
-    }
-
-    @Disabled
-    @Test
-    void getYLength() {
-    }
-
-    @Disabled
-    @Test
-    void setTileArr() {
-    }
 }

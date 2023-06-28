@@ -5,13 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VoidTileTest {
+class WaterTileTest {
 
     private Tile tile;
-
     @BeforeEach
     void setUp() {
-        tile = new VoidTile();
+        tile = new WaterTile();
     }
 
     @Test
@@ -21,12 +20,12 @@ class VoidTileTest {
 
     @Test
     void getTexture_id() {
-        assertEquals(tile.getTextureID(), -1);
+        assertEquals(tile.getTextureID(), 3);
     }
 
     @Test
     void getTileType() {
-        assertEquals(tile.getTileType(), "VoidTile");
+        assertEquals(tile.getTileType(), "WaterTile");
     }
 
 
@@ -37,5 +36,4 @@ class VoidTileTest {
         tile.setAccessible(true);
         assertTrue(tile.getAccessible());
     }
-
 }

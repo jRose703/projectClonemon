@@ -2,62 +2,62 @@
   "playerFighters": {
     "fighterInventory": [
       {
-        "name": "Catmon",
-        "backSprite": "assets/fighters/backsprites/citizen_back.png",
-        "type": "CITIZEN",
-        "fightingSide": "PLAYER",
-        "ID": 0,
-        "isDefeated": false,
         "maxHitpoints": 100,
+        "ID": 0,
+        "name": "Catmon",
+        "type": "CITIZEN",
+        "isDefeated": false,
+        "backSprite": "assets/fighters/backsprites/citizen_back.png",
+        "fightingSide": "PLAYER",
+        "hitpoints": 100,
+        "frontSprite": "assets/fighters/frontsprites/citizen_front.png",
         "attackStat": 10,
         "defenseStat": 5,
-        "initStat": 0,
-        "hitpoints": 100,
-        "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+        "initStat": 0
       },
       {
-        "name": "Lionmon",
-        "backSprite": "assets/fighters/backsprites/undead_back.png",
-        "type": "UNDEAD",
-        "fightingSide": "PLAYER",
-        "ID": 0,
-        "isDefeated": false,
         "maxHitpoints": 100,
+        "ID": 0,
+        "name": "Lionmon",
+        "type": "UNDEAD",
+        "isDefeated": false,
+        "backSprite": "assets/fighters/backsprites/undead_back.png",
+        "fightingSide": "PLAYER",
+        "hitpoints": 100,
+        "frontSprite": "assets/fighters/frontsprites/undead_front.png",
         "attackStat": 10,
         "defenseStat": 5,
-        "initStat": 0,
-        "hitpoints": 100,
-        "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+        "initStat": 0
+      }
+    ]
+  },
+  "inventory": {
+    "inventory": [
+      {
+        "type": "HEAL",
+        "VALUE": 20,
+        "offensive": false,
+        "name": "Potion",
+        "amount": 1
+      },
+      {
+        "type": "DAMAGE",
+        "VALUE": 5,
+        "offensive": true,
+        "name": "PoisonPotion",
+        "amount": 1
+      },
+      {
+        "type": "CATCH",
+        "VALUE": 1,
+        "offensive": true,
+        "name": "Pokedodekaeder",
+        "amount": 1
       }
     ]
   },
   "currentWorld": "world",
   "money": 0,
-  "inventory": {
-    "inventory": [
-      {
-        "Type": "Catch",
-        "value": 1,
-        "offensive": true,
-        "name": "x",
-        "amount": 1
-      },
-      {
-        "Type": "Heal",
-        "value": 20,
-        "offensive": false,
-        "name": "p",
-        "amount": 1
-      },
-      {
-        "Type": "Damage",
-        "value": 5,
-        "offensive": true,
-        "name": "pp",
-        "amount": 1
-      }
-    ]
-  },
   "coordinates": {
     "x": 5,
     "y": 5

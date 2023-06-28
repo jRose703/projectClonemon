@@ -26,19 +26,7 @@ public class World {
                 tileArr[j][i] = new LowGrassTile();
             }
         }
-
-        // +EntityArr initialising
     }
-
-    // This function prints out the world with every texture_id of the Tiles.
-/*    public void printWorld_ids() {
-        for (int i = 0; i < tileArr[0].length; i++) {
-            for (Tile[] tiles : tileArr) {
-                System.out.print(tiles[i].getTexture_id() + ",");
-            }
-            System.out.print("\n");
-        }
-    }*/
 
     /**
      * This method returns a boolean depending on if the tile is accessible or not.
