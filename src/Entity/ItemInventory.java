@@ -1,6 +1,4 @@
 package Entity;
-
-import Entity.Items.Heal.*;
 import Entity.Items.Item;
 
 import java.util.Objects;
@@ -10,12 +8,6 @@ public class ItemInventory {
     private Vector<Item> inventory = new Vector<>();
 
     public ItemInventory() {
-        //TODO read inventory out of JSON
-        addToInventory(new Potion());
-        addToInventory(new SuperPotion());
-        addToInventory(new HyperPotion(), 6);
-        addToInventory(new Revive());
-        addToInventory(new TopRevive());
     }
 
     public void addToInventory(Item item_given) {

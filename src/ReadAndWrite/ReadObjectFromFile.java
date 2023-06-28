@@ -1,13 +1,10 @@
 package ReadAndWrite;
-
-import BattleSystem.enums.FightingSide;
 import BattleSystem.enums.FightingType;
-import BattleSystem.FightingType;
 import Entity.FighterInventory;
 import Entity.Items.Item;
-import Entity.Items.PoisonPotion;
-import Entity.Items.Pokedodekaeder;
-import Entity.Items.Potion;
+import Entity.Items.Heal.*;
+import Entity.Items.Damage.*;
+import Entity.Items.Catch.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -68,6 +65,18 @@ public class ReadObjectFromFile {
         for (Item item:itemList) {
             if(item.getClass().equals(Potion.class)){
                 item.setName("Potion");
+            }
+            else if(item.getClass().equals(SuperPotion.class)){
+                item.setName("SuperPotion");
+            }
+            else if(item.getClass().equals(HyperPotion.class)){
+                item.setName("HyperPotion");
+            }
+            else if(item.getClass().equals(Revive.class)){
+                item.setName("Revive");
+            }
+            else if(item.getClass().equals(TopRevive.class)){
+                item.setName("TopRevive");
             }
             else if(item.getClass().equals(PoisonPotion.class)){
                 item.setName("PoisonPotion");

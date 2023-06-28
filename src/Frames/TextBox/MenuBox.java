@@ -104,7 +104,7 @@ public class MenuBox extends AbstractTextBox {
             if (menuType.equals(MenuType.BATTLE)) itemInventoryUI.showUI();
             else {
                 WriteWorldToJson.saveWorld(world, player.getCurrentWorld());
-                WritePlayerToJson.savePlayer(player, player.getCurrentWorld());
+                WritePlayerToJson.savePlayer(player, "player");
             }
 
         } else if (cursor_x == RIGHT && cursor_y == TOP) {

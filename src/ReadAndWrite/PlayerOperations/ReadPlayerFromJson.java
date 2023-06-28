@@ -7,6 +7,9 @@ import BattleSystem.Fighters.Undead;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;
 import Entity.ItemInventory;
+import Entity.Items.Catch.*;
+import Entity.Items.Damage.*;
+import Entity.Items.Heal.*;
 import Entity.Items.*;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
@@ -85,6 +88,10 @@ public class ReadPlayerFromJson {
         RuntimeTypeAdapterFactory<Item> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Item.class, "name")
                 .registerSubtype(Potion.class, "Potion")
+                .registerSubtype(SuperPotion.class, "SuperPotion")
+                .registerSubtype(HyperPotion.class, "HyperPotion")
+                .registerSubtype(Revive.class, "Revive")
+                .registerSubtype(TopRevive.class, "TopRevive")
                 .registerSubtype(Pokedodekaeder.class, "Pokedodekaeder")
                 .registerSubtype(PoisonPotion.class, "PoisonPotion");
 
@@ -93,7 +100,7 @@ public class ReadPlayerFromJson {
 
 
         Type listType = new TypeToken<List<Item>>() {}.getType();
-        JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("inventory").getAsJsonArray();
+        JsonArray jsonArray = jsonObject.get("itemInventory").getAsJsonObject().get("inventory").getAsJsonArray();
         List<Item> fromJson = gson.fromJson(jsonArray, listType);
         ReadObjectFromFile.addBackItemName(fromJson);
 

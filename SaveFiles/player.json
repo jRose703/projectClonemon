@@ -9,7 +9,7 @@
         "isDefeated": false,
         "backSprite": "assets/fighters/backsprites/citizen_back.png",
         "fightingSide": "PLAYER",
-        "hitpoints": 100,
+        "hitpoints": 70,
         "frontSprite": "assets/fighters/frontsprites/citizen_front.png",
         "attackStat": 10,
         "defenseStat": 5,
@@ -31,27 +31,48 @@
       }
     ]
   },
-  "inventory": {
+  "itemInventory": {
     "inventory": [
       {
-        "type": "HEAL",
-        "VALUE": 20,
         "offensive": false,
         "name": "Potion",
+        "itemType": "HEAL",
+        "amount": 2
+      },
+      {
+        "offensive": false,
+        "name": "SuperPotion",
+        "itemType": "HEAL",
         "amount": 1
       },
       {
-        "type": "DAMAGE",
-        "VALUE": 5,
+        "offensive": false,
+        "name": "HyperPotion",
+        "itemType": "HEAL",
+        "amount": 6
+      },
+      {
+        "offensive": false,
+        "name": "Revive",
+        "itemType": "HEAL",
+        "amount": 1
+      },
+      {
+        "offensive": false,
+        "name": "TopRevive",
+        "itemType": "HEAL",
+        "amount": 1
+      },
+      {
         "offensive": true,
         "name": "PoisonPotion",
+        "itemType": "DAMAGE",
         "amount": 1
       },
       {
-        "type": "CATCH",
-        "VALUE": 1,
         "offensive": true,
         "name": "Pokedodekaeder",
+        "itemType": "CATCH",
         "amount": 1
       }
     ]
@@ -59,8 +80,8 @@
   "currentWorld": "world",
   "money": 0,
   "coordinates": {
-    "x": 5,
-    "y": 5
+    "x": 8,
+    "y": 1
   },
-  "facing_direction": 1
+  "facing_direction": 2
 }
