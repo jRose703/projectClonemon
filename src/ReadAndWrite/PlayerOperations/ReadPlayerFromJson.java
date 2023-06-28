@@ -7,6 +7,7 @@ import BattleSystem.Fighters.Undead;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;
 import Entity.Inventory;
+import Entity.Items.*;
 import ReadAndWrite.ReadObjectFromFile;
 import Worlds.Coordinates;
 import com.google.gson.Gson;
@@ -81,8 +82,30 @@ public class ReadPlayerFromJson {
      */
     //#Todo read Inventory
     private static Inventory readInventory(JsonObject jsonObject){
-        //JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("Inventory").getAsJsonArray();
-        return new Inventory();
+
+        RuntimeTypeAdapterFactory<Item> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+                .of(Item.class, "name")
+                .registerSubtype(Potion.class, "Potion")
+                .registerSubtype(Pokedodekaeder.class, "Pokedodekaeder")
+                .registerSubtype(PoisonPotion.class, "PoisonPotion");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
+
+        Inventory inventory =  new Inventory();
+        Type listType = new TypeToken<List<Item>>() {}.getType();
+
+        JsonArray jsonArray = jsonObject.get("inventory").getAsJsonObject().get("inventory").getAsJsonArray();
+        List<Item> fromJson = gson.fromJson(jsonArray, listType);
+
+        System.out.println(fromJson);
+
+         fromJson = ReadObjectFromFile.addBackItemName(fromJson);
+
+        for (Item item : fromJson) {
+            inventory.addToInventory(item);
+        }
+
+        return inventory;
     }
 
     /**

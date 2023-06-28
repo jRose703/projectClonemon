@@ -3,12 +3,17 @@ package ReadAndWrite;
 import BattleSystem.FightingSide;
 import BattleSystem.FightingType;
 import Entity.FighterInventory;
+import Entity.Items.Item;
+import Entity.Items.PoisonPotion;
+import Entity.Items.Pokedodekaeder;
+import Entity.Items.Potion;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class ReadObjectFromFile {
 
@@ -60,6 +65,25 @@ public class ReadObjectFromFile {
     return fighterInventory;
     }
 
+
+    /**
+     * This funktion adds back the ItemName after it's removed in the reading process
+     */
+    public static List<Item> addBackItemName(List<Item> itemList){
+
+        for (Item item:itemList) {
+            if(item.getClass().equals(Potion.class)){
+                item.setName("Potion");
+            }
+            else if(item.getClass().equals(PoisonPotion.class)){
+                item.setName("PoisonPotion");
+            }
+            else if(item.getClass().equals(Pokedodekaeder.class)){
+                item.setName("Pokedodekaeder");
+            }
+        }
+        return itemList;
+    }
 
     /**
      * This function takes the 2D-Array read by gson and converts it to a 1D-Array to convert all objects back to the right type
