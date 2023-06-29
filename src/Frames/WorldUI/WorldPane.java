@@ -21,6 +21,7 @@ import java.util.Random;
 
 public class WorldPane extends JLayeredPane implements KeyListener {
 
+	private int typecomb;
 	private static final int TILE_SIZE = 60;
 	private final Observer stateMachineObserver;
 	private final TextBox dialogueBox;
@@ -67,8 +68,9 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(3));
 
-		editMode = true;
+		editMode = false;
 		world.setEditMode(editMode);
+		typecomb = 0;
 	}
 
 	public void reloadWorld() {
@@ -94,10 +96,33 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		if (dialogueBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case '\n' -> doCombat();
-			case 'a' -> moveAction(3);
-			case 'w' -> moveAction(0);
-			case 'd' -> moveAction(1);
-			case 's' -> moveAction(2);
+			case 'a' -> {
+					moveAction(3);
+					typecomb = 0;
+			}
+			case 'w' -> {
+					moveAction(0);
+					typecomb = 0;
+			}
+			case 'd' -> {
+					moveAction(1);
+					if(typecomb == 1) {typecomb++;} else {typecomb = 0;}
+			}
+			case 's' -> {
+					moveAction(2);
+					typecomb = 0;
+			}
+			case 'e' -> {
+				if(typecomb == 0) {typecomb++;} else {typecomb = 0;}
+			}
+			case 'i' -> {
+				if(typecomb == 2) {typecomb++;} else {typecomb = 0;}
+			}
+			case 't' -> {
+				if(typecomb == 3) {editMode = !editMode; world.setEditMode(editMode);}
+				typecomb = 0;
+			}
+			default -> typecomb = 0;
 		}
 	}
 
