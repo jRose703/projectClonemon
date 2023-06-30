@@ -467,13 +467,13 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": -1,
-        "tileType": "VoidTile",
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
         "accessible": false
       },
       {
-        "TEXTURE_ID": -1,
-        "tileType": "VoidTile",
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
         "accessible": false
       }
     ],
@@ -519,13 +519,13 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": -1,
-        "tileType": "VoidTile",
-        "accessible": false
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "TEXTURE_ID": 1,
-        "tileType": "RockTile",
+        "TEXTURE_ID": -1,
+        "tileType": "VoidTile",
         "accessible": false
       }
     ]
@@ -726,5 +726,6 @@
       null
     ]
   ],
-  "status": false
+  "status": false,
+  "editMode": false
 }
