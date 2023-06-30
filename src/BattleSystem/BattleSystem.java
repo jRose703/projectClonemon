@@ -1,5 +1,7 @@
 package BattleSystem;
 
+import BattleSystem.enums.BattleAction;
+import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
 import Observer.ObserveType;
@@ -96,6 +98,10 @@ public class BattleSystem {
             }
             case RUN -> {
                 if (player.flee()) endBattle();
+                return false;
+            }
+            case ITEMS -> {
+                System.out.println("Player used Item!");
                 return false;
             }
             default -> throw new IllegalStateException("Chosen action was not attack, switch or flee!");

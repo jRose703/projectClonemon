@@ -3,7 +3,9 @@ package Entity.Items;
 public abstract class ThrowableItem extends Item {
     private final boolean offensive = true;
 
-    public ThrowableItem(String name) {
-        super(name);
+    public ThrowableItem(String name, ItemType itemType) {
+        super(name, itemType);
     }
+
+    public abstract int getThrowableValue();
 }

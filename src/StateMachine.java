@@ -1,5 +1,5 @@
 import BattleSystem.Fighter;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.Entities.OpponentEntity;
 import Frames.Frame;
 import Observer.ObserveType;
@@ -16,7 +16,6 @@ public class StateMachine implements Observer {
     /** Creates the game frame */
     public StateMachine(){
         this.frame = new Frame(ReadWorldFromJson.readWorldFromFile("world"), this);
-        //startDialogue("Let's Fight!");  //TEST
     }
 
     /**
@@ -53,5 +52,13 @@ public class StateMachine implements Observer {
                 break;
         }
     }
+
+    //TODO here change World from here
+    /*
+    public void changeWorld(String world){
+        this.frame = new Frame(ReadWorldFromJson.readWorldFromFile(world), this);
+    }
+     */
+
 
 }

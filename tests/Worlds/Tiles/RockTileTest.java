@@ -1,5 +1,6 @@
 package Worlds.Tiles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,10 +9,11 @@ class RockTileTest {
 
     private Tile tile;
 
-    RockTileTest() {
+
+    @BeforeEach
+    void setUp() {
         tile = new RockTile();
     }
-
     @Test
     void getAccessible() {
         assertFalse(tile.getAccessible());

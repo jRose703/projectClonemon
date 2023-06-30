@@ -2,10 +2,14 @@ package Frames.BattleUI;
 
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
+import Entity.ItemInventory;
 import Frames.BasicPanel;
-import Frames.TextBox.BattleMenuBox;
+import Frames.InventoryUI.FighterInventoryUI;
+import Frames.InventoryUI.ItemInventoryUI;
+import Frames.TextBox.MenuBox;
+import Frames.TextBox.MenuType;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -13,21 +17,27 @@ import java.awt.event.KeyListener;
 
 public class BattlePane extends JLayeredPane implements KeyListener, BattleObserver {
 
-	private final BattleMenuBox battleMenuBox;
+	private final MenuBox battleMenuBox;
 	private final FighterUI playerUI;
 	private final FighterUI opponentUI;
 	private final FighterInventoryUI fighterInventoryUI;
+	private final ItemInventoryUI itemInventoryUI;
 
 	/**
 	 * Starts the graphical battle.
 	 */
-	public BattlePane(FighterInventory playerFighters) {
-		// FighterInventoryUI
-		fighterInventoryUI = new FighterInventoryUI(playerFighters);
-		this.add(fighterInventoryUI, Integer.valueOf(2));
+	public BattlePane(FighterInventory playerFighters, ItemInventory inventory) {
+		// InventoryUI setup
+		fighterInventoryUI = new FighterInventoryUI(playerFighters, MenuType.BATTLE);
+		this.add(fighterInventoryUI, Integer.valueOf(3));
+
+		itemInventoryUI = new ItemInventoryUI(fighterInventoryUI, inventory, MenuType.BATTLE);
+		add(itemInventoryUI, Integer.valueOf(2));
+
+		fighterInventoryUI.setItemInventoryUI(itemInventoryUI);
 
 		// Adds the battle menu box
-		this.battleMenuBox = new BattleMenuBox(fighterInventoryUI);
+		this.battleMenuBox = new MenuBox(fighterInventoryUI, itemInventoryUI, MenuType.BATTLE);
 		this.add(battleMenuBox, Integer.valueOf(1));
 
 		// Height of (screen - menu box)
@@ -73,13 +83,15 @@ public class BattlePane extends JLayeredPane implements KeyListener, BattleObser
 
 	@Override
 	public void showFighterInventoryUI() {
-		fighterInventoryUI.showUI(false);
+		fighterInventoryUI.showUI(false, false, 0);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (fighterInventoryUI.isVisible())
 			fighterInventoryUI.keyReleased(e);
+		else if (itemInventoryUI.isVisible())
+			itemInventoryUI.keyReleased(e);
 		else battleMenuBox.keyReleased(e);
 	}
 

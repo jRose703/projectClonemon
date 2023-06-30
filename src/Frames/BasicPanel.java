@@ -3,7 +3,7 @@ package Frames;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.Entities.OpponentEntity;
 import Entity.Entities.PlayerEntity;
 import Entity.FighterInventory;
@@ -58,8 +58,8 @@ public class BasicPanel extends JPanel implements KeyListener {
 		this.add(worldPane);
 
 		// Creates the graphical battle
-		this.battlePane = new BattlePane(player.getPlayerFighters());
-		this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
+		this.battlePane = new BattlePane(player.getPlayerFighters(), player.getInventory());
+        this.battlePane.setBounds(0, 0, SCREENWIDTH, SCREENHEIGHT);
 		this.add(battlePane);
 
         // Window setup

@@ -2,14 +2,14 @@ package Entity.Entities;
 
 import BattleSystem.Fighter;
 import Entity.FighterInventory;
-import Entity.Inventory;
+import Entity.ItemInventory;
 import Entity.Items.Item;
 import Worlds.Coordinates;
 
 public class PlayerEntity extends Entity {
 
     private FighterInventory playerFighters;
-    private Inventory inventory;
+    private ItemInventory itemInventory;
     private String currentWorld;
     private int money;
 
@@ -17,7 +17,7 @@ public class PlayerEntity extends Entity {
     }
 
     public void addToInventory(Item item) {
-        inventory.addToInventory(item);
+        itemInventory.addToInventory(item);
     }
 
     public void addToFighterInventory(Fighter fighter) {
@@ -36,8 +36,8 @@ public class PlayerEntity extends Entity {
         return money;
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    public ItemInventory getInventory() {
+        return itemInventory;
     }
 
     @Override
@@ -54,8 +54,8 @@ public class PlayerEntity extends Entity {
         this.currentWorld = currentWorld;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+    public void setInventory(ItemInventory itemInventory) {
+        this.itemInventory = itemInventory;
     }
 
     public void setMoney(int money) {

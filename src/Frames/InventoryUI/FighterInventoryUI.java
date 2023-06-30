@@ -1,10 +1,11 @@
-package Frames.BattleUI;
+package Frames.InventoryUI;
 
-import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
+import BattleSystem.enums.BattleAction;
 import Entity.FighterInventory;
 import Frames.BasicPanel;
+import Frames.TextBox.MenuType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,23 +21,29 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     private final FighterInventory playerFighters;
     private final int numberOfFighters;
     private final int numberOfColumns;
+    private ItemInventoryUI inventoryUI;
 
-    private final int leftEdge = 6 * BasicPanel.SCREENWIDTH / 100;
-    private final int upperEdge = 12 * BasicPanel.SCREENWIDTH / 100;
-    private final int cursor_back_button = 75 * BasicPanel.SCREENWIDTH / 100;
+    private final int leftEdge = BasicPanel.SCREENWIDTH * 6 / 100;
+    private final int upperEdge = BasicPanel.SCREENWIDTH * 12 / 100;
+    private final int cursor_back_button = BasicPanel.SCREENWIDTH * 75 / 100;
     private final Map<List<Integer>, Integer> lookupIndex = new HashMap<>();
 
     private BattleSystem battle;
+    private final MenuType menuType;
     private boolean isNewRound = true;
+
+    private boolean isItemUse = false;
+    private int healAmount;
 
     // cursor coordinates
     private int cursor_x;
     private int cursor_y;
 
-    public FighterInventoryUI(FighterInventory playerFighters) {
+    public FighterInventoryUI(FighterInventory playerFighters, MenuType menuType) {
         this.playerFighters = playerFighters;
-        numberOfFighters = playerFighters.getFighterInventory().size();
-        numberOfColumns = (int) (numberOfFighters * 0.5) + numberOfFighters % 2;
+        this.numberOfFighters = playerFighters.getFighterInventory().size();
+        this.numberOfColumns = (int) (numberOfFighters * 0.5) + numberOfFighters % 2;
+        this.menuType = menuType;
 
         // Cursor start coordinates setup in the upper left corner
         cursor_x = leftEdge;
@@ -53,11 +60,19 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     }
 
     public void setBattle(BattleSystem battle) {
+        if (menuType.equals(MenuType.WORLD)) return;
         this.battle = battle;
     }
 
-    public void showUI(boolean isNewRound) {
+    public void setItemInventoryUI(ItemInventoryUI inventoryUI) {
+        this.inventoryUI = inventoryUI;
+    }
+
+    public void showUI(boolean isNewRound, boolean isItemUse, int healAmount) {
         this.isNewRound = isNewRound;
+        this.isItemUse = isItemUse;
+        this.healAmount = healAmount;
+
         this.cursor_x = leftEdge;
         this.cursor_y = upperEdge;
         repaint();
@@ -109,10 +124,11 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 10 -> { // If enter is pressed:
-                if (cursor_x == cursor_back_button)
+                if (cursor_x == cursor_back_button) {
+                    if (isItemUse) inventoryUI.successfulItemUse(false);
                     setVisible(false);
-                else
-                    switchFighter();
+                } else
+                    chooseFighter();
             }
             case 37 -> moveCursor(Direction.LEFT);
             case 38 -> moveCursor(Direction.UP);
@@ -197,7 +213,9 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
         repaint();
     }
 
-    private void switchFighter() {
+    private void chooseFighter() {
+        if (!isItemUse && menuType.equals(MenuType.WORLD)) return;
+
         List<Integer> cursor_coords = new ArrayList<>();
         cursor_coords.add(cursor_x);
         cursor_coords.add(cursor_y);
@@ -207,11 +225,33 @@ public class FighterInventoryUI extends JPanel implements KeyListener {
 
         if (fighterIndex == -1) throw new IllegalStateException("Cursor can't be here!");
 
-        if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
+        if (!isItemUse) {
+            if (playerFighters.getFighter(fighterIndex).isDefeated()) return;
 
-        if (isNewRound) battle.round(BattleAction.SWITCH, fighterIndex);
-        else battle.switchAfterDefeated(fighterIndex);
-        setVisible(false);
+            if (isNewRound) battle.round(BattleAction.SWITCH, fighterIndex);
+            else battle.switchAfterDefeated(fighterIndex);
+            setVisible(false);
+        } else {
+            itemUse(fighterIndex);
+            if (menuType.equals(MenuType.BATTLE)) battle.round(BattleAction.ITEMS);
+            setVisible(false);
+        }
+    }
+
+    private void itemUse(int fighterIndex) {
+        if (healAmount >= 1000000) {
+            if (playerFighters.getFighter(fighterIndex).isDefeated()) {
+                playerFighters.getFighter(fighterIndex).heal(healAmount);
+                inventoryUI.successfulItemUse(true);
+            } else
+                inventoryUI.successfulItemUse(false);
+        } else {
+            if (playerFighters.getFighter(fighterIndex).getHitpoints() != playerFighters.getFighter(fighterIndex).getMaxHitpoints()) {
+                playerFighters.getFighter(fighterIndex).heal(healAmount);
+                inventoryUI.successfulItemUse(true);
+            } else
+                inventoryUI.successfulItemUse(false);
+        }
     }
 
     /**

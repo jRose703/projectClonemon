@@ -69,7 +69,6 @@ public class ReadWorldFromJson {
 
     }
 
-
     /**
      * This function reads the jsonObject and returns a entityArr[][].
      */
@@ -123,12 +122,7 @@ public class ReadWorldFromJson {
         }
         return entityArr;
 
-
-
-
     }
-
-
 
     /**
      * This function reads the jsonObject and returns an int[] with x size and y size.

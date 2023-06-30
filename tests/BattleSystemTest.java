@@ -1,9 +1,9 @@
-import BattleSystem.BattleAction;
 import BattleSystem.BattleSystem;
 import BattleSystem.Fighter;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.BattleAction;
+import BattleSystem.enums.FightingSide;
 import Entity.FighterInventory;
 import Frames.BattleUI.BattleObserver;
 import Observer.ObserveType;

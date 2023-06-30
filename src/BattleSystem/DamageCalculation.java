@@ -1,5 +1,6 @@
 package BattleSystem;
 
+import BattleSystem.enums.FightingType;
 import com.google.gson.stream.JsonReader;
 
 import java.io.FileReader;

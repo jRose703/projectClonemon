@@ -1,7 +1,7 @@
 package Frames.BattleUI;
 
 import BattleSystem.Fighter;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 
 public interface BattleObserver {
 

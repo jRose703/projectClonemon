@@ -4,14 +4,18 @@ import BattleSystem.Fighter;
 import BattleSystem.Fighters.Citizen;
 import BattleSystem.Fighters.Exorcist;
 import BattleSystem.Fighters.Undead;
-import BattleSystem.FightingSide;
+import BattleSystem.enums.FightingSide;
 import Entity.Entities.InteractionType;
 import Entity.Entities.OpponentEntity;
 import Entity.Entities.PlayerEntity;
+import Frames.InventoryUI.FighterInventoryUI;
+import Frames.InventoryUI.ItemInventoryUI;
+import Frames.TextBox.MenuBox;
+import Frames.TextBox.MenuType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
-import Worlds.Tiles.HighGrassTile;
+import Worlds.Tiles.*;
 import Worlds.World;
 
 import javax.swing.*;
@@ -21,18 +25,25 @@ import java.util.Random;
 
 public class WorldPane extends JLayeredPane implements KeyListener {
 
+	private int typecomb;
 	private static final int TILE_SIZE = 60;
 
-	private final Observer stateMachineObserver;
+	private final ItemInventoryUI itemInventoryUI;
+	private final FighterInventoryUI fighterInventoryUI;
+	private final MenuBox menuBox;
 	private final TextBox dialogueBox;
-	private final World world;
 	private final TerrainPanel terrain;
 	private final EntityPanel entities;
+
+	private final Observer stateMachineObserver;
+	private final World world;
 	private final PlayerEntity player;
 
 	private OpponentEntity battleEntity;
 	private int moveCooldown;
 	private int keyListenerCooldown;
+
+	private boolean editMode;
 
 	/**
 	 * Starts the graphical world.
@@ -48,6 +59,7 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		setFocusable(true);
 		addKeyListener(this);
 
+		//Physical world init
 		terrain = new TerrainPanel(world, player, TILE_SIZE);
 		entities = new EntityPanel(world, player, TILE_SIZE);
 		this.world = world;
@@ -56,15 +68,31 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 		//Player + Player Label Init
 		this.player = player;
-		//this.player.setCoordinates(3, 4);
 		moveCooldown = 0;
-
-		//playerLabel.setBounds(player.getCoordinates().getX() * TILE_SIZE, player.getCoordinates().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 
 		//Textbox Init
 		keyListenerCooldown = 0;
 		dialogueBox = new TextBox(stateMachineObserver);
-		add(dialogueBox, Integer.valueOf(3));
+		add(dialogueBox, Integer.valueOf(2));
+
+		editMode = false;
+		world.setEditMode(editMode);
+		typecomb = 0;
+
+		//Inventories Init
+		fighterInventoryUI = new FighterInventoryUI(player.getPlayerFighters(), MenuType.WORLD);
+		add(fighterInventoryUI, Integer.valueOf(5));
+
+		itemInventoryUI = new ItemInventoryUI(fighterInventoryUI, player.getInventory(), MenuType.WORLD);
+		add(itemInventoryUI, Integer.valueOf(4));
+
+		fighterInventoryUI.setItemInventoryUI(itemInventoryUI);
+
+		//Menu Init
+		menuBox = new MenuBox(fighterInventoryUI, itemInventoryUI, MenuType.WORLD);
+		menuBox.setSaveRequirements(player, world);
+		menuBox.setVisible(false);
+		add(menuBox, Integer.valueOf(3));
 	}
 
 	public void reloadWorld() {
@@ -87,29 +115,62 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		;
-		if (dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible() || menuBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case '\n' -> doCombat();
-			case 'a' -> moveAction(3);
-			case 'w' -> moveAction(0);
-			case 'd' -> moveAction(1);
-			case 's' -> moveAction(2);
+			case 'a' -> {
+					moveAction(3);
+					typecomb = 0;
+			}
+			case 'w' -> {
+					moveAction(0);
+					typecomb = 0;
+			}
+			case 'd' -> {
+					moveAction(1);
+					if(typecomb == 1) {typecomb++;} else {typecomb = 0;}
+			}
+			case 's' -> {
+					moveAction(2);
+					typecomb = 0;
+			}
+			case 'e' -> {
+				if(typecomb == 0) {typecomb++;} else {typecomb = 0;}
+			}
+			case 'i' -> {
+				if(typecomb == 2) {typecomb++;} else {typecomb = 0;}
+			}
+			case 't' -> {
+				if(typecomb == 3) {editMode = !editMode; world.setEditMode(editMode);}
+				typecomb = 0;
+			}
+			default -> typecomb = 0;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (dialogueBox.isVisible())
+		if (fighterInventoryUI.isVisible())
+			fighterInventoryUI.keyReleased(e);
+		else if (itemInventoryUI.isVisible())
+			itemInventoryUI.keyReleased(e);
+		else if (menuBox.isVisible())
+			menuBox.keyReleased(e);
+
+		else if (dialogueBox.isVisible())
 			if (keyListenerCooldown != 0)
 				dialogueBox.keyReleased(e);
 			else
 				keyListenerCooldown = 1;
+
+		else if (e.getKeyCode() == 27)
+			menuBox.setVisible(true);
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (dialogueBox.isVisible()) return;
+		if (dialogueBox.isVisible() || menuBox.isVisible()) return;
 		switch (e.getKeyCode()) {
 			case 10 -> doCombat();
 			case 37 -> moveAction(3);
@@ -134,10 +195,14 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
 			player.move(player.getFacing(), world);
-			moveCooldown = 10;
+			if(!editMode)
+				moveCooldown = 10;
 		} else player.setFacing(direction);
-		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
+		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile && !editMode)
 			randomChanceEncounter();
+		else if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof DoorTile)
+				;
+		//TODO please tell the statemachine to change world to wolrd saved in Doortile
 		//updatePlayerLabel();
 	}
 
@@ -157,6 +222,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	private void doCombat() {
+		if(editMode) {
+			switchTile();
+			return;
+		}
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
 		switch (player.getFacing()) {
@@ -173,6 +242,19 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			battleEntity = (OpponentEntity) world.getEntityArr()[x][y];
 			startDialogue(battleEntity.getMessage(), battleEntity);
 		}
+	}
+	private void switchTile() {
+		Tile tile;
+		switch(world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()].getTileType()) {
+			case "HighGrassTile" -> tile = new LowGrassTile();
+			case "LowGrassTile" -> tile = new RockTile();
+			case "RockTile" -> tile = new VoidTile();
+			case "VoidTile" -> tile = new WaterTile();
+			case "WaterTile" -> tile = new HighGrassTile();
+			default -> tile = null;
+		}
+		if(tile != null)
+			world.setTile(player.getCoordinates(), tile);
 	}
 
 }

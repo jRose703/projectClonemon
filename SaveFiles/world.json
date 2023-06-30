@@ -6,158 +6,158 @@
   "tileArr": [
     [
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 3,
-        "tileType": "WaterTile"
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 2,
-        "tileType": "HighGrassTile"
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
@@ -167,366 +167,366 @@
           "x": 0,
           "y": 0
         },
-        "accessible": true,
-        "texture_id": 4,
-        "tileType": "DoorTile"
+        "TEXTURE_ID": 4,
+        "tileType": "DoorTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": false,
-        "texture_id": -1,
-        "tileType": "VoidTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "accessible": false,
-        "texture_id": -1,
-        "tileType": "VoidTile"
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       }
     ],
     [
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": true,
-        "texture_id": 0,
-        "tileType": "LowGrassTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": false,
-        "texture_id": -1,
-        "tileType": "VoidTile"
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
-        "accessible": false,
-        "texture_id": 1,
-        "tileType": "RockTile"
+        "TEXTURE_ID": -1,
+        "tileType": "VoidTile",
+        "accessible": false
       }
     ]
   ],
@@ -641,80 +641,80 @@
     ],
     [
       {
-        "message": "Die!",
-        "entityType": "OpponentEntity",
-        "dialogueType": "BATTLE",
+        "interactionType": "BATTLE",
         "fighterInventory": {
           "fighterInventory": [
             {
-              "name": "Dogmon",
-              "backSprite": "assets/fighters/backsprites/citizen_back.png",
-              "type": "CITIZEN",
-              "fightingSide": "OPPONENT",
-              "ID": 4,
-              "isDefeated": false,
               "maxHitpoints": 25,
+              "ID": 4,
+              "name": "Dogmon",
+              "type": "CITIZEN",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 25,
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png",
               "attackStat": 5,
               "defenseStat": 5,
-              "initStat": 0,
-              "hitpoints": 25,
-              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+              "initStat": 0
             },
             {
-              "name": "Bearmon",
-              "backSprite": "assets/fighters/backsprites/citizen_back.png",
-              "type": "CITIZEN",
-              "fightingSide": "OPPONENT",
-              "ID": 5,
-              "isDefeated": false,
               "maxHitpoints": 50,
+              "ID": 5,
+              "name": "Bearmon",
+              "type": "CITIZEN",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/citizen_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 50,
+              "frontSprite": "assets/fighters/frontsprites/citizen_front.png",
               "attackStat": 7,
               "defenseStat": 7,
-              "initStat": 0,
-              "hitpoints": 50,
-              "frontSprite": "assets/fighters/frontsprites/citizen_front.png"
+              "initStat": 0
             }
           ]
         },
+        "message": "You suck!!",
+        "entityType": "OpponentEntity",
         "facing_direction": 3
       },
       null,
       {
-        "message": "Die!*2",
-        "entityType": "OpponentEntity",
-        "dialogueType": "BATTLE",
+        "interactionType": "BATTLE",
         "fighterInventory": {
           "fighterInventory": [
             {
-              "name": "Dogmon",
-              "backSprite": "assets/fighters/backsprites/undead_back.png",
-              "type": "UNDEAD",
-              "fightingSide": "OPPONENT",
-              "ID": 4,
-              "isDefeated": false,
               "maxHitpoints": 25,
+              "ID": 4,
+              "name": "Dogmon",
+              "type": "UNDEAD",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 25,
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png",
               "attackStat": 5,
               "defenseStat": 5,
-              "initStat": 0,
-              "hitpoints": 25,
-              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+              "initStat": 0
             },
             {
-              "name": "Bearmon",
-              "backSprite": "assets/fighters/backsprites/undead_back.png",
-              "type": "UNDEAD",
-              "fightingSide": "OPPONENT",
-              "ID": 5,
-              "isDefeated": false,
               "maxHitpoints": 50,
+              "ID": 5,
+              "name": "Bearmon",
+              "type": "UNDEAD",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/undead_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 50,
+              "frontSprite": "assets/fighters/frontsprites/undead_front.png",
               "attackStat": 7,
               "defenseStat": 7,
-              "initStat": 0,
-              "hitpoints": 50,
-              "frontSprite": "assets/fighters/frontsprites/undead_front.png"
+              "initStat": 0
             }
           ]
         },
+        "message": "generic message",
+        "entityType": "OpponentEntity",
         "facing_direction": 2
       },
       null,
@@ -726,5 +726,6 @@
       null
     ]
   ],
-  "status": false
+  "status": false,
+  "editMode": false
 }

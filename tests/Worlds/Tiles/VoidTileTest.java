@@ -1,5 +1,6 @@
 package Worlds.Tiles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,10 +9,10 @@ class VoidTileTest {
 
     private Tile tile;
 
-    VoidTileTest() {
+    @BeforeEach
+    void setUp() {
         tile = new VoidTile();
     }
-
 
     @Test
     void getAccessible() {

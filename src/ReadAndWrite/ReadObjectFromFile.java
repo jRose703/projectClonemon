@@ -1,14 +1,17 @@
 package ReadAndWrite;
-
-import BattleSystem.FightingSide;
-import BattleSystem.FightingType;
+import BattleSystem.enums.FightingType;
 import Entity.FighterInventory;
+import Entity.Items.Item;
+import Entity.Items.Heal.*;
+import Entity.Items.Damage.*;
+import Entity.Items.Catch.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class ReadObjectFromFile {
 
@@ -30,58 +33,63 @@ public class ReadObjectFromFile {
             throw new RuntimeException(e);
         }
     }
-    public static FightingType toFightingType(String string){
-        switch (string){
-            case "CITIZEN" -> {
-                return FightingType.CITIZEN;
-            }
-            case "UNDEAD" -> {
-                return FightingType.UNDEAD;
-            }
-            case "EXORCIST" -> {
-                return FightingType.EXORCIST;
-            }
-            default -> throw new IllegalStateException();
-        }
-    }
 
-    public static FightingSide toBattleParticipant(String string) {
-        switch (string) {
-            case "PLAYER" -> {
-                return FightingSide.PLAYER;
-            }
-            case "OPPONENT" -> {
-                return FightingSide.OPPONENT;
-            }
-            default -> throw new IllegalStateException();
-        }
-    }
-
-    public static FighterInventory addBackBattleType(FighterInventory fighterInventory){
+    /**
+     * This function adds back the BattleType to the given FighterInventory, because it's set to null by gson reading
+     */
+    public static void addBackBattleType(FighterInventory fighterInventory){
+        // ! it says return value is never used but game crashes if the function is not being used
 
 
         for (int i = 0; i < fighterInventory.getSize(); i++) {
 
             switch (fighterInventory.getFighter(i).getClass().toString()) {
-                case "class BattleSystem.Fighters.Citizen" -> {
+                case "class BattleSystem.Fighters.Citizen" ->
                     fighterInventory.getFighter(i).setType(FightingType.CITIZEN);
-                    break;
-                }
-                case "class BattleSystem.Fighters.Undead" -> {
+                case "class BattleSystem.Fighters.Undead" ->
                     fighterInventory.getFighter(i).setType(FightingType.UNDEAD);
-                    break;
-                }
-                case "class BattleSystem.Fighters.Exorcist" -> {
+                case "class BattleSystem.Fighters.Exorcist" ->
                     fighterInventory.getFighter(i).setType(FightingType.EXORCIST);
-                    break;
-                }
                 default -> throw new IllegalStateException();
             }
         }
 
-    return fighterInventory;
     }
 
+
+    /**
+     * This funktion adds back the ItemName after it's removed in the reading process
+     */
+    public static void addBackItemName(List<Item> itemList){
+
+        for (Item item:itemList) {
+            if(item.getClass().equals(Potion.class)){
+                item.setName("Potion");
+            }
+            else if(item.getClass().equals(SuperPotion.class)){
+                item.setName("SuperPotion");
+            }
+            else if(item.getClass().equals(HyperPotion.class)){
+                item.setName("HyperPotion");
+            }
+            else if(item.getClass().equals(Revive.class)){
+                item.setName("Revive");
+            }
+            else if(item.getClass().equals(TopRevive.class)){
+                item.setName("TopRevive");
+            }
+            else if(item.getClass().equals(PoisonPotion.class)){
+                item.setName("PoisonPotion");
+            }
+            else if(item.getClass().equals(Pokedodekaeder.class)){
+                item.setName("Pokedodekaeder");
+            }
+        }
+    }
+
+    /**
+     * This function takes the 2D-Array read by gson and converts it to a 1D-Array to convert all objects back to the right type
+     */
     public static String Arr2Dto1D(JsonObject jsonObject, String entityArrKey) {
         JsonObject entityArrObject = new JsonObject();
         entityArrObject.add(entityArrKey, jsonObject.get(entityArrKey));

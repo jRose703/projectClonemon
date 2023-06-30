@@ -1,0 +1,39 @@
+package Worlds.Tiles;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class WaterTileTest {
+
+    private Tile tile;
+    @BeforeEach
+    void setUp() {
+        tile = new WaterTile();
+    }
+
+    @Test
+    void getAccessible() {
+        assertFalse(tile.getAccessible());
+    }
+
+    @Test
+    void getTexture_id() {
+        assertEquals(tile.getTextureID(), 3);
+    }
+
+    @Test
+    void getTileType() {
+        assertEquals(tile.getTileType(), "WaterTile");
+    }
+
+
+    @Test
+    void setAccessible() {
+        tile.setAccessible(false);
+        assertFalse(tile.getAccessible());
+        tile.setAccessible(true);
+        assertTrue(tile.getAccessible());
+    }
+}

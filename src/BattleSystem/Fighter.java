@@ -1,5 +1,8 @@
 package BattleSystem;
 
+import BattleSystem.enums.FightingSide;
+import BattleSystem.enums.FightingType;
+
 import javax.swing.*;
 import java.util.Random;
 
@@ -40,12 +43,24 @@ public abstract class Fighter {
 
     public void heal(int amount) {
         if (amount < 0) throw new IllegalArgumentException("Cannot heal negative amount");
+        if (amount >= 1000000) {
+            revive(amount);
+            return;
+        }
 
         this.hitpoints = Math.min(this.hitpoints + amount, maxHitpoints);
+        if (isDefeated && hitpoints == maxHitpoints) isDefeated = false;
     }
 
-    public void revive() {
-        this.hitpoints = maxHitpoints;
+    public void revive(int reviveType) {
+        if (reviveType == 1000000000) {
+            this.hitpoints = maxHitpoints;
+            this.isDefeated = false;
+        } else if (reviveType == 1000000) {
+            this.hitpoints = maxHitpoints / 2;
+            this.isDefeated = false;
+        } else
+            throw new IllegalArgumentException("Wrong reviveType!");
     }
 
     /**
