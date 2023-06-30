@@ -10,6 +10,7 @@ public class World {
     private Tile[][] tileArr;
     private Entity[][] entityArr;
     private boolean status;
+    private boolean editMode;
 
     public World(int x_size, int y_size) {
         if (x_size < 2 || y_size < 2) {
@@ -26,6 +27,9 @@ public class World {
                 tileArr[j][i] = new LowGrassTile();
             }
         }
+        editMode = false;
+
+        // +EntityArr initialising
     }
 
     /**
@@ -34,6 +38,8 @@ public class World {
     public boolean isAccessible(int x, int y) {
         if (x < 0 || y < 0 || x >= getXLength() || y >= getYLength())
             return false;
+        if(editMode)
+            return true;
         if (!getTileArr()[x][y].getAccessible())
             return false;
         if (getEntityArr()[x][y] != null)
@@ -97,6 +103,10 @@ public class World {
      */
     public void setTile(Coordinates coordinates, Tile tile) {
         this.tileArr[coordinates.getX()][coordinates.getY()] = tile;
+    }
+
+    public void setEditMode(boolean editMode) {
+        this.editMode = editMode;
     }
 
     public void enable() {

@@ -15,8 +15,7 @@ import Frames.TextBox.MenuType;
 import Frames.TextBox.TextBox;
 import Observer.ObserveType;
 import Observer.Observer;
-import Worlds.Tiles.DoorTile;
-import Worlds.Tiles.HighGrassTile;
+import Worlds.Tiles.*;
 import Worlds.World;
 
 import javax.swing.*;
@@ -26,6 +25,7 @@ import java.util.Random;
 
 public class WorldPane extends JLayeredPane implements KeyListener {
 
+	private int typecomb;
 	private static final int TILE_SIZE = 60;
 
 	private final ItemInventoryUI itemInventoryUI;
@@ -42,6 +42,8 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private OpponentEntity battleEntity;
 	private int moveCooldown;
 	private int keyListenerCooldown;
+
+	private boolean editMode;
 
 	/**
 	 * Starts the graphical world.
@@ -72,6 +74,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		keyListenerCooldown = 0;
 		dialogueBox = new TextBox(stateMachineObserver);
 		add(dialogueBox, Integer.valueOf(2));
+
+		editMode = false;
+		world.setEditMode(editMode);
+		typecomb = 0;
 
 		//Inventories Init
 		fighterInventoryUI = new FighterInventoryUI(player.getPlayerFighters(), MenuType.WORLD);
@@ -112,10 +118,33 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 		if (dialogueBox.isVisible() || menuBox.isVisible()) return;
 		switch (e.getKeyChar()) {
 			case '\n' -> doCombat();
-			case 'a' -> moveAction(3);
-			case 'w' -> moveAction(0);
-			case 'd' -> moveAction(1);
-			case 's' -> moveAction(2);
+			case 'a' -> {
+					moveAction(3);
+					typecomb = 0;
+			}
+			case 'w' -> {
+					moveAction(0);
+					typecomb = 0;
+			}
+			case 'd' -> {
+					moveAction(1);
+					if(typecomb == 1) {typecomb++;} else {typecomb = 0;}
+			}
+			case 's' -> {
+					moveAction(2);
+					typecomb = 0;
+			}
+			case 'e' -> {
+				if(typecomb == 0) {typecomb++;} else {typecomb = 0;}
+			}
+			case 'i' -> {
+				if(typecomb == 2) {typecomb++;} else {typecomb = 0;}
+			}
+			case 't' -> {
+				if(typecomb == 3) {editMode = !editMode; world.setEditMode(editMode);}
+				typecomb = 0;
+			}
+			default -> typecomb = 0;
 		}
 	}
 
@@ -166,9 +195,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	private void moveAction(int direction) {
 		if (moveCooldown == 0 && player.getFacing() == direction) {
 			player.move(player.getFacing(), world);
-			moveCooldown = 10;
+			if(!editMode)
+				moveCooldown = 10;
 		} else player.setFacing(direction);
-		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile)
+		if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof HighGrassTile && !editMode)
 			randomChanceEncounter();
 		else if (world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()] instanceof DoorTile)
 				;
@@ -192,6 +222,10 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 	}
 
 	private void doCombat() {
+		if(editMode) {
+			switchTile();
+			return;
+		}
 		int x = player.getCoordinates().getX();
 		int y = player.getCoordinates().getY();
 		switch (player.getFacing()) {
@@ -208,6 +242,19 @@ public class WorldPane extends JLayeredPane implements KeyListener {
 			battleEntity = (OpponentEntity) world.getEntityArr()[x][y];
 			startDialogue(battleEntity.getMessage(), battleEntity);
 		}
+	}
+	private void switchTile() {
+		Tile tile;
+		switch(world.getTileArr()[player.getCoordinates().getX()][player.getCoordinates().getY()].getTileType()) {
+			case "HighGrassTile" -> tile = new LowGrassTile();
+			case "LowGrassTile" -> tile = new RockTile();
+			case "RockTile" -> tile = new VoidTile();
+			case "VoidTile" -> tile = new WaterTile();
+			case "WaterTile" -> tile = new HighGrassTile();
+			default -> tile = null;
+		}
+		if(tile != null)
+			world.setTile(player.getCoordinates(), tile);
 	}
 
 }
