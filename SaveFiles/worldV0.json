@@ -641,7 +641,7 @@
     ],
     [
       {
-        "interactionType": "BATTLE",
+        "interactionType": "TEXT",
         "fighterInventory": {
           "fighterInventory": [
             {
@@ -674,7 +674,7 @@
             }
           ]
         },
-        "message": "You suck!!",
+        "message": "Die!",
         "entityType": "OpponentEntity",
         "facing_direction": 3
       },
@@ -713,7 +713,7 @@
             }
           ]
         },
-        "message": "generic message",
+        "message": "Die!*2",
         "entityType": "OpponentEntity",
         "facing_direction": 2
       },
