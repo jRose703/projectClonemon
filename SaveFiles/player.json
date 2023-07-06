@@ -4,7 +4,7 @@
       {
         "maxHitpoints": 100,
         "ID": 0,
-        "name": "Catmon",
+        "name": "Dominik",
         "type": "CITIZEN",
         "isDefeated": false,
         "backSprite": "assets/fighters/backsprites/citizen_back.png",
@@ -18,13 +18,27 @@
       {
         "maxHitpoints": 100,
         "ID": 0,
-        "name": "Lionmon",
+        "name": "Student",
         "type": "UNDEAD",
         "isDefeated": false,
         "backSprite": "assets/fighters/backsprites/undead_back.png",
         "fightingSide": "PLAYER",
         "hitpoints": 100,
         "frontSprite": "assets/fighters/frontsprites/undead_front.png",
+        "attackStat": 10,
+        "defenseStat": 5,
+        "initStat": 0
+      },
+      {
+        "maxHitpoints": 100,
+        "ID": 0,
+        "name": "Felix",
+        "type": "EXORCIST",
+        "isDefeated": false,
+        "backSprite": "assets/fighters/backsprites/EXORCIST_back.png",
+        "fightingSide": "PLAYER",
+        "hitpoints": 100,
+        "frontSprite": "assets/fighters/frontsprites/EXORCIST_front.png",
         "attackStat": 10,
         "defenseStat": 5,
         "initStat": 0
@@ -80,7 +94,7 @@
   "currentWorld": "world",
   "money": 0,
   "coordinates": {
-    "x": 6,
+    "x": 5,
     "y": 7
   },
   "facing_direction": 3

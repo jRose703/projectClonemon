@@ -6,9 +6,34 @@
   "tileArr": [
     [
       {
-        "TEXTURE_ID": 1,
-        "tileType": "RockTile",
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
         "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       },
       {
         "TEXTURE_ID": 0,
@@ -26,90 +51,105 @@
         "accessible": false
       },
       {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
         "accessible": false
-      },
-      {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
-        "accessible": false
-      },
-      {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
-        "accessible": false
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
       }
     ],
     [
       {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
         "TEXTURE_ID": 1,
         "tileType": "RockTile",
         "accessible": false
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
         "accessible": false
       },
       {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
         "accessible": false
-      },
-      {
-        "TEXTURE_ID": 3,
-        "tileType": "WaterTile",
-        "accessible": false
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 2,
-        "tileType": "HighGrassTile",
-        "accessible": true
       }
     ],
     [
       {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
         "TEXTURE_ID": 1,
         "tileType": "RockTile",
         "accessible": false
@@ -118,46 +158,6 @@
         "TEXTURE_ID": 1,
         "tileType": "RockTile",
         "accessible": false
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
       }
     ],
     [
@@ -177,43 +177,43 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 3,
+        "tileType": "WaterTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       }
     ],
@@ -254,18 +254,18 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       }
     ],
@@ -281,60 +281,8 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      }
-    ],
-    [
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
@@ -375,24 +323,24 @@
     ],
     [
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
       },
       {
         "TEXTURE_ID": 0,
@@ -427,8 +375,38 @@
     ],
     [
       {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
+      },
+      {
+        "TEXTURE_ID": 1,
+        "tileType": "RockTile",
+        "accessible": false
+      },
+      {
         "TEXTURE_ID": 0,
         "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
@@ -445,17 +423,9 @@
         "TEXTURE_ID": 0,
         "tileType": "LowGrassTile",
         "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
+      }
+    ],
+    [
       {
         "TEXTURE_ID": 0,
         "tileType": "LowGrassTile",
@@ -472,9 +442,39 @@
         "accessible": false
       },
       {
-        "TEXTURE_ID": 1,
-        "tileType": "RockTile",
-        "accessible": false
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 0,
+        "tileType": "LowGrassTile",
+        "accessible": true
       }
     ],
     [
@@ -494,8 +494,18 @@
         "accessible": true
       },
       {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
+        "accessible": true
+      },
+      {
+        "TEXTURE_ID": 2,
+        "tileType": "HighGrassTile",
         "accessible": true
       },
       {
@@ -517,22 +527,49 @@
         "TEXTURE_ID": 0,
         "tileType": "LowGrassTile",
         "accessible": true
-      },
-      {
-        "TEXTURE_ID": 0,
-        "tileType": "LowGrassTile",
-        "accessible": true
-      },
-      {
-        "TEXTURE_ID": -1,
-        "tileType": "VoidTile",
-        "accessible": false
       }
     ]
   ],
   "entityArr": [
     [
-      null,
+      {
+        "interactionType": "BATTLE",
+        "fighterInventory": {
+          "fighterInventory": [
+            {
+              "maxHitpoints": 25,
+              "ID": 4,
+              "name": "Conan",
+              "type": "EXORCIST",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/exorcist_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 25,
+              "frontSprite": "assets/fighters/frontsprites/exorcist_front.png",
+              "attackStat": 5,
+              "defenseStat": 5,
+              "initStat": 0
+            },
+            {
+              "maxHitpoints": 50,
+              "ID": 5,
+              "name": "Tim",
+              "type": "EXORCIST",
+              "isDefeated": false,
+              "backSprite": "assets/fighters/backsprites/exorcist_back.png",
+              "fightingSide": "OPPONENT",
+              "hitpoints": 50,
+              "frontSprite": "assets/fighters/frontsprites/exorcist_front.png",
+              "attackStat": 7,
+              "defenseStat": 7,
+              "initStat": 0
+            }
+          ]
+        },
+        "message": "You suck!!",
+        "entityType": "OpponentEntity",
+        "facing_direction": 1
+      },
       null,
       null,
       null,
@@ -641,13 +678,13 @@
     ],
     [
       {
-        "interactionType": "TEXT",
+        "interactionType": "BATTLE",
         "fighterInventory": {
           "fighterInventory": [
             {
               "maxHitpoints": 25,
               "ID": 4,
-              "name": "Dogmon",
+              "name": "Justus",
               "type": "CITIZEN",
               "isDefeated": false,
               "backSprite": "assets/fighters/backsprites/citizen_back.png",
@@ -661,7 +698,7 @@
             {
               "maxHitpoints": 50,
               "ID": 5,
-              "name": "Bearmon",
+              "name": "Jonathan",
               "type": "CITIZEN",
               "isDefeated": false,
               "backSprite": "assets/fighters/backsprites/citizen_back.png",
@@ -674,7 +711,7 @@
             }
           ]
         },
-        "message": "Die!",
+        "message": "You suck!!",
         "entityType": "OpponentEntity",
         "facing_direction": 3
       },
@@ -686,7 +723,7 @@
             {
               "maxHitpoints": 25,
               "ID": 4,
-              "name": "Dogmon",
+              "name": "Jessi",
               "type": "UNDEAD",
               "isDefeated": false,
               "backSprite": "assets/fighters/backsprites/undead_back.png",
@@ -700,7 +737,7 @@
             {
               "maxHitpoints": 50,
               "ID": 5,
-              "name": "Bearmon",
+              "name": "Daniel",
               "type": "UNDEAD",
               "isDefeated": false,
               "backSprite": "assets/fighters/backsprites/undead_back.png",
@@ -713,7 +750,7 @@
             }
           ]
         },
-        "message": "Die!*2",
+        "message": "generic message",
         "entityType": "OpponentEntity",
         "facing_direction": 2
       },

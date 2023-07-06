@@ -81,7 +81,7 @@ public class ReadWorldFromJson {
                 .of(Fighter.class, "type")
                 .registerSubtype(Citizen.class, "CITIZEN")
                 .registerSubtype(Undead.class, "UNDEAD")
-                .registerSubtype(Exorcist.class, "Exorcist");
+                .registerSubtype(Exorcist.class, "EXORCIST");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapterFactory(runtimeTypeAdapterFactory).registerTypeAdapterFactory(runtimeTypeAdapterFactory2).create();
 
